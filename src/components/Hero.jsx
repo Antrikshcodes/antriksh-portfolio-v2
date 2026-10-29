@@ -1,11 +1,9 @@
-import { useState } from 'react'
 import { PERSONAL } from '../data/content'
 import InteractiveParticles from './InteractiveParticles'
-import { ArrowDown, ArrowUpRight, Camera } from 'lucide-react'
+import HeroCollage from './HeroCollage'
+import { ArrowDown, ArrowUpRight } from 'lucide-react'
 
 export default function Hero() {
-  const [imgError, setImgError] = useState(false)
-
   const scrollToWork = (e) => {
     e.preventDefault()
     document.querySelector('#work')?.scrollIntoView({ behavior: 'smooth' })
@@ -76,40 +74,9 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Column: Editorial Portrait Treatment */}
+          {/* Right Column: Layered Editorial Scrapbook Photo Collage */}
           <div className="hero-portrait-col reveal reveal-delay-2">
-            <div className="hero-portrait-frame">
-              {!imgError ? (
-                <img
-                  src="/images/antriksh.jpg"
-                  alt="Antriksh — Student Developer & Builder"
-                  className="hero-portrait-img"
-                  onError={() => setImgError(true)}
-                />
-              ) : (
-                /* Authentic editorial placeholder when file is pending upload */
-                <div className="hero-portrait-placeholder">
-                  <div className="placeholder-art-mark">
-                    <span className="placeholder-monogram">A</span>
-                    <span className="placeholder-corner-accent" />
-                  </div>
-                  <div className="placeholder-instruction">
-                    <div className="placeholder-badge">
-                      <Camera size={13} />
-                      <span>PORTRAIT ASSET</span>
-                    </div>
-                    <p className="placeholder-path">public/images/antriksh.jpg</p>
-                    <span className="placeholder-caption">Antriksh · NST CS + AI</span>
-                  </div>
-                </div>
-              )}
-
-              {/* Minimal Editorial Corner Badge */}
-              <div className="hero-portrait-meta-tag">
-                <span className="portrait-status-dot" />
-                <span className="mono">ANTRIKSH // 2026</span>
-              </div>
-            </div>
+            <HeroCollage />
           </div>
         </div>
       </div>
