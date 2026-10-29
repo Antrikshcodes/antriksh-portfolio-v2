@@ -59,7 +59,7 @@ export default function Projects() {
             Things I've built. <span className="serif">Ideas I've explored.</span>
           </h2>
           <p className="section-subtext reveal reveal-delay-2">
-            From AI-powered concepts to robotics and creative experiments, here's what I've been working on.
+            A few projects that reflect my interest in AI, product building, and solving problems through technology.
           </p>
         </div>
 
@@ -92,19 +92,21 @@ export default function Projects() {
                         </span>
                       </div>
 
-                      <a
-                        href={primaryLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{ textDecoration: 'none' }}
-                      >
+                      {primaryLink ? (
+                        <a
+                          href={primaryLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{ textDecoration: 'none' }}
+                        >
+                          <h3 className="stacked-project-title">{project.title}</h3>
+                        </a>
+                      ) : (
                         <h3 className="stacked-project-title">{project.title}</h3>
-                      </a>
+                      )}
 
                       <p className="stacked-project-summary">{project.shortDesc}</p>
-                    </div>
 
-                    <div>
                       <div className="stacked-tags-row">
                         {project.technologies.map((tech) => (
                           <span key={tech} className="stacked-tech-badge">
@@ -112,84 +114,97 @@ export default function Projects() {
                           </span>
                         ))}
                       </div>
+                    </div>
 
-                      <div className="stacked-actions-row">
-                        {project.liveUrl ? (
-                          <a
-                            href={project.liveUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="btn-stacked-primary"
-                          >
-                            <span>Live Deployment</span>
-                            <ArrowUpRight size={13} />
-                          </a>
-                        ) : (
-                          <a
-                            href={project.githubUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="btn-stacked-primary"
-                          >
-                            <span>View Concept</span>
-                            <ArrowUpRight size={13} />
-                          </a>
-                        )}
-
-                        {project.githubUrl && (
-                          <a
-                            href={project.githubUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="btn-stacked-secondary"
-                            aria-label={`Repository for ${project.title}`}
-                          >
-                            <Github size={14} />
-                            <span>Source</span>
-                          </a>
-                        )}
-
-                        <button
-                          className="btn-stacked-text"
-                          onClick={() => setModalProject(project)}
-                          aria-label={`Read case study for ${project.title}`}
+                    <div className="stacked-actions-row">
+                      {project.liveUrl && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn-stacked-primary"
                         >
-                          <Layers size={13} />
-                          <span>Case Study</span>
-                        </button>
-                      </div>
+                          <span>Live Project</span>
+                          <ArrowUpRight size={14} />
+                        </a>
+                      )}
+
+                      {project.githubUrl && (
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn-stacked-secondary"
+                        >
+                          <Github size={14} />
+                          <span>Codebase</span>
+                        </a>
+                      )}
+
+                      <button
+                        type="button"
+                        onClick={() => setModalProject(project)}
+                        className="btn-stacked-text"
+                        aria-label={`View deep dive for ${project.title}`}
+                      >
+                        <Layers size={13} />
+                        <span>Case Study</span>
+                      </button>
                     </div>
                   </div>
 
-                  {/* Right Column: High-Res Real Screenshot Frame */}
+                  {/* Right Column: Visual Browser Mockup */}
                   <div className="stacked-panel-preview">
-                    <a
-                      href={primaryLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="browser-mockup-frame"
-                      aria-label={`Open destination for ${project.title}`}
-                    >
-                      <div className="browser-mockup-header">
-                        <div className="browser-mockup-dots">
-                          <span className="dot dot-1" />
-                          <span className="dot dot-2" />
-                          <span className="dot dot-3" />
+                    {primaryLink ? (
+                      <a
+                        href={primaryLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="browser-mockup-frame"
+                        style={{ display: 'block', textDecoration: 'none' }}
+                      >
+                        <div className="browser-mockup-header">
+                          <div className="browser-mockup-dots">
+                            <span className="dot" />
+                            <span className="dot" />
+                            <span className="dot" />
+                          </div>
+                          <div className="browser-mockup-url">
+                            <span>https://{project.displayUrl}</span>
+                            <ArrowUpRight size={11} />
+                          </div>
                         </div>
-                        <div className="browser-mockup-url">
-                          <span>{project.displayUrl}</span>
-                          <ArrowUpRight size={11} color="var(--accent-sage)" />
-                        </div>
-                      </div>
 
-                      <div className="browser-mockup-screen">
-                        <img
-                          src={project.screenshot}
-                          alt={`${project.title} live interface preview`}
-                          loading="lazy"
-                        />
+                        <div className="browser-mockup-screen">
+                          <img
+                            src={project.screenshot}
+                            alt={`${project.title} interface preview`}
+                            loading="lazy"
+                          />
+                        </div>
+                      </a>
+                    ) : (
+                      <div className="browser-mockup-frame">
+                        <div className="browser-mockup-header">
+                          <div className="browser-mockup-dots">
+                            <span className="dot" />
+                            <span className="dot" />
+                            <span className="dot" />
+                          </div>
+                          <div className="browser-mockup-url">
+                            <span>https://{project.displayUrl}</span>
+                          </div>
+                        </div>
+
+                        <div className="browser-mockup-screen">
+                          <img
+                            src={project.screenshot}
+                            alt={`${project.title} interface preview`}
+                            loading="lazy"
+                          />
+                        </div>
                       </div>
-                    </a>
+                    )}
                   </div>
                 </div>
               </div>

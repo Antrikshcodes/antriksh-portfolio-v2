@@ -1,44 +1,43 @@
 import { SKILLS_CATEGORIES } from '../data/content'
-import { Code2, Server, Palette, Cpu } from 'lucide-react'
+import { Code2, Terminal, Cpu, Palette } from 'lucide-react'
 
 export default function TechStack() {
-  const getCategoryIcon = (cat) => {
-    switch (cat) {
+  const getCategoryIcon = (category) => {
+    switch (category) {
       case 'Development':
-        return <Code2 size={16} color="var(--accent-sage)" />
-      case 'Backend and AI':
-        return <Server size={16} color="var(--electric-violet)" />
+        return <Code2 size={16} />
+      case 'AI and Backend':
+        return <Terminal size={16} />
       case 'Creative Technology':
-        return <Palette size={16} color="var(--warm-orange)" />
+        return <Palette size={16} />
       case 'Robotics':
-        return <Cpu size={16} color="var(--soft-lime-dark)" />
+        return <Cpu size={16} />
       default:
-        return null
+        return <Code2 size={16} />
     }
   }
 
   return (
     <section id="skills" className="skills-editorial-section">
       <div className="container">
+        {/* Section Header */}
         <div className="skills-header-editorial">
-          <div className="section-meta-tag reveal">SKILLS & WORKFLOW</div>
+          <div className="section-meta-tag reveal">CAPABILITIES / 06</div>
           <h2 className="section-heading-large reveal reveal-delay-1">
-            Technologies & <span className="serif">tools.</span>
+            Skills & <span className="serif">Technologies.</span>
           </h2>
           <p className="section-subtext reveal reveal-delay-2">
-            The programming languages, frameworks, and hardware platforms I use across software and physical prototypes.
+            The programming languages, frameworks, AI tools, and embedded hardware I actively build with.
           </p>
         </div>
 
+        {/* Clean Quad Grid */}
         <div className="skills-quad-grid">
           {Object.entries(SKILLS_CATEGORIES).map(([category, items], idx) => (
-            <div
-              key={category}
-              className={`skills-category-block reveal reveal-delay-${(idx % 2) + 1}`}
-            >
+            <div key={category} className="skills-category-block reveal reveal-delay-2">
               <div className="skills-block-top">
-                {getCategoryIcon(category)}
-                <h3 className="skills-cat-title">{category}</h3>
+                <span className="skills-cat-icon">{getCategoryIcon(category)}</span>
+                <span className="skills-cat-title">{category}</span>
               </div>
 
               <div className="skills-list-group">

@@ -1,56 +1,59 @@
 import { HACKATHONS } from '../data/content'
-import { Trophy, Award, Building2 } from 'lucide-react'
+import { Trophy, Award, MapPin } from 'lucide-react'
 
 export default function Hackathons() {
   return (
     <section id="hackathons" className="hackathons-timeline-section">
       <div className="container">
+        {/* Section Header */}
         <div className="hackathons-header-editorial">
-          <div className="section-meta-tag reveal">HACKATHONS & COMPETITIONS</div>
+          <div className="section-meta-tag reveal">JOURNEY / 05</div>
           <h2 className="section-heading-large reveal reveal-delay-1">
-            Building under <span className="serif">pressure.</span>
+            Hackathons & <span className="serif">Challenges.</span>
           </h2>
           <p className="section-subtext reveal reveal-delay-2">
-            Intensive sprints where ideas get tested, refined, and delivered as working prototypes.
+            Intense 24-48 hour sprints building prototypes, collaborating under tight deadlines, and
+            shipping working systems alongside other builders.
           </p>
         </div>
 
+        {/* Compact Editorial Hackathon Timeline */}
         <div className="hackathons-list-compact">
           {HACKATHONS.map((event, idx) => (
             <div
-              key={event.name}
+              key={`${event.name}-${idx}`}
               className={`hackathon-compact-item ${
                 event.isSpecial ? 'hackathon-compact-item--highlight' : ''
-              } reveal reveal-delay-${(idx % 3) + 1}`}
+              } reveal reveal-delay-1`}
             >
               <div className="hackathon-year-col mono">{event.year}</div>
 
-              <div className="hackathon-main-col">
-                <h3 className="hackathon-title-text">{event.name}</h3>
-                {(event.venue || event.organization) && (
-                  <div className="hackathon-venue-text">
-                    <Building2 size={12} style={{ display: 'inline', marginRight: 4 }} />
-                    <span>{event.venue || event.organization}</span>
-                  </div>
-                )}
+              <div className="hackathon-details-col">
+                <div className="hackathon-title-text">{event.name}</div>
+                <div className="hackathon-venue-text">
+                  {event.organization && <span>{event.organization} · </span>}
+                  {event.venue && (
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
+                      <MapPin size={11} /> {event.venue}
+                    </span>
+                  )}
+                  {!event.venue && !event.organization && <span>Collegiate Hackathon & Challenge</span>}
+                </div>
                 {event.project && (
                   <div className="hackathon-project-ref mono">
-                    Project: <strong>{event.project}</strong>
+                    Project Built: {event.project}
                   </div>
                 )}
               </div>
 
               <div className="hackathon-badge-col">
                 {event.isSpecial ? (
-                  <div className="badge-highlight-pill">
-                    <Trophy size={13} />
-                    <span>{event.placement || event.badge}</span>
-                  </div>
-                ) : (
-                  <div className="badge-standard-pill">
-                    <Award size={12} style={{ display: 'inline', marginRight: 4 }} />
+                  <span className="badge-highlight-pill">
+                    <Award size={12} />
                     <span>{event.badge}</span>
-                  </div>
+                  </span>
+                ) : (
+                  <span className="badge-standard-pill">{event.badge}</span>
                 )}
               </div>
             </div>

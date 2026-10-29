@@ -4,7 +4,7 @@ export const PERSONAL = {
   role: 'STUDENT DEVELOPER · BUILDER · CREATIVE TECHNOLOGIST',
   headline: 'I turn curious ideas into digital experiences.',
   description:
-    'Exploring the intersection of software, AI, robotics, and product design—building projects, experimenting with technology, and learning by making things.',
+    "I'm exploring the intersection of software, AI, robotics, and product design—building projects, experimenting with technology, and learning by making things.",
   education: 'First-year B.Tech CS + AI · Newton School of Technology, Rishihood University',
   status: 'Open to hackathons & product collaborations',
   email: 'your.email@example.com',
@@ -13,10 +13,11 @@ export const PERSONAL = {
 }
 
 export const NAV_LINKS = [
+  { label: 'About', href: '#about' },
   { label: 'Selected Work', href: '#work' },
   { label: 'Experiments', href: '#experiments' },
+  { label: 'GitHub', href: '#github' },
   { label: 'Hackathons', href: '#hackathons' },
-  { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
   { label: 'Contact', href: '#contact' },
 ]
@@ -53,17 +54,17 @@ export const FEATURED_PROJECTS = [
     shortDesc:
       'An urban issue-management project exploring how citizen reports, incident relationships, and verification workflows can help city operators understand and resolve civic problems.',
     description:
-      'CONVERGE is a smart-city civic intelligence system. Citizens report issues via their phones; the system automatically merges geo-spatial duplicates, identifies shared root causes (such as water mains breaking under road collapses), enforces SLA escalation deadlines, and closes cases only when verified photographic proof is submitted.',
+      'CONVERGE is an urban issue-management project exploring how citizen reports, incident relationships, and verification workflows can help city operators understand and resolve civic problems. Features automated duplicate grouping, root-cause spatial correlation, and photographic verification closure.',
     technologies: ['Next.js', 'FastAPI', 'Incident Mapping', 'AI Workflows'],
     screenshot: '/projects/converge.png',
     liveUrl: 'https://converge-web-ten.vercel.app',
     githubUrl: 'https://github.com/srtkio/converge_trojans',
     displayUrl: 'converge-web-ten.vercel.app',
-    accentColor: '#899681',
+    accentColor: '#9AA88F',
     features: [
       'Duplicate clustering & root-cause incident mapping',
-      'SLA deadline monitoring with escalation ladder',
-      'Evidence-checked photographic resolution closure',
+      'SLA deadline monitoring with escalation workflows',
+      'Photographic resolution evidence verification',
       'Command center operator dashboard with real-time map',
     ],
   },
@@ -75,18 +76,18 @@ export const FEATURED_PROJECTS = [
     shortDesc:
       'A hackathon project exploring AI-assisted blind-spot awareness and how computer vision could help communicate potential road risks.',
     description:
-      'Blindspot AI is an active situational awareness prototype designed to reduce highway lane-change collisions. Integrating computer vision vehicle tracking, proximity detection, and situational hazard scoring, it communicates hazards that physical vehicle mirrors frequently miss.',
+      'A hackathon project exploring AI-assisted blind-spot awareness and how computer vision could help communicate potential road risks. Investigated vehicle bounding box tracking and peripheral distance telemetry to evaluate driver warning latencies.',
     technologies: ['Python', 'Computer Vision', 'PyTorch', 'FastAPI'],
     screenshot: '/projects/blindspot.png',
     liveUrl: null, // Concept / Prototype stage
     githubUrl: 'https://github.com/Antrikshcodes',
     displayUrl: 'github.com/Antrikshcodes',
-    accentColor: '#7770D9',
+    accentColor: '#8880E8',
     features: [
       'Peripheral proximity detection for vehicle blind spots',
-      'Real-time situational awareness risk indexing',
-      'Low-latency visual alert interface for drivers',
-      'Edge-device telemetry processing pipeline',
+      'Situational hazard evaluation scoring',
+      'Low-latency visual alert driver interface',
+      'Computer vision frame processing pipeline',
     ],
   },
   {
@@ -97,13 +98,13 @@ export const FEATURED_PROJECTS = [
     shortDesc:
       'A supplier and vendor onboarding verification concept developed to explore more structured business verification workflows.',
     description:
-      'OrderShield AI was developed as an MVP concept for Fetch-A-Thon 3.0. By replacing manual compliance reviews with automated multi-factor document auditing and tax-registry verification, it turns weeks of supplier vetting into a fast, trustworthy process.',
+      'A supplier and vendor onboarding verification concept developed to explore more structured business verification workflows. Automated document auditing and business registry cross-checks designed to reduce compliance overhead.',
     technologies: ['Python', 'FastAPI', 'Document AI', 'Fetch.ai', 'React'],
     screenshot: '/projects/ordershield.png',
     liveUrl: 'https://ordershield-tawny.vercel.app/',
     githubUrl: 'https://github.com/Antrikshcodes/ordershield',
     displayUrl: 'ordershield-tawny.vercel.app',
-    accentColor: '#D5E7A0',
+    accentColor: '#D1E7A0',
     features: [
       'Automated GSTIN and business credential auditing',
       'Multi-factor supplier trust score index',
@@ -119,7 +120,7 @@ export const FEATURED_PROJECTS = [
     shortDesc:
       'A product-focused initiative exploring product thinking, ideas, and useful digital experiences.',
     description:
-      'The Product Guys is an initiative created to bridge technical engineering and product thinking. It delivers deep-dive product breakdowns, UX teardowns, and actionable validation frameworks for builders building user-centric digital tools.',
+      'A product-focused initiative exploring product thinking, ideas, and useful digital experiences. Built to bridge engineering and product strategy through in-depth product breakdowns and actionable user validation frameworks.',
     technologies: ['Next.js', 'Vercel', 'Product Design', 'Information Architecture'],
     screenshot: '/projects/product-guys.png',
     liveUrl: 'https://productguys.arthakram.in',
@@ -135,7 +136,7 @@ export const FEATURED_PROJECTS = [
   },
 ]
 
-// Level Two: Experiments Lab (Secondary exploratory & hardware projects)
+// Level Two: Experiments Lab (Robotics, Hardware & Exploratory Prototypes)
 export const EXPERIMENTS_LAB = [
   {
     id: 'obstacle-robot',
@@ -144,42 +145,96 @@ export const EXPERIMENTS_LAB = [
     category: 'Robotics / Hardware',
     status: 'Hardware Prototype',
     description:
-      'A robotics experiment exploring ultrasonic obstacle detection and autonomous navigation using embedded microcontroller logic and DC motor drivers.',
+      'A robotics experiment exploring obstacle detection and autonomous movement using sensors, motors, and embedded hardware.',
     tech: ['Arduino', 'Ultrasonic Sensor', 'L298N Motor Driver', 'C++'],
-    accent: '#899681',
+    accent: '#9AA88F',
+  },
+  {
+    id: 'arduino-esp32-experiments',
+    number: '06',
+    title: 'Arduino and ESP32 Experiments',
+    category: 'Embedded Systems',
+    status: 'Hardware Exploration',
+    description:
+      'A collection of hardware experiments involving microcontrollers, sensors, motors, displays, and software-hardware integration including ESP32 boards, servo motors, OLED displays, ultrasonic sensors, and motor drivers.',
+    tech: ['ESP32', 'Arduino', 'Servo Motors', 'OLED Displays', 'Ultrasonic Sensors'],
+    accent: '#D1E7A0',
   },
   {
     id: 'portfolio-v2',
-    number: '06',
-    title: 'Personal Portfolio Website',
-    category: 'Web Development / Creative Coding',
-    status: 'Production',
-    description:
-      'An evolving personal website exploring interactive canvas particle systems, physics-based stacked scrolling, and responsive editorial layout.',
-    tech: ['React', 'Vite', 'Canvas API', 'CSS Keyframes'],
-    accent: '#7770D9',
-  },
-  {
-    id: 'arduino-experiments',
     number: '07',
-    title: 'Robotics & Arduino Explorations',
-    category: 'Hardware / Embedded Systems',
-    status: 'Lab Experiments',
+    title: 'Personal Portfolio',
+    category: 'Web Development / Creative Coding',
+    status: 'Current Project',
     description:
-      'A collection of hardware explorations involving ESP32 microcontrollers, servo motors, OLED telemetry displays, and infrared line sensors.',
-    tech: ['ESP32', 'Arduino', 'Servo Motors', 'I2C OLED', 'Sensors'],
-    accent: '#D5E7A0',
+      'An evolving personal website exploring interactive interfaces, animation, responsive design, and creative web development.',
+    tech: ['React', 'Vite', 'Canvas Particle System', 'CSS Architecture'],
+    accent: '#8880E8',
   },
   {
     id: 'ai-assistant-concept',
     number: '08',
-    title: 'Future AI Assistant Concept',
+    title: 'AI Assistant Concept',
     category: 'AI / Concept Design',
     status: 'Exploratory Concept',
     description:
-      'An interface design exploration exploring multi-agent context routing, ambient notifications, and voice-assisted developer workflows.',
-    tech: ['Figma', 'Interface Design', 'Agent Architecture'],
+      'An exploratory concept for an AI-powered interface, focused on useful interactions and clear information presentation.',
+    tech: ['Interface Design', 'Contextual Routing', 'Information Architecture'],
     accent: '#E99A72',
+  },
+]
+
+// Verified GitHub Repositories for the dedicated GitHub section
+export const GITHUB_REPOS = [
+  {
+    name: 'converge_trojans',
+    displayName: 'CONVERGE',
+    description:
+      'Urban issue-management platform with incident relationships, root-cause clustering, and verification workflows.',
+    language: 'TypeScript',
+    languageColor: '#3178C6',
+    url: 'https://github.com/srtkio/converge_trojans',
+    tags: ['Next.js', 'FastAPI', 'CivicTech'],
+  },
+  {
+    name: 'ordershield',
+    displayName: 'ordershield',
+    description:
+      'Supplier and vendor onboarding verification platform developed for Fetch-A-Thon 3.0.',
+    language: 'Python',
+    languageColor: '#3572A5',
+    url: 'https://github.com/Antrikshcodes/ordershield',
+    tags: ['FastAPI', 'Python', 'React'],
+  },
+  {
+    name: 'antriksh-portfolio-v2',
+    displayName: 'antriksh-portfolio-v2',
+    description:
+      'Personal creative developer portfolio with interactive canvas particle background and physics stacked scroll.',
+    language: 'JavaScript',
+    languageColor: '#F7DF1E',
+    url: 'https://github.com/Antrikshcodes/antriksh-portfolio-v2',
+    tags: ['React', 'Vite', 'Canvas'],
+  },
+  {
+    name: 'blindspot-ai',
+    displayName: 'Blindspot AI',
+    description:
+      'Computer vision road-risk awareness prototype exploring driver blind-spot detection and alert latencies.',
+    language: 'Python',
+    languageColor: '#3572A5',
+    url: 'https://github.com/Antrikshcodes',
+    tags: ['Computer Vision', 'PyTorch'],
+  },
+  {
+    name: 'obstacle-robot',
+    displayName: 'Obstacle Avoiding Robot',
+    description:
+      'Embedded C++ firmware for autonomous obstacle detection using ultrasonic sensors and dual motor drivers.',
+    language: 'C++',
+    languageColor: '#F34B7D',
+    url: 'https://github.com/Antrikshcodes',
+    tags: ['Arduino', 'Hardware', 'C++'],
   },
 ]
 
@@ -225,7 +280,18 @@ export const HACKATHONS = [
 
 export const SKILLS_CATEGORIES = {
   Development: ['Python', 'JavaScript', 'HTML', 'CSS', 'React', 'Next.js', 'Vite'],
-  'Backend and AI': ['FastAPI', 'API integration', 'AI/ML fundamentals'],
-  'Creative Technology': ['Three.js', 'React Three Fiber', 'Framer Motion', 'UI/UX', 'Creative coding'],
-  Robotics: ['Arduino', 'ESP32', 'Sensors and motors', 'Embedded-system experiments'],
+  'AI and Backend': ['AI/ML fundamentals', 'FastAPI', 'API integration'],
+  'Creative Technology': [
+    'Three.js',
+    'React Three Fiber',
+    'Framer Motion',
+    'UI/UX',
+    'Creative coding',
+  ],
+  Robotics: [
+    'Arduino',
+    'ESP32',
+    'Sensors and motors',
+    'Embedded-system experiments',
+  ],
 }
