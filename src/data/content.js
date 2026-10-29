@@ -1,14 +1,15 @@
 export const PERSONAL = {
   name: 'Antriksh',
+  nameUpper: 'ANTRIKSH',
   role: 'STUDENT DEVELOPER · BUILDER · CREATIVE TECHNOLOGIST',
   headline: 'I turn curious ideas into digital experiences.',
   description:
-    "I'm exploring the intersection of software, AI, robotics, and product design—building projects, experimenting with technology, and learning by making things.",
+    'Exploring the intersection of software, AI, robotics, and product design—building projects, experimenting with technology, and learning by making things.',
   education: 'First-year B.Tech CS + AI · Newton School of Technology, Rishihood University',
   status: 'Open to hackathons & product collaborations',
-  email: 'your.email@example.com', // Replace with public email
+  email: 'your.email@example.com',
   github: 'https://github.com/Antrikshcodes',
-  linkedin: 'https://linkedin.com/in/your-profile', // Replace with public profile
+  linkedin: 'https://linkedin.com/in/your-profile',
 }
 
 export const NAV_LINKS = [

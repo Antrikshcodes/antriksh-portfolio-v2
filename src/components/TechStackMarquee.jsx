@@ -1,13 +1,13 @@
 import React from 'react'
 import { MARQUEE_ROW_ONE, MARQUEE_ROW_TWO } from '../data/content'
 
-const SEPARATORS = ['✳', '✦', '·', '✳']
+const SEPARATOR = '✳'
 
 export default function TechStackMarquee() {
   return (
     <section
       className="marquee-playground-container"
-      aria-label="Technologies & Core Capabilities"
+      aria-label="Technologies and Core Capabilities"
     >
       <div className="marquee-edge-fade marquee-edge-fade--left" />
       <div className="marquee-edge-fade marquee-edge-fade--right" />
@@ -22,23 +22,23 @@ export default function TechStackMarquee() {
               aria-hidden={copyIdx > 0}
             >
               {MARQUEE_ROW_ONE.map((tech, i) => {
-                const sep = SEPARATORS[i % SEPARATORS.length]
-                const isSage = i === 1 || i === 6 // REACT, THREE.JS
-                const isViolet = i === 7 // FRAMER MOTION
+                // Selectively accent React, Next.js, Three.js with sage or soft lime
+                const isSage = tech === 'REACT' || tech === 'THREE.JS'
+                const isLime = tech === 'NEXT.JS' || tech === 'FRAMER MOTION'
                 return (
                   <span key={`${tech}-${i}`} className="marquee-unit">
                     <span
                       className={`marquee-token ${
                         isSage
                           ? 'token-sage'
-                          : isViolet
-                          ? 'token-violet'
-                          : 'token-charcoal'
+                          : isLime
+                          ? 'token-lime'
+                          : 'token-offwhite'
                       }`}
                     >
                       {tech}
                     </span>
-                    <span className="marquee-glyph">{sep}</span>
+                    <span className="marquee-glyph">{SEPARATOR}</span>
                   </span>
                 )
               })}
@@ -57,26 +57,26 @@ export default function TechStackMarquee() {
               aria-hidden={copyIdx > 0}
             >
               {MARQUEE_ROW_TWO.map((tech, i) => {
-                const sep = SEPARATORS[(i + 1) % SEPARATORS.length]
-                const isLime = i === 0 // AI / ML
-                const isOrange = i === 7 // ROBOTICS
-                const isViolet = i === 2 // FASTAPI
+                // Selectively accent AI/ML, Creative Coding, Robotics
+                const isLime = tech === 'AI / ML'
+                const isSage = tech === 'CREATIVE CODING' || tech === 'TAILWIND CSS'
+                const isOrange = tech === 'ROBOTICS'
                 return (
                   <span key={`${tech}-${i}`} className="marquee-unit">
                     <span
                       className={`marquee-token ${
                         isLime
                           ? 'token-lime'
+                          : isSage
+                          ? 'token-sage'
                           : isOrange
                           ? 'token-orange'
-                          : isViolet
-                          ? 'token-violet'
-                          : 'token-charcoal'
+                          : 'token-offwhite'
                       }`}
                     >
                       {tech}
                     </span>
-                    <span className="marquee-glyph">{sep}</span>
+                    <span className="marquee-glyph marquee-glyph--violet">{SEPARATOR}</span>
                   </span>
                 )
               })}

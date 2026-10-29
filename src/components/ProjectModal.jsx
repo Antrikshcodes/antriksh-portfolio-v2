@@ -28,8 +28,9 @@ export default function ProjectModal({ project, onClose }) {
         position: 'fixed',
         inset: 0,
         zIndex: 10000,
-        backgroundColor: 'rgba(34, 35, 31, 0.65)',
-        backdropFilter: 'blur(10px)',
+        backgroundColor: 'rgba(15, 16, 21, 0.78)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -42,10 +43,10 @@ export default function ProjectModal({ project, onClose }) {
     >
       <div
         style={{
-          backgroundColor: '#F7F6F2',
-          border: '1px solid #DEDED5',
+          backgroundColor: '#1B1D25',
+          border: '1px solid #343641',
           borderRadius: 20,
-          boxShadow: '0 24px 60px rgba(0, 0, 0, 0.16)',
+          boxShadow: '0 24px 60px rgba(0, 0, 0, 0.5)',
           maxWidth: 820,
           width: '100%',
           maxHeight: '88vh',
@@ -64,12 +65,13 @@ export default function ProjectModal({ project, onClose }) {
             width: 36,
             height: 36,
             borderRadius: '50%',
-            backgroundColor: '#EFEEE8',
-            border: '1px solid #DEDED5',
+            backgroundColor: '#22242E',
+            border: '1px solid #343641',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: '#22231F',
+            color: '#F2F1EC',
+            cursor: 'pointer',
             transition: 'all 0.2s ease',
           }}
         >
@@ -94,7 +96,7 @@ export default function ProjectModal({ project, onClose }) {
               fontSize: '2.4rem',
               fontWeight: 700,
               letterSpacing: '-0.03em',
-              color: '#22231F',
+              color: '#F2F1EC',
               marginBottom: '1rem',
             }}
           >
@@ -102,8 +104,8 @@ export default function ProjectModal({ project, onClose }) {
           </h2>
           <p
             style={{
-              fontSize: '1.1rem',
-              color: '#77786F',
+              fontSize: '1.05rem',
+              color: '#A5A6B0',
               lineHeight: 1.7,
             }}
           >
@@ -124,7 +126,7 @@ export default function ProjectModal({ project, onClose }) {
           >
             Overview & Context
           </div>
-          <p style={{ color: '#22231F', lineHeight: 1.8 }}>{project.description}</p>
+          <p style={{ color: '#F2F1EC', lineHeight: 1.8 }}>{project.description}</p>
         </div>
 
         {project.features && (
@@ -153,13 +155,13 @@ export default function ProjectModal({ project, onClose }) {
                   key={i}
                   style={{
                     fontSize: '0.92rem',
-                    color: '#77786F',
+                    color: '#A5A6B0',
                     display: 'flex',
                     alignItems: 'center',
                     gap: '0.5rem',
                   }}
                 >
-                  <span style={{ color: 'var(--accent-sage)' }}>—</span>
+                  <span style={{ color: 'var(--soft-lime)' }}>—</span>
                   <span>{feat}</span>
                 </div>
               ))}
@@ -189,9 +191,9 @@ export default function ProjectModal({ project, onClose }) {
                   fontSize: '0.72rem',
                   padding: '0.35rem 0.8rem',
                   borderRadius: 999,
-                  backgroundColor: '#EFEEE8',
-                  border: '1px solid #DEDED5',
-                  color: '#22231F',
+                  backgroundColor: '#14151B',
+                  border: '1px solid #343641',
+                  color: '#A5A6B0',
                 }}
               >
                 {t}
@@ -206,7 +208,7 @@ export default function ProjectModal({ project, onClose }) {
               href={primaryUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-editorial-primary"
+              className="btn-editorial-dark"
             >
               <span>{project.liveUrl ? 'Visit Live Deployment' : 'View Repository'}</span>
               <ArrowUpRight size={14} />
@@ -217,7 +219,7 @@ export default function ProjectModal({ project, onClose }) {
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-editorial-secondary"
+              className="btn-editorial-light"
             >
               <Github size={14} />
               <span>Source Code</span>

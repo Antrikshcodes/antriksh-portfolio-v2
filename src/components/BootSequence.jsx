@@ -8,11 +8,11 @@ export default function BootSequence({ onComplete }) {
     typeof window !== 'undefined' &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches
   const alreadyBooted =
-    typeof sessionStorage !== 'undefined' && sessionStorage.getItem('editorial_booted')
+    typeof sessionStorage !== 'undefined' && sessionStorage.getItem('editorial_booted_dark')
 
   const finish = useCallback(() => {
     if (typeof sessionStorage !== 'undefined') {
-      sessionStorage.setItem('editorial_booted', 'true')
+      sessionStorage.setItem('editorial_booted_dark', 'true')
     }
     setExiting(true)
     setTimeout(() => {
@@ -30,7 +30,7 @@ export default function BootSequence({ onComplete }) {
 
     const timer = setTimeout(() => {
       finish()
-    }, 900)
+    }, 850)
 
     return () => clearTimeout(timer)
   }, [alreadyBooted, finish, onComplete, prefersReducedMotion])
@@ -43,7 +43,7 @@ export default function BootSequence({ onComplete }) {
         position: 'fixed',
         inset: 0,
         zIndex: 99999,
-        backgroundColor: '#F7F6F2',
+        backgroundColor: '#14151B',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -59,13 +59,13 @@ export default function BootSequence({ onComplete }) {
       <div
         style={{
           fontFamily: "'Manrope', sans-serif",
-          fontSize: '1.25rem',
-          fontWeight: 600,
+          fontSize: '1.35rem',
+          fontWeight: 700,
           letterSpacing: '-0.02em',
-          color: '#22231F',
+          color: '#F2F1EC',
           display: 'flex',
           alignItems: 'center',
-          gap: '0.6rem',
+          gap: '0.65rem',
         }}
       >
         <span
@@ -73,22 +73,23 @@ export default function BootSequence({ onComplete }) {
             width: 8,
             height: 8,
             borderRadius: '50%',
-            backgroundColor: '#899681',
+            backgroundColor: '#D1E7A0',
+            boxShadow: '0 0 10px rgba(209, 231, 160, 0.4)',
           }}
         />
-        <span>Antriksh</span>
+        <span>ANTRIKSH</span>
       </div>
       <div
         style={{
           fontFamily: "'JetBrains Mono', monospace",
           fontSize: '0.7rem',
-          color: '#77786F',
-          marginTop: '0.6rem',
-          letterSpacing: '0.12em',
+          color: '#A5A6B0',
+          marginTop: '0.65rem',
+          letterSpacing: '0.14em',
           textTransform: 'uppercase',
         }}
       >
-        Portfolio 2026 · Index
+        Index · 2026
       </div>
     </div>
   )
