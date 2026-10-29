@@ -1,6 +1,6 @@
 import { PERSONAL } from '../data/content'
-import HeroScene from './HeroScene'
-import { ArrowDownRight, ArrowUpRight } from 'lucide-react'
+import InteractiveParticles from './InteractiveParticles'
+import { ArrowDown, ArrowUpRight } from 'lucide-react'
 
 export default function Hero() {
   const scrollToWork = (e) => {
@@ -14,47 +14,49 @@ export default function Hero() {
   }
 
   return (
-    <section id="top" className="hero-editorial">
-      <div className="container">
-        <div className="hero-editorial-grid">
-          <div className="hero-editorial-content">
-            <div className="hero-pill-badge reveal">
-              <span>{PERSONAL.role}</span>
-            </div>
+    <section id="top" className="hero-editorial-playground">
+      {/* Interactive Cursor-Reactive Particle Network */}
+      <InteractiveParticles />
 
-            <h1 className="hero-headline-large reveal reveal-delay-1">
-              {PERSONAL.headline}
-            </h1>
+      <div className="container hero-content-container">
+        <div className="hero-kicker-meta reveal">
+          <span className="hero-kicker-dot" />
+          <span>{PERSONAL.role}</span>
+        </div>
 
-            <p className="hero-subdescription reveal reveal-delay-2">
-              {PERSONAL.description}
-            </p>
+        <h1 className="hero-editorial-title reveal reveal-delay-1">
+          I turn curious ideas <br />
+          into <span className="serif">digital experiences.</span>
+        </h1>
 
-            <div className="hero-button-group reveal reveal-delay-3">
-              <a
-                href="#work"
-                className="btn-editorial-primary"
-                onClick={scrollToWork}
-              >
-                <span>Explore my work</span>
-                <ArrowDownRight size={15} />
-              </a>
+        <p className="hero-editorial-text reveal reveal-delay-2">
+          {PERSONAL.description}
+        </p>
 
-              <a
-                href="#contact"
-                className="btn-editorial-secondary"
-                onClick={scrollToContact}
-              >
-                <span>Get in touch</span>
-                <ArrowUpRight size={15} />
-              </a>
-            </div>
-          </div>
+        <div className="hero-cta-actions reveal reveal-delay-3">
+          <a
+            href="#work"
+            className="btn-editorial-dark"
+            onClick={scrollToWork}
+          >
+            <span>Explore my work</span>
+            <ArrowDown size={14} />
+          </a>
 
-          <div className="hero-sculpture-container reveal reveal-delay-2">
-            <HeroScene />
-            <div className="hero-sculpture-annotation">FIG. 01 — KINETIC STUDY</div>
-          </div>
+          <a
+            href="#contact"
+            className="btn-editorial-light"
+            onClick={scrollToContact}
+          >
+            <span>Let's connect</span>
+            <ArrowUpRight size={14} />
+          </a>
+        </div>
+
+        {/* Small subtle scroll cue */}
+        <div className="hero-scroll-cue reveal reveal-delay-3">
+          <span className="hero-scroll-line" />
+          <span>SCROLL TO EXPLORE</span>
         </div>
       </div>
     </section>

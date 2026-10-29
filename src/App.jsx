@@ -4,8 +4,9 @@ import Navigation from './components/Navigation'
 import Hero from './components/Hero'
 import TechStackMarquee from './components/TechStackMarquee'
 import Projects from './components/Projects'
-import About from './components/About'
 import ExperimentsLab from './components/ExperimentsLab'
+import About from './components/About'
+import Hackathons from './components/Hackathons'
 import TechStack from './components/TechStack'
 import Contact from './components/Contact'
 import { useScrollReveal } from './hooks/useScrollReveal'
@@ -23,8 +24,9 @@ export default function App() {
         <Hero />
         <TechStackMarquee />
         <Projects />
-        <About />
         <ExperimentsLab />
+        <About />
+        <Hackathons />
         <TechStack />
         <Contact />
       </main>

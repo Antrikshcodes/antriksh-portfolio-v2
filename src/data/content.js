@@ -1,46 +1,69 @@
 export const PERSONAL = {
   name: 'Antriksh',
-  role: 'Independent Developer · Student · Builder',
-  headline: 'I build digital experiences at the intersection of code, AI, and creativity.',
+  role: 'STUDENT DEVELOPER · BUILDER · CREATIVE TECHNOLOGIST',
+  headline: 'I turn curious ideas into digital experiences.',
   description:
-    'Exploring ideas, building products, and experimenting with technology to turn interesting problems into useful experiences.',
-  education: 'B.Tech CS + AI · Newton School of Technology, Rishihood University',
-  year: 'First Year',
-  status: 'Open to collaborations & hackathons',
+    "I'm exploring the intersection of software, AI, robotics, and product design—building projects, experimenting with technology, and learning by making things.",
+  education: 'First-year B.Tech CS + AI · Newton School of Technology, Rishihood University',
+  status: 'Open to hackathons & product collaborations',
   email: 'your.email@example.com', // Replace with public email
   github: 'https://github.com/Antrikshcodes',
-  linkedin: 'https://linkedin.com/in/your-profile', // Replace with verified profile
-  resume: null,
+  linkedin: 'https://linkedin.com/in/your-profile', // Replace with public profile
 }
 
 export const NAV_LINKS = [
   { label: 'Selected Work', href: '#work' },
-  { label: 'About', href: '#about' },
   { label: 'Experiments', href: '#experiments' },
+  { label: 'Hackathons', href: '#hackathons' },
+  { label: 'About', href: '#about' },
+  { label: 'Skills', href: '#skills' },
   { label: 'Contact', href: '#contact' },
 ]
 
-export const PROJECTS = [
+export const MARQUEE_ROW_ONE = [
+  'PYTHON',
+  'REACT',
+  'JAVASCRIPT',
+  'HTML',
+  'CSS',
+  'NEXT.JS',
+  'THREE.JS',
+  'FRAMER MOTION',
+]
+
+export const MARQUEE_ROW_TWO = [
+  'AI / ML',
+  'GITHUB',
+  'FASTAPI',
+  'TAILWIND CSS',
+  'VITE',
+  'UI / UX',
+  'CREATIVE CODING',
+  'ROBOTICS',
+]
+
+// Level One: Featured Projects (Stacked Scroll Showcase)
+export const FEATURED_PROJECTS = [
   {
     id: 'converge',
     number: '01 / 04',
     title: 'CONVERGE',
     category: 'Smart Cities / AI',
     shortDesc:
-      'An urban issue-management concept exploring how AI and connected workflows can help city operators understand, prioritise, and resolve civic problems.',
+      'An urban issue-management project exploring how citizen reports, incident relationships, and verification workflows can help city operators understand and resolve civic problems.',
     description:
-      'CONVERGE is an urban civic technology platform built to address fragmented municipal complaint handling. By connecting citizen photo reports, clustering spatial duplicates, tracking SLA escalation ladders, and requiring photographic evidence for closure, it streamlines city operations and brings accountability to municipal maintenance.',
-    technologies: ['React', 'AI Workflows', 'Incident Mapping', 'FastAPI'],
+      'CONVERGE is a smart-city civic intelligence system. Citizens report issues via their phones; the system automatically merges geo-spatial duplicates, identifies shared root causes (such as water mains breaking under road collapses), enforces SLA escalation deadlines, and closes cases only when verified photographic proof is submitted.',
+    technologies: ['Next.js', 'FastAPI', 'Incident Mapping', 'AI Workflows'],
     screenshot: '/projects/converge.png',
     liveUrl: 'https://converge-web-ten.vercel.app',
     githubUrl: 'https://github.com/srtkio/converge_trojans',
     displayUrl: 'converge-web-ten.vercel.app',
-    accentBg: '#EAECE6',
+    accentColor: '#899681',
     features: [
       'Duplicate clustering & root-cause incident mapping',
-      'SLA deadline monitoring & automated escalation',
+      'SLA deadline monitoring with escalation ladder',
       'Evidence-checked photographic resolution closure',
-      'Command center operator dashboard with live map',
+      'Command center operator dashboard with real-time map',
     ],
   },
   {
@@ -49,17 +72,17 @@ export const PROJECTS = [
     title: 'Blindspot AI',
     category: 'AI / Computer Vision',
     shortDesc:
-      'An AI and computer-vision concept exploring how blind-spot awareness can help identify nearby vehicles and communicate potential road risks.',
+      'A hackathon project exploring AI-assisted blind-spot awareness and how computer vision could help communicate potential road risks.',
     description:
-      'Blindspot AI is an active situational awareness prototype designed to reduce highway lane-change collisions. Integrating real-time computer vision vehicle detection, speed-differential tracking, and proximity alert algorithms, it highlights hidden hazards that standard vehicle mirrors miss.',
+      'Blindspot AI is an active situational awareness prototype designed to reduce highway lane-change collisions. Integrating computer vision vehicle tracking, proximity detection, and situational hazard scoring, it communicates hazards that physical vehicle mirrors frequently miss.',
     technologies: ['Python', 'Computer Vision', 'PyTorch', 'FastAPI'],
     screenshot: '/projects/blindspot.png',
-    liveUrl: null, // Prototype stage, no public deployment
+    liveUrl: null, // Concept / Prototype stage
     githubUrl: 'https://github.com/Antrikshcodes',
     displayUrl: 'github.com/Antrikshcodes',
-    accentBg: '#E9EBE2',
+    accentColor: '#7770D9',
     features: [
-      'Proximity vector detection across vehicle blind angles',
+      'Peripheral proximity detection for vehicle blind spots',
       'Real-time situational awareness risk indexing',
       'Low-latency visual alert interface for drivers',
       'Edge-device telemetry processing pipeline',
@@ -71,20 +94,20 @@ export const PROJECTS = [
     title: 'OrderShield AI',
     category: 'AI / Product Development',
     shortDesc:
-      'A supplier and vendor onboarding verification concept designed to make business verification workflows more structured and efficient.',
+      'A supplier and vendor onboarding verification concept developed to explore more structured business verification workflows.',
     description:
-      'OrderShield AI reimagines B2B supplier onboarding. By replacing manual compliance reviews with automated multi-factor document verification and tax-registry reconciliation, it reduces supplier onboarding time from weeks to minutes while enforcing strict compliance standards.',
-    technologies: ['Python', 'FastAPI', 'Document AI', 'Risk Engine', 'React'],
+      'OrderShield AI was developed as an MVP concept for Fetch-A-Thon 3.0. By replacing manual compliance reviews with automated multi-factor document auditing and tax-registry verification, it turns weeks of supplier vetting into a fast, trustworthy process.',
+    technologies: ['Python', 'FastAPI', 'Document AI', 'Fetch.ai', 'React'],
     screenshot: '/projects/ordershield.png',
     liveUrl: 'https://ordershield-tawny.vercel.app/',
     githubUrl: 'https://github.com/Antrikshcodes/ordershield',
     displayUrl: 'ordershield-tawny.vercel.app',
-    accentBg: '#EAE8E3',
+    accentColor: '#D5E7A0',
     features: [
       'Automated GSTIN and business credential auditing',
       'Multi-factor supplier trust score index',
       'Autonomous discrepancy flagging pipeline',
-      'Self-service vendor documentation portal',
+      'Structured onboarding workflow portal',
     ],
   },
   {
@@ -95,78 +118,113 @@ export const PROJECTS = [
     shortDesc:
       'A product-focused initiative exploring product thinking, ideas, and useful digital experiences.',
     description:
-      'The Product Guys is an initiative created to bridge the gap between technical engineering and product thinking. It offers in-depth product breakdowns, UX teardowns, and actionable frameworks for student builders transitioning from writing code to building user-centric software.',
+      'The Product Guys is an initiative created to bridge technical engineering and product thinking. It delivers deep-dive product breakdowns, UX teardowns, and actionable validation frameworks for builders building user-centric digital tools.',
     technologies: ['Next.js', 'Vercel', 'Product Design', 'Information Architecture'],
     screenshot: '/projects/product-guys.png',
     liveUrl: 'https://productguys.arthakram.in',
     githubUrl: null,
     displayUrl: 'productguys.arthakram.in',
-    accentBg: '#EBEAE5',
+    accentColor: '#E99A72',
     features: [
-      'Deep-dive product case studies & UX critiques',
+      'In-depth product breakdowns & UX critiques',
       'Frameworks for user validation before coding',
-      'Curated community for ambitious student builders',
+      'Community network for student builders',
       'Collaborative prototyping and feedback loops',
     ],
   },
 ]
 
-export const MARQUEE_ROW_ONE = [
-  'PYTHON',
-  'REACT',
-  'JAVASCRIPT',
-  'HTML5',
-  'CSS3',
-  'NEXT.JS',
-  'THREE.JS',
-  'FRAMER MOTION',
-]
-
-export const MARQUEE_ROW_TWO = [
-  'AI / ML',
-  'GIT',
-  'GITHUB',
-  'FASTAPI',
-  'TAILWIND CSS',
-  'VITE',
-  'UI / UX',
-  'CREATIVE CODING',
-  'ROBOTICS',
-]
-
-export const EXPERIMENTS = [
+// Level Two: Experiments Lab (Secondary exploratory & hardware projects)
+export const EXPERIMENTS_LAB = [
   {
-    title: 'Audio-Reactive Shader Canvas',
-    category: 'Creative Coding',
-    description: 'WebGL raymarching experiment reacting to real-time micro-frequencies via Web Audio API.',
-    tech: 'Three.js · GLSL · Web Audio',
-    link: null,
+    id: 'obstacle-robot',
+    number: '05',
+    title: 'Obstacle Avoiding Robot',
+    category: 'Robotics / Hardware',
+    status: 'Hardware Prototype',
+    description:
+      'A robotics experiment exploring ultrasonic obstacle detection and autonomous navigation using embedded microcontroller logic and DC motor drivers.',
+    tech: ['Arduino', 'Ultrasonic Sensor', 'L298N Motor Driver', 'C++'],
+    accent: '#899681',
   },
   {
-    title: 'Autonomous Telemetry Dashboard',
-    category: 'Robotics',
-    description: 'Low-latency serial communication visualizer mapping 2D LiDAR distance vectors.',
-    tech: 'Python · ESP32 · WebSockets',
-    link: null,
+    id: 'portfolio-v2',
+    number: '06',
+    title: 'Personal Portfolio Website',
+    category: 'Web Development / Creative Coding',
+    status: 'Production',
+    description:
+      'An evolving personal website exploring interactive canvas particle systems, physics-based stacked scrolling, and responsive editorial layout.',
+    tech: ['React', 'Vite', 'Canvas API', 'CSS Keyframes'],
+    accent: '#7770D9',
   },
   {
-    title: 'Contextual Prompt Evaluator',
-    category: 'AI Experiments',
-    description: 'Lightweight script measuring semantic drift and token efficiency across LLM queries.',
-    tech: 'FastAPI · HuggingFace · Python',
-    link: null,
+    id: 'arduino-experiments',
+    number: '07',
+    title: 'Robotics & Arduino Explorations',
+    category: 'Hardware / Embedded Systems',
+    status: 'Lab Experiments',
+    description:
+      'A collection of hardware explorations involving ESP32 microcontrollers, servo motors, OLED telemetry displays, and infrared line sensors.',
+    tech: ['ESP32', 'Arduino', 'Servo Motors', 'I2C OLED', 'Sensors'],
+    accent: '#D5E7A0',
   },
   {
-    title: 'Kinetic Physics Sandbox',
-    category: 'Web Development',
-    description: 'Rigid-body particle experiment testing gravity points and spring cursor attractions.',
-    tech: 'React · Canvas · Physics Engine',
-    link: null,
+    id: 'ai-assistant-concept',
+    number: '08',
+    title: 'Future AI Assistant Concept',
+    category: 'AI / Concept Design',
+    status: 'Exploratory Concept',
+    description:
+      'An interface design exploration exploring multi-agent context routing, ambient notifications, and voice-assisted developer workflows.',
+    tech: ['Figma', 'Interface Design', 'Agent Architecture'],
+    accent: '#E99A72',
   },
 ]
 
-export const TECH_SKILLS = {
-  Development: ['Python', 'JavaScript', 'HTML', 'CSS', 'React'],
-  'AI and Backend': ['AI/ML fundamentals', 'FastAPI', 'API integration'],
-  'Creative Technology': ['Three.js', 'UI/UX', 'Creative Coding', 'Robotics'],
+export const HACKATHONS = [
+  {
+    name: "HackO'Ween",
+    year: 2026,
+    venue: 'ALTA School of Technology',
+    role: 'Participant',
+    project: 'CONVERGE',
+    badge: 'Participant',
+  },
+  {
+    name: 'Fetch-A-Thon 3.0',
+    year: 2026,
+    organization: 'Fetch.ai',
+    role: 'Participant',
+    project: 'OrderShield AI',
+    placement: 'Top 20 Placement',
+    badge: 'Top 20 · Participant',
+    isSpecial: true,
+  },
+  {
+    name: 'CoNSTruct 2.0',
+    year: 2026,
+    role: 'Participant',
+    project: 'Blindspot AI',
+    badge: 'Participant',
+  },
+  {
+    name: 'IIT Roorkee E-Summit',
+    year: 2024,
+    role: 'Participant',
+    badge: 'Participant',
+  },
+  {
+    name: 'IIM Product Challenge',
+    year: 2026,
+    role: 'Participant',
+    badge: 'Participant',
+  },
+]
+
+export const SKILLS_CATEGORIES = {
+  Development: ['Python', 'JavaScript', 'HTML', 'CSS', 'React', 'Next.js', 'Vite'],
+  'Backend and AI': ['FastAPI', 'API integration', 'AI/ML fundamentals'],
+  'Creative Technology': ['Three.js', 'React Three Fiber', 'Framer Motion', 'UI/UX', 'Creative coding'],
+  Robotics: ['Arduino', 'ESP32', 'Sensors and motors', 'Embedded-system experiments'],
 }

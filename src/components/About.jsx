@@ -1,76 +1,78 @@
 import { PERSONAL } from '../data/content'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, Compass, Terminal, Cpu, Flame } from 'lucide-react'
 
 export default function About() {
   const interests = [
     'Software Development',
     'Artificial Intelligence',
     'Product Building',
-    'Creative Coding',
     'Robotics & Hardware',
-    'Interactive 3D / WebGL',
-    'Rapid Prototyping',
+    'Creative Coding',
+    'UI / UX Design',
+    'Hackathons & Rapid Prototyping',
   ]
 
   return (
     <section id="about" className="about-editorial-section">
       <div className="container">
-        <div className="about-editorial-grid">
+        <div className="about-editorial-layout">
           <div>
-            <div className="section-meta-label reveal">ABOUT ME</div>
-            <h2 className="section-title-editorial reveal reveal-delay-1">
-              Building things that make complicated ideas{' '}
-              <span className="serif">feel simple.</span>
+            <div className="section-meta-tag reveal">ABOUT // APPROACH</div>
+            <h2 className="section-heading-large reveal reveal-delay-1">
+              Curious by default. <br />
+              <span className="serif">Builder by habit.</span>
             </h2>
 
-            <p className="about-body-text reveal reveal-delay-2">
-              I’m <strong>Antriksh</strong>, a first-year Computer Science and AI student at{' '}
-              <strong>Newton School of Technology, Rishihood University</strong>.
-              I’m naturally drawn to the intersection of code, product design, and creative experimentation.
+            <p className="about-editorial-lead reveal reveal-delay-2">
+              I'm a student developer who enjoys exploring ideas at the intersection of code, AI,
+              and product design. From web applications to robotics experiments, I learn best by
+              building, testing, and improving things.
             </p>
 
-            <p className="about-body-text reveal reveal-delay-2">
-              Most of what I build begins with curiosity — whether that means exploring neural networks,
-              orchestrating multi-agent systems, writing WebGL shaders, or competing in hackathons.
-              I learn fastest by getting my hands dirty and turning loose concepts into working prototypes.
+            <p className="about-editorial-subtext reveal reveal-delay-2">
+              Currently in my first year studying Computer Science and Artificial Intelligence at{' '}
+              <strong>Newton School of Technology, Rishihood University</strong>. I don't treat
+              technology as just abstract theory — I treat it as a creative toolkit for turning
+              interesting questions into physical hardware and functional software.
             </p>
 
-            <div className="about-focus-tags reveal reveal-delay-3">
+            <div className="about-interests-chips reveal reveal-delay-3">
               {interests.map((item) => (
-                <span key={item} className="about-tag-pill">
+                <span key={item} className="about-chip-pill">
                   {item}
                 </span>
               ))}
             </div>
           </div>
 
-          <div className="about-side-box reveal reveal-delay-2">
-            <div className="about-meta-row">
-              <span className="about-meta-heading">EDUCATION</span>
-              <span className="about-meta-value">B.Tech Computer Science & AI</span>
-              <span className="mono" style={{ fontSize: '0.74rem', color: 'var(--text-secondary)' }}>
-                Newton School of Technology · Year 1
+          <div className="about-sidebar-card reveal reveal-delay-2">
+            <div className="about-card-field">
+              <span className="about-field-kicker">CAMPUS</span>
+              <span className="about-field-value">Newton School of Technology</span>
+              <span className="about-field-sub">Rishihood University · Sonipat, Haryana</span>
+            </div>
+
+            <div className="about-card-field">
+              <span className="about-field-kicker">PROGRAM</span>
+              <span className="about-field-value">B.Tech Computer Science & AI</span>
+              <span className="about-field-sub">Class of 2028 · First Year</span>
+            </div>
+
+            <div className="about-card-field">
+              <span className="about-field-kicker">COLLABORATION STATUS</span>
+              <span className="about-field-value" style={{ color: 'var(--accent-sage)' }}>
+                Active in Hackathons & MVPs
               </span>
-            </div>
-
-            <div className="about-meta-row">
-              <span className="about-meta-heading">LOCATION</span>
-              <span className="about-meta-value">Delhi NCR, India</span>
-            </div>
-
-            <div className="about-meta-row">
-              <span className="about-meta-heading">CURRENT FOCUS</span>
-              <span className="about-meta-value">AI Workflows & Interactive Web</span>
+              <span className="about-field-sub">Always exploring new problem spaces</span>
             </div>
 
             <a
               href={PERSONAL.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-editorial-secondary"
-              style={{ justifyContent: 'center', marginTop: '0.5rem' }}
+              className="about-github-btn"
             >
-              <span>GitHub Profile</span>
+              <span>GitHub Profile (@Antrikshcodes)</span>
               <ArrowUpRight size={14} />
             </a>
           </div>
