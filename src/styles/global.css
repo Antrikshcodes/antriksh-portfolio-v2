@@ -1725,3 +1725,196 @@ button {
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
 .reveal-delay-4 { transition-delay: 0.4s; }
+
+
+/* ========================================================
+   TECH STACK MARQUEE — DUAL-DIRECTION TICKER
+   ======================================================== */
+.marquee-wrapper {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  background: var(--bg-primary);
+  overflow: hidden;
+  padding: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  z-index: 10;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.marquee-edge-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(91, 92, 255, 0.3), rgba(0, 217, 255, 0.4), rgba(215, 255, 56, 0.3), transparent);
+}
+.marquee-edge-line:first-child { top: 0; }
+.marquee-edge-line:last-child { bottom: 0; }
+
+.marquee-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: clamp(60px, 12vw, 180px);
+  z-index: 5;
+  pointer-events: none;
+}
+.marquee-fade--left {
+  left: 0;
+  background: linear-gradient(to right, #0B0B12 25%, transparent 100%);
+}
+.marquee-fade--right {
+  right: 0;
+  background: linear-gradient(to left, #0B0B12 25%, transparent 100%);
+}
+
+.marquee-row {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  width: 100%;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+/* Row 1: Left to Right */
+.marquee-track--l2r {
+  animation: marquee-scroll-l2r 28s linear infinite;
+}
+
+/* Row 2: Right to Left */
+.marquee-track--r2l {
+  animation: marquee-scroll-r2l 32s linear infinite;
+}
+
+/* Pause on hover on desktop */
+.marquee-row:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Keyframes */
+@keyframes marquee-scroll-l2r {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes marquee-scroll-r2l {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track--l2r,
+  .marquee-track--r2l {
+    animation-duration: 90s;
+  }
+}
+
+.marquee-group {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.marquee-item-wrap {
+  display: inline-flex;
+  align-items: center;
+}
+
+.marquee-text {
+  font-family: var(--font-sans);
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+/* Row 1 Styling: Acid-Lime text on dark background */
+.marquee-text--r1 {
+  color: var(--acid-green);
+  text-shadow: 0 0 16px rgba(215, 255, 56, 0.2);
+}
+.marquee-text--r1.marquee-text--cyan {
+  color: var(--electric-cyan);
+  text-shadow: 0 0 16px rgba(0, 217, 255, 0.25);
+}
+.marquee-text--r1.marquee-text--violet {
+  color: #8C8DFF;
+  text-shadow: 0 0 16px rgba(91, 92, 255, 0.25);
+}
+.marquee-text--r1.marquee-text--default {
+  color: #E6FF80;
+}
+
+/* Row 2 Styling: White text with electric-violet & cyan accents */
+.marquee-text--r2 {
+  color: #FFFFFF;
+}
+.marquee-text--r2.marquee-text--violet {
+  color: #8C8DFF;
+  text-shadow: 0 0 16px rgba(91, 92, 255, 0.35);
+}
+.marquee-text--r2.marquee-text--cyan {
+  color: var(--electric-cyan);
+  text-shadow: 0 0 16px rgba(0, 217, 255, 0.35);
+}
+.marquee-text--r2.marquee-text--acid {
+  color: var(--acid-green);
+  text-shadow: 0 0 16px rgba(215, 255, 56, 0.3);
+}
+.marquee-text--r2.marquee-text--orange {
+  color: var(--hot-orange);
+  text-shadow: 0 0 16px rgba(255, 112, 72, 0.3);
+}
+
+.marquee-sep {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(0.9rem, 1.4vw, 1.25rem);
+  padding: 0 clamp(1rem, 2vw, 2rem);
+  user-select: none;
+}
+.marquee-sep--violet {
+  color: var(--electric-blue);
+  text-shadow: 0 0 10px rgba(91, 92, 255, 0.5);
+}
+.marquee-sep--cyan {
+  color: var(--electric-cyan);
+  text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+}
+
+/* Mobile responsive sizing */
+@media (max-width: 768px) {
+  .marquee-wrapper {
+    padding: 1.1rem 0;
+    gap: 0.6rem;
+  }
+  .marquee-text {
+    font-size: 1.15rem;
+    letter-spacing: 0.09em;
+  }
+  .marquee-sep {
+    padding: 0 0.85rem;
+    font-size: 0.85rem;
+  }
+}

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import BootSequence from './components/BootSequence'
 import Navigation from './components/Navigation'
 import Hero from './components/Hero'
+import TechStackMarquee from './components/TechStackMarquee'
 import Projects from './components/Projects'
 import ExperimentsLab from './components/ExperimentsLab'
 import Hackathons from './components/Hackathons'
@@ -21,6 +22,7 @@ export default function App() {
       <Navigation />
       <main id="top">
         <Hero />
+        <TechStackMarquee />
         <Projects />
         <ExperimentsLab />
         <Hackathons />

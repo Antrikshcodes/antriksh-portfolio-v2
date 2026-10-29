@@ -67,10 +67,10 @@ export const PROJECTS = [
       'An intelligent automated pipeline that verifies tax/business credentials, analyzes compliance documentation, and computes a multi-factor vendor trustworthiness score.',
     technologies: ['Python', 'FastAPI', 'AI Document Verification', 'Risk Engine', 'React'],
     screenshot: '/projects/ordershield.png',
-    liveUrl: 'https://ordershield-phi.vercel.app',
+    liveUrl: 'https://ordershield-tawny.vercel.app/',
     githubUrl: 'https://github.com/Antrikshcodes/ordershield',
     status: 'Top 20 · Fetch-A-Thon 3.0 (2026)',
-    displayUrl: 'ordershield-phi.vercel.app',
+    displayUrl: 'ordershield-tawny.vercel.app',
     badge: 'TOP 20 — FETCH-A-THON 3.0',
     accentColor: '#D7FF38',
     features: [
@@ -113,13 +113,13 @@ export const PROJECTS = [
     title: 'BLINDSPOT AI',
     category: 'Artificial Intelligence / Product Development',
     shortDesc:
-      'An AI-focused hackathon project exploring how technology can help people identify overlooked problems, cognitive blind spots, and hidden information.',
+      'A smarter way to see the road. A safety system concept helping drivers notice what mirrors miss through intelligent detection, risk signals, and timely situational awareness alerts.',
     description:
-      'Blindspot AI is an experimental intelligence layer designed to counter cognitive bias in high-stakes decision-making. By analyzing contextual streams and question vectors, it proactively surfaces overlooked angles and alternative perspectives.',
+      'BlindSpot AI is an intelligent road awareness safety system concept. Designed to see beyond physical mirrors, it combines computer vision detection, proximity telemetry, and real-time situational risk scoring to alert drivers to hidden hazards before accidents occur.',
     problem:
-      'Human decision-makers are constrained by confirmation bias and blind spots. Important insights are missed simply because teams fail to question standard assumptions.',
+      'Blind spots cause thousands of preventable road collisions annually. Traditional mirrors leave critical peripheral angles unmonitored during lane changes and fast merges.',
     solution:
-      'An AI assistant that ingests project notes, assumptions, and strategies, subsequently running red-team analysis to surface blind spots and unexamined risk vectors.',
+      'An AI-assisted situational awareness layer that tracks surrounding vehicles, calculates proximity risk levels, and delivers low-latency visual warnings.',
     technologies: ['Python', 'Machine Learning', 'NLP', 'React', 'FastAPI'],
     screenshot: '/projects/blindspot.png',
     liveUrl: null, // Clearly marked as unreleased prototype per instructions
