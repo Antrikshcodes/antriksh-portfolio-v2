@@ -1,57 +1,37 @@
 import React from 'react'
+import { MARQUEE_ROW_ONE, MARQUEE_ROW_TWO } from '../data/content'
 
-const ROW_ONE_ITEMS = [
-  { name: 'PYTHON', highlight: 'acid' },
-  { name: 'REACT', highlight: 'cyan' },
-  { name: 'JAVASCRIPT', highlight: 'acid' },
-  { name: 'HTML5', highlight: 'default' },
-  { name: 'CSS3', highlight: 'default' },
-  { name: 'NEXT.JS', highlight: 'cyan' },
-  { name: 'THREE.JS', highlight: 'acid' },
-  { name: 'FRAMER MOTION', highlight: 'violet' },
-]
-
-const ROW_TWO_ITEMS = [
-  { name: 'AI / ML', highlight: 'cyan' },
-  { name: 'GIT', highlight: 'default' },
-  { name: 'GITHUB', highlight: 'violet' },
-  { name: 'FASTAPI', highlight: 'cyan' },
-  { name: 'TAILWIND CSS', highlight: 'default' },
-  { name: 'VITE', highlight: 'violet' },
-  { name: 'UI / UX', highlight: 'acid' },
-  { name: 'CREATIVE CODING', highlight: 'cyan' },
-  { name: 'ROBOTICS', highlight: 'orange' },
-]
-
-const SEPARATORS = ['✳', '✦', '◆', '↗']
+const SEPARATORS = ['✳', '·', '✦', '✳']
 
 export default function TechStackMarquee() {
   return (
-    <div className="marquee-wrapper" aria-label="Technology Stack Ticker">
-      {/* Top subtle glow separator */}
-      <div className="marquee-edge-line" />
+    <section className="ticker-editorial-wrapper" aria-label="Skills & Technologies Marquee">
+      {/* Edge gradient fade masks */}
+      <div className="ticker-fade-mask ticker-fade-mask--left" />
+      <div className="ticker-fade-mask ticker-fade-mask--right" />
 
-      {/* Gradient fade on left and right edges for seamless illusion */}
-      <div className="marquee-fade marquee-fade--left" />
-      <div className="marquee-fade marquee-fade--right" />
-
-      {/* Row One: Left to Right */}
-      <div className="marquee-row marquee-row--left-to-right">
-        <div className="marquee-track marquee-track--l2r">
-          {[0, 1, 2, 3].map((copyIndex) => (
+      {/* Row One: Scrolls Left to Right */}
+      <div className="ticker-row-track">
+        <div className="ticker-moving-strip ticker-moving-strip--l2r">
+          {[0, 1, 2, 3].map((copyIdx) => (
             <div
-              key={`r1-copy-${copyIndex}`}
-              className="marquee-group"
-              aria-hidden={copyIndex > 0}
+              key={`r1-copy-${copyIdx}`}
+              className="ticker-item-group"
+              aria-hidden={copyIdx > 0}
             >
-              {ROW_ONE_ITEMS.map((item, idx) => {
-                const sep = SEPARATORS[idx % SEPARATORS.length]
+              {MARQUEE_ROW_ONE.map((tech, i) => {
+                const sep = SEPARATORS[i % SEPARATORS.length]
+                const isAccent = i === 1 || i === 6 // REACT, THREE.JS
                 return (
-                  <span key={`${item.name}-${idx}`} className="marquee-item-wrap">
-                    <span className={`marquee-text marquee-text--r1 marquee-text--${item.highlight}`}>
-                      {item.name}
+                  <span key={`${tech}-${i}`} className="ticker-tech-entry">
+                    <span
+                      className={`ticker-tech-name ticker-tech-name--row1 ${
+                        isAccent ? 'ticker-tech-name--accent' : ''
+                      }`}
+                    >
+                      {tech}
                     </span>
-                    <span className="marquee-sep marquee-sep--violet">{sep}</span>
+                    <span className="ticker-separator-symbol">{sep}</span>
                   </span>
                 )
               })}
@@ -60,23 +40,28 @@ export default function TechStackMarquee() {
         </div>
       </div>
 
-      {/* Row Two: Right to Left */}
-      <div className="marquee-row marquee-row--right-to-left">
-        <div className="marquee-track marquee-track--r2l">
-          {[0, 1, 2, 3].map((copyIndex) => (
+      {/* Row Two: Scrolls Right to Left */}
+      <div className="ticker-row-track">
+        <div className="ticker-moving-strip ticker-moving-strip--r2l">
+          {[0, 1, 2, 3].map((copyIdx) => (
             <div
-              key={`r2-copy-${copyIndex}`}
-              className="marquee-group"
-              aria-hidden={copyIndex > 0}
+              key={`r2-copy-${copyIdx}`}
+              className="ticker-item-group"
+              aria-hidden={copyIdx > 0}
             >
-              {ROW_TWO_ITEMS.map((item, idx) => {
-                const sep = SEPARATORS[(idx + 1) % SEPARATORS.length]
+              {MARQUEE_ROW_TWO.map((tech, i) => {
+                const sep = SEPARATORS[(i + 1) % SEPARATORS.length]
+                const isAccent = i === 0 || i === 7 // AI / ML, CREATIVE CODING
                 return (
-                  <span key={`${item.name}-${idx}`} className="marquee-item-wrap">
-                    <span className={`marquee-text marquee-text--r2 marquee-text--${item.highlight}`}>
-                      {item.name}
+                  <span key={`${tech}-${i}`} className="ticker-tech-entry">
+                    <span
+                      className={`ticker-tech-name ticker-tech-name--row2 ${
+                        isAccent ? 'ticker-tech-name--accent' : ''
+                      }`}
+                    >
+                      {tech}
                     </span>
-                    <span className="marquee-sep marquee-sep--cyan">{sep}</span>
+                    <span className="ticker-separator-symbol">{sep}</span>
                   </span>
                 )
               })}
@@ -84,9 +69,6 @@ export default function TechStackMarquee() {
           ))}
         </div>
       </div>
-
-      {/* Bottom subtle glow separator */}
-      <div className="marquee-edge-line" />
-    </div>
+    </section>
   )
 }

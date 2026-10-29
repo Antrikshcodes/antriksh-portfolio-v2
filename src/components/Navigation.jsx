@@ -1,13 +1,12 @@
 import { useState, useEffect } from 'react'
 import { NAV_LINKS, PERSONAL } from '../data/content'
-import { ArrowUpRight } from 'lucide-react'
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 40)
+    const handleScroll = () => setScrolled(window.scrollY > 35)
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -33,27 +32,26 @@ export default function Navigation() {
   return (
     <>
       <nav
-        className={`nav ${scrolled ? 'scrolled' : ''}`}
+        className={`nav-minimal ${scrolled ? 'scrolled' : ''}`}
         role="navigation"
-        aria-label="Main navigation"
+        aria-label="Main Navigation"
       >
-        <div className="nav-inner">
+        <div className="nav-minimal-inner">
           <a
             href="#top"
-            className="nav-brand"
+            className="nav-wordmark"
             onClick={(e) => handleNavClick(e, '#top')}
           >
-            <span className="nav-avatar-mark">A</span>
-            <span className="nav-name">{PERSONAL.name.toUpperCase()}</span>
-            <span className="nav-badge-pill">PLAYGROUND</span>
+            <span className="nav-wordmark-dot" />
+            <span>{PERSONAL.name}</span>
           </a>
 
-          <div className="nav-menu">
+          <div className="nav-links-row">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="nav-item"
+                className="nav-link-item"
                 onClick={(e) => handleNavClick(e, link.href)}
               >
                 {link.label}
@@ -61,17 +59,8 @@ export default function Navigation() {
             ))}
           </div>
 
-          <a
-            href="#contact"
-            className="nav-cta-btn"
-            onClick={(e) => handleNavClick(e, '#contact')}
-          >
-            <span>LET’S TALK</span>
-            <ArrowUpRight size={13} />
-          </a>
-
           <button
-            className={`nav-burger ${mobileOpen ? 'open' : ''}`}
+            className={`nav-mobile-toggle ${mobileOpen ? 'open' : ''}`}
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileOpen}
@@ -83,27 +72,17 @@ export default function Navigation() {
         </div>
       </nav>
 
-      {/* Mobile Drawer */}
-      <div className={`nav-mobile-drawer ${mobileOpen ? 'open' : ''}`}>
+      <div className={`nav-mobile-overlay ${mobileOpen ? 'open' : ''}`}>
         {NAV_LINKS.map((link) => (
           <a
             key={link.href}
             href={link.href}
-            className="nav-item"
+            className="nav-link-item"
             onClick={(e) => handleNavClick(e, link.href)}
           >
             {link.label}
           </a>
         ))}
-        <a
-          href="#contact"
-          className="btn-primary-playground"
-          style={{ marginTop: '1.5rem' }}
-          onClick={(e) => handleNavClick(e, '#contact')}
-        >
-          <span>GET IN TOUCH</span>
-          <ArrowUpRight size={15} />
-        </a>
       </div>
     </>
   )

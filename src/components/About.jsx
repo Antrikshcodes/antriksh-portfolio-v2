@@ -1,110 +1,77 @@
 import { PERSONAL } from '../data/content'
-import { ExternalLink, Terminal, Cpu, Sparkles, Flame } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 
 export default function About() {
   const interests = [
+    'Software Development',
     'Artificial Intelligence',
-    'AI-powered Products',
-    'Product Thinking',
+    'Product Building',
     'Creative Coding',
-    'Interactive 3D / WebGL',
     'Robotics & Hardware',
-    'Full-Stack Development',
+    'Interactive 3D / WebGL',
     'Rapid Prototyping',
-    'Hackathons',
   ]
 
   return (
-    <section id="about" className="about-section">
+    <section id="about" className="about-editorial-section">
       <div className="container">
-        <div className="about-bento-grid">
+        <div className="about-editorial-grid">
           <div>
-            <div className="section-badge reveal">WHO I AM</div>
-            <h2 className="section-heading reveal reveal-delay-1">
-              PART ENGINEER.{' '}
-              <span style={{ color: 'var(--acid-green)' }}>PART WHY NOT?</span>
+            <div className="section-meta-label reveal">ABOUT ME</div>
+            <h2 className="section-title-editorial reveal reveal-delay-1">
+              Building things that make complicated ideas{' '}
+              <span className="serif">feel simple.</span>
             </h2>
 
-            <p className="about-main-text reveal reveal-delay-2">
-              I’m <strong>Antriksh</strong> — a first-year B.Tech student in
-              Computer Science and Artificial Intelligence at{' '}
-              <span style={{ color: '#FFFFFF' }}>
-                Newton School of Technology, Rishihood University
-              </span>
-              . I’m a curious builder driven by an obsession with taking complex,
-              intimidating technologies and making them feel effortless and
-              magical.
+            <p className="about-body-text reveal reveal-delay-2">
+              I’m <strong>Antriksh</strong>, a first-year Computer Science and AI student at{' '}
+              <strong>Newton School of Technology, Rishihood University</strong>.
+              I’m naturally drawn to the intersection of code, product design, and creative experimentation.
             </p>
 
-            <p className="about-main-text reveal reveal-delay-2">
-              I spend my nights competing in hackathons, experimenting with
-              spatial 3D graphics, building AI workflows, and wiring up sensor
-              telemetry. I don’t believe in waiting until graduation to build things
-              that matter. If an idea keeps me awake, I prototype it.
+            <p className="about-body-text reveal reveal-delay-2">
+              Most of what I build begins with curiosity — whether that means exploring neural networks,
+              orchestrating multi-agent systems, writing WebGL shaders, or competing in hackathons.
+              I learn fastest by getting my hands dirty and turning loose concepts into working prototypes.
             </p>
 
-            <div className="about-interest-chips reveal reveal-delay-3">
+            <div className="about-focus-tags reveal reveal-delay-3">
               {interests.map((item) => (
-                <span key={item} className="about-chip">
+                <span key={item} className="about-tag-pill">
                   {item}
                 </span>
               ))}
             </div>
           </div>
 
-          <div className="about-identity-cards">
-            <div className="about-stat-card reveal">
-              <div className="about-stat-label">INSTITUTION</div>
-              <div className="about-stat-value">
-                Newton School of Technology
-              </div>
-              <div
-                className="mono"
-                style={{ fontSize: '0.72rem', color: 'var(--text-tertiary)', marginTop: '0.2rem' }}
-              >
-                Rishihood University · Sonipat, Haryana
-              </div>
+          <div className="about-side-box reveal reveal-delay-2">
+            <div className="about-meta-row">
+              <span className="about-meta-heading">EDUCATION</span>
+              <span className="about-meta-value">B.Tech Computer Science & AI</span>
+              <span className="mono" style={{ fontSize: '0.74rem', color: 'var(--text-secondary)' }}>
+                Newton School of Technology · Year 1
+              </span>
             </div>
 
-            <div className="about-stat-card reveal reveal-delay-1">
-              <div className="about-stat-label">DEGREE & SPECIALIZATION</div>
-              <div className="about-stat-value">B.Tech Computer Science</div>
-              <div
-                className="mono"
-                style={{ fontSize: '0.72rem', color: 'var(--electric-cyan)', marginTop: '0.2rem' }}
-              >
-                Specialization in Artificial Intelligence (Year 1)
-              </div>
+            <div className="about-meta-row">
+              <span className="about-meta-heading">LOCATION</span>
+              <span className="about-meta-value">Delhi NCR, India</span>
             </div>
 
-            <div className="about-stat-card reveal reveal-delay-2">
-              <div className="about-stat-label">CORE MINDSET</div>
-              <div className="about-stat-value">
-                Curious Builder & Rapid Prototyper
-              </div>
-              <div
-                className="mono"
-                style={{ fontSize: '0.72rem', color: 'var(--acid-green)', marginTop: '0.2rem' }}
-              >
-                Less talk · More building · Ship often
-              </div>
+            <div className="about-meta-row">
+              <span className="about-meta-heading">CURRENT FOCUS</span>
+              <span className="about-meta-value">AI Workflows & Interactive Web</span>
             </div>
 
             <a
               href={PERSONAL.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-github-action reveal reveal-delay-3"
-              style={{
-                justifyContent: 'center',
-                padding: '1rem',
-                borderColor: 'rgba(91, 92, 255, 0.3)',
-                background: 'rgba(91, 92, 255, 0.1)',
-                color: 'var(--electric-cyan)',
-              }}
+              className="btn-editorial-secondary"
+              style={{ justifyContent: 'center', marginTop: '0.5rem' }}
             >
-              <span>EXPLORE GITHUB (@Antrikshcodes)</span>
-              <ExternalLink size={14} />
+              <span>GitHub Profile</span>
+              <ArrowUpRight size={14} />
             </a>
           </div>
         </div>

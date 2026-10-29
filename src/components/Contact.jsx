@@ -1,32 +1,32 @@
 import { PERSONAL } from '../data/content'
-import { Mail, Github, Linkedin, ArrowUpRight, FileText } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 
 export default function Contact() {
   return (
-    <section id="contact" className="contact-playground">
+    <section id="contact" className="contact-editorial-section">
       <div className="container">
-        <div className="contact-inner-center">
-          <div className="contact-kicker">GET IN TOUCH // LET'S TALK</div>
+        <div className="contact-editorial-content">
+          <div className="contact-meta-kicker reveal">COLLABORATE</div>
 
-          <h2 className="contact-headline-loud">
-            GOT A GOOD PROBLEM?
-            <br />
-            LET’S BUILD SOMETHING.
+          <h2 className="contact-headline-editorial reveal reveal-delay-1">
+            Have an interesting idea?{' '}
+            <span className="serif" style={{ fontStyle: 'italic', color: 'var(--accent-olive)' }}>
+              Let's build it.
+            </span>
           </h2>
 
-          <p className="contact-lead-text">
-            Have a bold idea, an interesting engineering challenge, or a hackathon
-            collaboration? My inbox is always open.
+          <p className="contact-sub-editorial reveal reveal-delay-2">
+            Whether you’re working on an ambitious product, a hackathon project, or exploring
+            a technical challenge, I’m always open to talking.
           </p>
 
-          <div className="contact-action-row">
+          <div className="contact-links-list reveal reveal-delay-3">
             <a
               href={`mailto:${PERSONAL.email}`}
-              className="contact-pill-btn"
+              className="contact-text-link"
               aria-label="Send Antriksh an email"
             >
-              <Mail size={16} />
-              <span>SEND AN EMAIL</span>
+              <span>Email</span>
               <ArrowUpRight size={14} />
             </a>
 
@@ -34,11 +34,10 @@ export default function Contact() {
               href={PERSONAL.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="contact-pill-btn contact-pill-btn--outline"
+              className="contact-text-link"
               aria-label="Visit Antriksh's GitHub"
             >
-              <Github size={16} />
-              <span>GITHUB</span>
+              <span>GitHub</span>
               <ArrowUpRight size={14} />
             </a>
 
@@ -46,29 +45,17 @@ export default function Contact() {
               href={PERSONAL.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="contact-pill-btn contact-pill-btn--outline"
+              className="contact-text-link"
               aria-label="Connect with Antriksh on LinkedIn"
             >
-              <Linkedin size={16} />
-              <span>LINKEDIN</span>
+              <span>LinkedIn</span>
               <ArrowUpRight size={14} />
             </a>
-
-            {PERSONAL.resume && (
-              <a
-                href={PERSONAL.resume}
-                download
-                className="contact-pill-btn contact-pill-btn--outline"
-              >
-                <FileText size={16} />
-                <span>RESUME</span>
-              </a>
-            )}
           </div>
 
-          <div className="contact-footer-bar">
-            <div>ANTRIKSH © {new Date().getFullYear()} · DIGITAL PLAYGROUND</div>
-            <div>NEWTON SCHOOL OF TECHNOLOGY · RISHIHOOD UNIVERSITY</div>
+          <div className="contact-bottom-footer">
+            <div>Antriksh · Portfolio 2026</div>
+            <div>Newton School of Technology · Rishihood University</div>
           </div>
         </div>
       </div>

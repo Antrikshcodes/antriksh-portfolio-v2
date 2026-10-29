@@ -1,18 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 
-const BOOT_LINES = [
-  'ANTRIKSH.OS v2.6 [PLAYGROUND EDITION]',
-  '> Initializing creative system...',
-  '> Loading imagination...',
-  '> Connecting ideas to code...',
-  '> Activating digital playground...',
-  'SYSTEM READY.',
-  'WELCOME TO MY WORLD.',
-]
-
 export default function BootSequence({ onComplete }) {
-  const [visibleCount, setVisibleCount] = useState(0)
-  const [progress, setProgress] = useState(0)
   const [exiting, setExiting] = useState(false)
   const [hidden, setHidden] = useState(false)
 
@@ -20,17 +8,17 @@ export default function BootSequence({ onComplete }) {
     typeof window !== 'undefined' &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches
   const alreadyBooted =
-    typeof sessionStorage !== 'undefined' && sessionStorage.getItem('antriksh_os_booted')
+    typeof sessionStorage !== 'undefined' && sessionStorage.getItem('editorial_booted')
 
   const finish = useCallback(() => {
     if (typeof sessionStorage !== 'undefined') {
-      sessionStorage.setItem('antriksh_os_booted', 'true')
+      sessionStorage.setItem('editorial_booted', 'true')
     }
     setExiting(true)
     setTimeout(() => {
       setHidden(true)
       if (onComplete) onComplete()
-    }, 550)
+    }, 450)
   }, [onComplete])
 
   useEffect(() => {
@@ -40,96 +28,68 @@ export default function BootSequence({ onComplete }) {
       return
     }
 
-    const intervalTime = 220
-    const totalLines = BOOT_LINES.length
+    const timer = setTimeout(() => {
+      finish()
+    }, 900)
 
-    let current = 0
-    const timer = setInterval(() => {
-      current++
-      setVisibleCount(current)
-      setProgress(Math.min(100, Math.round((current / totalLines) * 100)))
-
-      if (current >= totalLines) {
-        clearInterval(timer)
-        setTimeout(() => {
-          finish()
-        }, 500)
-      }
-    }, intervalTime)
-
-    return () => clearInterval(timer)
+    return () => clearTimeout(timer)
   }, [alreadyBooted, finish, onComplete, prefersReducedMotion])
 
   if (hidden) return null
 
   return (
     <div
-      className={`boot-screen ${exiting ? 'exiting' : ''}`}
+      style={{
+        position: 'fixed',
+        inset: 0,
+        zIndex: 99999,
+        backgroundColor: '#F7F6F2',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        transition: 'opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1), transform 0.45s cubic-bezier(0.22, 1, 0.36, 1)',
+        opacity: exiting ? 0 : 1,
+        transform: exiting ? 'translateY(-10px)' : 'translateY(0)',
+        pointerEvents: exiting ? 'none' : 'auto',
+      }}
       role="status"
       aria-live="polite"
     >
-      <div className="boot-box">
-        <div className="boot-header">
-          <div className="boot-dots">
-            <span className="boot-dot boot-dot--red" />
-            <span className="boot-dot boot-dot--yellow" />
-            <span className="boot-dot boot-dot--green" />
-          </div>
-          <div className="boot-logo">ANTRIKSH.OS</div>
-          <div className="mono" style={{ fontSize: '0.65rem', color: '#666' }}>
-            PORT: 5173
-          </div>
-        </div>
-
-        <div className="boot-body">
-          {BOOT_LINES.slice(0, visibleCount).map((line, idx) => {
-            const isLast = idx === visibleCount - 1
-            const isWelcome = line === 'WELCOME TO MY WORLD.'
-            const isReady = line === 'SYSTEM READY.'
-            const isHeader = idx === 0
-
-            return (
-              <div
-                key={idx}
-                className={`boot-line visible ${
-                  isWelcome ? 'final' : isReady ? 'active' : ''
-                }`}
-                style={{
-                  color: isWelcome
-                    ? 'var(--acid-green)'
-                    : isReady
-                    ? 'var(--electric-cyan)'
-                    : isHeader
-                    ? '#A1A2B0'
-                    : undefined,
-                  fontWeight: isWelcome || isReady ? '700' : '400',
-                  letterSpacing: isHeader ? '0.12em' : '0.04em',
-                }}
-              >
-                <span>{line}</span>
-                {isLast && visibleCount < BOOT_LINES.length && (
-                  <span className="boot-cursor" />
-                )}
-              </div>
-            )
-          })}
-        </div>
-
-        <div className="boot-progress-wrap">
-          <div
-            className="boot-progress-fill"
-            style={{ width: `${progress}%` }}
-          />
-        </div>
-      </div>
-
-      <button
-        className="boot-skip-btn"
-        onClick={finish}
-        aria-label="Skip introduction"
+      <div
+        style={{
+          fontFamily: "'Manrope', sans-serif",
+          fontSize: '1.25rem',
+          fontWeight: 600,
+          letterSpacing: '-0.02em',
+          color: '#22231F',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.6rem',
+        }}
       >
-        SKIP INTRO ↵
-      </button>
+        <span
+          style={{
+            width: 8,
+            height: 8,
+            borderRadius: '50%',
+            backgroundColor: '#899681',
+          }}
+        />
+        <span>Antriksh</span>
+      </div>
+      <div
+        style={{
+          fontFamily: "'JetBrains Mono', monospace",
+          fontSize: '0.7rem',
+          color: '#77786F',
+          marginTop: '0.6rem',
+          letterSpacing: '0.12em',
+          textTransform: 'uppercase',
+        }}
+      >
+        Portfolio 2026 · Index
+      </div>
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import { PERSONAL } from '../data/content'
 import HeroScene from './HeroScene'
-import { ArrowDown, ArrowUpRight, Terminal } from 'lucide-react'
+import { ArrowDownRight, ArrowUpRight } from 'lucide-react'
 
 export default function Hero() {
   const scrollToWork = (e) => {
@@ -14,71 +14,46 @@ export default function Hero() {
   }
 
   return (
-    <section id="top" className="hero">
+    <section id="top" className="hero-editorial">
       <div className="container">
-        <div className="hero-grid">
-          <div className="hero-content">
-            <div className="hero-kicker-tag">
-              <span className="hero-pulse-dot" />
-              <span>{PERSONAL.education}</span>
+        <div className="hero-editorial-grid">
+          <div className="hero-editorial-content">
+            <div className="hero-pill-badge reveal">
+              <span>{PERSONAL.role}</span>
             </div>
 
-            <h1 className="hero-title-main">{PERSONAL.headline}</h1>
+            <h1 className="hero-headline-large reveal reveal-delay-1">
+              {PERSONAL.headline}
+            </h1>
 
-            <div className="hero-punchline">{PERSONAL.subheadline}</div>
+            <p className="hero-subdescription reveal reveal-delay-2">
+              {PERSONAL.description}
+            </p>
 
-            <p className="hero-description">{PERSONAL.description}</p>
-
-            <div className="hero-actions">
+            <div className="hero-button-group reveal reveal-delay-3">
               <a
                 href="#work"
-                className="btn-primary-playground"
+                className="btn-editorial-primary"
                 onClick={scrollToWork}
               >
-                <span>EXPLORE MY WORK</span>
-                <ArrowDown size={15} />
+                <span>Explore my work</span>
+                <ArrowDownRight size={15} />
               </a>
 
               <a
                 href="#contact"
-                className="btn-secondary-playground"
+                className="btn-editorial-secondary"
                 onClick={scrollToContact}
               >
-                <span>LET’S CONNECT</span>
+                <span>Get in touch</span>
                 <ArrowUpRight size={15} />
               </a>
             </div>
-
-            <div className="hero-status-bar">
-              <div className="hero-status-item">
-                <Terminal size={14} color="var(--electric-cyan)" />
-                <span>FIRST YEAR · CS & AI</span>
-              </div>
-              <span>•</span>
-              <div className="hero-status-item">
-                <span
-                  style={{
-                    width: 6,
-                    height: 6,
-                    borderRadius: '50%',
-                    background: 'var(--acid-green)',
-                  }}
-                />
-                <span>HACKATHON BUILDER</span>
-              </div>
-            </div>
           </div>
 
-          <div className="hero-3d-wrapper">
-            <div className="hero-3d-canvas-box">
-              <HeroScene />
-              <span className="hero-tag-overlay hero-tag-overlay--tl">
-                PLAYGROUND // 3D.CORE
-              </span>
-              <span className="hero-tag-overlay hero-tag-overlay--br">
-                INTERACTIVE · DRAG TO ROTATE
-              </span>
-            </div>
+          <div className="hero-sculpture-container reveal reveal-delay-2">
+            <HeroScene />
+            <div className="hero-sculpture-annotation">FIG. 01 — KINETIC STUDY</div>
           </div>
         </div>
       </div>

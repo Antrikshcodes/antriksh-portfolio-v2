@@ -1,61 +1,31 @@
-import { TECH_STACK } from '../data/content'
-import { Terminal, Layout, Cpu, Palette } from 'lucide-react'
+import { TECH_SKILLS } from '../data/content'
 
 export default function TechStack() {
-  const getIcon = (cat) => {
-    switch (cat) {
-      case 'Programming':
-        return <Terminal size={14} color="var(--electric-cyan)" />
-      case 'Frontend':
-        return <Layout size={14} color="var(--acid-green)" />
-      case 'Backend & AI':
-        return <Cpu size={14} color="var(--hot-orange)" />
-      case 'Creative Technology':
-        return <Palette size={14} color="var(--electric-blue)" />
-      default:
-        return null
-    }
-  }
-
   return (
-    <section id="stack" className="tech-section">
+    <section className="skills-editorial-section">
       <div className="container">
-        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-          <div className="section-badge reveal" style={{ margin: '0 auto 1.25rem auto' }}>
-            ARSENAL
-          </div>
-          <h2 className="section-heading reveal reveal-delay-1">
-            TECH STACK &{' '}
-            <span style={{ color: 'var(--acid-green)' }}>WORKFLOW.</span>
+        <div style={{ marginBottom: '3.5rem' }}>
+          <div className="section-meta-label reveal">CAPABILITIES</div>
+          <h2 className="section-title-editorial reveal reveal-delay-1">
+            Technologies & <span className="serif">tools.</span>
           </h2>
-          <p className="section-subheading reveal reveal-delay-2" style={{ margin: '0 auto' }}>
-            Technologies and frameworks I actively use to ship production apps,
-            hackathon MVPs, and interactive 3D experiments.
+          <p className="section-description-editorial reveal reveal-delay-2">
+            The core frameworks and libraries I actively use across software development, AI, and creative technology.
           </p>
         </div>
 
-        <div className="tech-grid-box">
-          {Object.entries(TECH_STACK).map(([category, items], idx) => (
+        <div className="skills-editorial-grid">
+          {Object.entries(TECH_SKILLS).map(([category, items], idx) => (
             <div
               key={category}
-              className={`tech-cluster-card reveal reveal-delay-${(idx % 4) + 1}`}
+              className={`skills-category-col reveal reveal-delay-${idx + 1}`}
             >
-              <div
-                className="tech-cluster-heading"
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                }}
-              >
-                {getIcon(category)}
-                <span>{category}</span>
-              </div>
-              <div className="tech-cluster-items">
-                {items.map((tech) => (
-                  <span key={tech} className="tech-pill">
-                    {tech}
-                  </span>
+              <div className="skills-cat-header">{category}</div>
+              <div className="skills-items-stack">
+                {items.map((skill) => (
+                  <div key={skill} className="skills-entry-item">
+                    <span>{skill}</span>
+                  </div>
                 ))}
               </div>
             </div>

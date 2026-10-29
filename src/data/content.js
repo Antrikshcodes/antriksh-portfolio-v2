@@ -1,269 +1,172 @@
 export const PERSONAL = {
   name: 'Antriksh',
-  title: 'Creative Technologist & AI Builder',
-  headline: 'HEY, I’M ANTRIKSH.',
-  subheadline: 'I BUILD. I EXPERIMENT. I TURN IDEAS INTO REALITY.',
+  role: 'Independent Developer · Student · Builder',
+  headline: 'I build digital experiences at the intersection of code, AI, and creativity.',
   description:
-    'I’m a Computer Science and AI student exploring software development, artificial intelligence, product thinking, robotics, and creative technology.',
+    'Exploring ideas, building products, and experimenting with technology to turn interesting problems into useful experiences.',
   education: 'B.Tech CS + AI · Newton School of Technology, Rishihood University',
   year: 'First Year',
   status: 'Open to collaborations & hackathons',
-  email: 'your.email@example.com', // TODO: Replace with actual email
+  email: 'your.email@example.com', // Replace with public email
   github: 'https://github.com/Antrikshcodes',
-  linkedin: 'https://linkedin.com/in/your-profile', // TODO: Replace with actual LinkedIn
-  resume: null, // TODO: Add resume file path when available
+  linkedin: 'https://linkedin.com/in/your-profile', // Replace with verified profile
+  resume: null,
 }
 
 export const NAV_LINKS = [
-  { label: 'Work', href: '#work' },
-  { label: 'Playground', href: '#experiments' },
-  { label: 'Hackathons', href: '#hackathons' },
+  { label: 'Selected Work', href: '#work' },
   { label: 'About', href: '#about' },
-  { label: 'Stack', href: '#stack' },
+  { label: 'Experiments', href: '#experiments' },
   { label: 'Contact', href: '#contact' },
 ]
 
 export const PROJECTS = [
   {
     id: 'converge',
-    number: '01',
+    number: '01 / 04',
     title: 'CONVERGE',
-    category: 'Smart Cities / Civic Technology',
+    category: 'Smart Cities / AI',
     shortDesc:
-      'An AI-powered smart-city platform designed to streamline citizen complaints, identify connected incidents, prioritize critical issues, and improve the verification of civic resolutions.',
+      'An urban issue-management concept exploring how AI and connected workflows can help city operators understand, prioritise, and resolve civic problems.',
     description:
-      'CONVERGE is a full-scale civic technology platform designed to fix broken municipal ticketing. Built for the Smart Cities challenge, citizens submit photo reports via their phones. CONVERGE automatically groups duplicates, detects root-cause clusters, tracks SLA escalation ladders, and closes incidents only with evidence-checked proof.',
-    problem:
-      'Cities receive thousands of fragmented citizen complaints daily. Municipal teams waste 40%+ of their time resolving duplicate tickets without seeing root causes (e.g. 5 water complaints stemming from one ruptured main pipeline).',
-    solution:
-      'CONVERGE clusters geo-spatial duplicates, detects causal incident graphs, calculates SLA breach risk, and empowers city command operators with a real-time command dashboard.',
-    technologies: ['React', 'AI Workflows', 'Incident Mapping', 'FastAPI', 'Vercel'],
+      'CONVERGE is an urban civic technology platform built to address fragmented municipal complaint handling. By connecting citizen photo reports, clustering spatial duplicates, tracking SLA escalation ladders, and requiring photographic evidence for closure, it streamlines city operations and brings accountability to municipal maintenance.',
+    technologies: ['React', 'AI Workflows', 'Incident Mapping', 'FastAPI'],
     screenshot: '/projects/converge.png',
     liveUrl: 'https://converge-web-ten.vercel.app',
     githubUrl: 'https://github.com/srtkio/converge_trojans',
-    status: 'Live Deployment · HackO’Ween 2026',
     displayUrl: 'converge-web-ten.vercel.app',
-    accentColor: '#00D9FF',
+    accentBg: '#EAECE6',
     features: [
-      'Automated geo-spatial duplicate grouping & clustering',
-      'SLA risk escalation ladder with deadline monitoring',
+      'Duplicate clustering & root-cause incident mapping',
+      'SLA deadline monitoring & automated escalation',
       'Evidence-checked photographic resolution closure',
-      'Live city command center operator dashboard',
-      'Mobile-first citizen report & tracking flow',
-    ],
-  },
-  {
-    id: 'ordershield-ai',
-    number: '02',
-    title: 'ORDERSHIELD AI',
-    category: 'AI / Supplier Verification',
-    shortDesc:
-      'An AI-powered supplier and vendor onboarding verification concept focused on improving trust and reducing onboarding risk.',
-    description:
-      'OrderShield AI reimagines vendor verification and supplier onboarding. By replacing slow manual document inspection with automated multi-modal risk scoring, businesses can securely onboard trusted suppliers in minutes rather than weeks.',
-    problem:
-      'Vendor onboarding in B2B supply chains is notoriously slow, paper-heavy, and susceptible to fraud. Companies struggle to verify compliance certificates, tax documents, and business authenticity at scale.',
-    solution:
-      'An intelligent automated pipeline that verifies tax/business credentials, analyzes compliance documentation, and computes a multi-factor vendor trustworthiness score.',
-    technologies: ['Python', 'FastAPI', 'AI Document Verification', 'Risk Engine', 'React'],
-    screenshot: '/projects/ordershield.png',
-    liveUrl: 'https://ordershield-tawny.vercel.app/',
-    githubUrl: 'https://github.com/Antrikshcodes/ordershield',
-    status: 'Top 20 · Fetch-A-Thon 3.0 (2026)',
-    displayUrl: 'ordershield-tawny.vercel.app',
-    badge: 'TOP 20 — FETCH-A-THON 3.0',
-    accentColor: '#D7FF38',
-    features: [
-      'Automated document credential verification',
-      'Multi-factor vendor trust & risk scoring engine',
-      'Real-time fraud flag indicators',
-      'Streamlined onboarding approval workflows',
-    ],
-  },
-  {
-    id: 'product-guys',
-    number: '03',
-    title: 'THE PRODUCT GUYS',
-    category: 'Product / Community',
-    shortDesc:
-      'A product-focused initiative exploring ideas, collaboration, and building better products for modern builders.',
-    description:
-      'The Product Guys is an initiative built for aspiring product builders, engineers, and designers. It serves as an intellectual sandbox for dissecting product mechanics, exploring user behavior, and collaborating on high-impact software ideas.',
-    problem:
-      'Most student builders jump straight into code without understanding customer discovery, product positioning, or true utility, resulting in abandoned side projects.',
-    solution:
-      'A dedicated content hub and community space sharing actionable product teardowns, design thinking frameworks, and collaborative prototyping experiments.',
-    technologies: ['Next.js', 'Vercel', 'Product Architecture', 'Content System'],
-    screenshot: '/projects/product-guys.png',
-    liveUrl: 'https://productguys.arthakram.in',
-    githubUrl: null,
-    status: 'Live Platform',
-    displayUrl: 'productguys.arthakram.in',
-    accentColor: '#FF7048',
-    features: [
-      'Deep-dive product breakdowns & UX analysis',
-      'Active network of student builders & thinkers',
-      'Frameworks for rapid ideation to MVP validation',
-      'Collaborative testing for community prototypes',
+      'Command center operator dashboard with live map',
     ],
   },
   {
     id: 'blindspot-ai',
-    number: '04',
-    title: 'BLINDSPOT AI',
-    category: 'Artificial Intelligence / Product Development',
+    number: '02 / 04',
+    title: 'Blindspot AI',
+    category: 'AI / Computer Vision',
     shortDesc:
-      'A smarter way to see the road. A safety system concept helping drivers notice what mirrors miss through intelligent detection, risk signals, and timely situational awareness alerts.',
+      'An AI and computer-vision concept exploring how blind-spot awareness can help identify nearby vehicles and communicate potential road risks.',
     description:
-      'BlindSpot AI is an intelligent road awareness safety system concept. Designed to see beyond physical mirrors, it combines computer vision detection, proximity telemetry, and real-time situational risk scoring to alert drivers to hidden hazards before accidents occur.',
-    problem:
-      'Blind spots cause thousands of preventable road collisions annually. Traditional mirrors leave critical peripheral angles unmonitored during lane changes and fast merges.',
-    solution:
-      'An AI-assisted situational awareness layer that tracks surrounding vehicles, calculates proximity risk levels, and delivers low-latency visual warnings.',
-    technologies: ['Python', 'Machine Learning', 'NLP', 'React', 'FastAPI'],
+      'Blindspot AI is an active situational awareness prototype designed to reduce highway lane-change collisions. Integrating real-time computer vision vehicle detection, speed-differential tracking, and proximity alert algorithms, it highlights hidden hazards that standard vehicle mirrors miss.',
+    technologies: ['Python', 'Computer Vision', 'PyTorch', 'FastAPI'],
     screenshot: '/projects/blindspot.png',
-    liveUrl: null, // Clearly marked as unreleased prototype per instructions
+    liveUrl: null, // Prototype stage, no public deployment
     githubUrl: 'https://github.com/Antrikshcodes',
-    status: 'CoNSTruct 2.0 Hackathon (2026)',
     displayUrl: 'github.com/Antrikshcodes',
-    accentColor: '#5B5CFF',
+    accentBg: '#E9EBE2',
     features: [
-      'Cognitive bias & assumption surfacing algorithms',
-      'Interactive decision radar context mapping',
-      'Automated devil’s-advocate query generation',
-      'Risk vector prioritization interface',
+      'Proximity vector detection across vehicle blind angles',
+      'Real-time situational awareness risk indexing',
+      'Low-latency visual alert interface for drivers',
+      'Edge-device telemetry processing pipeline',
+    ],
+  },
+  {
+    id: 'ordershield-ai',
+    number: '03 / 04',
+    title: 'OrderShield AI',
+    category: 'AI / Product Development',
+    shortDesc:
+      'A supplier and vendor onboarding verification concept designed to make business verification workflows more structured and efficient.',
+    description:
+      'OrderShield AI reimagines B2B supplier onboarding. By replacing manual compliance reviews with automated multi-factor document verification and tax-registry reconciliation, it reduces supplier onboarding time from weeks to minutes while enforcing strict compliance standards.',
+    technologies: ['Python', 'FastAPI', 'Document AI', 'Risk Engine', 'React'],
+    screenshot: '/projects/ordershield.png',
+    liveUrl: 'https://ordershield-tawny.vercel.app/',
+    githubUrl: 'https://github.com/Antrikshcodes/ordershield',
+    displayUrl: 'ordershield-tawny.vercel.app',
+    accentBg: '#EAE8E3',
+    features: [
+      'Automated GSTIN and business credential auditing',
+      'Multi-factor supplier trust score index',
+      'Autonomous discrepancy flagging pipeline',
+      'Self-service vendor documentation portal',
+    ],
+  },
+  {
+    id: 'product-guys',
+    number: '04 / 04',
+    title: 'The Product Guys',
+    category: 'Product / Community',
+    shortDesc:
+      'A product-focused initiative exploring product thinking, ideas, and useful digital experiences.',
+    description:
+      'The Product Guys is an initiative created to bridge the gap between technical engineering and product thinking. It offers in-depth product breakdowns, UX teardowns, and actionable frameworks for student builders transitioning from writing code to building user-centric software.',
+    technologies: ['Next.js', 'Vercel', 'Product Design', 'Information Architecture'],
+    screenshot: '/projects/product-guys.png',
+    liveUrl: 'https://productguys.arthakram.in',
+    githubUrl: null,
+    displayUrl: 'productguys.arthakram.in',
+    accentBg: '#EBEAE5',
+    features: [
+      'Deep-dive product case studies & UX critiques',
+      'Frameworks for user validation before coding',
+      'Curated community for ambitious student builders',
+      'Collaborative prototyping and feedback loops',
     ],
   },
 ]
 
-export const HACKATHONS = [
-  {
-    name: "HackO'Ween",
-    year: 2026,
-    organization: 'ALTA School of Technology',
-    role: 'Participant',
-    project: 'CONVERGE',
-    achievement: null,
-    badgeText: 'Participant',
-    accentColor: '#00D9FF',
-  },
-  {
-    name: 'Fetch-A-Thon 3.0',
-    year: 2026,
-    organization: 'Fetch.ai',
-    role: 'Participant',
-    project: 'OrderShield AI',
-    achievement: 'Top 20',
-    badgeText: 'TOP 20 — FETCH-A-THON 3.0 (2026)',
-    isSpecial: true,
-    accentColor: '#D7FF38',
-  },
-  {
-    name: 'CoNSTruct 2.0',
-    year: 2026,
-    role: 'Participant',
-    project: 'Blindspot AI',
-    achievement: null,
-    badgeText: 'Participant',
-    accentColor: '#5B5CFF',
-  },
-  {
-    name: 'IIT Roorkee E-Summit',
-    year: 2024,
-    role: 'Participant',
-    achievement: null,
-    badgeText: 'Participant',
-    accentColor: '#FF7048',
-  },
-  {
-    name: 'IIM Product Challenge',
-    year: 2026,
-    role: 'Participant',
-    achievement: null,
-    badgeText: 'Participant',
-    accentColor: '#00D9FF',
-  },
+export const MARQUEE_ROW_ONE = [
+  'PYTHON',
+  'REACT',
+  'JAVASCRIPT',
+  'HTML5',
+  'CSS3',
+  'NEXT.JS',
+  'THREE.JS',
+  'FRAMER MOTION',
+]
+
+export const MARQUEE_ROW_TWO = [
+  'AI / ML',
+  'GIT',
+  'GITHUB',
+  'FASTAPI',
+  'TAILWIND CSS',
+  'VITE',
+  'UI / UX',
+  'CREATIVE CODING',
+  'ROBOTICS',
 ]
 
 export const EXPERIMENTS = [
   {
-    id: 'exp-1',
-    title: 'Neural Audio Reactive Shader',
+    title: 'Audio-Reactive Shader Canvas',
     category: 'Creative Coding',
-    description:
-      'Real-time WebGL audio frequency visualization using Raymarching and custom GLSL noise displacement.',
-    status: 'active prototype',
-    tags: ['Three.js', 'GLSL', 'Web Audio API'],
-    accentColor: '#D7FF38',
+    description: 'WebGL raymarching experiment reacting to real-time micro-frequencies via Web Audio API.',
+    tech: 'Three.js · GLSL · Web Audio',
+    link: null,
   },
   {
-    id: 'exp-2',
-    title: 'Autonomous Rover Telemetry',
+    title: 'Autonomous Telemetry Dashboard',
     category: 'Robotics',
-    description:
-      'Low-latency WebSocket dashboard visualizing LiDAR distance scans and PID motor control states.',
-    status: 'prototype',
-    tags: ['ESP32', 'Python', 'WebSockets'],
-    accentColor: '#00D9FF',
+    description: 'Low-latency serial communication visualizer mapping 2D LiDAR distance vectors.',
+    tech: 'Python · ESP32 · WebSockets',
+    link: null,
   },
   {
-    id: 'exp-3',
-    title: 'Contextual RAG Red-Teamer',
-    category: 'AI experiments',
-    description:
-      'Adversarial prompt generator that probes local LLM embeddings for hallucination boundaries.',
-    status: 'research prototype',
-    tags: ['FastAPI', 'Transformers', 'ChromaDB'],
-    accentColor: '#5B5CFF',
+    title: 'Contextual Prompt Evaluator',
+    category: 'AI Experiments',
+    description: 'Lightweight script measuring semantic drift and token efficiency across LLM queries.',
+    tech: 'FastAPI · HuggingFace · Python',
+    link: null,
   },
   {
-    id: 'exp-4',
-    title: 'Spatial Kinetic Physics Engine',
-    category: 'Interactive 3D',
-    description:
-      'Rigid-body particle sandbox with mouse-gravity wells and collision physics rendered at 60fps.',
-    status: 'interactive demo',
-    tags: ['React Three Fiber', 'Rapier', 'Three.js'],
-    accentColor: '#FF7048',
-  },
-  {
-    id: 'exp-5',
-    title: 'Dynamic Bento Micro-Interactions',
-    category: 'UI/UX experiments',
-    description:
-      'Haptic-feel glassmorphic component library with magnetic hover vectors and spring physics.',
-    status: 'design system',
-    tags: ['Framer Motion', 'Tailwind', 'CSS Houdini'],
-    accentColor: '#D7FF38',
-  },
-  {
-    id: 'exp-6',
-    title: 'CLI Multi-Agent Task Streamer',
-    category: 'Small software prototypes',
-    description:
-      'Terminal utility in Python that coordinates parallel background scripts with rich ASCII gauges.',
-    status: 'prototype',
-    tags: ['Python', 'AsyncIO', 'Rich CLI'],
-    accentColor: '#00D9FF',
+    title: 'Kinetic Physics Sandbox',
+    category: 'Web Development',
+    description: 'Rigid-body particle experiment testing gravity points and spring cursor attractions.',
+    tech: 'React · Canvas · Physics Engine',
+    link: null,
   },
 ]
 
-export const TECH_STACK = {
-  Programming: ['Python', 'JavaScript', 'HTML5', 'CSS3', 'C++'],
-  Frontend: ['React', 'Next.js', 'Tailwind CSS', 'Vite', 'TypeScript'],
-  'Backend & AI': ['FastAPI', 'REST APIs', 'AI Integrations', 'NLP', 'LangChain'],
-  'Creative Technology': [
-    'Three.js',
-    'React Three Fiber',
-    '@react-three/drei',
-    'Framer Motion',
-    'GLSL Shaders',
-    'WebGL',
-  ],
-}
-
-export const CURRENTLY = {
-  building: 'AI-assisted developer tooling and interactive 3D web spaces.',
-  learning: 'Hardware interfacing, ROS2 robotics primitives, and advanced shader programming.',
-  exploring: 'Agentic workflows, physical computing with microcontrollers, and creative AI interfaces.',
+export const TECH_SKILLS = {
+  Development: ['Python', 'JavaScript', 'HTML', 'CSS', 'React'],
+  'AI and Backend': ['AI/ML fundamentals', 'FastAPI', 'API integration'],
+  'Creative Technology': ['Three.js', 'UI/UX', 'Creative Coding', 'Robotics'],
 }
