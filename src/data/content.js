@@ -1,8 +1,10 @@
 export const PERSONAL = {
   name: 'Antriksh',
   title: 'Creative Technologist & AI Builder',
-  tagline: 'I turn curious ideas into things that matter.',
-  description: "I'm Antriksh — a computer science student exploring AI, product thinking, and creative technology. I like building things that make complicated ideas feel simple.",
+  headline: 'HEY, I’M ANTRIKSH.',
+  subheadline: 'I BUILD. I EXPERIMENT. I TURN IDEAS INTO REALITY.',
+  description:
+    'I’m a Computer Science and AI student exploring software development, artificial intelligence, product thinking, robotics, and creative technology.',
   education: 'B.Tech CS + AI · Newton School of Technology, Rishihood University',
   year: 'First Year',
   status: 'Open to collaborations & hackathons',
@@ -14,9 +16,10 @@ export const PERSONAL = {
 
 export const NAV_LINKS = [
   { label: 'Work', href: '#work' },
+  { label: 'Playground', href: '#experiments' },
+  { label: 'Hackathons', href: '#hackathons' },
   { label: 'About', href: '#about' },
-  { label: 'Lab', href: '#lab' },
-  { label: 'Journey', href: '#journey' },
+  { label: 'Stack', href: '#stack' },
   { label: 'Contact', href: '#contact' },
 ]
 
@@ -24,211 +27,243 @@ export const PROJECTS = [
   {
     id: 'converge',
     number: '01',
-    title: 'Converge',
-    category: 'Smart Cities / Civic Tech',
-    shortDesc: 'Connecting citizen reports to verified resolutions through intelligent incident mapping.',
-    description: 'A smart-city project focused on connecting citizen reports, incident relationships, and verified resolutions. Built around interactive city maps, incident reporting, root-cause analysis, prioritization with SLA risk tracking, AI-assisted workflows, and citizen feedback loops.',
-    problem: 'Cities receive thousands of citizen reports daily — potholes, broken lights, water leaks — but lack tools to see how incidents relate, prioritize effectively, or verify resolutions.',
-    solution: 'Converge maps incident relationships, surfaces root-cause hypotheses, tracks SLA risk, and closes the loop with citizen verification.',
-    contribution: 'Full-stack development and product design.', // TODO: Update with specific contributions
-    tech: ['React', 'Maps API', 'AI Workflows', 'Data Visualization'],
-    github: 'https://github.com/srtkio/converge_trojans',
-    live: null,
-    status: 'Hackathon Project',
-    color: '#4a7c59',
+    title: 'CONVERGE',
+    category: 'Smart Cities / Civic Technology',
+    shortDesc:
+      'An AI-powered smart-city platform designed to streamline citizen complaints, identify connected incidents, prioritize critical issues, and improve the verification of civic resolutions.',
+    description:
+      'CONVERGE is a full-scale civic technology platform designed to fix broken municipal ticketing. Built for the Smart Cities challenge, citizens submit photo reports via their phones. CONVERGE automatically groups duplicates, detects root-cause clusters, tracks SLA escalation ladders, and closes incidents only with evidence-checked proof.',
+    problem:
+      'Cities receive thousands of fragmented citizen complaints daily. Municipal teams waste 40%+ of their time resolving duplicate tickets without seeing root causes (e.g. 5 water complaints stemming from one ruptured main pipeline).',
+    solution:
+      'CONVERGE clusters geo-spatial duplicates, detects causal incident graphs, calculates SLA breach risk, and empowers city command operators with a real-time command dashboard.',
+    technologies: ['React', 'AI Workflows', 'Incident Mapping', 'FastAPI', 'Vercel'],
+    screenshot: '/projects/converge.png',
+    liveUrl: 'https://converge-web-ten.vercel.app',
+    githubUrl: 'https://github.com/srtkio/converge_trojans',
+    status: 'Live Deployment · HackO’Ween 2026',
+    displayUrl: 'converge-web-ten.vercel.app',
+    accentColor: '#00D9FF',
     features: [
-      'Interactive city incident map',
-      'Incident relationship graph',
-      'Root-cause hypothesis engine',
-      'SLA risk prioritization',
-      'AI-assisted triage workflows',
-      'Citizen verification & feedback',
-    ],
-  },
-  {
-    id: 'blindspot-ai',
-    number: '02',
-    title: 'Blindspot AI',
-    category: 'AI / Product Experiment',
-    shortDesc: 'Exploring how AI can help people identify overlooked problems and hidden information.',
-    description: 'An AI-focused hackathon project exploring how technology can surface information people tend to miss — blind spots in data, decisions, and everyday problem-solving.',
-    problem: 'People consistently overlook important information due to cognitive biases, data overload, or simply not knowing what questions to ask.',
-    solution: 'An AI-powered tool that analyzes context and surfaces overlooked information, patterns, and potential blind spots.',
-    contribution: 'AI integration and product concept.', // TODO: Update with specific contributions
-    tech: ['Python', 'AI/ML', 'NLP', 'React'],
-    github: 'https://github.com/Antrikshcodes',
-    live: null,
-    status: 'Hackathon Project',
-    color: '#5b6abf',
-    features: [
-      'Context-aware analysis',
-      'Blind spot detection',
-      'Pattern surfacing',
-      'Decision support',
+      'Automated geo-spatial duplicate grouping & clustering',
+      'SLA risk escalation ladder with deadline monitoring',
+      'Evidence-checked photographic resolution closure',
+      'Live city command center operator dashboard',
+      'Mobile-first citizen report & tracking flow',
     ],
   },
   {
     id: 'ordershield-ai',
-    number: '03',
-    title: 'OrderShield AI',
+    number: '02',
+    title: 'ORDERSHIELD AI',
     category: 'AI / Supplier Verification',
-    shortDesc: 'Rethinking supplier onboarding with AI-powered verification workflows.',
-    description: 'An MVP concept focused on streamlining supplier and vendor onboarding verification. Emphasizes reducing friction while maintaining trust through intelligent document analysis and risk assessment.',
-    problem: 'Supplier onboarding is slow, manual, and error-prone — businesses struggle to verify credentials while maintaining speed.',
-    solution: 'An AI-driven verification pipeline that automates document checks, flags risks, and accelerates trusted onboarding.',
-    contribution: 'Product thinking and prototype development.', // TODO: Update with specific contributions
-    tech: ['Python', 'FastAPI', 'AI/ML', 'React'],
-    github: 'https://github.com/Antrikshcodes',
-    live: null,
-    status: 'MVP Concept',
-    color: '#bf7b3b',
+    shortDesc:
+      'An AI-powered supplier and vendor onboarding verification concept focused on improving trust and reducing onboarding risk.',
+    description:
+      'OrderShield AI reimagines vendor verification and supplier onboarding. By replacing slow manual document inspection with automated multi-modal risk scoring, businesses can securely onboard trusted suppliers in minutes rather than weeks.',
+    problem:
+      'Vendor onboarding in B2B supply chains is notoriously slow, paper-heavy, and susceptible to fraud. Companies struggle to verify compliance certificates, tax documents, and business authenticity at scale.',
+    solution:
+      'An intelligent automated pipeline that verifies tax/business credentials, analyzes compliance documentation, and computes a multi-factor vendor trustworthiness score.',
+    technologies: ['Python', 'FastAPI', 'AI Document Verification', 'Risk Engine', 'React'],
+    screenshot: '/projects/ordershield.png',
+    liveUrl: 'https://ordershield-phi.vercel.app',
+    githubUrl: 'https://github.com/Antrikshcodes/ordershield',
+    status: 'Top 20 · Fetch-A-Thon 3.0 (2026)',
+    displayUrl: 'ordershield-phi.vercel.app',
+    badge: 'TOP 20 — FETCH-A-THON 3.0',
+    accentColor: '#D7FF38',
     features: [
-      'Automated document verification',
-      'Risk scoring engine',
-      'Supplier trust profiles',
-      'Onboarding workflow automation',
+      'Automated document credential verification',
+      'Multi-factor vendor trust & risk scoring engine',
+      'Real-time fraud flag indicators',
+      'Streamlined onboarding approval workflows',
     ],
   },
   {
     id: 'product-guys',
-    number: '04',
-    title: 'The Product Guys',
+    number: '03',
+    title: 'THE PRODUCT GUYS',
     category: 'Product / Community',
-    shortDesc: 'A product-focused initiative for ideas, collaboration, and building better products.',
-    description: 'A product-focused initiative exploring ideas, collaboration, and the craft of building better products. A space for product thinkers to share, learn, and build together.',
-    problem: 'Aspiring product builders lack spaces designed specifically for sharing ideas, getting feedback, and collaborating on real projects.',
-    solution: 'A community and content platform where product thinkers connect, share insights, and collaborate on building meaningful products.',
-    contribution: 'Founder and primary contributor.', // TODO: Verify exact role
-    tech: ['Web Development', 'Content', 'Community', 'Product Thinking'],
-    github: null,
-    live: 'https://productguys.arthakram.in',
-    status: 'Active',
-    color: '#7b5ea7',
+    shortDesc:
+      'A product-focused initiative exploring ideas, collaboration, and building better products for modern builders.',
+    description:
+      'The Product Guys is an initiative built for aspiring product builders, engineers, and designers. It serves as an intellectual sandbox for dissecting product mechanics, exploring user behavior, and collaborating on high-impact software ideas.',
+    problem:
+      'Most student builders jump straight into code without understanding customer discovery, product positioning, or true utility, resulting in abandoned side projects.',
+    solution:
+      'A dedicated content hub and community space sharing actionable product teardowns, design thinking frameworks, and collaborative prototyping experiments.',
+    technologies: ['Next.js', 'Vercel', 'Product Architecture', 'Content System'],
+    screenshot: '/projects/product-guys.png',
+    liveUrl: 'https://productguys.arthakram.in',
+    githubUrl: null,
+    status: 'Live Platform',
+    displayUrl: 'productguys.arthakram.in',
+    accentColor: '#FF7048',
     features: [
-      'Product thinking content',
-      'Collaboration space',
-      'Community building',
-      'Idea exploration',
+      'Deep-dive product breakdowns & UX analysis',
+      'Active network of student builders & thinkers',
+      'Frameworks for rapid ideation to MVP validation',
+      'Collaborative testing for community prototypes',
     ],
+  },
+  {
+    id: 'blindspot-ai',
+    number: '04',
+    title: 'BLINDSPOT AI',
+    category: 'Artificial Intelligence / Product Development',
+    shortDesc:
+      'An AI-focused hackathon project exploring how technology can help people identify overlooked problems, cognitive blind spots, and hidden information.',
+    description:
+      'Blindspot AI is an experimental intelligence layer designed to counter cognitive bias in high-stakes decision-making. By analyzing contextual streams and question vectors, it proactively surfaces overlooked angles and alternative perspectives.',
+    problem:
+      'Human decision-makers are constrained by confirmation bias and blind spots. Important insights are missed simply because teams fail to question standard assumptions.',
+    solution:
+      'An AI assistant that ingests project notes, assumptions, and strategies, subsequently running red-team analysis to surface blind spots and unexamined risk vectors.',
+    technologies: ['Python', 'Machine Learning', 'NLP', 'React', 'FastAPI'],
+    screenshot: '/projects/blindspot.png',
+    liveUrl: null, // Clearly marked as unreleased prototype per instructions
+    githubUrl: 'https://github.com/Antrikshcodes',
+    status: 'CoNSTruct 2.0 Hackathon (2026)',
+    displayUrl: 'github.com/Antrikshcodes',
+    accentColor: '#5B5CFF',
+    features: [
+      'Cognitive bias & assumption surfacing algorithms',
+      'Interactive decision radar context mapping',
+      'Automated devil’s-advocate query generation',
+      'Risk vector prioritization interface',
+    ],
+  },
+]
+
+export const HACKATHONS = [
+  {
+    name: "HackO'Ween",
+    year: 2026,
+    organization: 'ALTA School of Technology',
+    role: 'Participant',
+    project: 'CONVERGE',
+    achievement: null,
+    badgeText: 'Participant',
+    accentColor: '#00D9FF',
+  },
+  {
+    name: 'Fetch-A-Thon 3.0',
+    year: 2026,
+    organization: 'Fetch.ai',
+    role: 'Participant',
+    project: 'OrderShield AI',
+    achievement: 'Top 20',
+    badgeText: 'TOP 20 — FETCH-A-THON 3.0 (2026)',
+    isSpecial: true,
+    accentColor: '#D7FF38',
+  },
+  {
+    name: 'CoNSTruct 2.0',
+    year: 2026,
+    role: 'Participant',
+    project: 'Blindspot AI',
+    achievement: null,
+    badgeText: 'Participant',
+    accentColor: '#5B5CFF',
+  },
+  {
+    name: 'IIT Roorkee E-Summit',
+    year: 2024,
+    role: 'Participant',
+    achievement: null,
+    badgeText: 'Participant',
+    accentColor: '#FF7048',
+  },
+  {
+    name: 'IIM Product Challenge',
+    year: 2026,
+    role: 'Participant',
+    achievement: null,
+    badgeText: 'Participant',
+    accentColor: '#00D9FF',
   },
 ]
 
 export const EXPERIMENTS = [
   {
     id: 'exp-1',
-    title: 'Interactive 3D Particles',
+    title: 'Neural Audio Reactive Shader',
     category: 'Creative Coding',
-    description: 'Exploring particle systems with Three.js and GPU-driven animations.',
-    status: 'prototype',
-    tags: ['Three.js', 'WebGL', 'GLSL'],
+    description:
+      'Real-time WebGL audio frequency visualization using Raymarching and custom GLSL noise displacement.',
+    status: 'active prototype',
+    tags: ['Three.js', 'GLSL', 'Web Audio API'],
+    accentColor: '#D7FF38',
   },
   {
     id: 'exp-2',
-    title: 'AI Text Analyzer',
-    category: 'AI Experiments',
-    description: 'A lightweight tool for analyzing text patterns using ML models.',
+    title: 'Autonomous Rover Telemetry',
+    category: 'Robotics',
+    description:
+      'Low-latency WebSocket dashboard visualizing LiDAR distance scans and PID motor control states.',
     status: 'prototype',
-    tags: ['Python', 'NLP', 'FastAPI'],
+    tags: ['ESP32', 'Python', 'WebSockets'],
+    accentColor: '#00D9FF',
   },
   {
     id: 'exp-3',
-    title: 'Motion UI Kit',
-    category: 'UI/UX Exploration',
-    description: 'A collection of micro-interactions and animated UI components.',
-    status: 'prototype',
-    tags: ['React', 'Framer Motion', 'CSS'],
+    title: 'Contextual RAG Red-Teamer',
+    category: 'AI experiments',
+    description:
+      'Adversarial prompt generator that probes local LLM embeddings for hallucination boundaries.',
+    status: 'research prototype',
+    tags: ['FastAPI', 'Transformers', 'ChromaDB'],
+    accentColor: '#5B5CFF',
   },
   {
     id: 'exp-4',
-    title: 'Sensor Dashboard',
-    category: 'Robotics / Hardware',
-    description: 'Real-time sensor data visualization from Arduino-based hardware.',
+    title: 'Spatial Kinetic Physics Engine',
+    category: 'Interactive 3D',
+    description:
+      'Rigid-body particle sandbox with mouse-gravity wells and collision physics rendered at 60fps.',
+    status: 'interactive demo',
+    tags: ['React Three Fiber', 'Rapier', 'Three.js'],
+    accentColor: '#FF7048',
+  },
+  {
+    id: 'exp-5',
+    title: 'Dynamic Bento Micro-Interactions',
+    category: 'UI/UX experiments',
+    description:
+      'Haptic-feel glassmorphic component library with magnetic hover vectors and spring physics.',
+    status: 'design system',
+    tags: ['Framer Motion', 'Tailwind', 'CSS Houdini'],
+    accentColor: '#D7FF38',
+  },
+  {
+    id: 'exp-6',
+    title: 'CLI Multi-Agent Task Streamer',
+    category: 'Small software prototypes',
+    description:
+      'Terminal utility in Python that coordinates parallel background scripts with rich ASCII gauges.',
     status: 'prototype',
-    tags: ['Arduino', 'Python', 'WebSockets'],
-  },
-]
-// NOTE: All experiments above are placeholders.
-// Replace with actual experiments as they are built.
-
-export const HACKATHONS = [
-  {
-    id: 'hack-1',
-    event: "HackO'Ween",
-    year: '2024', // TODO: Verify year
-    project: 'Hackathon Project', // TODO: Add actual project name
-    role: 'Team Member', // TODO: Verify role
-    result: null, // TODO: Add result if verified (e.g., "Winner", "Finalist")
-    link: null,
-  },
-  {
-    id: 'hack-2',
-    event: 'Fetch-A-Thon 3.0',
-    year: '2024', // TODO: Verify year
-    project: 'Hackathon Project', // TODO: Add actual project name
-    role: 'Team Member', // TODO: Verify role
-    result: null,
-    link: null,
-  },
-  {
-    id: 'hack-3',
-    event: 'CoNSTruct 2.0',
-    year: '2025', // TODO: Verify year
-    project: 'Hackathon Project', // TODO: Add actual project name
-    role: 'Team Member', // TODO: Verify role
-    result: null,
-    link: null,
-  },
-]
-
-export const JOURNEY_MILESTONES = [
-  {
-    period: 'Early Days',
-    title: 'First Lines of Code',
-    description: 'Started learning Python and exploring what programming could do.',
-    icon: 'code',
-  },
-  {
-    period: 'Exploration',
-    title: 'Web Development',
-    description: 'Discovered HTML, CSS, and JavaScript. Built first web projects.',
-    icon: 'globe',
-  },
-  {
-    period: 'Building',
-    title: 'First Prototypes',
-    description: 'Started turning ideas into working prototypes and small tools.',
-    icon: 'wrench',
-  },
-  {
-    period: 'Competition',
-    title: 'Hackathon Era',
-    description: 'Joined hackathons to build under pressure and collaborate with others.',
-    icon: 'zap',
-  },
-  {
-    period: 'AI & Product',
-    title: 'AI Experiments',
-    description: 'Began exploring AI integrations, product thinking, and building AI-powered tools.',
-    icon: 'brain',
-  },
-  {
-    period: 'Creative Tech',
-    title: 'Interactive & 3D',
-    description: 'Diving into creative coding, Three.js, and interactive experiences.',
-    icon: 'sparkles',
+    tags: ['Python', 'AsyncIO', 'Rich CLI'],
+    accentColor: '#00D9FF',
   },
 ]
 
 export const TECH_STACK = {
-  'Programming': ['Python', 'JavaScript', 'HTML', 'CSS'],
-  'Frontend': ['React', 'Next.js', 'Tailwind CSS'],
-  'Backend & AI': ['FastAPI', 'APIs', 'AI Integrations'],
-  'Creative Tech': ['Three.js', 'R3F', 'Motion Design'],
+  Programming: ['Python', 'JavaScript', 'HTML5', 'CSS3', 'C++'],
+  Frontend: ['React', 'Next.js', 'Tailwind CSS', 'Vite', 'TypeScript'],
+  'Backend & AI': ['FastAPI', 'REST APIs', 'AI Integrations', 'NLP', 'LangChain'],
+  'Creative Technology': [
+    'Three.js',
+    'React Three Fiber',
+    '@react-three/drei',
+    'Framer Motion',
+    'GLSL Shaders',
+    'WebGL',
+  ],
 }
 
 export const CURRENTLY = {
-  building: 'AI-powered product prototypes and interactive web experiences.',
-  learning: 'Advanced React patterns, 3D graphics programming, and machine learning fundamentals.',
-  exploring: 'Robotics, hardware interfaces, and the future of human-computer interaction.',
+  building: 'AI-assisted developer tooling and interactive 3D web spaces.',
+  learning: 'Hardware interfacing, ROS2 robotics primitives, and advanced shader programming.',
+  exploring: 'Agentic workflows, physical computing with microcontrollers, and creative AI interfaces.',
 }
-

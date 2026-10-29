@@ -1,23 +1,61 @@
 import { TECH_STACK } from '../data/content'
+import { Terminal, Layout, Cpu, Palette } from 'lucide-react'
 
 export default function TechStack() {
+  const getIcon = (cat) => {
+    switch (cat) {
+      case 'Programming':
+        return <Terminal size={14} color="var(--electric-cyan)" />
+      case 'Frontend':
+        return <Layout size={14} color="var(--acid-green)" />
+      case 'Backend & AI':
+        return <Cpu size={14} color="var(--hot-orange)" />
+      case 'Creative Technology':
+        return <Palette size={14} color="var(--electric-blue)" />
+      default:
+        return null
+    }
+  }
+
   return (
-    <section className="tech">
+    <section id="stack" className="tech-section">
       <div className="container">
-        <div className="tech-header">
-          <span className="section-label reveal">Tech Stack</span>
+        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+          <div className="section-badge reveal" style={{ margin: '0 auto 1.25rem auto' }}>
+            ARSENAL
+          </div>
           <h2 className="section-heading reveal reveal-delay-1">
-            Tools of the <span className="serif">trade.</span>
+            TECH STACK &{' '}
+            <span style={{ color: 'var(--acid-green)' }}>WORKFLOW.</span>
           </h2>
+          <p className="section-subheading reveal reveal-delay-2" style={{ margin: '0 auto' }}>
+            Technologies and frameworks I actively use to ship production apps,
+            hackathon MVPs, and interactive 3D experiments.
+          </p>
         </div>
 
-        <div className="tech-groups">
-          {Object.entries(TECH_STACK).map(([group, items], i) => (
-            <div key={group} className={`tech-group reveal reveal-delay-${Math.min(i + 1, 4)}`}>
-              <div className="tech-group-name">{group}</div>
-              <div className="tech-items">
-                {items.map(item => (
-                  <span key={item} className="tech-item">{item}</span>
+        <div className="tech-grid-box">
+          {Object.entries(TECH_STACK).map(([category, items], idx) => (
+            <div
+              key={category}
+              className={`tech-cluster-card reveal reveal-delay-${(idx % 4) + 1}`}
+            >
+              <div
+                className="tech-cluster-heading"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                }}
+              >
+                {getIcon(category)}
+                <span>{category}</span>
+              </div>
+              <div className="tech-cluster-items">
+                {items.map((tech) => (
+                  <span key={tech} className="tech-pill">
+                    {tech}
+                  </span>
                 ))}
               </div>
             </div>

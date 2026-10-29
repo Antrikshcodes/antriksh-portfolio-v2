@@ -1,69 +1,110 @@
 import { PERSONAL } from '../data/content'
-import { ExternalLink } from 'lucide-react'
+import { ExternalLink, Terminal, Cpu, Sparkles, Flame } from 'lucide-react'
 
 export default function About() {
   const interests = [
     'Artificial Intelligence',
-    'Software Development',
+    'AI-powered Products',
     'Product Thinking',
     'Creative Coding',
-    'Interactive Web',
+    'Interactive 3D / WebGL',
     'Robotics & Hardware',
-    'UI/UX Design',
-    'Hackathons',
+    'Full-Stack Development',
     'Rapid Prototyping',
+    'Hackathons',
   ]
 
   return (
-    <section id="about" className="about">
+    <section id="about" className="about-section">
       <div className="container">
-        <div className="about-inner">
-          <div className="about-text">
-            <span className="section-label reveal">About</span>
+        <div className="about-bento-grid">
+          <div>
+            <div className="section-badge reveal">WHO I AM</div>
             <h2 className="section-heading reveal reveal-delay-1">
-              Part engineer. Part <span className="serif">why not?</span>
+              PART ENGINEER.{' '}
+              <span style={{ color: 'var(--acid-green)' }}>PART WHY NOT?</span>
             </h2>
-            <p className="reveal reveal-delay-2">
-              I'm a first-year Computer Science and AI student at Newton School of Technology,
-              Rishihood University. I like taking ideas apart, understanding how they work, and
-              rebuilding them into something new.
+
+            <p className="about-main-text reveal reveal-delay-2">
+              I’m <strong>Antriksh</strong> — a first-year B.Tech student in
+              Computer Science and Artificial Intelligence at{' '}
+              <span style={{ color: '#FFFFFF' }}>
+                Newton School of Technology, Rishihood University
+              </span>
+              . I’m a curious builder driven by an obsession with taking complex,
+              intimidating technologies and making them feel effortless and
+              magical.
             </p>
-            <p className="reveal reveal-delay-2">
-              Most of what I build starts with a question — "what if we tried this?" — and ends
-              with a prototype, a demo, or at the very least, a lesson learned. I'm drawn to
-              problems that sit at the intersection of technology, creativity, and real human needs.
+
+            <p className="about-main-text reveal reveal-delay-2">
+              I spend my nights competing in hackathons, experimenting with
+              spatial 3D graphics, building AI workflows, and wiring up sensor
+              telemetry. I don’t believe in waiting until graduation to build things
+              that matter. If an idea keeps me awake, I prototype it.
             </p>
-            <p className="reveal reveal-delay-2">
-              I don't claim to be an expert at anything yet. But I show up, I build things,
-              and I learn fast.
-            </p>
-            <div className="about-interests reveal reveal-delay-3">
-              {interests.map(interest => (
-                <span key={interest} className="about-interest">{interest}</span>
+
+            <div className="about-interest-chips reveal reveal-delay-3">
+              {interests.map((item) => (
+                <span key={item} className="about-chip">
+                  {item}
+                </span>
               ))}
             </div>
           </div>
-          <div className="about-visual">
-            <div className="about-card reveal">
-              <div className="about-card-label">Education</div>
-              <div className="about-card-value">{PERSONAL.education}</div>
+
+          <div className="about-identity-cards">
+            <div className="about-stat-card reveal">
+              <div className="about-stat-label">INSTITUTION</div>
+              <div className="about-stat-value">
+                Newton School of Technology
+              </div>
+              <div
+                className="mono"
+                style={{ fontSize: '0.72rem', color: 'var(--text-tertiary)', marginTop: '0.2rem' }}
+              >
+                Rishihood University · Sonipat, Haryana
+              </div>
             </div>
-            <div className="about-card reveal reveal-delay-1">
-              <div className="about-card-label">Year</div>
-              <div className="about-card-value">{PERSONAL.year}</div>
+
+            <div className="about-stat-card reveal reveal-delay-1">
+              <div className="about-stat-label">DEGREE & SPECIALIZATION</div>
+              <div className="about-stat-value">B.Tech Computer Science</div>
+              <div
+                className="mono"
+                style={{ fontSize: '0.72rem', color: 'var(--electric-cyan)', marginTop: '0.2rem' }}
+              >
+                Specialization in Artificial Intelligence (Year 1)
+              </div>
             </div>
-            <div className="about-card reveal reveal-delay-2">
-              <div className="about-card-label">Focus Areas</div>
-              <div className="about-card-value">AI · Product · Creative Tech</div>
+
+            <div className="about-stat-card reveal reveal-delay-2">
+              <div className="about-stat-label">CORE MINDSET</div>
+              <div className="about-stat-value">
+                Curious Builder & Rapid Prototyper
+              </div>
+              <div
+                className="mono"
+                style={{ fontSize: '0.72rem', color: 'var(--acid-green)', marginTop: '0.2rem' }}
+              >
+                Less talk · More building · Ship often
+              </div>
             </div>
+
             <a
               href={PERSONAL.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="about-github-link reveal reveal-delay-3"
+              className="btn-github-action reveal reveal-delay-3"
+              style={{
+                justifyContent: 'center',
+                padding: '1rem',
+                borderColor: 'rgba(91, 92, 255, 0.3)',
+                background: 'rgba(91, 92, 255, 0.1)',
+                color: 'var(--electric-cyan)',
+              }}
             >
+              <span>EXPLORE GITHUB (@Antrikshcodes)</span>
               <ExternalLink size={14} />
-              View GitHub Profile
             </a>
           </div>
         </div>
