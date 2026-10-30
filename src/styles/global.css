@@ -4,24 +4,30 @@
    ======================================================== */
 
 :root {
-  /* Updated Palette: Dark Aesthetic with Personality */
-  --bg-primary: #14151B;        /* Main background */
-  --bg-secondary: #1B1D25;      /* Secondary background */
-  --bg-surface: #22242E;        /* Elevated cards */
-  --bg-dark: #0F1015;           /* Deepest contrast section / footer */
+  /* Warm Dark Editorial Palette */
+  --bg-primary: #171614;        /* Main background */
+  --bg-secondary: #201E1B;      /* Secondary background */
+  --bg-surface: #28251F;        /* Card background */
+  --bg-dark: #12110F;           /* Deepest contrast section / footer */
 
-  --text-primary: #F2F1EC;      /* Primary off-white text */
-  --text-secondary: #A5A6B0;    /* Secondary muted text */
-  --text-tertiary: #6E707D;     /* Subtle caption text */
-  --text-inverse: #14151B;      /* Inverse dark text for bright buttons */
+  --text-primary: #EAE4D9;      /* Primary text */
+  --text-secondary: #AAA397;    /* Secondary text */
+  --text-tertiary: #756F64;     /* Subtle caption text */
+  --text-inverse: #171614;      /* Inverse dark text for bright buttons */
 
-  --accent-sage: #9AA88F;       /* Muted sage */
-  --soft-lime: #D1E7A0;         /* Soft lime accent */
-  --soft-lime-dark: #D1E7A0;    /* Accent token */
-  --electric-violet: #8880E8;   /* Electric violet */
-  --warm-orange: #E99A72;       /* Muted orange */
-  --border-color: #343641;      /* Charcoal borders */
-  --border-dark: #262833;       /* Deep borders */
+  --muted-olive: #85836A;       /* Muted olive */
+  --terracotta: #B8795E;        /* Terracotta */
+  --dusty-blue: #788A91;        /* Dusty blue */
+  --warm-beige: #C5B69D;        /* Warm beige */
+  --border-color: #39352E;      /* Borders */
+  --border-dark: #27241E;       /* Deep borders */
+
+  /* Aliases for seamless component compatibility */
+  --accent-sage: #85836A;       /* Muted olive */
+  --soft-lime: #C5B69D;         /* Warm beige */
+  --soft-lime-dark: #B8795E;    /* Terracotta */
+  --electric-violet: #788A91;   /* Dusty blue */
+  --warm-orange: #B8795E;       /* Terracotta */
 
   /* Typography */
   --font-heading: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -72,6 +78,17 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 99999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
 img, svg {
@@ -364,8 +381,8 @@ button {
 .scrapbook-ambient-glow {
   position: absolute;
   inset: 12%;
-  background: radial-gradient(circle, rgba(136, 128, 232, 0.15) 0%, rgba(209, 231, 160, 0.08) 50%, transparent 75%);
-  filter: blur(45px);
+  background: radial-gradient(circle, rgba(184, 121, 94, 0.14) 0%, rgba(133, 131, 106, 0.08) 50%, transparent 75%);
+  filter: blur(48px);
   pointer-events: none;
   z-index: 0;
 }
@@ -373,11 +390,11 @@ button {
 /* Base Photo Card (Scrapbook / Polaroid feel) */
 .scrapbook-photo-card {
   position: absolute;
-  background: #1B1D25;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 8px 8px 12px 8px;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65);
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
               box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
               border-color 0.3s ease,
@@ -389,8 +406,8 @@ button {
 .scrapbook-photo-card:hover,
 .scrapbook-photo-card.is-active {
   z-index: 20 !important;
-  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.8), 0 0 25px rgba(209, 231, 160, 0.15);
-  border-color: rgba(209, 231, 160, 0.45);
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.85), 0 0 22px rgba(184, 121, 94, 0.25);
+  border-color: var(--terracotta);
 }
 
 .scrapbook-img-frame {
@@ -398,7 +415,7 @@ button {
   height: calc(100% - 24px);
   border-radius: 7px;
   overflow: hidden;
-  background: #14151B;
+  background: var(--bg-primary);
   position: relative;
 }
 
@@ -419,7 +436,7 @@ button {
   font-size: 0.62rem;
   color: var(--text-secondary);
   text-align: center;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -432,47 +449,62 @@ button {
   pointer-events: none;
   height: 15px;
   border-radius: 1.5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .washi-tape-center-top {
-  width: 70px;
+  width: 72px;
   top: -8px;
   left: 50%;
   transform: translateX(-50%) rotate(-1deg);
-  background: rgba(209, 231, 160, 0.35);
-  border: 1px solid rgba(209, 231, 160, 0.55);
+  background: rgba(197, 182, 157, 0.45);
+  border: 1px solid rgba(197, 182, 157, 0.65);
   backdrop-filter: blur(2px);
 }
 
-.washi-tape-green {
+.washi-tape-terracotta {
   width: 58px;
+  top: -7px;
+  left: 14px;
+  transform: rotate(-7deg);
+  background: rgba(184, 121, 94, 0.45);
+  border: 1px solid rgba(184, 121, 94, 0.65);
+  backdrop-filter: blur(2px);
+}
+
+.washi-tape-olive {
+  width: 62px;
   top: -7px;
   left: 18px;
   transform: rotate(-5deg);
-  background: rgba(154, 168, 143, 0.42);
-  border: 1px solid rgba(154, 168, 143, 0.6);
+  background: rgba(133, 131, 106, 0.48);
+  border: 1px solid rgba(133, 131, 106, 0.7);
   backdrop-filter: blur(2px);
 }
 
-.washi-tape-soft-lime {
-  width: 60px;
+.washi-tape-beige {
+  width: 62px;
   top: -7px;
   right: 18px;
   transform: rotate(6deg);
-  background: rgba(136, 128, 232, 0.38);
-  border: 1px solid rgba(136, 128, 232, 0.55);
+  background: rgba(197, 182, 157, 0.45);
+  border: 1px solid rgba(197, 182, 157, 0.65);
   backdrop-filter: blur(2px);
 }
 
-.washi-tape-top-left {
-  width: 54px;
-  top: -6px;
-  left: 14px;
-  transform: rotate(-7deg);
-  background: rgba(233, 154, 114, 0.38);
-  border: 1px solid rgba(233, 154, 114, 0.55);
-  backdrop-filter: blur(2px);
+.handwritten-annotation {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--warm-beige);
+  letter-spacing: 0.02em;
+}
+
+.handwritten-footer-note {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.96rem;
+  color: var(--terracotta);
 }
 
 /* --- Card 1: Bottom Layer (Secondary 3 — Black-Shirt Portrait) --- */
@@ -535,15 +567,15 @@ button {
   transform: translateX(-48%) rotate(0.8deg);
   z-index: 5;
   padding: 11px 11px 14px 11px;
-  background: #22242E;
-  border: 1.5px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 24px 55px rgba(0, 0, 0, 0.68);
+  background: var(--bg-surface);
+  border: 1.5px solid rgba(234, 228, 217, 0.22);
+  box-shadow: 0 24px 55px rgba(0, 0, 0, 0.72);
 }
 
 .card-main-podium:hover,
 .card-main-podium.is-active {
   transform: translateX(-48%) scale(1.03) rotate(0deg) !important;
-  border-color: var(--soft-lime);
+  border-color: var(--warm-beige);
 }
 
 .card-main-podium .scrapbook-img-frame.main-frame {
@@ -562,12 +594,12 @@ button {
   align-items: center;
   gap: 0.45rem;
   padding: 0.28rem 0.65rem;
-  background: rgba(20, 21, 27, 0.88);
+  background: rgba(23, 22, 20, 0.88);
   backdrop-filter: blur(10px);
   border-radius: 999px;
   font-size: 0.63rem;
-  color: #F2F1EC;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
   letter-spacing: 0.08em;
   z-index: 4;
 }
@@ -576,8 +608,8 @@ button {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--soft-lime);
-  box-shadow: 0 0 8px rgba(209, 231, 160, 0.6);
+  background: var(--terracotta);
+  box-shadow: 0 0 8px rgba(184, 121, 94, 0.65);
 }
 
 .main-card-footer {
@@ -597,13 +629,13 @@ button {
   font-family: var(--font-heading);
   font-size: 0.96rem;
   font-weight: 700;
-  color: #F2F1EC;
+  color: var(--text-primary);
   letter-spacing: -0.01em;
 }
 
 .footer-sub {
   font-size: 0.6rem;
-  color: var(--accent-sage);
+  color: var(--muted-olive);
   letter-spacing: 0.08em;
 }
 
@@ -621,7 +653,7 @@ button {
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--accent-sage);
+  color: var(--muted-olive);
   margin-bottom: 1.4rem;
 }
 
@@ -629,11 +661,92 @@ button {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--soft-lime);
-  box-shadow: 0 0 10px rgba(209, 231, 160, 0.4);
+  background: var(--terracotta);
+  box-shadow: 0 0 10px rgba(184, 121, 94, 0.45);
 }
 
-/* Prominent Name Typography (80-100px desktop) */
+/* ========================================================
+   KINETIC TYPOGRAPHY — PHYSICAL DISINTEGRATION ON HOVER
+   ======================================================== */
+.kinetic-typography-container {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  cursor: pointer;
+  margin-bottom: 1.35rem;
+  user-select: none;
+}
+
+.kinetic-particle-canvas {
+  position: absolute;
+  top: -30px;
+  left: -40px;
+  width: calc(100% + 80px);
+  height: calc(100% + 60px);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.kinetic-word-row {
+  display: flex;
+  align-items: baseline;
+  position: relative;
+  z-index: 2;
+}
+
+.kinetic-letter-glyph {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: clamp(3.8rem, 8.8vw, 6.2rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+              color 0.3s ease,
+              text-shadow 0.3s ease;
+  will-change: transform;
+}
+
+.kinetic-typography-container.is-hovered .kinetic-letter-glyph {
+  color: var(--warm-beige);
+  text-shadow: 0 4px 18px rgba(184, 121, 94, 0.25);
+}
+
+.kinetic-period-accent {
+  font-family: var(--font-heading);
+  font-size: clamp(3.8rem, 8.8vw, 6.2rem);
+  font-weight: 800;
+  color: var(--terracotta);
+  line-height: 0.95;
+  display: inline-block;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.kinetic-interaction-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.65rem;
+  font-size: 0.64rem;
+  color: var(--muted-olive);
+  letter-spacing: 0.16em;
+  opacity: 0.75;
+  transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+.kinetic-typography-container:hover .kinetic-interaction-hint {
+  opacity: 1;
+  color: var(--terracotta);
+}
+
+.hint-arrow {
+  color: var(--warm-beige);
+  font-size: 0.78rem;
+}
+
+/* Prominent Name Typography (Fallback / Standard) */
 .hero-name-wrapper {
   display: inline-flex;
   align-items: baseline;
@@ -901,20 +1014,25 @@ button {
 
 .token-offwhite { color: var(--text-primary); }
 .token-charcoal { color: var(--text-primary); }
-.token-sage { color: var(--accent-sage); }
-.token-violet { color: var(--electric-violet); }
-.token-lime { color: var(--soft-lime); }
-.token-orange { color: var(--warm-orange); }
+.token-olive { color: var(--muted-olive); }
+.token-beige { color: var(--warm-beige); }
+.token-terracotta { color: var(--terracotta); }
+.token-blue { color: var(--dusty-blue); }
+.token-sage { color: var(--muted-olive); }
+.token-violet { color: var(--dusty-blue); }
+.token-lime { color: var(--warm-beige); }
+.token-orange { color: var(--terracotta); }
 
 .marquee-glyph {
   font-size: 0.95rem;
-  color: var(--accent-sage);
+  color: var(--muted-olive);
   padding: 0 clamp(1.2rem, 2.2vw, 2.2rem);
   user-select: none;
 }
 
-.marquee-glyph--violet {
-  color: var(--electric-violet);
+.marquee-glyph--violet,
+.marquee-glyph--terracotta {
+  color: var(--terracotta);
 }
 
 @media (max-width: 768px) {
@@ -1111,7 +1229,7 @@ button {
 }
 
 .browser-mockup-header {
-  background: #1B1D25;
+  background: var(--bg-secondary);
   padding: 0.6rem 0.95rem;
   display: flex;
   align-items: center;
@@ -1149,7 +1267,7 @@ button {
   aspect-ratio: 16 / 10;
   overflow: hidden;
   position: relative;
-  background: #14151B;
+  background: var(--bg-primary);
 }
 
 .browser-mockup-screen img {
@@ -1268,8 +1386,8 @@ button {
   width: 100%;
   height: 360px;
   position: relative;
-  background: radial-gradient(circle at center, rgba(136, 128, 232, 0.07) 0%, transparent 70%),
-              #14151B;
+  background: radial-gradient(circle at center, rgba(184, 121, 94, 0.08) 0%, transparent 70%),
+              var(--bg-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1388,7 +1506,7 @@ button {
 
 /* Radar Telemetry Box */
 .radar-telemetry-box {
-  background: #14151B;
+  background: var(--bg-primary);
   border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 1.5rem;
@@ -1495,7 +1613,7 @@ button {
 
 /* Hardware Specs Box */
 .hardware-specs-box {
-  background: #14151B;
+  background: var(--bg-primary);
   border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 1.5rem;
@@ -1936,7 +2054,7 @@ button {
 }
 
 .inspiration-influence-box {
-  background: #14151B;
+  background: var(--bg-primary);
   border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 0.85rem 1rem;
@@ -2415,8 +2533,8 @@ button {
 
 /* Mechanical Keypad Deck */
 .mechanical-keypad-case {
-  background: #14151B;
-  border: 1.5px solid #2A2D3A;
+  background: var(--bg-primary);
+  border: 1.5px solid var(--border-color);
   border-radius: 14px;
   padding: 1.6rem;
   display: flex;
@@ -2572,7 +2690,7 @@ button {
 .inspector-key-badge {
   font-size: 0.72rem;
   color: var(--text-secondary);
-  background: #14151B;
+  background: var(--bg-primary);
   padding: 0.25rem 0.65rem;
   border-radius: 6px;
   border: 1px solid var(--border-color);
@@ -2595,7 +2713,7 @@ button {
 }
 
 .inspector-projects-box {
-  background: #14151B;
+  background: var(--bg-primary);
   border: 1px solid var(--border-color);
   border-radius: 10px;
   padding: 1.15rem;

@@ -5,7 +5,7 @@ export default function HeroCollage() {
 
   return (
     <div className="scrapbook-collage-wrapper" aria-label="Antriksh personal photo collage">
-      {/* Background Ambience / Subtle Glow */}
+      {/* Background Ambience / Subtle Warm Glow */}
       <div className="scrapbook-ambient-glow" aria-hidden="true" />
 
       {/* Layer 1 (Bottom): Secondary Photo 3 — Black-Shirt Portrait */}
@@ -16,7 +16,7 @@ export default function HeroCollage() {
         onMouseEnter={() => setActiveCard('black-shirt')}
         onMouseLeave={() => setActiveCard(null)}
       >
-        <div className="washi-tape washi-tape-top-left" />
+        <div className="washi-tape washi-tape-terracotta" />
         <div className="scrapbook-img-frame">
           <img
             src="/images/profile-black-shirt.jpg"
@@ -26,7 +26,7 @@ export default function HeroCollage() {
           />
         </div>
         <div className="scrapbook-card-caption">
-          <span className="mono">PORTRAIT · 2026</span>
+          <span className="handwritten-annotation">late nights building // 2026</span>
         </div>
       </div>
 
@@ -38,7 +38,7 @@ export default function HeroCollage() {
         onMouseEnter={() => setActiveCard('fairy-lights')}
         onMouseLeave={() => setActiveCard(null)}
       >
-        <div className="washi-tape washi-tape-green" />
+        <div className="washi-tape washi-tape-olive" />
         <div className="scrapbook-img-frame">
           <img
             src="/images/fairy-lights-green.jpg"
@@ -48,7 +48,7 @@ export default function HeroCollage() {
           />
         </div>
         <div className="scrapbook-card-caption">
-          <span className="mono">CAMPUS VIBES ✳</span>
+          <span className="handwritten-annotation">campus room vibes · NST</span>
         </div>
       </div>
 
@@ -60,7 +60,7 @@ export default function HeroCollage() {
         onMouseEnter={() => setActiveCard('plaid-shirt')}
         onMouseLeave={() => setActiveCard(null)}
       >
-        <div className="washi-tape washi-tape-soft-lime" />
+        <div className="washi-tape washi-tape-beige" />
         <div className="scrapbook-img-frame">
           <img
             src="/images/plaid-shirt-mirror.jpg"
@@ -70,11 +70,11 @@ export default function HeroCollage() {
           />
         </div>
         <div className="scrapbook-card-caption">
-          <span className="mono">DEV DAYS ✦</span>
+          <span className="handwritten-annotation">hackathon prep & coffee ✦</span>
         </div>
       </div>
 
-      {/* Layer 4 (Dominant Foreground): MAIN PHOTO — White Polo Shirt Leaning on Podium */}
+      {/* Layer 4 (Dominant Foreground): MAIN PHOTO — White Polo Leaning on Podium */}
       <div
         className={`scrapbook-photo-card card-main-podium ${
           activeCard === 'main-podium' ? 'is-active' : ''
@@ -82,7 +82,7 @@ export default function HeroCollage() {
         onMouseEnter={() => setActiveCard('main-podium')}
         onMouseLeave={() => setActiveCard(null)}
       >
-        {/* Editorial Washi Pin */}
+        {/* Editorial Washi Pin in Terracotta / Beige */}
         <div className="washi-tape washi-tape-center-top" />
 
         <div className="scrapbook-img-frame main-frame">
@@ -102,12 +102,11 @@ export default function HeroCollage() {
         <div className="main-card-footer">
           <div className="footer-left">
             <span className="footer-name">Antriksh</span>
-            <span className="footer-sub mono">CREATIVE BUILDER</span>
+            <span className="footer-sub mono">BUILDER & EXPLORER</span>
           </div>
-          <span className="footer-year mono">2026</span>
+          <span className="handwritten-footer-note">Rishihood '26</span>
         </div>
       </div>
     </div>
   )
 }
-

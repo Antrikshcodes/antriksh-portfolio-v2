@@ -22,17 +22,19 @@ export default function TechStackMarquee() {
               aria-hidden={copyIdx > 0}
             >
               {MARQUEE_ROW_ONE.map((tech, i) => {
-                // Selectively accent React, Next.js, Three.js with sage or soft lime
-                const isSage = tech === 'REACT' || tech === 'THREE.JS'
-                const isLime = tech === 'NEXT.JS' || tech === 'FRAMER MOTION'
+                const isOlive = tech === 'REACT' || tech === 'THREE.JS'
+                const isBeige = tech === 'NEXT.JS' || tech === 'FRAMER MOTION'
+                const isTerracotta = tech === 'PYTHON'
                 return (
                   <span key={`${tech}-${i}`} className="marquee-unit">
                     <span
                       className={`marquee-token ${
-                        isSage
-                          ? 'token-sage'
-                          : isLime
-                          ? 'token-lime'
+                        isOlive
+                          ? 'token-olive'
+                          : isBeige
+                          ? 'token-beige'
+                          : isTerracotta
+                          ? 'token-terracotta'
                           : 'token-offwhite'
                       }`}
                     >
@@ -57,26 +59,28 @@ export default function TechStackMarquee() {
               aria-hidden={copyIdx > 0}
             >
               {MARQUEE_ROW_TWO.map((tech, i) => {
-                // Selectively accent AI/ML, Creative Coding, Robotics
-                const isLime = tech === 'AI / ML'
-                const isSage = tech === 'CREATIVE CODING' || tech === 'TAILWIND CSS'
-                const isOrange = tech === 'ROBOTICS'
+                const isBeige = tech === 'AI / ML'
+                const isOlive = tech === 'CREATIVE CODING' || tech === 'TAILWIND CSS'
+                const isTerracotta = tech === 'ROBOTICS'
+                const isBlue = tech === 'SYSTEM ARCHITECTURE'
                 return (
                   <span key={`${tech}-${i}`} className="marquee-unit">
                     <span
                       className={`marquee-token ${
-                        isLime
-                          ? 'token-lime'
-                          : isSage
-                          ? 'token-sage'
-                          : isOrange
-                          ? 'token-orange'
+                        isBeige
+                          ? 'token-beige'
+                          : isOlive
+                          ? 'token-olive'
+                          : isTerracotta
+                          ? 'token-terracotta'
+                          : isBlue
+                          ? 'token-blue'
                           : 'token-offwhite'
                       }`}
                     >
                       {tech}
                     </span>
-                    <span className="marquee-glyph marquee-glyph--violet">{SEPARATOR}</span>
+                    <span className="marquee-glyph marquee-glyph--terracotta">{SEPARATOR}</span>
                   </span>
                 )
               })}

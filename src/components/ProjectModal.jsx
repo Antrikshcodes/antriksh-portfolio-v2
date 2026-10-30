@@ -28,9 +28,9 @@ export default function ProjectModal({ project, onClose }) {
         position: 'fixed',
         inset: 0,
         zIndex: 10000,
-        backgroundColor: 'rgba(15, 16, 21, 0.78)',
-        backdropFilter: 'blur(12px)',
-        WebkitBackdropFilter: 'blur(12px)',
+        backgroundColor: 'rgba(23, 22, 20, 0.82)',
+        backdropFilter: 'blur(14px)',
+        WebkitBackdropFilter: 'blur(14px)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -43,10 +43,10 @@ export default function ProjectModal({ project, onClose }) {
     >
       <div
         style={{
-          backgroundColor: '#1B1D25',
-          border: '1px solid #343641',
+          backgroundColor: '#201E1B',
+          border: '1px solid #39352E',
           borderRadius: 20,
-          boxShadow: '0 24px 60px rgba(0, 0, 0, 0.5)',
+          boxShadow: '0 24px 60px rgba(0, 0, 0, 0.65)',
           maxWidth: 820,
           width: '100%',
           maxHeight: '88vh',
@@ -65,12 +65,12 @@ export default function ProjectModal({ project, onClose }) {
             width: 36,
             height: 36,
             borderRadius: '50%',
-            backgroundColor: '#22242E',
-            border: '1px solid #343641',
+            backgroundColor: '#28251F',
+            border: '1px solid #39352E',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: '#F2F1EC',
+            color: '#EAE4D9',
             cursor: 'pointer',
             transition: 'all 0.2s ease',
           }}
@@ -83,9 +83,10 @@ export default function ProjectModal({ project, onClose }) {
             className="mono"
             style={{
               fontSize: '0.72rem',
-              color: 'var(--accent-sage)',
+              color: 'var(--muted-olive)',
               marginBottom: '0.4rem',
               textTransform: 'uppercase',
+              letterSpacing: '0.12em',
             }}
           >
             {project.number} · {project.category}
@@ -96,7 +97,7 @@ export default function ProjectModal({ project, onClose }) {
               fontSize: '2.4rem',
               fontWeight: 700,
               letterSpacing: '-0.03em',
-              color: '#F2F1EC',
+              color: '#EAE4D9',
               marginBottom: '1rem',
             }}
           >
@@ -105,7 +106,7 @@ export default function ProjectModal({ project, onClose }) {
           <p
             style={{
               fontSize: '1.05rem',
-              color: '#A5A6B0',
+              color: '#AAA397',
               lineHeight: 1.7,
             }}
           >
@@ -118,7 +119,7 @@ export default function ProjectModal({ project, onClose }) {
             className="mono"
             style={{
               fontSize: '0.68rem',
-              color: 'var(--accent-sage)',
+              color: 'var(--muted-olive)',
               textTransform: 'uppercase',
               letterSpacing: '0.12em',
               marginBottom: '0.6rem',
@@ -126,7 +127,7 @@ export default function ProjectModal({ project, onClose }) {
           >
             Overview & Context
           </div>
-          <p style={{ color: '#F2F1EC', lineHeight: 1.8 }}>{project.description}</p>
+          <p style={{ color: '#EAE4D9', lineHeight: 1.8 }}>{project.description}</p>
         </div>
 
         {project.features && (
@@ -135,7 +136,7 @@ export default function ProjectModal({ project, onClose }) {
               className="mono"
               style={{
                 fontSize: '0.68rem',
-                color: 'var(--accent-sage)',
+                color: 'var(--muted-olive)',
                 textTransform: 'uppercase',
                 letterSpacing: '0.12em',
                 marginBottom: '0.75rem',
@@ -155,13 +156,13 @@ export default function ProjectModal({ project, onClose }) {
                   key={i}
                   style={{
                     fontSize: '0.92rem',
-                    color: '#A5A6B0',
+                    color: '#AAA397',
                     display: 'flex',
                     alignItems: 'center',
                     gap: '0.5rem',
                   }}
                 >
-                  <span style={{ color: 'var(--soft-lime)' }}>—</span>
+                  <span style={{ color: 'var(--terracotta)' }}>—</span>
                   <span>{feat}</span>
                 </div>
               ))}
@@ -174,7 +175,7 @@ export default function ProjectModal({ project, onClose }) {
             className="mono"
             style={{
               fontSize: '0.68rem',
-              color: 'var(--accent-sage)',
+              color: 'var(--muted-olive)',
               textTransform: 'uppercase',
               letterSpacing: '0.12em',
               marginBottom: '0.75rem',
@@ -191,9 +192,9 @@ export default function ProjectModal({ project, onClose }) {
                   fontSize: '0.72rem',
                   padding: '0.35rem 0.8rem',
                   borderRadius: 999,
-                  backgroundColor: '#14151B',
-                  border: '1px solid #343641',
-                  color: '#A5A6B0',
+                  backgroundColor: '#171614',
+                  border: '1px solid #39352E',
+                  color: '#AAA397',
                 }}
               >
                 {t}

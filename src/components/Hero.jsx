@@ -1,5 +1,6 @@
 import { PERSONAL } from '../data/content'
 import InteractiveParticles from './InteractiveParticles'
+import KineticTypography from './KineticTypography'
 import HeroCollage from './HeroCollage'
 import { ArrowDown, ArrowUpRight } from 'lucide-react'
 
@@ -16,12 +17,12 @@ export default function Hero() {
 
   return (
     <section id="top" className="hero-editorial-playground">
-      {/* Interactive Cursor-Reactive Particle Network */}
+      {/* Interactive Cursor-Reactive Particle Network (Warm Editorial Palette) */}
       <InteractiveParticles />
 
       <div className="container hero-content-container">
         <div className="hero-split-grid">
-          {/* Left Column: Personal Typography, Headline, Bio & CTAs */}
+          {/* Left Column: Kinetic Disintegration Typography, Headline & Story */}
           <div className="hero-text-col">
             {/* Small Introductory Meta Label */}
             <div className="hero-kicker-meta reveal">
@@ -29,10 +30,9 @@ export default function Hero() {
               <span>{PERSONAL.role}</span>
             </div>
 
-            {/* Prominent Personal Name */}
-            <div className="hero-name-wrapper reveal reveal-delay-1">
-              <span className="hero-name-display">{PERSONAL.nameUpper || 'ANTRIKSH'}</span>
-              <span className="hero-name-period">.</span>
+            {/* Interactive Physical Break-Apart Typography for ANTRIKSH */}
+            <div className="hero-kinetic-wrapper reveal reveal-delay-1">
+              <KineticTypography />
             </div>
 
             {/* Main Headline */}

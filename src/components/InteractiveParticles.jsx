@@ -20,29 +20,28 @@ export default function InteractiveParticles() {
       typeof window !== 'undefined' &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-    // Mouse coordinates relative to hero container
     const mouse = {
       x: -1000,
       y: -1000,
-      radius: 150,
+      radius: 140,
       active: false,
     }
 
-    // Palette matching the dark aesthetic
+    // Warm, natural editorial palette (NO neon)
     const colors = [
-      '#9AA88F', // Muted sage
-      '#A5A6B0', // Soft grey
-      '#8880E8', // Low-opacity electric violet
-      '#D1E7A0', // Subtle soft lime accent
-      '#565A6E', // Muted slate for depth
+      '#85836A', // Muted olive
+      '#B8795E', // Terracotta
+      '#788A91', // Dusty blue
+      '#C5B69D', // Warm beige
+      '#AAA397', // Secondary warm stone
     ]
 
     const getParticleConfig = (w) => {
       const isMobile = w < 768
       return {
-        count: isMobile ? 65 : 150, // 1.5 - 2x density upgrade
-        connectDist: isMobile ? 75 : 115,
-        mouseRadius: isMobile ? 110 : 150,
+        count: isMobile ? 55 : 125,
+        connectDist: isMobile ? 70 : 105,
+        mouseRadius: isMobile ? 100 : 140,
       }
     }
 
@@ -56,35 +55,31 @@ export default function InteractiveParticles() {
       reset() {
         this.x = Math.random() * width
         this.y = Math.random() * height
-        this.vx = (Math.random() - 0.5) * 0.42
-        this.vy = (Math.random() - 0.5) * 0.42
+        this.vx = (Math.random() - 0.5) * 0.38
+        this.vy = (Math.random() - 0.5) * 0.38
 
-        // Depth variance: mostly small dots, ~12% slightly larger/brighter
         const isAccent = Math.random() > 0.88
         this.radius = isAccent
-          ? Math.random() * 0.8 + 2.5 // 2.5 - 3.3px
-          : Math.random() * 0.9 + 1.2 // 1.2 - 2.1px
+          ? Math.random() * 0.7 + 2.2 // 2.2 - 2.9px
+          : Math.random() * 0.8 + 1.1 // 1.1 - 1.9px
 
         this.color = colors[Math.floor(Math.random() * colors.length)]
         this.baseOpacity = isAccent
-          ? Math.random() * 0.25 + 0.5
-          : Math.random() * 0.3 + 0.22
+          ? Math.random() * 0.2 + 0.38
+          : Math.random() * 0.22 + 0.18
         this.currentOpacity = this.baseOpacity
       }
 
       update() {
-        // Natural organic drift
         this.x += this.vx
         this.y += this.vy
 
-        // Wrap or gentle bounce at boundaries
         if (this.x < -10) this.x = width + 10
         else if (this.x > width + 10) this.x = -10
 
         if (this.y < -10) this.y = height + 10
         else if (this.y > height + 10) this.y = -10
 
-        // Cursor reaction
         if (mouse.active) {
           const dx = mouse.x - this.x
           const dy = mouse.y - this.y
@@ -92,13 +87,12 @@ export default function InteractiveParticles() {
 
           if (distance < config.mouseRadius && distance > 0) {
             const force = (config.mouseRadius - distance) / config.mouseRadius
-            const directionX = (dx / distance) * force * 14
-            const directionY = (dy / distance) * force * 14
-            this.x -= directionX * 0.22
-            this.y -= directionY * 0.22
+            const directionX = (dx / distance) * force * 12
+            const directionY = (dy / distance) * force * 12
+            this.x -= directionX * 0.2
+            this.y -= directionY * 0.2
 
-            // Temporary subtle highlight near cursor without neon glow
-            this.currentOpacity = Math.min(0.85, this.baseOpacity + force * 0.35)
+            this.currentOpacity = Math.min(0.7, this.baseOpacity + force * 0.25)
           } else {
             this.currentOpacity += (this.baseOpacity - this.currentOpacity) * 0.05
           }
@@ -120,12 +114,10 @@ export default function InteractiveParticles() {
 
     let particles = Array.from({ length: config.count }, () => new Particle())
 
-    // Draw connections between nearby particles & cursor
     function drawNetwork() {
       const pLen = particles.length
       const maxDist = config.connectDist
 
-      // Particle-to-particle connecting lines
       for (let i = 0; i < pLen; i++) {
         for (let j = i + 1; j < pLen; j++) {
           const dx = particles[i].x - particles[j].x
@@ -133,11 +125,11 @@ export default function InteractiveParticles() {
           const dist = Math.hypot(dx, dy)
 
           if (dist < maxDist) {
-            const alpha = (1 - dist / maxDist) * 0.14
+            const alpha = (1 - dist / maxDist) * 0.12
             ctx.save()
-            ctx.strokeStyle = '#343641' // subtle charcoal border tone
+            ctx.strokeStyle = '#39352E' // warm bistre border tone
             ctx.globalAlpha = alpha
-            ctx.lineWidth = 0.75
+            ctx.lineWidth = 0.7
             ctx.beginPath()
             ctx.moveTo(particles[i].x, particles[i].y)
             ctx.lineTo(particles[j].x, particles[j].y)
@@ -146,18 +138,17 @@ export default function InteractiveParticles() {
           }
         }
 
-        // Temporary interactive connection lines to cursor
         if (mouse.active) {
           const mdx = mouse.x - particles[i].x
           const mdy = mouse.y - particles[i].y
           const mdist = Math.hypot(mdx, mdy)
 
           if (mdist < config.mouseRadius) {
-            const mAlpha = (1 - mdist / config.mouseRadius) * 0.24
+            const mAlpha = (1 - mdist / config.mouseRadius) * 0.18
             ctx.save()
-            ctx.strokeStyle = '#8880E8' // soft violet link
+            ctx.strokeStyle = '#C5B69D' // warm beige delicate thread
             ctx.globalAlpha = mAlpha
-            ctx.lineWidth = 0.85
+            ctx.lineWidth = 0.75
             ctx.beginPath()
             ctx.moveTo(particles[i].x, particles[i].y)
             ctx.lineTo(mouse.x, mouse.y)
@@ -185,7 +176,6 @@ export default function InteractiveParticles() {
 
     renderLoop()
 
-    // Mouse tracking handlers
     const handleMouseMove = (e) => {
       const rect = canvas.getBoundingClientRect()
       mouse.x = e.clientX - rect.left
