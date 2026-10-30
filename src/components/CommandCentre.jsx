@@ -83,15 +83,15 @@ Bio:      "I turn curious ideas into digital experiences. I enjoy turning intere
       }, 350)
       return {
         type: 'output',
-        content: `TIMELINE MILESTONES:
-  • 2022: Started learning programming (Python & C++)
-  • 2023: Began building personal web experiments
-  • 2024: Joined Newton School of Technology (Rishihood University)
-  • 2025: CoNSTruct 2.0 (Blindspot AI)
-  • 2025: Fetch-A-Thon 3.0 (OrderShield AI — Top 20 Placement)
-  • 2025: HackO’Ween (CONVERGE)
-  • 2024: IIT Roorkee E-Summit
+        content: `TIMELINE MILESTONES (CHRONOLOGICAL):
+  • 2023: Started Learning Scratch (First Steps)
+  • 2024: Started Learning Programming · IIT Roorkee E-Summit
+  • 2025: Started Building Personal Projects
+  • 2026: Joined Newton School of Technology (Rishihood University)
+  • 2026: Fetch-A-Thon 3.0 (OrderShield AI — Top 20)
+  • 2026: HackO’Ween (CONVERGE at ALTA School of Technology)
   • 2026: IIM Product Challenge
+  • 2026: CoNSTruct 2.0 (Blindspot AI — Replit x NST)
 
 ↳ Scrolling to timeline...`,
       }
@@ -326,3 +326,4 @@ export default function CommandCentre() {
     </section>
   )
 }
+

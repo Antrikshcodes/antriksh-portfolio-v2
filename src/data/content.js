@@ -379,75 +379,106 @@ export const SKILLS_CATEGORIES = {
   ROBOTICS: ['Arduino', 'ESP32', 'Electronics & Sensor Experiments'],
 }
 
-// Building Journey Milestones
+// Building Journey Milestones (Chronological Order)
 export const BUILDING_JOURNEY = [
   {
-    year: '2022',
-    title: 'Started Learning Programming',
-    organization: 'Self-Directed Exploration',
-    description:
-      'Wrote my first lines of code in Python and C++, studying logical problem solving, data structures, and building small command-line utilities.',
-    badge: 'Foundation',
-  },
-  {
     year: '2023',
+    phase: 'First Steps',
+    title: 'Started Learning Scratch',
+    organization: 'First Steps',
+    points: [
+      'Began exploring programming through Scratch.',
+      'Developed an early interest in logic, creativity and building things with code.',
+    ],
+    badge: 'First Steps',
+    yearColor: '#85836A',
+  },
+  {
+    year: '2024',
+    phase: 'Exploring Technology',
+    title: 'Started Learning Programming',
+    organization: 'Exploring Technology',
+    points: [
+      'Began my programming journey.',
+      'Participated in IIT Roorkee E-Summit 2024.',
+    ],
+    badge: 'Foundation',
+    yearColor: '#788A91',
+  },
+  {
+    year: '2025',
+    phase: 'Building',
     title: 'Started Building Personal Projects',
-    organization: 'Web & Interface Experiments',
-    description:
-      'Transitioned into web development; mastered modern JavaScript, HTML, and CSS while building responsive web tools, small games, and interactive experiments.',
+    organization: 'Building',
+    points: [
+      'Began turning my ideas into actual projects.',
+      'Started experimenting with software development and technology.',
+    ],
     badge: 'Projects',
-  },
-  {
-    year: '2024',
-    title: 'Joined Newton School of Technology',
-    organization: 'Rishihood University',
-    description:
-      'Began B.Tech in Computer Science & Artificial Intelligence; started collaborating with fellow builders on production software, embedded hardware, and AI systems.',
-    badge: 'Academic Milestone',
-  },
-  {
-    year: '2025',
-    title: 'CoNSTruct 2.0 — Blindspot AI',
-    organization: 'Newton School of Technology',
-    description:
-      'Participated in CoNSTruct 2.0 hackathon; developed Blindspot AI, exploring computer vision bounding box tracking and low-latency driver risk awareness.',
-    project: 'Blindspot AI',
-    badge: 'Hackathon',
-  },
-  {
-    year: '2025',
-    title: 'Fetch-A-Thon 3.0 — OrderShield AI',
-    organization: 'Fetch.ai',
-    description:
-      'Built OrderShield AI during Fetch-A-Thon 3.0; developed automated business document verification and multi-factor supplier trust scoring, placing in the Top 20.',
-    project: 'OrderShield AI',
-    badge: 'Top 20 Placement',
-    isSpecial: true,
-  },
-  {
-    year: '2025',
-    title: "HackO’Ween — CONVERGE",
-    organization: 'ALTA School of Technology',
-    description:
-      'Collaborated on CONVERGE during HackO’Ween; engineered urban issue duplicate clustering, spatial correlation, and photographic verification workflows.',
-    project: 'CONVERGE',
-    badge: 'Hackathon',
-  },
-  {
-    year: '2024',
-    title: 'IIT Roorkee E-Summit',
-    organization: 'IIT Roorkee',
-    description:
-      'Participated in entrepreneurship and product challenges at IIT Roorkee, presenting product ideas and discussing digital innovation with student founders.',
-    badge: 'Participant',
+    yearColor: '#C5B69D',
   },
   {
     year: '2026',
+    phase: 'University & Building in Public',
+    title: 'Joined Newton School of Technology',
+    organization: 'Rishihood University',
+    points: [
+      'Started my B.Tech journey in Computer Science and Artificial Intelligence at Rishihood University.',
+    ],
+    badge: 'University Milestone',
+    yearColor: '#B8795E',
+  },
+  {
+    year: '2026',
+    phase: 'University & Building in Public',
+    title: 'Fetch-A-Thon 3.0',
+    organization: 'Fetch.ai',
+    points: [
+      'Built OrderShield AI.',
+      'Participated in the hackathon.',
+      'Achieved Top 20.',
+    ],
+    project: 'OrderShield AI',
+    badge: 'Top 20 Placement',
+    isSpecial: true,
+    yearColor: '#B8795E',
+  },
+  {
+    year: '2026',
+    phase: 'University & Building in Public',
+    title: "HackO’Ween",
+    organization: 'ALTA School of Technology',
+    points: [
+      'Built CONVERGE, a smart city project.',
+      'Participated at ALTA School of Technology.',
+    ],
+    project: 'CONVERGE',
+    badge: 'Hackathon',
+    yearColor: '#B8795E',
+  },
+  {
+    year: '2026',
+    phase: 'University & Building in Public',
     title: 'IIM Product Challenge',
     organization: 'IIM Collegiate Event',
-    description:
-      'Participated in a comprehensive product management challenge analyzing user acquisition, feature validation, and scalable product mechanics.',
+    points: [
+      'Participated in the product challenge.',
+    ],
     badge: 'Product Challenge',
+    yearColor: '#B8795E',
+  },
+  {
+    year: '2026',
+    phase: 'University & Building in Public',
+    title: 'CoNSTruct 2.0',
+    organization: 'Replit x NST',
+    points: [
+      'Participated in the Replit x NST hackathon.',
+      'Worked on Blindspot AI.',
+    ],
+    project: 'Blindspot AI',
+    badge: 'Replit x NST',
+    yearColor: '#B8795E',
   },
 ]
 

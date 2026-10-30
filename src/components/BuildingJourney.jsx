@@ -1,5 +1,5 @@
 import { BUILDING_JOURNEY } from '../data/content'
-import { Calendar, Award, MapPin, ArrowUpRight, GitCommit, Sparkles } from 'lucide-react'
+import { Award, ArrowUpRight } from 'lucide-react'
 
 export default function BuildingJourney() {
   return (
@@ -12,8 +12,8 @@ export default function BuildingJourney() {
             My Journey <span className="serif">So Far.</span>
           </h2>
           <p className="section-subtext reveal reveal-delay-2">
-            From writing my first lines of code to building full-stack platforms, computer vision prototypes,
-            and participating in high-intensity collegiate hackathons.
+            An accurate chronological record of my path through technology, from first steps in programming
+            to university studies and collegiate hackathons.
           </p>
         </div>
 
@@ -24,13 +24,24 @@ export default function BuildingJourney() {
               key={`${item.title}-${idx}`}
               className={`journey-timeline-card ${
                 item.isSpecial ? 'journey-timeline-card--highlight' : ''
-              } reveal reveal-delay-${Math.min(idx % 3 + 1, 3)}`}
+              } reveal reveal-delay-${Math.min((idx % 3) + 1, 3)}`}
             >
               {/* Year Column & Milestone Marker */}
               <div className="timeline-marker-col">
-                <span className="timeline-year-text mono">{item.year}</span>
-                <div className="timeline-node">
-                  <span className="node-dot" />
+                <span
+                  className="timeline-year-text mono"
+                  style={{ color: item.yearColor || 'var(--terracotta)' }}
+                >
+                  {item.year}
+                </span>
+                <div
+                  className="timeline-node"
+                  style={{ borderColor: item.yearColor || 'var(--border-color)' }}
+                >
+                  <span
+                    className="node-dot"
+                    style={{ backgroundColor: item.yearColor || 'var(--terracotta)' }}
+                  />
                 </div>
               </div>
 
@@ -38,7 +49,11 @@ export default function BuildingJourney() {
               <div className="timeline-content-card">
                 <div className="timeline-card-header">
                   <div>
-                    <span className="timeline-org-kicker mono">{item.organization}</span>
+                    {item.phase && (
+                      <span className="timeline-org-kicker mono">
+                        {item.year} — {item.phase}
+                      </span>
+                    )}
                     <h3 className="timeline-milestone-title">{item.title}</h3>
                   </div>
 
@@ -52,7 +67,24 @@ export default function BuildingJourney() {
                   </span>
                 </div>
 
-                <p className="timeline-milestone-desc">{item.description}</p>
+                {/* Bullet Points List */}
+                {item.points && (
+                  <ul className="timeline-points-list">
+                    {item.points.map((point, pIdx) => (
+                      <li key={pIdx} className="timeline-point-item">
+                        <span
+                          className="point-bullet"
+                          style={{ backgroundColor: item.yearColor || 'var(--muted-olive)' }}
+                        />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                {item.description && !item.points && (
+                  <p className="timeline-milestone-desc">{item.description}</p>
+                )}
 
                 {item.project && (
                   <div className="timeline-project-attachment">
