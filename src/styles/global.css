@@ -3519,6 +3519,471 @@ button {
 }
 
 /* ========================================================
+   LIVE ROBOTICS SIMULATOR — EXPERIMENTAL ARENA
+   ======================================================== */
+.robotics-simulator-wrapper {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.55);
+  margin-bottom: 3.5rem;
+}
+
+.sim-top-bar {
+  background: var(--bg-surface);
+  padding: 0.95rem 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-color);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.sim-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.sim-live-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.72rem;
+  color: var(--text-primary);
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+.sim-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #27C93F;
+  box-shadow: 0 0 8px rgba(39, 201, 63, 0.7);
+  transition: all 0.2s ease;
+}
+
+.sim-dot.alert {
+  background: var(--terracotta);
+  box-shadow: 0 0 10px rgba(184, 121, 94, 0.8);
+}
+
+.sim-sub {
+  font-size: 0.62rem;
+  color: var(--muted-olive);
+  letter-spacing: 0.12em;
+}
+
+.sim-controls-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sim-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.75rem;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.sim-action-btn:hover {
+  border-color: var(--warm-beige);
+  color: var(--text-primary);
+}
+
+.sim-action-btn.is-active {
+  background: rgba(184, 121, 94, 0.15);
+  border-color: var(--terracotta);
+  color: var(--warm-beige);
+}
+
+.sim-viewport-box {
+  width: 100%;
+  position: relative;
+  background: #12110F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  overflow: hidden;
+}
+
+.sim-canvas {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  cursor: grab;
+  background: #171614;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+.sim-canvas:active {
+  cursor: grabbing;
+}
+
+.sim-canvas-overlay-hint {
+  position: absolute;
+  bottom: 1.85rem;
+  font-size: 0.62rem;
+  color: var(--muted-olive);
+  letter-spacing: 0.14em;
+  pointer-events: none;
+  background: rgba(23, 22, 20, 0.75);
+  padding: 0.2rem 0.65rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+
+.sim-hud-footer {
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-color);
+  padding: 1rem 1.4rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 1.25rem;
+}
+
+.hud-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.hud-metric-label {
+  font-size: 0.62rem;
+  color: var(--text-tertiary);
+  letter-spacing: 0.1em;
+}
+
+.hud-metric-value {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+}
+
+.hud-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+/* ========================================================
+   SYSTEM ARCHITECTURE FLOW EXPLORER
+   ======================================================== */
+.arch-diagram-wrapper {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 1.75rem;
+}
+
+.arch-diagram-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.arch-diagram-kicker {
+  font-size: 0.64rem;
+  color: var(--muted-olive);
+  letter-spacing: 0.15em;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.arch-diagram-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.arch-protocol-tag {
+  font-size: 0.68rem;
+  color: var(--text-tertiary);
+  letter-spacing: 0.06em;
+}
+
+.arch-simulate-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.95rem;
+  border-radius: 999px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  color: var(--warm-beige);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.arch-simulate-btn:hover:not(:disabled) {
+  border-color: var(--warm-beige);
+  background: var(--bg-secondary);
+}
+
+.arch-simulate-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.spin-icon {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+.arch-nodes-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.arch-node-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.arch-node-button {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  text-align: left;
+  min-width: 135px;
+  cursor: pointer;
+  position: relative;
+  transition: all var(--transition-fast);
+}
+
+.arch-node-button:hover {
+  border-color: var(--muted-olive);
+}
+
+.arch-node-button.is-selected {
+  border-color: var(--warm-beige);
+  background: rgba(197, 182, 157, 0.08);
+}
+
+.node-step-tag {
+  font-size: 0.62rem;
+  color: var(--muted-olive);
+  letter-spacing: 0.1em;
+}
+
+.node-title-text {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.node-active-bar {
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+  right: 10px;
+  height: 2px;
+  background: transparent;
+  transition: background var(--transition-fast);
+}
+
+.arch-node-button.is-selected .node-active-bar {
+  background: var(--warm-beige);
+}
+
+.arch-node-connector {
+  color: var(--border-color);
+  display: flex;
+  align-items: center;
+}
+
+.arch-inspector-box {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 1.15rem 1.35rem;
+}
+
+.arch-inspector-header {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.5rem;
+}
+
+.inspector-step-badge {
+  font-size: 0.64rem;
+  color: var(--terracotta);
+  letter-spacing: 0.12em;
+}
+
+.inspector-node-title {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.arch-inspector-detail {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+/* ========================================================
+   LIVE GITHUB TELEMETRY BANNER
+   ======================================================== */
+.github-telemetry-banner {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 1.35rem 1.65rem;
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2.25rem;
+}
+
+.banner-activity-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.activity-label {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.65rem;
+  color: var(--muted-olive);
+  letter-spacing: 0.14em;
+}
+
+.live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #27C93F;
+  box-shadow: 0 0 6px rgba(39, 201, 63, 0.7);
+}
+
+.activity-message {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  color: var(--text-primary);
+  flex-wrap: wrap;
+}
+
+.commit-repo {
+  font-size: 0.72rem;
+  color: var(--terracotta);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+}
+
+.commit-msg {
+  color: var(--text-secondary);
+}
+
+.commit-date {
+  font-size: 0.68rem;
+  color: var(--text-tertiary);
+}
+
+.banner-languages-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.45rem;
+}
+
+.languages-header {
+  font-size: 0.65rem;
+  color: var(--muted-olive);
+  letter-spacing: 0.14em;
+}
+
+.languages-bar-track {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  overflow: hidden;
+  display: flex;
+  background: var(--bg-primary);
+}
+
+.lang-bar-segment {
+  height: 100%;
+  transition: width 0.4s ease;
+}
+
+.languages-legend {
+  display: flex;
+  gap: 0.95rem;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.66rem;
+  color: var(--text-secondary);
+}
+
+.legend-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+@media (max-width: 900px) {
+  .github-telemetry-banner {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+/* ========================================================
    SCROLL REVEAL ANIMATIONS
    ======================================================== */
 .reveal {

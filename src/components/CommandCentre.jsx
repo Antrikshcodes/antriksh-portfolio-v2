@@ -135,6 +135,93 @@ Location: Newton School of Technology, Delhi NCR
 Status: Authenticated in Digital Playground 2.0`,
     }),
   },
+  robot: {
+    desc: 'Launch live robotics arena simulation',
+    action: () => {
+      setTimeout(() => {
+        document.querySelector('#experiments')?.scrollIntoView({ behavior: 'smooth' })
+      }, 350)
+      return {
+        type: 'output',
+        content: `LAUNCHING ROBOTICS ARENA SIMULATOR...
+• Chassis: 2WD Smart Robot Platform
+• Sensor: HC-SR04 Ultrasonic Telemetry Raycaster
+• Logic: Autonomous 25cm obstacle avoid & pivot
+
+↳ Navigating to #experiments interactive bench...`,
+      }
+    },
+  },
+  fetch: {
+    desc: 'Print neofetch system summary',
+    action: () => ({
+      type: 'output',
+      content: `       _.._          antriksh@digital-playground
+     .' .-'` + '`' + `         ---------------------------
+    /  /             OS: AntrikshOS 2.0 (Editorial Darwin)
+    |  |             Host: Newton School of Technology
+    \\  \\             Degree: CS + AI B.Tech
+     '._'-._         Focus: Software Engineering · AI · Robotics
+        ` + '`""`' + `         Uptime: 24/7 Builder Mindset
+                     Shell: zsh (Interactive CLI v2.4.0)
+                     Theme: Dark Editorial (#171614 / #B8795E)
+                     Memory: 100% Curious`,
+    }),
+  },
+  neofetch: {
+    desc: 'Print neofetch system summary',
+    action: () => ({
+      type: 'output',
+      content: `       _.._          antriksh@digital-playground
+     .' .-'` + '`' + `         ---------------------------
+    /  /             OS: AntrikshOS 2.0 (Editorial Darwin)
+    |  |             Host: Newton School of Technology
+    \\  \\             Degree: CS + AI B.Tech
+     '._'-._         Focus: Software Engineering · AI · Robotics
+        ` + '`""`' + `         Uptime: 24/7 Builder Mindset
+                     Shell: zsh (Interactive CLI v2.4.0)
+                     Theme: Dark Editorial (#171614 / #B8795E)
+                     Memory: 100% Curious`,
+    }),
+  },
+  matrix: {
+    desc: 'Run digital matrix terminal stream',
+    action: () => ({
+      type: 'output',
+      content: `01000001 01001110 01010100 01010010 01001001 01001011 01010011 01001000
+A N T R I K S H // K I N E T I C _ B R E A K _ A P A R T
+[✓] Core neural loops loaded.
+[✓] Ultrasonic raycast telemetry synchronized.
+[✓] Welcome to the machine. You took the red pill.`,
+    }),
+  },
+  sudo: {
+    desc: 'Execute superuser override',
+    action: () => ({
+      type: 'output',
+      content: `[ACCESS GRANTED] Nice try, but you already have root privileges as our valued guest.
+Enjoy exploring the digital playground!`,
+    }),
+  },
+  quote: {
+    desc: 'Display engineering & design philosophy',
+    action: () => ({
+      type: 'output',
+      content: `"The best way to predict the future is to invent it." — Alan Kay
+"Simplicity is prerequisite for reliability." — Edsger W. Dijkstra`,
+    }),
+  },
+  theme: {
+    desc: 'Inspect active editorial color palette',
+    action: () => ({
+      type: 'output',
+      content: `ACTIVE PALETTE // DARK EDITORIAL
+• Background:   #171614 (Primary) | #201E1B (Secondary) | #28251F (Card)
+• Text:         #EAE4D9 (Primary) | #AAA397 (Secondary)
+• Accents:      #85836A (Olive) | #B8795E (Terracotta) | #788A91 (Blue) | #C5B69D (Beige)
+• Philosophy:   Tactile, restrained, anti-generic AI glow.`,
+    }),
+  },
 }
 
 export default function CommandCentre() {

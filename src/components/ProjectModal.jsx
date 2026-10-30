@@ -1,5 +1,6 @@
 import { useEffect, useCallback } from 'react'
-import { X, ArrowUpRight, Github, CheckCircle2, AlertCircle, Compass, Lightbulb } from 'lucide-react'
+import ArchitectureDiagram from './ArchitectureDiagram'
+import { X, ArrowUpRight, Github, CheckCircle2, AlertCircle, Compass, Lightbulb, GitBranch } from 'lucide-react'
 
 export default function ProjectModal({ project, onClose }) {
   const handleKeyDown = useCallback(
@@ -206,6 +207,11 @@ export default function ProjectModal({ project, onClose }) {
               {project.solution || project.description}
             </p>
           </div>
+        </div>
+
+        {/* Interactive Architecture Flow Explorer */}
+        <div style={{ marginBottom: '2.5rem' }}>
+          <ArchitectureDiagram projectId={project.id} />
         </div>
 
         {/* Contribution, Challenges & Learnings */}

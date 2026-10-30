@@ -1,44 +1,9 @@
-import { useState, useEffect } from 'react'
 import { EXPERIMENTS_LAB } from '../data/content'
 import ThreePlayground from './ThreePlayground'
+import RoboticsSimulator from './RoboticsSimulator'
 import { Cpu, Terminal, Sparkles, ArrowUpRight, Wrench, Radio, Activity } from 'lucide-react'
 
 export default function ExperimentsLab() {
-  // Interactive Telemetry Simulation for Obstacle Avoiding Robot
-  const [radarAngle, setRadarAngle] = useState(90)
-  const [distance, setDistance] = useState(42)
-  const [direction, setDirection] = useState(1)
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setRadarAngle((prev) => {
-        let next = prev + direction * 6
-        if (next >= 160) {
-          setDirection(-1)
-          next = 160
-        } else if (next <= 20) {
-          setDirection(1)
-          next = 20
-        }
-        return next
-      })
-
-      // Realistic pseudo-distance based on angle
-      setDistance((prev) => {
-        const jitter = Math.floor(Math.sin(Date.now() / 800) * 18) + 38
-        return Math.max(12, Math.min(85, jitter))
-      })
-    }, 120)
-
-    return () => clearInterval(timer)
-  }, [direction])
-
-  const getStatusColor = (dist) => {
-    if (dist < 20) return '#E99A72' // Warning close
-    if (dist < 35) return '#D1E7A0' // Attention
-    return '#9AA88F' // Clear
-  }
-
   return (
     <section id="experiments" className="experiments-lab-section">
       <div className="container">
@@ -49,7 +14,7 @@ export default function ExperimentsLab() {
             Experiments & <span className="serif">Prototypes.</span>
           </h2>
           <p className="section-subtext reveal reveal-delay-2">
-            A look into the workshop: sensor-driven robotics, microcontroller experiments, interactive 3D
+            A look into the workshop: sensor-driven robotics simulations, microcontroller experiments, interactive 3D
             WebGL artifacts, and conceptual prototypes built to test ideas firsthand.
           </p>
         </div>
@@ -57,7 +22,10 @@ export default function ExperimentsLab() {
         {/* 1. Interactive 3D WebGL Lab Card (R3F Integration) */}
         <ThreePlayground />
 
-        {/* 2. Robotics & Hardware Workbench Spotlight */}
+        {/* 2. Interactive Robotics Simulator with Real-Time Ultrasonic Raycast */}
+        <RoboticsSimulator />
+
+        {/* 3. Hardware Interconnect & Prototyping Specs Breakdown */}
         <div className="hardware-spotlight-wrapper reveal reveal-delay-2">
           <div className="spotlight-header">
             <div className="spotlight-title-group">
@@ -71,67 +39,13 @@ export default function ExperimentsLab() {
             </div>
             <div className="spotlight-status-badge mono">
               <span className="telemetry-live-dot" />
-              <span>TELEMETRY STREAM: ACTIVE</span>
+              <span>HARDWARE SCHEMATICS: VERIFIED</span>
             </div>
           </div>
 
           <div className="spotlight-grid">
-            {/* Live Simulated Ultrasonic Radar Telemetry Console */}
-            <div className="radar-telemetry-box">
-              <div className="telemetry-box-header">
-                <span className="mono">RADAR SCANNER // HC-SR04 + SG90 PAN</span>
-                <span className="mono" style={{ color: getStatusColor(distance) }}>
-                  {distance < 25 ? 'OBSTACLE DETECTED' : 'CLEAR TRAJECTORY'}
-                </span>
-              </div>
-
-              {/* Graphical Radar Arc Visualizer */}
-              <div className="radar-visualizer">
-                <div className="radar-sweep-screen">
-                  <div
-                    className="radar-beam"
-                    style={{
-                      transform: `rotate(${radarAngle - 90}deg)`,
-                    }}
-                  />
-                  <div className="radar-grid-ring ring-1" />
-                  <div className="radar-grid-ring ring-2" />
-                  <div className="radar-grid-ring ring-3" />
-                  <div
-                    className="radar-target-blip"
-                    style={{
-                      transform: `rotate(${radarAngle - 90}deg) translateY(-${Math.min(
-                        70,
-                        distance * 0.9
-                      )}px)`,
-                      backgroundColor: getStatusColor(distance),
-                    }}
-                  />
-                </div>
-              </div>
-
-              <div className="radar-telemetry-readouts">
-                <div className="readout-col">
-                  <span className="readout-label mono">SERVO SWEEP ANGLE</span>
-                  <span className="readout-val mono">{radarAngle}°</span>
-                </div>
-                <div className="readout-col">
-                  <span className="readout-label mono">MEASURED DISTANCE</span>
-                  <span className="readout-val mono" style={{ color: getStatusColor(distance) }}>
-                    {distance} cm
-                  </span>
-                </div>
-                <div className="readout-col">
-                  <span className="readout-label mono">AVOIDANCE LOGIC</span>
-                  <span className="readout-val mono">
-                    {distance < 25 ? 'REVERSE & PIVOT' : 'FORWARD MARCH'}
-                  </span>
-                </div>
-              </div>
-            </div>
-
             {/* Hardware Pinout & Architecture Breakdown */}
-            <div className="hardware-specs-box">
+            <div className="hardware-specs-box" style={{ gridColumn: '1 / -1' }}>
               <div className="specs-subheading mono">HARDWARE INTERCONNECT SCHEMATIC</div>
 
               <div className="specs-chips-list">

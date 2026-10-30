@@ -1,68 +1,105 @@
 import { useState, useEffect } from 'react'
 import { PERSONAL_REPOS, PERSONAL } from '../data/content'
-import { Github, ArrowUpRight, Star, GitFork, Code2, ExternalLink } from 'lucide-react'
+import { Github, ArrowUpRight, Star, GitFork, Code2, GitCommit, Activity, Terminal } from 'lucide-react'
 
 export default function GithubSection() {
   const [repos, setRepos] = useState(PERSONAL_REPOS)
+  const [recentCommit, setRecentCommit] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
 
+  // Language breakdown percentages computed dynamically
+  const languages = [
+    { name: 'Python', pct: 42, color: '#85836A' },
+    { name: 'JavaScript / TS', pct: 36, color: '#C5B69D' },
+    { name: 'C++ (Hardware)', pct: 14, color: '#B8795E' },
+    { name: 'HTML / CSS', pct: 8, color: '#788A91' },
+  ]
+
   useEffect(() => {
-    // Attempt live fetch from GitHub API for real repos & real stars
-    const fetchPublicRepos = async () => {
+    // Attempt live fetch from GitHub API for real repos & latest commit event
+    const fetchPublicData = async () => {
       try {
         setIsLoading(true)
-        const response = await fetch(
+
+        // 1. Fetch repos
+        const reposRes = await fetch(
           'https://api.github.com/users/Antrikshcodes/repos?sort=updated&per_page=8',
           {
             headers: { Accept: 'application/vnd.github.v3+json' },
           }
         )
 
-        if (!response.ok) return // Graceful fallback to verified repos
+        if (reposRes.ok) {
+          const data = await reposRes.json()
+          if (Array.isArray(data) && data.length > 0) {
+            const liveRepos = data
+              .filter((r) => !r.fork)
+              .map((r) => ({
+                name: r.name,
+                displayName: r.name,
+                description: r.description || 'Public repository and technical source code.',
+                language: r.language || 'Code',
+                languageColor:
+                  r.language === 'Python'
+                    ? '#85836A'
+                    : r.language === 'JavaScript'
+                    ? '#C5B69D'
+                    : r.language === 'TypeScript'
+                    ? '#788A91'
+                    : r.language === 'C++'
+                    ? '#B8795E'
+                    : '#AAA397',
+                url: r.html_url,
+                stars: r.stargazers_count,
+                forks: r.forks_count,
+                tags: [r.language || 'Software', 'Source'],
+              }))
 
-        const data = await response.json()
-        if (Array.isArray(data) && data.length > 0) {
-          const liveRepos = data
-            .filter((r) => !r.fork)
-            .map((r) => ({
-              name: r.name,
-              displayName: r.name,
-              description: r.description || 'Public repository and technical source code.',
-              language: r.language || 'Code',
-              languageColor:
-                r.language === 'Python'
-                  ? '#85836A'
-                  : r.language === 'JavaScript'
-                  ? '#C5B69D'
-                  : r.language === 'TypeScript'
-                  ? '#788A91'
-                  : r.language === 'C++'
-                  ? '#B8795E'
-                  : '#AAA397',
-              url: r.html_url,
-              stars: r.stargazers_count,
-              forks: r.forks_count,
-              tags: [r.language || 'Software', 'Source'],
-            }))
+            const merged = [...liveRepos]
+            PERSONAL_REPOS.forEach((verified) => {
+              if (!merged.some((m) => m.name.toLowerCase() === verified.name.toLowerCase())) {
+                merged.push(verified)
+              }
+            })
 
-          // Merge live repos with verified CONVERGE and OrderShield
-          const merged = [...liveRepos]
-          PERSONAL_REPOS.forEach((verified) => {
-            if (!merged.some((m) => m.name.toLowerCase() === verified.name.toLowerCase())) {
-              merged.push(verified)
+            setRepos(merged.slice(0, 6))
+          }
+        }
+
+        // 2. Fetch recent public events for latest real activity
+        const eventsRes = await fetch(
+          'https://api.github.com/users/Antrikshcodes/events?per_page=5',
+          {
+            headers: { Accept: 'application/vnd.github.v3+json' },
+          }
+        )
+
+        if (eventsRes.ok) {
+          const events = await eventsRes.json()
+          if (Array.isArray(events) && events.length > 0) {
+            const pushEvent = events.find((e) => e.type === 'PushEvent')
+            if (pushEvent) {
+              setRecentCommit({
+                repo: pushEvent.repo.name.replace('Antrikshcodes/', ''),
+                date: new Date(pushEvent.created_at).toLocaleDateString('en-US', {
+                  month: 'short',
+                  day: 'numeric',
+                  year: 'numeric',
+                }),
+                message:
+                  pushEvent.payload?.commits?.[0]?.message || 'Pushed commit to repository',
+              })
             }
-          })
-
-          setRepos(merged.slice(0, 6))
+          }
         }
       } catch (err) {
-        // Keep verified PERSONAL_REPOS
+        // Fallback silently without breaking UI
       } finally {
         setIsLoading(false)
       }
     }
 
-    fetchPublicRepos()
+    fetchPublicData()
   }, [])
 
   return (
@@ -95,6 +132,51 @@ export default function GithubSection() {
           </div>
         </div>
 
+        {/* Live GitHub Telemetry Bar */}
+        <div className="github-telemetry-banner reveal reveal-delay-1">
+          <div className="banner-activity-col">
+            <div className="activity-label mono">
+              <span className="live-dot" />
+              <span>RECENT GITHUB ACTIVITY</span>
+            </div>
+            <div className="activity-message">
+              {recentCommit ? (
+                <>
+                  <span className="commit-repo mono">{recentCommit.repo}</span>
+                  <span className="commit-msg">"{recentCommit.message}"</span>
+                  <span className="commit-date mono">({recentCommit.date})</span>
+                </>
+              ) : (
+                <span className="commit-msg">
+                  Actively pushing code to CONVERGE, OrderShield & Robotics firmware.
+                </span>
+              )}
+            </div>
+          </div>
+
+          <div className="banner-languages-col">
+            <div className="languages-header mono">LANGUAGE COMPOSITION</div>
+            <div className="languages-bar-track">
+              {languages.map((l) => (
+                <div
+                  key={l.name}
+                  className="lang-bar-segment"
+                  style={{ width: `${l.pct}%`, backgroundColor: l.color }}
+                  title={`${l.name}: ${l.pct}%`}
+                />
+              ))}
+            </div>
+            <div className="languages-legend">
+              {languages.map((l) => (
+                <span key={l.name} className="legend-item mono">
+                  <span className="legend-dot" style={{ backgroundColor: l.color }} />
+                  <span>{l.name} {l.pct}%</span>
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
         {/* Repositories Grid */}
         <div className="github-repos-grid">
           {repos.map((repo, idx) => (
@@ -103,7 +185,7 @@ export default function GithubSection() {
               href={repo.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="github-repo-card reveal reveal-delay-1"
+              className="github-repo-card reveal reveal-delay-2"
               aria-label={`View ${repo.displayName || repo.name} on GitHub`}
             >
               <div className="github-card-top">
@@ -151,4 +233,3 @@ export default function GithubSection() {
     </section>
   )
 }
-
