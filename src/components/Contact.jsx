@@ -10,8 +10,8 @@ export default function Contact() {
 
           <h2 className="contact-headline-massive reveal reveal-delay-1">
             Have an interesting idea? <br />
-            <span className="serif" style={{ color: 'var(--soft-lime)' }}>
-              Let's build it.
+            <span className="serif" style={{ color: 'var(--warm-beige)' }}>
+              Let's build something.
             </span>
           </h2>
 

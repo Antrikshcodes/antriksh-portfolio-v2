@@ -1,21 +1,25 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
 
 const LETTERS = [
-  { char: 'A', dirX: -26, dirY: -22, rot: -14, scale: 1.08 },
-  { char: 'N', dirX: -14, dirY: -32, rot: 8, scale: 0.94 },
+  { char: 'A', dirX: -28, dirY: -22, rot: -14, scale: 1.08 },
+  { char: 'N', dirX: -16, dirY: -32, rot: 8, scale: 0.94 },
   { char: 'T', dirX: -4, dirY: -38, rot: -9, scale: 1.12 },
-  { char: 'R', dirX: 12, dirY: 28, rot: 15, scale: 1.04 },
-  { char: 'I', dirX: 18, dirY: -26, rot: -12, scale: 1.15 },
-  { char: 'K', dirX: -16, dirY: 34, rot: 14, scale: 0.92 },
-  { char: 'S', dirX: 24, dirY: 26, rot: -16, scale: 1.06 },
-  { char: 'H', dirX: 36, dirY: -20, rot: 18, scale: 1.1 },
+  { char: 'R', dirX: 14, dirY: 28, rot: 15, scale: 1.04 },
+  { char: 'I', dirX: 20, dirY: -26, rot: -12, scale: 1.15 },
+  { char: 'K', dirX: -18, dirY: 34, rot: 14, scale: 0.92 },
+  { char: 'S', dirX: 26, dirY: 26, rot: -16, scale: 1.06 },
+  { char: 'H', dirX: 38, dirY: -20, rot: 18, scale: 1.1 },
 ]
+
+const GLYPHS = 'ANTRIKSH01*#+~'
 
 export default function KineticTypography({ onHoverChange }) {
   const containerRef = useRef(null)
   const canvasRef = useRef(null)
   const [isHovered, setIsHovered] = useState(false)
   const [scatterStrength, setScatterStrength] = useState(0) // 0 to 1
+  const [displayChars, setDisplayChars] = useState(LETTERS.map((l) => l.char))
+  const scrambleTimerRef = useRef(null)
   const particlesRef = useRef([])
   const animFrameRef = useRef(null)
 
@@ -27,7 +31,7 @@ export default function KineticTypography({ onHoverChange }) {
   const spawnParticles = useCallback((originX, originY) => {
     if (prefersReducedMotion) return
     const colors = ['#C5B69D', '#B8795E', '#85836A', '#EAE4D9']
-    const newParticles = Array.from({ length: 16 }, () => ({
+    const newParticles = Array.from({ length: 18 }, () => ({
       x: originX + (Math.random() - 0.5) * 80,
       y: originY + (Math.random() - 0.5) * 30,
       vx: (Math.random() - 0.5) * 3.5,
@@ -84,20 +88,43 @@ export default function KineticTypography({ onHoverChange }) {
     }
   }, [])
 
+  // Quick subtle character scramble effect on hover
+  const triggerScramble = useCallback(() => {
+    if (prefersReducedMotion) return
+    if (scrambleTimerRef.current) clearInterval(scrambleTimerRef.current)
+
+    let iteration = 0
+    scrambleTimerRef.current = setInterval(() => {
+      setDisplayChars((prev) =>
+        prev.map((_, idx) => {
+          if (iteration > idx * 2) {
+            return LETTERS[idx].char
+          }
+          return GLYPHS[Math.floor(Math.random() * GLYPHS.length)]
+        })
+      )
+      iteration += 1
+      if (iteration > 18) {
+        clearInterval(scrambleTimerRef.current)
+        setDisplayChars(LETTERS.map((l) => l.char))
+      }
+    }, 28)
+  }, [prefersReducedMotion])
+
   const handleMouseMove = (e) => {
     if (prefersReducedMotion) return
     const container = containerRef.current
     if (!container) return
     const rect = container.getBoundingClientRect()
-    const relX = (e.clientX - rect.left) / rect.width - 0.5 // -0.5 to 0.5
-    const relY = (e.clientY - rect.top) / rect.height - 0.5 // -0.5 to 0.5
+    const relX = (e.clientX - rect.left) / rect.width - 0.5
+    const relY = (e.clientY - rect.top) / rect.height - 0.5
     const dist = Math.hypot(relX, relY)
 
     // Higher intensity towards center
     const strength = Math.min(1.2, Math.max(0.4, 1 - dist))
     setScatterStrength(strength)
 
-    if (Math.random() > 0.6) {
+    if (Math.random() > 0.65) {
       spawnParticles(e.clientX - rect.left, e.clientY - rect.top)
     }
   }
@@ -105,6 +132,7 @@ export default function KineticTypography({ onHoverChange }) {
   const handleMouseEnter = () => {
     setIsHovered(true)
     setScatterStrength(1)
+    triggerScramble()
     if (onHoverChange) onHoverChange(true)
 
     const container = containerRef.current
@@ -117,6 +145,8 @@ export default function KineticTypography({ onHoverChange }) {
   const handleMouseLeave = () => {
     setIsHovered(false)
     setScatterStrength(0)
+    if (scrambleTimerRef.current) clearInterval(scrambleTimerRef.current)
+    setDisplayChars(LETTERS.map((l) => l.char))
     if (onHoverChange) onHoverChange(false)
     particlesRef.current = [] // clear particles cleanly
   }
@@ -128,6 +158,7 @@ export default function KineticTypography({ onHoverChange }) {
     } else {
       setIsHovered(true)
       setScatterStrength(1)
+      triggerScramble()
       const container = containerRef.current
       if (container) {
         const rect = container.getBoundingClientRect()
@@ -136,7 +167,8 @@ export default function KineticTypography({ onHoverChange }) {
       setTimeout(() => {
         setIsHovered(false)
         setScatterStrength(0)
-      }, 1600)
+        setDisplayChars(LETTERS.map((l) => l.char))
+      }, 1800)
     }
   }
 
@@ -178,7 +210,7 @@ export default function KineticTypography({ onHoverChange }) {
               }}
               data-char={item.char}
             >
-              {item.char}
+              {displayChars[idx] || item.char}
             </span>
           )
         })}

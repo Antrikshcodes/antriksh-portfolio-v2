@@ -1,5 +1,5 @@
 import { useEffect, useCallback } from 'react'
-import { X, ArrowUpRight, Github } from 'lucide-react'
+import { X, ArrowUpRight, Github, CheckCircle2, AlertCircle, Compass, Lightbulb } from 'lucide-react'
 
 export default function ProjectModal({ project, onClose }) {
   const handleKeyDown = useCallback(
@@ -28,28 +28,28 @@ export default function ProjectModal({ project, onClose }) {
         position: 'fixed',
         inset: 0,
         zIndex: 10000,
-        backgroundColor: 'rgba(23, 22, 20, 0.82)',
-        backdropFilter: 'blur(14px)',
-        WebkitBackdropFilter: 'blur(14px)',
+        backgroundColor: 'rgba(23, 22, 20, 0.85)',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '1.5rem',
+        padding: '1.25rem',
       }}
       onClick={(e) => e.target === e.currentTarget && onClose()}
       role="dialog"
       aria-modal="true"
-      aria-label={`${project.title} case study`}
+      aria-label={`${project.title} deep case study`}
     >
       <div
         style={{
           backgroundColor: '#201E1B',
           border: '1px solid #39352E',
           borderRadius: 20,
-          boxShadow: '0 24px 60px rgba(0, 0, 0, 0.65)',
-          maxWidth: 820,
+          boxShadow: '0 30px 80px rgba(0, 0, 0, 0.8)',
+          maxWidth: 860,
           width: '100%',
-          maxHeight: '88vh',
+          maxHeight: '90vh',
           overflowY: 'auto',
           position: 'relative',
           padding: 'clamp(2rem, 4vw, 3.5rem)',
@@ -62,8 +62,8 @@ export default function ProjectModal({ project, onClose }) {
             position: 'absolute',
             top: '1.5rem',
             right: '1.5rem',
-            width: 36,
-            height: 36,
+            width: 38,
+            height: 38,
             borderRadius: '50%',
             backgroundColor: '#28251F',
             border: '1px solid #39352E',
@@ -78,6 +78,7 @@ export default function ProjectModal({ project, onClose }) {
           <X size={16} />
         </button>
 
+        {/* Header */}
         <div style={{ marginBottom: '2.5rem' }}>
           <div
             className="mono"
@@ -94,8 +95,8 @@ export default function ProjectModal({ project, onClose }) {
           <h2
             style={{
               fontFamily: "'Manrope', sans-serif",
-              fontSize: '2.4rem',
-              fontWeight: 700,
+              fontSize: 'clamp(2rem, 4vw, 2.7rem)',
+              fontWeight: 800,
               letterSpacing: '-0.03em',
               color: '#EAE4D9',
               marginBottom: '1rem',
@@ -114,62 +115,193 @@ export default function ProjectModal({ project, onClose }) {
           </p>
         </div>
 
-        <div style={{ marginBottom: '2rem' }}>
+        {/* Screenshot Viewport */}
+        {project.screenshot && (
           <div
-            className="mono"
             style={{
-              fontSize: '0.68rem',
-              color: 'var(--muted-olive)',
-              textTransform: 'uppercase',
-              letterSpacing: '0.12em',
-              marginBottom: '0.6rem',
+              borderRadius: 12,
+              overflow: 'hidden',
+              border: '1px solid #39352E',
+              marginBottom: '2.5rem',
+              backgroundColor: '#171614',
             }}
           >
-            Overview & Context
+            <img
+              src={project.screenshot}
+              alt={`${project.title} preview screenshot`}
+              style={{
+                width: '100%',
+                maxHeight: 400,
+                objectFit: 'cover',
+                objectPosition: 'top',
+                display: 'block',
+              }}
+            />
           </div>
-          <p style={{ color: '#EAE4D9', lineHeight: 1.8 }}>{project.description}</p>
-        </div>
+        )}
 
-        {project.features && (
-          <div style={{ marginBottom: '2rem' }}>
+        {/* Problem & Solution Grid */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gap: '1.5rem',
+            marginBottom: '2.5rem',
+          }}
+        >
+          <div
+            style={{
+              backgroundColor: '#28251F',
+              border: '1px solid #39352E',
+              borderRadius: 12,
+              padding: '1.5rem',
+            }}
+          >
             <div
               className="mono"
               style={{
                 fontSize: '0.68rem',
-                color: 'var(--muted-olive)',
+                color: 'var(--terracotta)',
                 textTransform: 'uppercase',
                 letterSpacing: '0.12em',
-                marginBottom: '0.75rem',
+                marginBottom: '0.65rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.4rem',
               }}
             >
-              Key Capabilities
+              <AlertCircle size={13} />
+              <span>Problem Statement</span>
             </div>
+            <p style={{ color: '#EAE4D9', fontSize: '0.92rem', lineHeight: 1.7 }}>
+              {project.problemStatement || project.description}
+            </p>
+          </div>
+
+          <div
+            style={{
+              backgroundColor: '#28251F',
+              border: '1px solid #39352E',
+              borderRadius: 12,
+              padding: '1.5rem',
+            }}
+          >
             <div
+              className="mono"
               style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-                gap: '0.75rem',
+                fontSize: '0.68rem',
+                color: 'var(--warm-beige)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.12em',
+                marginBottom: '0.65rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.4rem',
               }}
             >
-              {project.features.map((feat, i) => (
+              <CheckCircle2 size={13} />
+              <span>Architected Solution</span>
+            </div>
+            <p style={{ color: '#EAE4D9', fontSize: '0.92rem', lineHeight: 1.7 }}>
+              {project.solution || project.description}
+            </p>
+          </div>
+        </div>
+
+        {/* Contribution, Challenges & Learnings */}
+        {(project.contribution || project.challenges || project.learnings) && (
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))',
+              gap: '1.25rem',
+              marginBottom: '2.5rem',
+            }}
+          >
+            {project.contribution && (
+              <div
+                style={{
+                  padding: '1.25rem',
+                  border: '1px solid #39352E',
+                  borderRadius: 10,
+                  backgroundColor: '#171614',
+                }}
+              >
                 <div
-                  key={i}
+                  className="mono"
                   style={{
-                    fontSize: '0.92rem',
-                    color: '#AAA397',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.5rem',
+                    fontSize: '0.65rem',
+                    color: 'var(--muted-olive)',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.1em',
+                    marginBottom: '0.5rem',
                   }}
                 >
-                  <span style={{ color: 'var(--terracotta)' }}>—</span>
-                  <span>{feat}</span>
+                  My Contribution
                 </div>
-              ))}
-            </div>
+                <p style={{ color: '#AAA397', fontSize: '0.88rem', lineHeight: 1.65 }}>
+                  {project.contribution}
+                </p>
+              </div>
+            )}
+
+            {project.challenges && (
+              <div
+                style={{
+                  padding: '1.25rem',
+                  border: '1px solid #39352E',
+                  borderRadius: 10,
+                  backgroundColor: '#171614',
+                }}
+              >
+                <div
+                  className="mono"
+                  style={{
+                    fontSize: '0.65rem',
+                    color: 'var(--terracotta)',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.1em',
+                    marginBottom: '0.5rem',
+                  }}
+                >
+                  Key Challenges
+                </div>
+                <p style={{ color: '#AAA397', fontSize: '0.88rem', lineHeight: 1.65 }}>
+                  {project.challenges}
+                </p>
+              </div>
+            )}
+
+            {project.learnings && (
+              <div
+                style={{
+                  padding: '1.25rem',
+                  border: '1px solid #39352E',
+                  borderRadius: 10,
+                  backgroundColor: '#171614',
+                }}
+              >
+                <div
+                  className="mono"
+                  style={{
+                    fontSize: '0.65rem',
+                    color: 'var(--warm-beige)',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.1em',
+                    marginBottom: '0.5rem',
+                  }}
+                >
+                  Key Learnings
+                </div>
+                <p style={{ color: '#AAA397', fontSize: '0.88rem', lineHeight: 1.65 }}>
+                  {project.learnings}
+                </p>
+              </div>
+            )}
           </div>
         )}
 
+        {/* Technologies Used */}
         <div style={{ marginBottom: '2.5rem' }}>
           <div
             className="mono"
@@ -203,19 +335,20 @@ export default function ProjectModal({ project, onClose }) {
           </div>
         </div>
 
+        {/* Action CTAs */}
         <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-          {primaryUrl && (
+          {project.liveUrl && (
             <a
-              href={primaryUrl}
+              href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-editorial-dark"
             >
-              <span>{project.liveUrl ? 'Visit Live Deployment' : 'View Repository'}</span>
+              <span>Visit Live Deployment</span>
               <ArrowUpRight size={14} />
             </a>
           )}
-          {project.githubUrl && project.liveUrl && (
+          {project.githubUrl && (
             <a
               href={project.githubUrl}
               target="_blank"
@@ -223,7 +356,7 @@ export default function ProjectModal({ project, onClose }) {
               className="btn-editorial-light"
             >
               <Github size={14} />
-              <span>Source Code</span>
+              <span>{project.liveUrl ? 'Source Code' : 'View Repository'}</span>
             </a>
           )}
         </div>
