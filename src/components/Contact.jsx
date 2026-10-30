@@ -56,10 +56,13 @@ export default function Contact() {
             </a>
           </div>
 
-          <div className="contact-bottom-legal">
-            <div>Antriksh · Creative Technologist & Student Developer</div>
+          <footer className="contact-bottom-legal" role="contentinfo">
+            <div>Antriksh Galhotra · Student Developer & Creative Technologist (CSE AI)</div>
             <div>Newton School of Technology · Rishihood University</div>
-          </div>
+            <div style={{ marginTop: '0.4rem', opacity: 0.75, fontSize: '0.75rem' }}>
+              Official Portfolio of Antriksh (Antrix) · All Rights Reserved
+            </div>
+          </footer>
         </div>
       </div>
     </section>

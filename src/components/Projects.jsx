@@ -145,11 +145,43 @@ export default function Projects() {
                         type="button"
                         onClick={() => setModalProject(project)}
                         className="btn-stacked-text"
-                        aria-label={`View deep dive for ${project.title}`}
+                        aria-label={`View interactive modal for ${project.title}`}
                       >
                         <Layers size={13} />
-                        <span>Case Study</span>
+                        <span>Quick View</span>
                       </button>
+
+                      <a
+                        href={
+                          project.id === 'converge'
+                            ? '/projects/converge'
+                            : project.id === 'blindspot-ai'
+                            ? '/projects/blindspot-ai'
+                            : project.id === 'ordershield-ai'
+                            ? '/projects/ordershield-ai'
+                            : '/projects/the-product-guys'
+                        }
+                        className="btn-stacked-text"
+                        style={{ color: 'var(--warm-beige)' }}
+                        aria-label={`Read dedicated case study page for ${project.title}`}
+                        onClick={(e) => {
+                          e.preventDefault()
+                          const targetUrl =
+                            project.id === 'converge'
+                              ? '/projects/converge'
+                              : project.id === 'blindspot-ai'
+                              ? '/projects/blindspot-ai'
+                              : project.id === 'ordershield-ai'
+                              ? '/projects/ordershield-ai'
+                              : '/projects/the-product-guys'
+                          window.history.pushState({}, '', targetUrl)
+                          window.dispatchEvent(new PopStateEvent('popstate'))
+                          window.scrollTo({ top: 0, behavior: 'smooth' })
+                        }}
+                      >
+                        <ArrowUpRight size={13} />
+                        <span>Full Case Study</span>
+                      </a>
                     </div>
                   </div>
 

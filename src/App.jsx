@@ -22,6 +22,10 @@ import { useScrollReveal } from './hooks/useScrollReveal'
 // Lazy-load dedicated page views for optimized initial bundle performance
 const LabPage = lazy(() => import('./pages/LabPage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
+const ProjectConverge = lazy(() => import('./pages/ProjectConverge'))
+const ProjectBlindspot = lazy(() => import('./pages/ProjectBlindspot'))
+const ProjectOrderShield = lazy(() => import('./pages/ProjectOrderShield'))
+const ProjectProductGuys = lazy(() => import('./pages/ProjectProductGuys'))
 
 function RouteFallback() {
   return (
@@ -51,13 +55,32 @@ export default function App() {
   // Initialize and listen to route changes
   useEffect(() => {
     const syncRoute = () => {
-      const path = window.location.pathname.toLowerCase()
+      let path = window.location.pathname.toLowerCase()
+      if (path.length > 1 && path.endsWith('/')) {
+        path = path.slice(0, -1)
+      }
+
       if (path === '' || path === '/' || path.startsWith('/#')) {
         setCurrentRoute('/')
-      } else if (path === '/lab' || path === '/lab/') {
+        document.title = 'Antriksh Galhotra | Developer Portfolio | AI, Software & Robotics'
+      } else if (path === '/lab') {
         setCurrentRoute('/lab')
+        document.title = 'Experiments Lab | Antriksh Galhotra — Interactive Proving Ground'
+      } else if (path === '/projects/converge') {
+        setCurrentRoute('/projects/converge')
+        document.title = 'CONVERGE — Smart City Civic AI Platform | Antriksh Galhotra Portfolio'
+      } else if (path === '/projects/blindspot-ai') {
+        setCurrentRoute('/projects/blindspot-ai')
+        document.title = 'Blindspot AI — Computer Vision Road Safety | Antriksh Galhotra Portfolio'
+      } else if (path === '/projects/ordershield-ai') {
+        setCurrentRoute('/projects/ordershield-ai')
+        document.title = 'OrderShield AI — Vendor Verification System | Antriksh Galhotra'
+      } else if (path === '/projects/the-product-guys') {
+        setCurrentRoute('/projects/the-product-guys')
+        document.title = 'The Product Guys — Product Thinking Platform | Antriksh Galhotra'
       } else {
         setCurrentRoute(path)
+        document.title = '404 Page Not Found | Antriksh Galhotra Portfolio'
       }
     }
 
@@ -79,6 +102,43 @@ export default function App() {
     return (
       <Suspense fallback={<RouteFallback />}>
         <LabPage onNavigateHome={() => navigateTo('/')} />
+        <AskAntrikshAI />
+      </Suspense>
+    )
+  }
+
+  // Render dedicated project case study pages
+  if (currentRoute === '/projects/converge') {
+    return (
+      <Suspense fallback={<RouteFallback />}>
+        <ProjectConverge onNavigateHome={() => navigateTo('/')} />
+        <AskAntrikshAI />
+      </Suspense>
+    )
+  }
+
+  if (currentRoute === '/projects/blindspot-ai') {
+    return (
+      <Suspense fallback={<RouteFallback />}>
+        <ProjectBlindspot onNavigateHome={() => navigateTo('/')} />
+        <AskAntrikshAI />
+      </Suspense>
+    )
+  }
+
+  if (currentRoute === '/projects/ordershield-ai') {
+    return (
+      <Suspense fallback={<RouteFallback />}>
+        <ProjectOrderShield onNavigateHome={() => navigateTo('/')} />
+        <AskAntrikshAI />
+      </Suspense>
+    )
+  }
+
+  if (currentRoute === '/projects/the-product-guys') {
+    return (
+      <Suspense fallback={<RouteFallback />}>
+        <ProjectProductGuys onNavigateHome={() => navigateTo('/')} />
         <AskAntrikshAI />
       </Suspense>
     )

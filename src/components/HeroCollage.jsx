@@ -20,7 +20,7 @@ export default function HeroCollage() {
         <div className="scrapbook-img-frame">
           <img
             src="/images/profile-black-shirt.jpg"
-            alt="Antriksh in black shirt"
+            alt="Antriksh Galhotra working on developer projects at Newton School of Technology"
             className="scrapbook-img"
             loading="eager"
           />
@@ -42,7 +42,7 @@ export default function HeroCollage() {
         <div className="scrapbook-img-frame">
           <img
             src="/images/fairy-lights-green.jpg"
-            alt="Antriksh mirror selfie with green fairy lights"
+            alt="Antriksh Galhotra in campus room at Newton School of Technology, Rishihood University"
             className="scrapbook-img"
             loading="eager"
           />
@@ -64,7 +64,7 @@ export default function HeroCollage() {
         <div className="scrapbook-img-frame">
           <img
             src="/images/plaid-shirt-mirror.jpg"
-            alt="Antriksh mirror selfie in plaid shirt"
+            alt="Antriksh Galhotra preparing for collegiate hackathon and coding sprint"
             className="scrapbook-img"
             loading="eager"
           />
@@ -88,7 +88,7 @@ export default function HeroCollage() {
         <div className="scrapbook-img-frame main-frame">
           <img
             src="/images/podium-white-shirt.jpg"
-            alt="Antriksh speaking at podium in white shirt — Main Portrait"
+            alt="Antriksh Galhotra presenting at podium — Developer Portfolio Main Portrait"
             className="scrapbook-img main-img"
             loading="eager"
           />

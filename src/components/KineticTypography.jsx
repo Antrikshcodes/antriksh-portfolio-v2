@@ -180,8 +180,8 @@ export default function KineticTypography({ onHoverChange }) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={handleTouch}
-      aria-label="ANTRIKSH"
-      role="banner"
+      aria-label="Antriksh interactive kinetic wordmark"
+      role="img"
     >
       {/* Particle Canvas for Disintegration Dust */}
       <canvas

@@ -26,9 +26,9 @@ export default function About() {
 
             <div className="about-prose-body reveal reveal-delay-2">
               <p className="about-editorial-lead">
-                I'm Antriksh, a first-year B.Tech Computer Science and AI student at{' '}
-                <strong>Newton School of Technology, Rishihood University</strong>. I enjoy exploring
-                how technology can turn interesting ideas into useful experiences.
+                I'm Antriksh Galhotra (preferred public name Antriksh), a B.Tech Computer Science and AI (CSE AI) student at{' '}
+                <strong>Newton School of Technology, Rishihood University</strong>. As a software developer and creative technologist, I enjoy exploring
+                how AI, modern web engineering, and autonomous robotics turn ambitious ideas into useful experiences.
               </p>
 
               <p className="about-editorial-subtext">

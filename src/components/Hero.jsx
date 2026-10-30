@@ -37,7 +37,7 @@ export default function Hero() {
 
             {/* Main Headline */}
             <h1 className="hero-editorial-title reveal reveal-delay-2">
-              <span className="sr-only">Antriksh Portfolio — </span>
+              <span className="sr-only">Antriksh Galhotra (Antrix) — Developer Portfolio | AI, Software & Robotics at Newton School of Technology (CSE AI) — </span>
               I turn curious ideas <br />
               into <span className="serif">digital experiences.</span>
             </h1>

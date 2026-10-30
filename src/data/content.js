@@ -1,15 +1,16 @@
 export const PERSONAL = {
   name: 'Antriksh',
   nameUpper: 'ANTRIKSH',
+  fullName: 'Antriksh Galhotra',
   role: 'STUDENT DEVELOPER · BUILDER · CREATIVE TECHNOLOGIST',
   headline: 'I turn curious ideas into digital experiences.',
   description:
-    'I’m a computer science student exploring the intersection of software, AI, robotics and creative technology. I enjoy turning interesting ideas into products, experiments and experiences.',
+    'Antriksh Galhotra is a Computer Science and Artificial Intelligence (CSE AI) student at Newton School of Technology, Rishihood University. Exploring full-stack software development, autonomous robotics, computer vision, and interactive digital products.',
   education: 'First-year B.Tech CS + AI · Newton School of Technology, Rishihood University',
   status: 'Open to hackathons & product collaborations',
   email: 'antriksh.builds@gmail.com',
   github: 'https://github.com/Antrikshcodes',
-  linkedin: 'https://linkedin.com/in/antriksh',
+  linkedin: 'https://www.linkedin.com/in/antriksh',
 }
 
 export const SYSTEM_STATUS = {
