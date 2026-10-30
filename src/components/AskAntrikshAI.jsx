@@ -1,246 +1,403 @@
 import { useState, useRef, useEffect } from 'react'
-import { MessageSquare, X, Send, Bot, User, Sparkles, AlertCircle, RefreshCw } from 'lucide-react'
-import { PERSONAL, FEATURED_PROJECTS, BUILDING_JOURNEY, EXPERIMENTS_LAB } from '../data/content'
+import {
+  MessageSquare,
+  X,
+  Send,
+  Maximize2,
+  Trash2,
+  Copy,
+  Check,
+  RotateCcw,
+  Mic,
+  MicOff,
+  Volume2,
+  VolumeX,
+  Sparkles,
+  Bot,
+  User,
+  ArrowUpRight,
+} from 'lucide-react'
+import { useAIConversation } from '../context/AIConversationContext'
+import AIOrb from './ai/AIOrb'
+import MarkdownRenderer from './ai/MarkdownRenderer'
+import ProjectCardWidget from './ai/ProjectCardWidget'
 
-// Grounded Knowledge Base based strictly on verified portfolio data
-const KNOWLEDGE_BASE = [
-  {
-    triggers: ['who', 'about', 'background', 'intro', 'antriksh', 'student', 'degree', 'university', 'college'],
-    answer:
-      "Antriksh is a first-year B.Tech student in Computer Science & Artificial Intelligence at Newton School of Technology, Rishihood University. He explores software engineering, AI, robotics, and creative technology, learning by building working products and hardware prototypes.",
-  },
-  {
-    triggers: ['converge', 'smart city', 'civic', 'municipal'],
-    answer:
-      "CONVERGE is an urban issue-management platform built by Antriksh. It correlates civic incident reports within a 50m radius to eliminate duplicate municipal dispatches, monitors SLA response times, and requires mandatory photographic proof for issue closure. Built with Next.js and FastAPI.",
-  },
-  {
-    triggers: ['ordershield', 'fetch', 'vendor', 'supplier', 'gstin'],
-    answer:
-      "OrderShield AI was developed for Fetch-A-Thon 3.0 (where Antriksh achieved a Top 20 placement). It is an automated B2B vendor onboarding audit platform that evaluates GSTIN credentials, corporate registry filings, and financial documents with structured trust scoring.",
-  },
-  {
-    triggers: ['blindspot', 'vision', 'cv', 'car', 'vehicle', 'driving'],
-    answer:
-      "Blindspot AI is a computer-vision prototype built during the CoNSTruct 2.0 hackathon. It analyzes vehicle side-camera video feeds in real time, computing proximity telemetry and rate-of-approach vectors to emit low-latency (<50ms) hazard alerts to drivers.",
-  },
-  {
-    triggers: ['product guys', 'community', 'publication', 'teardown'],
-    answer:
-      "The Product Guys (productguys.arthakram.in) is an initiative exploring product thinking, UX friction analysis, and pre-code user validation frameworks. Antriksh designed the information architecture and authors breakdown guides for collegiate builders.",
-  },
-  {
-    triggers: ['robot', 'robotics', 'arduino', 'esp32', 'hardware', 'sensor', 'ultrasonic'],
-    answer:
-      "Antriksh experiments with embedded microcontrollers including Arduino Uno and ESP32. His flagship hardware project is a 2WD autonomous obstacle-avoiding robot with an HC-SR04 ultrasonic sensor mounted on a sweeping servo, paired with L298N motor drivers and OLED telemetry readouts.",
-  },
-  {
-    triggers: ['hackathon', 'fetch-a-thon', 'hackoween', 'construct', 'summit', 'challenge'],
-    answer:
-      "Antriksh has competed in several intense sprints: Fetch-A-Thon 3.0 (Top 20 with OrderShield AI), HackO’Ween (CONVERGE), CoNSTruct 2.0 (Blindspot AI with Replit x NST), IIT Roorkee E-Summit 2024, and the IIM Product Challenge.",
-  },
-  {
-    triggers: ['tech', 'stack', 'skills', 'programming', 'languages', 'python', 'react'],
-    answer:
-      "Antriksh's core technical stack spans Frontend (React, Next.js, JavaScript, HTML/CSS), Backend (Python, FastAPI, REST), AI (Computer Vision, PyTorch, Document OCR), Robotics (Arduino, ESP32, C++, sensors), and Creative Coding (Three.js, Canvas API).",
-  },
-  {
-    triggers: ['contact', 'email', 'hire', 'collaborate', 'github', 'reach'],
-    answer:
-      "You can connect with Antriksh directly via email at antriksh.codes@gmail.com, explore his public codebases on GitHub (https://github.com/Antrikshcodes), or connect on LinkedIn (https://linkedin.com/in/antriksh).",
-  },
-]
-
-const SUGGESTIONS = [
+const QUICK_SUGGESTIONS = [
   'Who is Antriksh?',
+  'What projects has he built?',
   'Explain CONVERGE',
-  'What is OrderShield AI?',
-  'What are his robotics experiments?',
-  'What hackathons has he done?',
+  'Tell me about OrderShield AI',
+  'What is Blindspot AI?',
+  'What robotics experiments has he done?',
+  'What technologies does he use?',
+  'How can I contact him?',
 ]
 
-export default function AskAntrikshAI() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [messages, setMessages] = useState([
-    {
-      role: 'assistant',
-      text: "Hi! I'm Antriksh AI. Ask me anything about my software projects, robotics experiments, hackathons, or tech stack.",
-    },
-  ])
-  const [inputVal, setInputVal] = useState('')
-  const [isTyping, setIsTyping] = useState(false)
-  const [rateLimitTimer, setRateLimitTimer] = useState(false)
-  const messagesEndRef = useRef(null)
+export default function AskAntrikshAI({ onNavigate }) {
+  const {
+    messages,
+    isStreaming,
+    orbState,
+    isListening,
+    hasSpeechRecognition,
+    hasSpeechSynthesis,
+    speechEnabled,
+    setSpeechEnabled,
+    isFloatingOpen,
+    setIsFloatingOpen,
+    sendMessage,
+    retryMessage,
+    clearConversation,
+    startListening,
+    stopListening,
+  } = useAIConversation()
 
+  const [inputVal, setInputVal] = useState('')
+  const [copiedId, setCopiedId] = useState(null)
+  const messagesEndRef = useRef(null)
+  const inputRef = useRef(null)
+
+  // Auto-scroll chat to bottom
   useEffect(() => {
-    if (isOpen) {
+    if (isFloatingOpen) {
       messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
     }
-  }, [messages, isOpen])
+  }, [messages, isFloatingOpen, isStreaming])
 
+  // Focus input on open
   useEffect(() => {
-    const handleGlobalKey = (e) => {
-      if (e.key === 'Escape' && isOpen) {
-        setIsOpen(false)
+    if (isFloatingOpen) {
+      setTimeout(() => inputRef.current?.focus(), 150)
+    }
+  }, [isFloatingOpen])
+
+  // Escape to close
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (e.key === 'Escape' && isFloatingOpen) {
+        setIsFloatingOpen(false)
       }
     }
-    window.addEventListener('keydown', handleGlobalKey)
-    return () => window.removeEventListener('keydown', handleGlobalKey)
-  }, [isOpen])
+    window.addEventListener('keydown', handleKey)
+    return () => window.removeEventListener('keydown', handleKey)
+  }, [isFloatingOpen, setIsFloatingOpen])
 
-  const findBestAnswer = (query) => {
-    const normalized = query.toLowerCase()
-
-    // Find knowledge base entry with highest keyword overlap
-    let bestMatch = null
-    let maxScore = 0
-
-    KNOWLEDGE_BASE.forEach((entry) => {
-      let score = 0
-      entry.triggers.forEach((trigger) => {
-        if (normalized.includes(trigger)) {
-          score += trigger.length // Longer trigger words weigh more
-        }
-      })
-      if (score > maxScore) {
-        maxScore = score
-        bestMatch = entry
-      }
-    })
-
-    if (bestMatch && maxScore > 2) {
-      return bestMatch.answer
-    }
-
-    return "Antriksh is a first-year CS+AI student at Newton School of Technology building software, robotics prototypes, and AI systems. Feel free to ask about CONVERGE, OrderShield AI, Blindspot AI, his Arduino robotics experiments, or his hackathon journey!"
-  }
-
-  const handleSend = (userText) => {
-    const text = userText.trim()
-    if (!text || rateLimitTimer) return
-
-    setMessages((prev) => [...prev, { role: 'user', text }])
+  const handleSend = () => {
+    if (!inputVal.trim() || isStreaming) return
+    const text = inputVal
     setInputVal('')
-    setIsTyping(true)
-    setRateLimitTimer(true)
-
-    // Basic rate limit cooldown
-    setTimeout(() => setRateLimitTimer(false), 800)
-
-    setTimeout(() => {
-      const reply = findBestAnswer(text)
-      setMessages((prev) => [...prev, { role: 'assistant', text: reply }])
-      setIsTyping(false)
-    }, 450)
+    sendMessage(text)
   }
 
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      handleSend(inputVal)
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault()
+      handleSend()
+    }
+  }
+
+  const handleCopy = (text, id) => {
+    navigator.clipboard?.writeText(text)
+    setCopiedId(id)
+    setTimeout(() => setCopiedId(null), 1800)
+  }
+
+  const handleExpandToFullScreen = (e) => {
+    e.preventDefault()
+    setIsFloatingOpen(false)
+    if (onNavigate) {
+      onNavigate('/ai')
+    } else {
+      window.history.pushState({}, '', '/ai')
+      window.dispatchEvent(new PopStateEvent('popstate'))
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     }
   }
 
   return (
     <>
-      {/* Floating Action Trigger Button */}
-      <button
-        type="button"
-        className={`ai-assistant-trigger ${isOpen ? 'is-open' : ''}`}
-        onClick={() => setIsOpen(!isOpen)}
-        aria-label="Toggle Ask Antriksh AI Assistant"
-      >
-        <span className="trigger-pulse-dot" />
-        <Bot size={18} />
-        <span className="trigger-label mono">ASK ANTRIKSH AI</span>
-      </button>
+      {/* 1. Floating Trigger Button with Animated AI Orb */}
+      {!isFloatingOpen && (
+        <div className="floating-ai-trigger-container">
+          <button
+            type="button"
+            className="floating-ai-trigger-btn"
+            onClick={() => setIsFloatingOpen(true)}
+            aria-label="Open ANTRIKSH AI Assistant"
+          >
+            <div className="trigger-orb-box">
+              <AIOrb state={orbState} size={36} />
+            </div>
+            <div className="trigger-label-pill">
+              <span className="trigger-status-dot" />
+              <span className="trigger-label-text">Ask Antriksh AI</span>
+            </div>
+          </button>
+        </div>
+      )}
 
-      {/* Floating Chat Window */}
-      {isOpen && (
-        <div className="ai-chat-window" role="dialog" aria-label="Ask Antriksh AI Assistant">
+      {/* 2. Floating Chat Window */}
+      {isFloatingOpen && (
+        <aside
+          className="floating-chat-window"
+          role="dialog"
+          aria-label="ANTRIKSH AI Chat Window"
+        >
           {/* Header */}
-          <div className="ai-chat-header">
-            <div className="ai-header-left">
-              <div className="ai-avatar">
-                <Bot size={15} />
-              </div>
+          <div className="floating-chat-header">
+            <div className="chat-header-identity">
+              <AIOrb state={orbState} size={28} />
               <div>
-                <div className="ai-header-title">Ask Antriksh AI</div>
-                <div className="ai-header-status mono">
-                  <span className="status-dot-green" />
-                  <span>GROUNDED KNOWLEDGE BASE</span>
+                <div className="chat-header-title-row">
+                  <span className="chat-header-title">ANTRIKSH AI</span>
+                  <span className="chat-header-badge mono">v2.0</span>
+                </div>
+                <div className="chat-header-status-row mono">
+                  <span
+                    className={`status-dot-pulse ${isStreaming ? 'pulse-active' : ''}`}
+                  />
+                  <span>
+                    {isListening
+                      ? 'LISTENING VIA MIC...'
+                      : isStreaming
+                      ? 'GENERATING RESPONSE...'
+                      : 'READY // VERIFIED KNOWLEDGE'}
+                  </span>
                 </div>
               </div>
             </div>
-            <button
-              type="button"
-              className="ai-close-btn"
-              onClick={() => setIsOpen(false)}
-              aria-label="Close AI Assistant"
-            >
-              <X size={15} />
-            </button>
-          </div>
 
-          {/* Quick Suggestions Bar */}
-          <div className="ai-suggestions-bar">
-            {SUGGESTIONS.map((q) => (
+            <div className="chat-header-controls">
+              {/* Voice Readout Toggle */}
+              {hasSpeechSynthesis && (
+                <button
+                  type="button"
+                  className={`chat-header-icon-btn ${speechEnabled ? 'is-active' : ''}`}
+                  onClick={() => setSpeechEnabled(!speechEnabled)}
+                  title={speechEnabled ? 'Mute AI voice output' : 'Enable AI voice output'}
+                  aria-label="Toggle voice output"
+                >
+                  {speechEnabled ? <Volume2 size={15} /> : <VolumeX size={15} />}
+                </button>
+              )}
+
+              {/* Clear History */}
               <button
-                key={q}
                 type="button"
-                className="ai-suggestion-chip mono"
-                onClick={() => handleSend(q)}
+                className="chat-header-icon-btn"
+                onClick={clearConversation}
+                title="Clear conversation"
+                aria-label="Clear conversation history"
               >
-                {q}
+                <Trash2 size={15} />
               </button>
-            ))}
+
+              {/* Expand to Full-Screen (/ai) */}
+              <button
+                type="button"
+                className="chat-header-icon-btn"
+                onClick={handleExpandToFullScreen}
+                title="Expand to full-screen AI workspace (/ai)"
+                aria-label="Expand to full-screen"
+              >
+                <Maximize2 size={15} />
+              </button>
+
+              {/* Close */}
+              <button
+                type="button"
+                className="chat-header-icon-btn close-btn"
+                onClick={() => setIsFloatingOpen(false)}
+                title="Close chatbot (Esc)"
+                aria-label="Close chat window"
+              >
+                <X size={16} />
+              </button>
+            </div>
           </div>
 
-          {/* Messages Body */}
-          <div className="ai-messages-container">
-            {messages.map((m, idx) => (
-              <div key={idx} className={`ai-message-row ai-message--${m.role}`}>
-                <div className="ai-message-bubble">
-                  {m.text}
-                </div>
-              </div>
-            ))}
+          {/* Messages Stream */}
+          <div className="floating-chat-messages">
+            {messages.map((msg, index) => {
+              const isAssistant = msg.role === 'assistant'
+              const isCurrentStreaming = msg.isStreaming
 
-            {isTyping && (
-              <div className="ai-message-row ai-message--assistant">
-                <div className="ai-typing-indicator mono">
-                  <span />
-                  <span />
-                  <span />
+              return (
+                <div
+                  key={msg.id || index}
+                  className={`chat-message-row ${isAssistant ? 'assistant-row' : 'user-row'}`}
+                >
+                  {isAssistant && (
+                    <div className="msg-avatar-col">
+                      <AIOrb state={isCurrentStreaming ? 'responding' : 'idle'} size={24} />
+                    </div>
+                  )}
+
+                  <div className="msg-bubble-wrap">
+                    <div
+                      className={`chat-bubble ${isAssistant ? 'assistant-bubble' : 'user-bubble'}`}
+                    >
+                      {isAssistant ? (
+                        <MarkdownRenderer
+                          content={msg.text}
+                          onInternalLink={(url) => {
+                            setIsFloatingOpen(false)
+                            if (onNavigate) onNavigate(url)
+                            else {
+                              window.history.pushState({}, '', url)
+                              window.dispatchEvent(new PopStateEvent('popstate'))
+                              window.scrollTo({ top: 0, behavior: 'smooth' })
+                            }
+                          }}
+                        />
+                      ) : (
+                        <p className="user-message-text">{msg.text}</p>
+                      )}
+
+                      {/* Interactive Project Card Embed */}
+                      {msg.projectCard && (
+                        <ProjectCardWidget
+                          project={msg.projectCard}
+                          onNavigate={(url) => {
+                            setIsFloatingOpen(false)
+                            if (onNavigate) onNavigate(url)
+                            else {
+                              window.history.pushState({}, '', url)
+                              window.dispatchEvent(new PopStateEvent('popstate'))
+                              window.scrollTo({ top: 0, behavior: 'smooth' })
+                            }
+                          }}
+                        />
+                      )}
+
+                      {/* Typing Waveform Indicator */}
+                      {isCurrentStreaming && !msg.text && (
+                        <div className="typing-wave-indicator" aria-label="Antriksh AI is thinking">
+                          <span className="dot" />
+                          <span className="dot" />
+                          <span className="dot" />
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Action Toolbar for Assistant Messages */}
+                    {isAssistant && !isCurrentStreaming && msg.text && (
+                      <div className="msg-actions-toolbar">
+                        <button
+                          type="button"
+                          className="msg-action-btn"
+                          onClick={() => handleCopy(msg.text, msg.id)}
+                          title="Copy response"
+                        >
+                          {copiedId === msg.id ? <Check size={12} /> : <Copy size={12} />}
+                          <span>{copiedId === msg.id ? 'Copied' : 'Copy'}</span>
+                        </button>
+
+                        <button
+                          type="button"
+                          className="msg-action-btn"
+                          onClick={() => retryMessage(msg.id)}
+                          title="Retry response"
+                        >
+                          <RotateCcw size={12} />
+                          <span>Retry</span>
+                        </button>
+                      </div>
+                    )}
+
+                    {/* Suggested Follow-Ups */}
+                    {isAssistant && msg.followUps && msg.followUps.length > 0 && !isCurrentStreaming && (
+                      <div className="chat-followups-row">
+                        {msg.followUps.map((prompt, pIdx) => (
+                          <button
+                            key={pIdx}
+                            type="button"
+                            className="followup-chip-btn"
+                            onClick={() => sendMessage(prompt)}
+                          >
+                            <span>{prompt}</span>
+                            <ArrowUpRight size={11} />
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
-            )}
+              )
+            })}
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Input Box */}
-          <div className="ai-input-bar">
-            <input
-              type="text"
-              value={inputVal}
-              onChange={(e) => setInputVal(e.target.value)}
-              onKeyDown={handleKeyDown}
-              placeholder="Ask about projects, robotics, background..."
-              className="ai-text-input mono"
-              aria-label="Ask Antriksh AI input"
-            />
-            <button
-              type="button"
-              className="ai-send-btn"
-              onClick={() => handleSend(inputVal)}
-              disabled={!inputVal.trim() || isTyping}
-              aria-label="Send query"
-            >
-              <Send size={14} />
-            </button>
+          {/* Quick Suggestions Chips (only if 1 message) */}
+          {messages.length === 1 && (
+            <div className="chat-quick-suggestions-block">
+              <span className="quick-suggestions-label mono">SUGGESTED QUESTIONS:</span>
+              <div className="quick-suggestions-scroll">
+                {QUICK_SUGGESTIONS.map((item, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    className="suggestion-pill-btn"
+                    onClick={() => sendMessage(item)}
+                  >
+                    <span>{item}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Composer Footer */}
+          <div className="floating-chat-footer">
+            <div className="composer-input-row">
+              <textarea
+                ref={inputRef}
+                value={inputVal}
+                onChange={(e) => setInputVal(e.target.value)}
+                onKeyDown={handleKeyDown}
+                placeholder="Ask about projects, robotics, hackathons..."
+                rows={1}
+                className="composer-textarea"
+                disabled={isStreaming}
+              />
+
+              {/* Voice Mic Input */}
+              {hasSpeechRecognition && (
+                <button
+                  type="button"
+                  className={`composer-icon-btn ${isListening ? 'listening-active' : ''}`}
+                  onClick={() => {
+                    if (isListening) {
+                      stopListening()
+                    } else {
+                      startListening((text) => setInputVal((prev) => (prev ? `${prev} ${text}` : text)))
+                    }
+                  }}
+                  title={isListening ? 'Stop listening' : 'Speak message'}
+                  aria-label="Microphone input"
+                >
+                  {isListening ? <MicOff size={16} /> : <Mic size={16} />}
+                </button>
+              )}
+
+              {/* Send Button */}
+              <button
+                type="button"
+                className="composer-send-btn"
+                onClick={handleSend}
+                disabled={!inputVal.trim() || isStreaming}
+                aria-label="Send message"
+              >
+                <Send size={15} />
+              </button>
+            </div>
+
+            <div className="composer-meta-note mono">
+              <span>ANTRIKSH AI // GROUNDED IN PORTFOLIO V2 // ENTER TO SEND</span>
+            </div>
           </div>
-        </div>
+        </aside>
       )}
     </>
   )
 }
-

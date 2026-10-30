@@ -66,6 +66,7 @@ export const NAV_LINKS = [
   { label: 'Desk', href: '#desk' },
   { label: 'Experiments', href: '#experiments' },
   { label: 'Lab (/lab)', href: '/lab' },
+  { label: 'AI (/ai)', href: '/ai' },
   { label: 'Journey', href: '#journey' },
   { label: 'GitHub', href: '#github' },
   { label: 'Beyond Code', href: '#beyond' },

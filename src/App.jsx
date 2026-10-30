@@ -1,4 +1,5 @@
 import { useState, useEffect, lazy, Suspense } from 'react'
+import { AIConversationProvider } from './context/AIConversationContext'
 import BootSequence from './components/BootSequence'
 import Navigation from './components/Navigation'
 import Hero from './components/Hero'
@@ -26,6 +27,7 @@ const ProjectConverge = lazy(() => import('./pages/ProjectConverge'))
 const ProjectBlindspot = lazy(() => import('./pages/ProjectBlindspot'))
 const ProjectOrderShield = lazy(() => import('./pages/ProjectOrderShield'))
 const ProjectProductGuys = lazy(() => import('./pages/ProjectProductGuys'))
+const AIAssistantPage = lazy(() => import('./pages/AIAssistantPage'))
 
 function RouteFallback() {
   return (
@@ -66,6 +68,9 @@ export default function App() {
       } else if (path === '/lab') {
         setCurrentRoute('/lab')
         document.title = 'Experiments Lab | Antriksh Galhotra — Interactive Proving Ground'
+      } else if (path === '/ai') {
+        setCurrentRoute('/ai')
+        document.title = 'ANTRIKSH AI — Personal Digital Assistant & Project Guide | Antriksh Galhotra'
       } else if (path === '/projects/converge') {
         setCurrentRoute('/projects/converge')
         document.title = 'CONVERGE — Smart City Civic AI Platform | Antriksh Galhotra Portfolio'
@@ -100,62 +105,85 @@ export default function App() {
   // Render /lab
   if (currentRoute === '/lab') {
     return (
-      <Suspense fallback={<RouteFallback />}>
-        <LabPage onNavigateHome={() => navigateTo('/')} />
-        <AskAntrikshAI />
-      </Suspense>
+      <AIConversationProvider>
+        <Suspense fallback={<RouteFallback />}>
+          <LabPage onNavigateHome={() => navigateTo('/')} />
+          <AskAntrikshAI onNavigate={navigateTo} />
+        </Suspense>
+      </AIConversationProvider>
+    )
+  }
+
+  // Render dedicated full-screen /ai assistant
+  if (currentRoute === '/ai') {
+    return (
+      <AIConversationProvider>
+        <Suspense fallback={<RouteFallback />}>
+          <AIAssistantPage onNavigateHome={() => navigateTo('/')} />
+        </Suspense>
+      </AIConversationProvider>
     )
   }
 
   // Render dedicated project case study pages
   if (currentRoute === '/projects/converge') {
     return (
-      <Suspense fallback={<RouteFallback />}>
-        <ProjectConverge onNavigateHome={() => navigateTo('/')} />
-        <AskAntrikshAI />
-      </Suspense>
+      <AIConversationProvider>
+        <Suspense fallback={<RouteFallback />}>
+          <ProjectConverge onNavigateHome={() => navigateTo('/')} />
+          <AskAntrikshAI onNavigate={navigateTo} />
+        </Suspense>
+      </AIConversationProvider>
     )
   }
 
   if (currentRoute === '/projects/blindspot-ai') {
     return (
-      <Suspense fallback={<RouteFallback />}>
-        <ProjectBlindspot onNavigateHome={() => navigateTo('/')} />
-        <AskAntrikshAI />
-      </Suspense>
+      <AIConversationProvider>
+        <Suspense fallback={<RouteFallback />}>
+          <ProjectBlindspot onNavigateHome={() => navigateTo('/')} />
+          <AskAntrikshAI onNavigate={navigateTo} />
+        </Suspense>
+      </AIConversationProvider>
     )
   }
 
   if (currentRoute === '/projects/ordershield-ai') {
     return (
-      <Suspense fallback={<RouteFallback />}>
-        <ProjectOrderShield onNavigateHome={() => navigateTo('/')} />
-        <AskAntrikshAI />
-      </Suspense>
+      <AIConversationProvider>
+        <Suspense fallback={<RouteFallback />}>
+          <ProjectOrderShield onNavigateHome={() => navigateTo('/')} />
+          <AskAntrikshAI onNavigate={navigateTo} />
+        </Suspense>
+      </AIConversationProvider>
     )
   }
 
   if (currentRoute === '/projects/the-product-guys') {
     return (
-      <Suspense fallback={<RouteFallback />}>
-        <ProjectProductGuys onNavigateHome={() => navigateTo('/')} />
-        <AskAntrikshAI />
-      </Suspense>
+      <AIConversationProvider>
+        <Suspense fallback={<RouteFallback />}>
+          <ProjectProductGuys onNavigateHome={() => navigateTo('/')} />
+          <AskAntrikshAI onNavigate={navigateTo} />
+        </Suspense>
+      </AIConversationProvider>
     )
   }
 
   // Render 404 for any unexpected route
   if (currentRoute !== '/' && !currentRoute.startsWith('/#')) {
     return (
-      <Suspense fallback={<RouteFallback />}>
-        <NotFoundPage onNavigateHome={() => navigateTo('/')} />
-        <AskAntrikshAI />
-      </Suspense>
+      <AIConversationProvider>
+        <Suspense fallback={<RouteFallback />}>
+          <NotFoundPage onNavigateHome={() => navigateTo('/')} />
+          <AskAntrikshAI onNavigate={navigateTo} />
+        </Suspense>
+      </AIConversationProvider>
     )
   }
 
   return (
-    <>
+    <AIConversationProvider>
       <BootSequence onComplete={() => setBootFinished(true)} />
       
       <Navigation onNavigate={(path) => navigateTo(path)} />
@@ -205,10 +233,10 @@ export default function App() {
       </main>
 
       {/* Floating Grounded "Ask Antriksh AI" Assistant */}
-      <AskAntrikshAI />
+      <AskAntrikshAI onNavigate={navigateTo} />
 
       {/* Global Keyboard Shortcuts Modal & Konami Code Handler */}
       <KeyboardShortcutsModal onOpenLab={() => navigateTo('/lab')} />
-    </>
+    </AIConversationProvider>
   )
 }
