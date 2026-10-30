@@ -1,8 +1,22 @@
-import { useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import ArchitectureDiagram from './ArchitectureDiagram'
-import { X, ArrowUpRight, Github, CheckCircle2, AlertCircle, Compass, Lightbulb, GitBranch } from 'lucide-react'
+import {
+  X,
+  ArrowUpRight,
+  Github,
+  CheckCircle2,
+  AlertCircle,
+  Layers,
+  Code2,
+  ExternalLink,
+  BookOpen,
+  Cpu,
+  Monitor,
+} from 'lucide-react'
 
 export default function ProjectModal({ project, onClose }) {
+  const [activeTab, setActiveTab] = useState('overview') // 'overview' | 'architecture' | 'tech' | 'demo' | 'learnings'
+
   const handleKeyDown = useCallback(
     (e) => {
       if (e.key === 'Escape') onClose()
@@ -25,336 +39,245 @@ export default function ProjectModal({ project, onClose }) {
 
   return (
     <div
-      style={{
-        position: 'fixed',
-        inset: 0,
-        zIndex: 10000,
-        backgroundColor: 'rgba(23, 22, 20, 0.85)',
-        backdropFilter: 'blur(16px)',
-        WebkitBackdropFilter: 'blur(16px)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '1.25rem',
-      }}
+      className="project-modal-backdrop"
       onClick={(e) => e.target === e.currentTarget && onClose()}
       role="dialog"
       aria-modal="true"
-      aria-label={`${project.title} deep case study`}
+      aria-label={`${project.title} case study`}
     >
-      <div
-        style={{
-          backgroundColor: '#201E1B',
-          border: '1px solid #39352E',
-          borderRadius: 20,
-          boxShadow: '0 30px 80px rgba(0, 0, 0, 0.8)',
-          maxWidth: 860,
-          width: '100%',
-          maxHeight: '90vh',
-          overflowY: 'auto',
-          position: 'relative',
-          padding: 'clamp(2rem, 4vw, 3.5rem)',
-        }}
-      >
+      <div className="project-modal-card">
+        {/* Close Button */}
         <button
           onClick={onClose}
           aria-label="Close modal"
-          style={{
-            position: 'absolute',
-            top: '1.5rem',
-            right: '1.5rem',
-            width: 38,
-            height: 38,
-            borderRadius: '50%',
-            backgroundColor: '#28251F',
-            border: '1px solid #39352E',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: '#EAE4D9',
-            cursor: 'pointer',
-            transition: 'all 0.2s ease',
-          }}
+          className="modal-close-btn"
         >
           <X size={16} />
         </button>
 
-        {/* Header */}
-        <div style={{ marginBottom: '2.5rem' }}>
-          <div
-            className="mono"
-            style={{
-              fontSize: '0.72rem',
-              color: 'var(--muted-olive)',
-              marginBottom: '0.4rem',
-              textTransform: 'uppercase',
-              letterSpacing: '0.12em',
-            }}
-          >
+        {/* Modal Header */}
+        <div className="modal-header-block">
+          <div className="modal-meta-kicker mono">
             {project.number} · {project.category}
           </div>
-          <h2
-            style={{
-              fontFamily: "'Manrope', sans-serif",
-              fontSize: 'clamp(2rem, 4vw, 2.7rem)',
-              fontWeight: 800,
-              letterSpacing: '-0.03em',
-              color: '#EAE4D9',
-              marginBottom: '1rem',
-            }}
-          >
-            {project.title}
-          </h2>
-          <p
-            style={{
-              fontSize: '1.05rem',
-              color: '#AAA397',
-              lineHeight: 1.7,
-            }}
-          >
-            {project.shortDesc}
-          </p>
+          <h2 className="modal-project-title">{project.title}</h2>
+          <p className="modal-project-short">{project.shortDesc}</p>
         </div>
 
-        {/* Screenshot Viewport */}
-        {project.screenshot && (
-          <div
-            style={{
-              borderRadius: 12,
-              overflow: 'hidden',
-              border: '1px solid #39352E',
-              marginBottom: '2.5rem',
-              backgroundColor: '#171614',
-            }}
-          >
-            <img
-              src={project.screenshot}
-              alt={`${project.title} preview screenshot`}
-              style={{
-                width: '100%',
-                maxHeight: 400,
-                objectFit: 'cover',
-                objectPosition: 'top',
-                display: 'block',
-              }}
-            />
-          </div>
-        )}
-
-        {/* Problem & Solution Grid */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '1.5rem',
-            marginBottom: '2.5rem',
-          }}
-        >
-          <div
-            style={{
-              backgroundColor: '#28251F',
-              border: '1px solid #39352E',
-              borderRadius: 12,
-              padding: '1.5rem',
-            }}
-          >
-            <div
-              className="mono"
-              style={{
-                fontSize: '0.68rem',
-                color: 'var(--terracotta)',
-                textTransform: 'uppercase',
-                letterSpacing: '0.12em',
-                marginBottom: '0.65rem',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.4rem',
-              }}
-            >
-              <AlertCircle size={13} />
-              <span>Problem Statement</span>
-            </div>
-            <p style={{ color: '#EAE4D9', fontSize: '0.92rem', lineHeight: 1.7 }}>
-              {project.problemStatement || project.description}
-            </p>
-          </div>
-
-          <div
-            style={{
-              backgroundColor: '#28251F',
-              border: '1px solid #39352E',
-              borderRadius: 12,
-              padding: '1.5rem',
-            }}
-          >
-            <div
-              className="mono"
-              style={{
-                fontSize: '0.68rem',
-                color: 'var(--warm-beige)',
-                textTransform: 'uppercase',
-                letterSpacing: '0.12em',
-                marginBottom: '0.65rem',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.4rem',
-              }}
-            >
-              <CheckCircle2 size={13} />
-              <span>Architected Solution</span>
-            </div>
-            <p style={{ color: '#EAE4D9', fontSize: '0.92rem', lineHeight: 1.7 }}>
-              {project.solution || project.description}
-            </p>
-          </div>
-        </div>
-
-        {/* Interactive Architecture Flow Explorer */}
-        <div style={{ marginBottom: '2.5rem' }}>
-          <ArchitectureDiagram projectId={project.id} />
-        </div>
-
-        {/* Contribution, Challenges & Learnings */}
-        {(project.contribution || project.challenges || project.learnings) && (
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))',
-              gap: '1.25rem',
-              marginBottom: '2.5rem',
-            }}
-          >
-            {project.contribution && (
-              <div
-                style={{
-                  padding: '1.25rem',
-                  border: '1px solid #39352E',
-                  borderRadius: 10,
-                  backgroundColor: '#171614',
-                }}
+        {/* Interactive Tab Navigation */}
+        <div className="modal-tabs-row" role="tablist">
+          {[
+            { id: 'overview', label: 'OVERVIEW', icon: Layers },
+            { id: 'architecture', label: 'ARCHITECTURE', icon: Cpu },
+            { id: 'tech', label: 'TECH STACK', icon: Code2 },
+            { id: 'demo', label: 'DEMO', icon: Monitor },
+            { id: 'learnings', label: 'LEARNINGS', icon: BookOpen },
+          ].map((tab) => {
+            const Icon = tab.icon
+            const isActive = activeTab === tab.id
+            return (
+              <button
+                key={tab.id}
+                type="button"
+                role="tab"
+                aria-selected={isActive}
+                className={`modal-tab-pill mono ${isActive ? 'is-active' : ''}`}
+                onClick={() => setActiveTab(tab.id)}
               >
-                <div
-                  className="mono"
-                  style={{
-                    fontSize: '0.65rem',
-                    color: 'var(--muted-olive)',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.1em',
-                    marginBottom: '0.5rem',
-                  }}
-                >
-                  My Contribution
-                </div>
-                <p style={{ color: '#AAA397', fontSize: '0.88rem', lineHeight: 1.65 }}>
-                  {project.contribution}
-                </p>
+                <Icon size={12} />
+                <span>{tab.label}</span>
+              </button>
+            )
+          })}
+        </div>
+
+        {/* TAB 1: OVERVIEW */}
+        {activeTab === 'overview' && (
+          <div className="modal-tab-content">
+            {/* Screenshot Viewport */}
+            {project.screenshot && (
+              <div className="modal-screenshot-box">
+                <img
+                  src={project.screenshot}
+                  alt={`${project.title} interface preview`}
+                  className="modal-screenshot-img"
+                  loading="eager"
+                />
               </div>
             )}
 
-            {project.challenges && (
-              <div
-                style={{
-                  padding: '1.25rem',
-                  border: '1px solid #39352E',
-                  borderRadius: 10,
-                  backgroundColor: '#171614',
-                }}
-              >
-                <div
-                  className="mono"
-                  style={{
-                    fontSize: '0.65rem',
-                    color: 'var(--terracotta)',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.1em',
-                    marginBottom: '0.5rem',
-                  }}
-                >
-                  Key Challenges
+            {/* Problem & Solution Grid */}
+            <div className="modal-problem-solution-grid">
+              <div className="detail-box">
+                <div className="detail-box-kicker mono kicker-alert">
+                  <AlertCircle size={13} />
+                  <span>Problem Statement</span>
                 </div>
-                <p style={{ color: '#AAA397', fontSize: '0.88rem', lineHeight: 1.65 }}>
-                  {project.challenges}
+                <p className="detail-box-text">
+                  {project.problemStatement || project.description}
                 </p>
               </div>
-            )}
 
-            {project.learnings && (
-              <div
-                style={{
-                  padding: '1.25rem',
-                  border: '1px solid #39352E',
-                  borderRadius: 10,
-                  backgroundColor: '#171614',
-                }}
-              >
-                <div
-                  className="mono"
-                  style={{
-                    fontSize: '0.65rem',
-                    color: 'var(--warm-beige)',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.1em',
-                    marginBottom: '0.5rem',
-                  }}
-                >
-                  Key Learnings
+              <div className="detail-box">
+                <div className="detail-box-kicker mono kicker-check">
+                  <CheckCircle2 size={13} />
+                  <span>Architected Solution</span>
                 </div>
-                <p style={{ color: '#AAA397', fontSize: '0.88rem', lineHeight: 1.65 }}>
-                  {project.learnings}
+                <p className="detail-box-text">
+                  {project.solution || project.description}
                 </p>
+              </div>
+            </div>
+
+            {/* Key Capabilities */}
+            {project.features && (
+              <div className="modal-features-block">
+                <div className="features-heading mono">KEY CAPABILITIES & WORKFLOWS</div>
+                <div className="features-grid">
+                  {project.features.map((feat, i) => (
+                    <div key={i} className="feature-item">
+                      <span className="feature-bullet">—</span>
+                      <span>{feat}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
           </div>
         )}
 
-        {/* Technologies Used */}
-        <div style={{ marginBottom: '2.5rem' }}>
-          <div
-            className="mono"
-            style={{
-              fontSize: '0.68rem',
-              color: 'var(--muted-olive)',
-              textTransform: 'uppercase',
-              letterSpacing: '0.12em',
-              marginBottom: '0.75rem',
-            }}
-          >
-            Technologies Used
+        {/* TAB 2: ARCHITECTURE */}
+        {activeTab === 'architecture' && (
+          <div className="modal-tab-content">
+            <ArchitectureDiagram projectId={project.id} />
           </div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-            {project.technologies.map((t) => (
-              <span
-                key={t}
-                className="mono"
-                style={{
-                  fontSize: '0.72rem',
-                  padding: '0.35rem 0.8rem',
-                  borderRadius: 999,
-                  backgroundColor: '#171614',
-                  border: '1px solid #39352E',
-                  color: '#AAA397',
-                }}
-              >
-                {t}
-              </span>
-            ))}
-          </div>
-        </div>
+        )}
 
-        {/* Action CTAs */}
-        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-          {project.liveUrl && (
+        {/* TAB 3: TECH STACK */}
+        {activeTab === 'tech' && (
+          <div className="modal-tab-content">
+            <div className="tech-stack-detail-box">
+              <div className="tech-stack-header mono">INTEGRATED TECHNOLOGIES & TOOLS</div>
+              <div className="tech-badges-wrap">
+                {project.technologies.map((t) => (
+                  <span key={t} className="tech-pill-large mono">
+                    {t}
+                  </span>
+                ))}
+              </div>
+
+              <div className="tech-notes-grid">
+                <div className="tech-note-item">
+                  <span className="tech-note-title mono">FRAMEWORK ARCHITECTURE</span>
+                  <p className="tech-note-desc">
+                    Built with modular separation of concerns between client visual state and backend REST endpoints.
+                  </p>
+                </div>
+                <div className="tech-note-item">
+                  <span className="tech-note-title mono">VERIFICATION PROTOCOLS</span>
+                  <p className="tech-note-desc">
+                    Structured to support automated validation rules, rate-limiting, and auditable data contracts.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* TAB 4: DEMO & REPOSITORIES */}
+        {activeTab === 'demo' && (
+          <div className="modal-tab-content">
+            <div className="demo-showcase-box">
+              {project.screenshot && (
+                <div className="demo-preview-frame">
+                  <img
+                    src={project.screenshot}
+                    alt={`${project.title} live demo preview`}
+                    className="demo-preview-img"
+                  />
+                </div>
+              )}
+
+              <div className="demo-actions-panel">
+                <div>
+                  <h4 className="demo-actions-title">{project.title} Deployments</h4>
+                  <p className="demo-actions-sub mono">
+                    {project.liveUrl ? `LIVE HOST: ${project.displayUrl}` : 'PROTOTYPE CODEBASE'}
+                  </p>
+                </div>
+
+                <div className="demo-buttons-row">
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-editorial-dark"
+                    >
+                      <span>Visit Live Website</span>
+                      <ArrowUpRight size={14} />
+                    </a>
+                  )}
+
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-editorial-light"
+                    >
+                      <Github size={14} />
+                      <span>View GitHub Repository</span>
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* TAB 5: LEARNINGS & CHALLENGES */}
+        {activeTab === 'learnings' && (
+          <div className="modal-tab-content">
+            <div className="learnings-grid">
+              {project.contribution && (
+                <div className="learning-card">
+                  <span className="learning-kicker mono">MY CONTRIBUTION</span>
+                  <p className="learning-body">{project.contribution}</p>
+                </div>
+              )}
+
+              {project.challenges && (
+                <div className="learning-card">
+                  <span className="learning-kicker mono kicker-alert">CHALLENGES FACED</span>
+                  <p className="learning-body">{project.challenges}</p>
+                </div>
+              )}
+
+              {project.learnings && (
+                <div className="learning-card">
+                  <span className="learning-kicker mono kicker-check">WHAT I LEARNED</span>
+                  <p className="learning-body">{project.learnings}</p>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Footer CTAs */}
+        <div className="modal-footer-row">
+          {primaryUrl && (
             <a
-              href={project.liveUrl}
+              href={primaryUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-editorial-dark"
             >
-              <span>Visit Live Deployment</span>
+              <span>{project.liveUrl ? 'Visit Live Deployment' : 'View Codebase'}</span>
               <ArrowUpRight size={14} />
             </a>
           )}
-          {project.githubUrl && (
+          {project.githubUrl && project.liveUrl && (
             <a
               href={project.githubUrl}
               target="_blank"
@@ -362,7 +285,7 @@ export default function ProjectModal({ project, onClose }) {
               className="btn-editorial-light"
             >
               <Github size={14} />
-              <span>{project.liveUrl ? 'Source Code' : 'View Repository'}</span>
+              <span>Source Code</span>
             </a>
           )}
         </div>

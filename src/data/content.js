@@ -12,14 +12,62 @@ export const PERSONAL = {
   linkedin: 'https://linkedin.com/in/antriksh',
 }
 
+export const SYSTEM_STATUS = {
+  indicator: 'SYSTEM ONLINE',
+  state: 'Active & Building',
+  currentFocus: 'Full-stack AI platforms & Embedded hardware',
+  latestProject: 'CONVERGE · Smart city civic resolution platform',
+  currentLearning: 'Local vision model fine-tuning & ESP32 WebSerial telemetry',
+  availability: 'Open to hackathons, product collaborations & internships',
+  lastUpdated: 'October 2026',
+  location: 'Newton School of Technology, Delhi NCR',
+}
+
+export const WHAT_IM_UP_TO = {
+  currentlyBuilding: {
+    title: 'CONVERGE Enhancements & OrderShield Integrations',
+    desc: 'Refining spatial duplicate clustering algorithms in CONVERGE and optimizing automated GSTIN verification pipelines.',
+    tag: 'BUILDING',
+    badge: 'Active Sprint',
+  },
+  currentlyLearning: {
+    title: 'Computer Vision & Edge Inference',
+    desc: 'Deepening knowledge in YOLO real-time frame inference, tensor normalization, and optimizing model latency on consumer edge devices.',
+    tag: 'LEARNING',
+    badge: 'Curriculum & Self-study',
+  },
+  currentlyExploring: {
+    title: 'Embedded Robotics & WebSerial Telemetry',
+    desc: 'Connecting ESP32 microcontrollers and Arduino hardware to browser-based dashboards via WebSerial for real-time sensor visualization.',
+    tag: 'EXPLORING',
+    badge: 'Lab Workbench',
+  },
+  latestExperiment: {
+    title: 'Kinetic Typography & Ultrasonic Simulator',
+    desc: 'Built custom canvas particle dispersion physics for personal branding and an interactive 2D autonomous obstacle navigation simulator.',
+    tag: 'EXPERIMENT',
+    badge: 'Just Shipped',
+  },
+  nextGoal: {
+    title: 'Next-Gen Collegiate Hackathon Deployment',
+    desc: 'Preparing end-to-end full-stack architectures for upcoming national hackathons with rapid 24-hour prototype delivery pipelines.',
+    tag: 'GOAL',
+    badge: 'Q4 2026',
+  },
+}
+
 export const NAV_LINKS = [
   { label: 'About', href: '#about' },
+  { label: 'Now', href: '#now' },
   { label: 'Selected Work', href: '#work' },
   { label: 'Terminal', href: '#terminal' },
   { label: 'Skills', href: '#skills' },
+  { label: 'Desk', href: '#desk' },
   { label: 'Experiments', href: '#experiments' },
+  { label: 'Lab (/lab)', href: '/lab' },
   { label: 'Journey', href: '#journey' },
   { label: 'GitHub', href: '#github' },
+  { label: 'Beyond Code', href: '#beyond' },
   { label: 'Contact', href: '#contact' },
 ]
 

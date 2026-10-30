@@ -244,3 +244,4 @@ export default function ArchitectureDiagram({ projectId }) {
     </div>
   )
 }
+
