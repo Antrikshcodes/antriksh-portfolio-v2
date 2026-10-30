@@ -4,33 +4,41 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Antriksh — Developer, Student & Creative Technologist</title>
+    <title>Antriksh Portfolio — Developer, Builder & Creative Technologist</title>
     <meta
       name="description"
-      content="Personal developer portfolio of Antriksh — student developer, builder, and creative technologist exploring AI, robotics, and interactive systems at Newton School of Technology."
+      content="Antriksh's portfolio — a student developer, builder, and creative technologist building AI systems, robotics, and interactive web experiences at Newton School of Technology."
+    />
+    <meta
+      name="keywords"
+      content="antriksh, antriksh portfolio, antrikshcodes, developer portfolio, newton school of technology, creative technologist, AI developer, robotics, student developer, web developer portfolio, antriksh developer"
     />
     <meta name="theme-color" content="#171614" />
     <meta name="author" content="Antriksh" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href="https://antriksh.dev" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://antriksh.dev" />
-    <meta property="og:site_name" content="Antriksh — Developer Portfolio" />
-    <meta property="og:title" content="Antriksh — Developer, Student & Creative Technologist" />
+    <meta property="og:site_name" content="Antriksh Portfolio" />
+    <meta property="og:title" content="Antriksh Portfolio — Developer, Builder & Creative Technologist" />
     <meta
       property="og:description"
-      content="Personal developer portfolio of Antriksh — student developer, builder, and creative technologist exploring AI, robotics, and interactive systems at Newton School of Technology."
+      content="Antriksh's portfolio — a student developer, builder, and creative technologist building AI systems, robotics, and interactive web experiences at Newton School of Technology."
     />
     <meta property="og:image" content="https://antriksh.dev/images/podium-white-shirt.jpg" />
     <meta property="og:image:alt" content="Antriksh — Developer & Builder" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Antriksh — Developer, Student & Creative Technologist" />
+    <meta name="twitter:title" content="Antriksh Portfolio — Developer, Builder & Creative Technologist" />
     <meta
       name="twitter:description"
-      content="Personal developer portfolio of Antriksh — student developer, builder, and creative technologist exploring AI, robotics, and interactive systems at Newton School of Technology."
+      content="Antriksh's portfolio — a student developer, builder, and creative technologist building AI systems, robotics, and interactive web experiences at Newton School of Technology."
     />
     <meta name="twitter:image" content="https://antriksh.dev/images/podium-white-shirt.jpg" />
 
@@ -46,28 +54,64 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Antriksh",
-        "alternateName": "Antrikshcodes",
-        "url": "https://antriksh.dev",
-        "image": "https://antriksh.dev/images/podium-white-shirt.jpg",
-        "jobTitle": "Student Developer & Builder",
-        "alumniOf": {
-          "@type": "CollegeOrUniversity",
-          "name": "Newton School of Technology, Rishihood University"
-        },
-        "sameAs": [
-          "https://github.com/Antrikshcodes",
-          "https://linkedin.com/in/antriksh"
-        ],
-        "knowsAbout": [
-          "Artificial Intelligence",
-          "Computer Vision",
-          "Full-Stack Web Development",
-          "Embedded Robotics",
-          "Python",
-          "React",
-          "Microcontrollers"
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://antriksh.dev/#website",
+            "url": "https://antriksh.dev",
+            "name": "Antriksh Portfolio",
+            "description": "Personal developer portfolio of Antriksh — student developer, builder, and creative technologist.",
+            "publisher": {
+              "@id": "https://antriksh.dev/#person"
+            },
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://antriksh.dev/?s={search_term_string}",
+              "query-input": "required name=search_term_string"
+            },
+            "inLanguage": "en-US"
+          },
+          {
+            "@type": "Person",
+            "@id": "https://antriksh.dev/#person",
+            "name": "Antriksh",
+            "alternateName": "Antrikshcodes",
+            "url": "https://antriksh.dev",
+            "image": "https://antriksh.dev/images/podium-white-shirt.jpg",
+            "description": "Student developer, builder, and creative technologist exploring AI, robotics, and interactive systems at Newton School of Technology.",
+            "jobTitle": "Student Developer & Builder",
+            "alumniOf": {
+              "@type": "CollegeOrUniversity",
+              "name": "Newton School of Technology, Rishihood University"
+            },
+            "sameAs": [
+              "https://github.com/Antrikshcodes",
+              "https://linkedin.com/in/antriksh"
+            ],
+            "knowsAbout": [
+              "Artificial Intelligence",
+              "Computer Vision",
+              "Full-Stack Web Development",
+              "Embedded Robotics",
+              "Python",
+              "React",
+              "Microcontrollers"
+            ]
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://antriksh.dev/#webpage",
+            "url": "https://antriksh.dev",
+            "name": "Antriksh Portfolio — Developer, Builder & Creative Technologist",
+            "isPartOf": {
+              "@id": "https://antriksh.dev/#website"
+            },
+            "about": {
+              "@id": "https://antriksh.dev/#person"
+            },
+            "description": "Antriksh's portfolio — a student developer, builder, and creative technologist building AI systems, robotics, and interactive web experiences at Newton School of Technology.",
+            "inLanguage": "en-US"
+          }
         ]
       }
     </script>
@@ -75,5 +119,36 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Fallback content for crawlers that do not execute JavaScript -->
+    <noscript>
+      <div style="max-width:800px;margin:0 auto;padding:40px 20px;font-family:sans-serif;color:#EAE4D9;background:#171614;">
+        <h1>Antriksh Portfolio — Developer, Builder & Creative Technologist</h1>
+        <p>
+          Welcome to the personal developer portfolio of <strong>Antriksh</strong>.
+          I am a student developer, builder, and creative technologist at
+          <strong>Newton School of Technology, Rishihood University</strong>,
+          pursuing a B.Tech in Computer Science and Artificial Intelligence.
+        </p>
+        <h2>About Antriksh</h2>
+        <p>
+          I explore artificial intelligence, computer vision, robotics, and full-stack
+          web development. I build projects that combine software and hardware to solve
+          real-world problems.
+        </p>
+        <h2>Featured Projects</h2>
+        <ul>
+          <li><strong>OrderShield AI</strong> — AI-powered fraud detection system (Fetch-A-Thon 3.0, Top 20)</li>
+          <li><strong>CONVERGE</strong> — Smart city project (HackO'Ween at ALTA School of Technology)</li>
+          <li><strong>Blindspot AI</strong> — AI project (CoNSTruct 2.0, Replit x NST hackathon)</li>
+        </ul>
+        <h2>Contact</h2>
+        <p>
+          Find me on
+          <a href="https://github.com/Antrikshcodes" style="color:#B8795E;">GitHub</a> and
+          <a href="https://linkedin.com/in/antriksh" style="color:#B8795E;">LinkedIn</a>.
+        </p>
+      </div>
+    </noscript>
   </body>
 </html>
