@@ -8,7 +8,7 @@ export const PERSONAL = {
     'Antriksh Galhotra is a Computer Science and Artificial Intelligence (CSE AI) student at Newton School of Technology, Rishihood University. Exploring full-stack software development, autonomous robotics, computer vision, and interactive digital products.',
   education: 'First-year B.Tech CS + AI · Newton School of Technology, Rishihood University',
   status: 'Open to hackathons & product collaborations',
-  email: 'antriksh.builds@gmail.com',
+  email: 'antriksh.codes@gmail.com',
   github: 'https://github.com/Antrikshcodes',
   linkedin: 'https://www.linkedin.com/in/antriksh',
 }

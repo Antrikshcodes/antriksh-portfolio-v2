@@ -24,10 +24,10 @@ export default function Contact() {
             <a
               href={`mailto:${PERSONAL.email}`}
               className="contact-anchor-link"
-              aria-label="Send Antriksh an email"
+              aria-label={`Send Antriksh an email at ${PERSONAL.email}`}
             >
               <Mail size={16} />
-              <span>Email</span>
+              <span>{PERSONAL.email}</span>
               <ArrowUpRight size={14} />
             </a>
 

@@ -47,7 +47,7 @@ const KNOWLEDGE_BASE = [
   {
     triggers: ['contact', 'email', 'hire', 'collaborate', 'github', 'reach'],
     answer:
-      "You can connect with Antriksh directly via email at antriksh.builds@gmail.com, explore his public codebases on GitHub (https://github.com/Antrikshcodes), or connect on LinkedIn (https://linkedin.com/in/antriksh).",
+      "You can connect with Antriksh directly via email at antriksh.codes@gmail.com, explore his public codebases on GitHub (https://github.com/Antrikshcodes), or connect on LinkedIn (https://linkedin.com/in/antriksh).",
   },
 ]
 
