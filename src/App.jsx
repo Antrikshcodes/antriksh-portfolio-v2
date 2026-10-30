@@ -25,6 +25,7 @@ const LabPage = lazy(() => import('./pages/LabPage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 const ProjectConverge = lazy(() => import('./pages/ProjectConverge'))
 const ProjectBlindspot = lazy(() => import('./pages/ProjectBlindspot'))
+const ProjectJarvis = lazy(() => import('./pages/ProjectJarvis'))
 const ProjectOrderShield = lazy(() => import('./pages/ProjectOrderShield'))
 const ProjectProductGuys = lazy(() => import('./pages/ProjectProductGuys'))
 const AIAssistantPage = lazy(() => import('./pages/AIAssistantPage'))
@@ -77,6 +78,9 @@ export default function App() {
       } else if (path === '/projects/blindspot-ai') {
         setCurrentRoute('/projects/blindspot-ai')
         document.title = 'Blindspot AI — Computer Vision Road Safety | Antriksh Galhotra Portfolio'
+      } else if (path === '/projects/jarvis-ai') {
+        setCurrentRoute('/projects/jarvis-ai')
+        document.title = 'JARVIS AI — Personal AI Assistant & Desktop LLM | Antriksh Galhotra'
       } else if (path === '/projects/ordershield-ai') {
         setCurrentRoute('/projects/ordershield-ai')
         document.title = 'OrderShield AI — Vendor Verification System | Antriksh Galhotra'
@@ -142,6 +146,17 @@ export default function App() {
       <AIConversationProvider>
         <Suspense fallback={<RouteFallback />}>
           <ProjectBlindspot onNavigateHome={() => navigateTo('/')} />
+          <AskAntrikshAI onNavigate={navigateTo} />
+        </Suspense>
+      </AIConversationProvider>
+    )
+  }
+
+  if (currentRoute === '/projects/jarvis-ai') {
+    return (
+      <AIConversationProvider>
+        <Suspense fallback={<RouteFallback />}>
+          <ProjectJarvis onNavigateHome={() => navigateTo('/')} />
           <AskAntrikshAI onNavigate={navigateTo} />
         </Suspense>
       </AIConversationProvider>

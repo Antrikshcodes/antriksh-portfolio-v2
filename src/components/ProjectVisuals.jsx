@@ -163,9 +163,69 @@ export function ProductGuysVisual() {
   )
 }
 
+export function JarvisVisual() {
+  return (
+    <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="400" height="300" fill="#0c1017" />
+      
+      {/* Sci-fi HUD Grid lines */}
+      {[...Array(9)].map((_, i) => (
+        <line key={`jh${i}`} x1="0" y1={i * 35} x2="400" y2={i * 35} stroke="#38bdf8" strokeWidth="0.5" opacity="0.08" />
+      ))}
+      {[...Array(11)].map((_, i) => (
+        <line key={`jv${i}`} x1={i * 40} y1="0" x2={i * 40} y2="300" stroke="#38bdf8" strokeWidth="0.5" opacity="0.08" />
+      ))}
+
+      {/* Outer Targeting Rings */}
+      <circle cx="200" cy="150" r="105" stroke="#38bdf8" strokeWidth="1" strokeDasharray="4 8" opacity="0.3" />
+      <circle cx="200" cy="150" r="85" stroke="#38bdf8" strokeWidth="1.2" strokeDasharray="16 12" opacity="0.45" />
+      <circle cx="200" cy="150" r="60" stroke="#38bdf8" strokeWidth="1.5" strokeDasharray="60 30" opacity="0.6" />
+      <circle cx="200" cy="150" r="35" stroke="#38bdf8" strokeWidth="2" opacity="0.8" />
+      <circle cx="200" cy="150" r="14" fill="#38bdf8" opacity="0.25" />
+      <circle cx="200" cy="150" r="6" fill="#38bdf8" />
+
+      {/* Radial Ticks */}
+      {[0, 45, 90, 135, 180, 225, 270, 315].map((deg) => {
+        const rad = (deg * Math.PI) / 180
+        const x1 = 200 + Math.cos(rad) * 65
+        const y1 = 150 + Math.sin(rad) * 65
+        const x2 = 200 + Math.cos(rad) * 78
+        const y2 = 150 + Math.sin(rad) * 78
+        return <line key={deg} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#38bdf8" strokeWidth="1.2" opacity="0.5" />
+      })}
+
+      {/* Audio Waveform / Token Frequency Bars */}
+      {[-4, -3, -2, -1, 0, 1, 2, 3, 4].map((i) => {
+        const heights = [10, 18, 28, 42, 54, 42, 28, 18, 10]
+        const h = heights[i + 4]
+        return (
+          <rect
+            key={i}
+            x={200 + i * 14 - 2}
+            y={240 - h / 2}
+            width="4"
+            height={h}
+            rx="2"
+            fill="#38bdf8"
+            opacity={0.3 + (h / 54) * 0.5}
+          />
+        )
+      })}
+
+      {/* HUD Telemetry Badges */}
+      <rect x="25" y="25" width="115" height="22" rx="3" fill="#131e2b" stroke="#38bdf8" strokeWidth="0.8" opacity="0.9" />
+      <text x="35" y="39" fontFamily="monospace" fontSize="8.5" fill="#38bdf8" letterSpacing="0.12em">JARVIS OS // 8B</text>
+
+      <rect x="270" y="25" width="105" height="22" rx="3" fill="#131e2b" stroke="#38bdf8" strokeWidth="0.8" opacity="0.9" />
+      <text x="280" y="39" fontFamily="monospace" fontSize="8.5" fill="#38bdf8" letterSpacing="0.12em">OLLAMA STREAM</text>
+    </svg>
+  )
+}
+
 const visuals = {
   converge: ConvergeVisual,
   'blindspot-ai': BlindspotVisual,
+  'jarvis-ai': JarvisVisual,
   'ordershield-ai': OrderShieldVisual,
   'product-guys': ProductGuysVisual,
 }

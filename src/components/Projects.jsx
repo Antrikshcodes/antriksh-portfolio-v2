@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { FEATURED_PROJECTS } from '../data/content'
 import ProjectModal from './ProjectModal'
-import { ArrowUpRight, Github, Layers } from 'lucide-react'
+import { ArrowUpRight, Github, Layers, Terminal, Sparkles } from 'lucide-react'
 
 export default function Projects() {
   const [modalProject, setModalProject] = useState(null)
@@ -54,7 +54,7 @@ export default function Projects() {
       <div className="container">
         {/* Section Header */}
         <div className="work-header-editorial">
-          <div className="section-meta-tag reveal">SELECTED WORK / 01—04</div>
+          <div className="section-meta-tag reveal">SELECTED WORK / 01—05</div>
           <h2 className="section-heading-large reveal reveal-delay-1">
             Things I've built. <span className="serif">Ideas I've explored.</span>
           </h2>
@@ -67,11 +67,16 @@ export default function Projects() {
         <div className="stacked-panels-deck">
           {FEATURED_PROJECTS.map((project, idx) => {
             const primaryLink = project.liveUrl || project.githubUrl
+            const isJarvis = project.id === 'jarvis-ai'
+            const projectPageUrl =
+              project.id === 'product-guys'
+                ? '/projects/the-product-guys'
+                : `/projects/${project.id}`
 
             return (
               <div
                 key={project.id}
-                className="stacked-panel-card"
+                className={`stacked-panel-card ${isJarvis ? 'jarvis-panel-card' : ''}`}
                 style={{
                   '--panel-idx': idx,
                   zIndex: idx + 1,
@@ -84,32 +89,48 @@ export default function Projects() {
                     <div>
                       <div className="stacked-meta-line">
                         <span className="stacked-index-code">{project.number}</span>
-                        <span
-                          className="stacked-cat-pill"
-                          style={{ borderColor: project.accentColor, color: project.accentColor }}
-                        >
-                          {project.category}
-                        </span>
+                        {isJarvis ? (
+                          <div className="jarvis-meta-badge">
+                            <span className="jarvis-pulse-dot" />
+                            <span>LOCAL AI · ON-DEVICE</span>
+                          </div>
+                        ) : (
+                          <span
+                            className="stacked-cat-pill"
+                            style={{ borderColor: project.accentColor, color: project.accentColor }}
+                          >
+                            {project.category}
+                          </span>
+                        )}
                       </div>
 
-                      {primaryLink ? (
-                        <a
-                          href={primaryLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          style={{ textDecoration: 'none' }}
-                        >
-                          <h3 className="stacked-project-title">{project.title}</h3>
-                        </a>
-                      ) : (
-                        <h3 className="stacked-project-title">{project.title}</h3>
-                      )}
+                      <div
+                        onClick={() => setModalProject(project)}
+                        style={{ cursor: 'pointer' }}
+                        title="Click to view full case study & details"
+                      >
+                        <h3 className={`stacked-project-title ${isJarvis ? 'jarvis-title' : ''}`}>
+                          {isJarvis && (
+                            <span className="jarvis-core-symbol" aria-hidden="true">
+                              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="9" stroke="#38BDF8" strokeWidth="1.5" strokeDasharray="3 3" />
+                                <circle cx="12" cy="12" r="5" stroke="#38BDF8" strokeWidth="1.5" />
+                                <circle cx="12" cy="12" r="2" fill="#38BDF8" />
+                              </svg>
+                            </span>
+                          )}
+                          {project.title}
+                        </h3>
+                      </div>
 
                       <p className="stacked-project-summary">{project.shortDesc}</p>
 
                       <div className="stacked-tags-row">
                         {project.technologies.map((tech) => (
-                          <span key={tech} className="stacked-tech-badge">
+                          <span
+                            key={tech}
+                            className={`stacked-tech-badge ${isJarvis ? 'jarvis-tech-badge' : ''}`}
+                          >
                             {tech}
                           </span>
                         ))}
@@ -134,11 +155,19 @@ export default function Projects() {
                           href={project.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="btn-stacked-secondary"
+                          className={isJarvis ? 'btn-stacked-primary jarvis-btn-primary' : 'btn-stacked-secondary'}
                         >
                           <Github size={14} />
-                          <span>Codebase</span>
+                          <span>{isJarvis ? 'GitHub Repository' : 'Codebase'}</span>
+                          {isJarvis && <ArrowUpRight size={14} />}
                         </a>
+                      )}
+
+                      {isJarvis && (
+                        <span className="jarvis-desktop-indicator" title="Desktop application running local Ollama inference">
+                          <Terminal size={12} />
+                          <span>Desktop App</span>
+                        </span>
                       )}
 
                       <button
@@ -152,29 +181,13 @@ export default function Projects() {
                       </button>
 
                       <a
-                        href={
-                          project.id === 'converge'
-                            ? '/projects/converge'
-                            : project.id === 'blindspot-ai'
-                            ? '/projects/blindspot-ai'
-                            : project.id === 'ordershield-ai'
-                            ? '/projects/ordershield-ai'
-                            : '/projects/the-product-guys'
-                        }
+                        href={projectPageUrl}
                         className="btn-stacked-text"
-                        style={{ color: 'var(--warm-beige)' }}
+                        style={{ color: isJarvis ? '#38BDF8' : 'var(--warm-beige)' }}
                         aria-label={`Read dedicated case study page for ${project.title}`}
                         onClick={(e) => {
                           e.preventDefault()
-                          const targetUrl =
-                            project.id === 'converge'
-                              ? '/projects/converge'
-                              : project.id === 'blindspot-ai'
-                              ? '/projects/blindspot-ai'
-                              : project.id === 'ordershield-ai'
-                              ? '/projects/ordershield-ai'
-                              : '/projects/the-product-guys'
-                          window.history.pushState({}, '', targetUrl)
+                          window.history.pushState({}, '', projectPageUrl)
                           window.dispatchEvent(new PopStateEvent('popstate'))
                           window.scrollTo({ top: 0, behavior: 'smooth' })
                         }}
@@ -185,58 +198,50 @@ export default function Projects() {
                     </div>
                   </div>
 
-                  {/* Right Column: Visual Browser Mockup */}
-                  <div className="stacked-panel-preview">
-                    {primaryLink ? (
-                      <a
-                        href={primaryLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="browser-mockup-frame"
-                        style={{ display: 'block', textDecoration: 'none' }}
-                      >
-                        <div className="browser-mockup-header">
-                          <div className="browser-mockup-dots">
-                            <span className="dot" />
-                            <span className="dot" />
-                            <span className="dot" />
-                          </div>
-                          <div className="browser-mockup-url">
+                  {/* Right Column: Visual Browser / Window Mockup */}
+                  <div className={`stacked-panel-preview ${isJarvis ? 'jarvis-panel-preview' : ''}`}>
+                    <div
+                      className={`browser-mockup-frame ${isJarvis ? 'jarvis-mockup-frame' : ''}`}
+                      onClick={() => setModalProject(project)}
+                      style={{ cursor: 'pointer' }}
+                      role="button"
+                      tabIndex={0}
+                      onKeyDown={(e) => e.key === 'Enter' && setModalProject(project)}
+                      aria-label={`Open project details for ${project.title}`}
+                    >
+                      <div className="browser-mockup-header">
+                        <div className="browser-mockup-dots">
+                          <span className="dot" style={isJarvis ? { background: '#EF4444' } : {}} />
+                          <span className="dot" style={isJarvis ? { background: '#F59E0B' } : {}} />
+                          <span className="dot" style={isJarvis ? { background: '#10B981' } : {}} />
+                        </div>
+                        <div className="browser-mockup-url">
+                          {isJarvis ? (
+                            <span style={{ color: '#38BDF8', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                              <span className="jarvis-terminal-dot" />
+                              jarvis-os // local-daemon:11434 (qwen3:8b)
+                            </span>
+                          ) : (
                             <span>https://{project.displayUrl}</span>
-                            <ArrowUpRight size={11} />
-                          </div>
-                        </div>
-
-                        <div className="browser-mockup-screen">
-                          <img
-                            src={project.screenshot}
-                            alt={`${project.title} interface preview`}
-                            loading="lazy"
-                          />
-                        </div>
-                      </a>
-                    ) : (
-                      <div className="browser-mockup-frame">
-                        <div className="browser-mockup-header">
-                          <div className="browser-mockup-dots">
-                            <span className="dot" />
-                            <span className="dot" />
-                            <span className="dot" />
-                          </div>
-                          <div className="browser-mockup-url">
-                            <span>https://{project.displayUrl}</span>
-                          </div>
-                        </div>
-
-                        <div className="browser-mockup-screen">
-                          <img
-                            src={project.screenshot}
-                            alt={`${project.title} interface preview`}
-                            loading="lazy"
-                          />
+                          )}
+                          <ArrowUpRight size={11} />
                         </div>
                       </div>
-                    )}
+
+                      <div className="browser-mockup-screen">
+                        <img
+                          src={project.screenshot}
+                          alt={`${project.title} interface preview`}
+                          loading="lazy"
+                        />
+                        {/* Explore Project hover indicator */}
+                        <div className="project-hover-pill">
+                          <Sparkles size={12} />
+                          <span>Explore Project</span>
+                          <ArrowUpRight size={12} />
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

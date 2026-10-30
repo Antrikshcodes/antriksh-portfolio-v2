@@ -1330,6 +1330,172 @@ button {
 }
 
 /* ========================================================
+   JARVIS AI PROJECT SHOWCASE STYLING & MICRO-INTERACTIONS
+   ======================================================== */
+.jarvis-panel-card {
+  border-color: rgba(56, 189, 248, 0.22);
+  transition: transform var(--transition-medium), opacity var(--transition-medium), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.jarvis-panel-card:hover {
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 35px rgba(56, 189, 248, 0.12);
+}
+
+.jarvis-meta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  padding: 0.22rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  color: #38BDF8;
+}
+
+.jarvis-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #38BDF8;
+  box-shadow: 0 0 8px #38BDF8;
+  animation: jarvisPulse 2s ease-in-out infinite;
+}
+
+@keyframes jarvisPulse {
+  0%, 100% {
+    transform: scale(0.9);
+    opacity: 0.7;
+    box-shadow: 0 0 4px #38BDF8;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+    box-shadow: 0 0 12px #38BDF8;
+  }
+}
+
+.jarvis-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.jarvis-core-symbol {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.jarvis-panel-card:hover .jarvis-core-symbol {
+  transform: rotate(90deg) scale(1.1);
+}
+
+.jarvis-tech-badge {
+  border-color: rgba(56, 189, 248, 0.18);
+  transition: all 0.25s ease;
+}
+
+.jarvis-panel-card:hover .jarvis-tech-badge {
+  border-color: rgba(56, 189, 248, 0.32);
+  color: var(--text-primary);
+}
+
+.jarvis-btn-primary {
+  background: #38BDF8 !important;
+  color: #0b1118 !important;
+  font-weight: 600;
+  border: 1px solid #38BDF8;
+}
+
+.jarvis-btn-primary:hover {
+  background: #7dd3fc !important;
+  border-color: #7dd3fc;
+  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.35);
+  transform: translateY(-2px);
+}
+
+.jarvis-desktop-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+}
+
+.jarvis-panel-preview {
+  background: radial-gradient(circle at 60% 40%, rgba(56, 189, 248, 0.06), transparent 70%), var(--bg-secondary);
+}
+
+.jarvis-mockup-frame {
+  border-color: rgba(56, 189, 248, 0.25);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(56, 189, 248, 0.08);
+}
+
+.jarvis-panel-card:hover .jarvis-mockup-frame {
+  border-color: rgba(56, 189, 248, 0.45);
+  transform: scale(1.02);
+}
+
+.jarvis-terminal-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10B981;
+  display: inline-block;
+  box-shadow: 0 0 6px #10B981;
+}
+
+/* Explore Project hover indicator */
+.browser-mockup-screen {
+  position: relative;
+}
+
+.project-hover-pill {
+  position: absolute;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.95rem;
+  border-radius: 999px;
+  background: rgba(20, 22, 28, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.browser-mockup-frame:hover .project-hover-pill {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.jarvis-mockup-frame .project-hover-pill {
+  border-color: rgba(56, 189, 248, 0.4);
+  background: rgba(12, 18, 26, 0.9);
+  color: #38BDF8;
+}
+
+/* ========================================================
    LEVEL TWO: EXPERIMENTS LAB & HARDWARE WORKBENCH
    ======================================================== */
 .experiments-lab-section {

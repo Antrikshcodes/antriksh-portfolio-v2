@@ -99,7 +99,7 @@ export const MARQUEE_ROW_TWO = [
 export const FEATURED_PROJECTS = [
   {
     id: 'converge',
-    number: '01 / 04',
+    number: '01 / 05',
     title: 'CONVERGE',
     category: 'Smart Cities / Civic AI',
     shortDesc:
@@ -131,7 +131,7 @@ export const FEATURED_PROJECTS = [
   },
   {
     id: 'blindspot-ai',
-    number: '02 / 04',
+    number: '02 / 05',
     title: 'Blindspot AI',
     category: 'AI / Computer Vision',
     shortDesc:
@@ -162,8 +162,42 @@ export const FEATURED_PROJECTS = [
     ],
   },
   {
+    id: 'jarvis-ai',
+    number: '03 / 05',
+    title: 'JARVIS AI',
+    category: 'Artificial Intelligence / Personal AI Assistant',
+    shortDesc:
+      'An intelligent personal AI assistant designed to simplify everyday digital interactions through conversational AI, automation, and smart assistance.',
+    description:
+      'JARVIS AI is a high-performance desktop personal artificial intelligence assistant built with Python and PySide6, powered by local LLM inference via Ollama and Qwen 3 (8B). Engineered with an asynchronous worker-thread architecture, real-time chunk streaming, a custom dark cybernetic UI, and zero-telemetry local execution.',
+    problemStatement:
+      'Cloud-hosted commercial AI assistants often encounter network latency, introduce recurring subscription overhead, and transmit sensitive personal discussions and files across proprietary third-party servers.',
+    solution:
+      'Engineered a privacy-first, on-device desktop personal assistant client that connects directly to local Ollama inference daemons, executing Qwen 3 (8B) models with streaming chunk delivery and non-blocking GUI updates.',
+    contribution:
+      'Built the PySide6 desktop interface and custom dark theme stylesheets, engineered the decoupled QObject AIWorker thread dispatch with chunk/finished/error signals, integrated the streaming Ollama HTTP API, and authored persona-tuned system prompts.',
+    challenges:
+      'Maintaining a 60 FPS responsive GUI during continuous token streaming from local LLM inference without freezing the Qt main event loop or dropping input signals.',
+    learnings:
+      'Desktop GUI thread decoupling with Qt signals/slots, local LLM orchestration and streaming with Ollama, prompt engineering for consistent assistant behavior, and robust error handling for local inference.',
+    technologies: ['Python', 'PySide6 (Qt)', 'Ollama', 'Qwen 3 (8B)', 'REST Streaming', 'Local LLM'],
+    screenshot: '/projects/jarvis.png',
+    liveUrl: null, // Native desktop application (Local inference)
+    githubUrl: 'https://github.com/Antrikshcodes/jarvis-ai',
+    displayUrl: 'github.com/Antrikshcodes/jarvis-ai',
+    accentColor: '#38BDF8',
+    isDesktopApp: true,
+    features: [
+      'Local on-device LLM inference via Ollama daemon integration',
+      'PySide6 asynchronous worker with real-time token streaming',
+      'Decoupled UI architecture with custom dark Qt stylesheets (QSS)',
+      'Qwen 3 (8B) model support with custom persona prompting',
+      'Zero-telemetry privacy-first offline-capable desktop client',
+    ],
+  },
+  {
     id: 'ordershield-ai',
-    number: '03 / 04',
+    number: '04 / 05',
     title: 'OrderShield AI',
     category: 'AI / Product Development',
     shortDesc:
@@ -195,7 +229,7 @@ export const FEATURED_PROJECTS = [
   },
   {
     id: 'product-guys',
-    number: '04 / 04',
+    number: '05 / 05',
     title: 'The Product Guys',
     category: 'Product / Community',
     shortDesc:

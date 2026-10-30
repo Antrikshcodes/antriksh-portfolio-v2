@@ -220,3 +220,4 @@ export default function MarkdownRenderer({ content = '', onInternalLink }) {
 
   return <div className="ai-md-content">{elements}</div>
 }
+

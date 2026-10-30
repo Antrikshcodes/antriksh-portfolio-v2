@@ -84,6 +84,47 @@ const ARCHITECTURES = {
       },
     ],
   },
+  'jarvis-ai': {
+    title: 'JARVIS AI // Asynchronous Desktop LLM Pipeline',
+    protocol: 'PySide6 Qt Signals · Local Ollama REST Streaming',
+    nodes: [
+      {
+        id: 'input',
+        title: '01. User Query',
+        sub: 'PySide6 Desktop UI',
+        detail: 'User submits text query via responsive QLineEdit with custom dark Qt stylesheet.',
+        type: 'intake',
+      },
+      {
+        id: 'worker',
+        title: '02. Worker Thread',
+        sub: 'Decoupled QObject',
+        detail: 'Dispatches query to background thread via PySide6 signals to preserve 60 FPS UI.',
+        type: 'process',
+      },
+      {
+        id: 'ollama',
+        title: '03. Ollama Gateway',
+        sub: 'HTTP Stream',
+        detail: 'Connects to localhost:11434 with system prompt steering Tony Stark persona.',
+        type: 'core',
+      },
+      {
+        id: 'inference',
+        title: '04. Qwen 3 (8B)',
+        sub: 'Local Weights',
+        detail: 'On-device neural inference produces low-latency token stream without cloud telemetry.',
+        type: 'dispatch',
+      },
+      {
+        id: 'stream',
+        title: '05. Real-Time Chat',
+        sub: 'Token Append',
+        detail: 'Emits chunk signals dynamically appending formatted text to ChatWidget viewport.',
+        type: 'output',
+      },
+    ],
+  },
   'ordershield-ai': {
     title: 'OrderShield AI // Automated Vendor Verification Pipeline',
     protocol: 'FastAPI Microservice · Document AI OCR',

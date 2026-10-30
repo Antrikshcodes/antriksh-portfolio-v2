@@ -36,6 +36,8 @@ export default function ProjectModal({ project, onClose }) {
   if (!project) return null
 
   const primaryUrl = project.liveUrl || project.githubUrl
+  const projectPageUrl =
+    project.id === 'product-guys' ? '/projects/the-product-guys' : `/projects/${project.id}`
 
   return (
     <div
@@ -267,28 +269,12 @@ export default function ProjectModal({ project, onClose }) {
         {/* Footer CTAs */}
         <div className="modal-footer-row">
           <a
-            href={
-              project.id === 'converge'
-                ? '/projects/converge'
-                : project.id === 'blindspot-ai'
-                ? '/projects/blindspot-ai'
-                : project.id === 'ordershield-ai'
-                ? '/projects/ordershield-ai'
-                : '/projects/the-product-guys'
-            }
+            href={projectPageUrl}
             className="btn-editorial-light"
             onClick={(e) => {
               e.preventDefault()
               onClose()
-              const targetUrl =
-                project.id === 'converge'
-                  ? '/projects/converge'
-                  : project.id === 'blindspot-ai'
-                  ? '/projects/blindspot-ai'
-                  : project.id === 'ordershield-ai'
-                  ? '/projects/ordershield-ai'
-                  : '/projects/the-product-guys'
-              window.history.pushState({}, '', targetUrl)
+              window.history.pushState({}, '', projectPageUrl)
               window.dispatchEvent(new PopStateEvent('popstate'))
               window.scrollTo({ top: 0, behavior: 'smooth' })
             }}

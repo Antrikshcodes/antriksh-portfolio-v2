@@ -149,3 +149,4 @@ export default function AIOrb({ state = 'idle', size = 52, className = '' }) {
     </div>
   )
 }
+

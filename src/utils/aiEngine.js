@@ -73,6 +73,29 @@ Antriksh built the frame inference pipeline in Python and tuned confidence thres
     }
   }
 
+  if (norm.includes('jarvis') || norm.includes('tony stark') || norm.includes('ollama') || norm.includes('qwen') || norm.includes('desktop assistant') || (norm.includes('personal') && norm.includes('assistant'))) {
+    const p = AI_KNOWLEDGE.projects.find((item) => item.id === 'jarvis-ai')
+    return {
+      text: `### JARVIS AI — Personal AI Assistant & Desktop LLM Pipeline
+
+**JARVIS AI** is an intelligent personal desktop assistant engineered by Antriksh using **Python** and **PySide6 (Qt)**, running local-first on-device inference via **Ollama** and **Qwen 3 (8B)**.
+
+**Key Technical Capabilities:**
+- **On-Device Local Inference:** Connects directly to a local Ollama daemon without external API keys or remote telemetry, giving users 100% data sovereignty.
+- **Asynchronous PySide6 Signal Pipeline:** Employs an isolated \`AIWorker(QObject)\` background thread with \`chunk\`, \`finished\`, and \`error\` signals to preserve a fluid 60 FPS UI during continuous streaming.
+- **Real-Time Token Streaming:** Ingests Ollama's HTTP streaming chunk responses to provide instantaneous token-by-token feedback in the chat widget.
+- **Custom Cybernetic Dark UI:** Styled with bespoke Qt Style Sheets (QSS) and tuned with a Stark-inspired system prompt persona (concise, witty, intelligent, and helpful).
+
+Antriksh authored the entire application, which you can run locally via \`python app.py\` after starting Ollama.`,
+      projectCard: p,
+      followUps: [
+        'How does JARVIS run without cloud servers?',
+        'What model does JARVIS use?',
+        'Inspect the GitHub codebase for JARVIS',
+      ],
+    }
+  }
+
   if (norm.includes('ordershield') || norm.includes('fetch') || norm.includes('vendor') || norm.includes('gstin') || norm.includes('fraud')) {
     const p = AI_KNOWLEDGE.projects.find((item) => item.id === 'ordershield-ai')
     return {
@@ -126,19 +149,20 @@ Antriksh architected the **Next.js** web application, designed the editorial inf
   // 2. Projects overview
   if (hasAny(norm, ['projects', 'portfolio', 'built', 'showcase', 'creations', 'work', 'selected work'])) {
     return {
-      text: `Antriksh has built a range of projects spanning **Civic AI**, **Computer Vision**, **Fintech Compliance**, and **Embedded Robotics**:
+      text: `Antriksh has built a range of projects spanning **Personal AI**, **Civic Tech**, **Computer Vision**, and **Robotics**:
 
-1. **[CONVERGE](/projects/converge)** — Smart City issue-management platform with 50m geospatial clustering and photographic verification. *(HackO'Ween)*
-2. **[Blindspot AI](/projects/blindspot-ai)** — Real-time computer vision system evaluating vehicle blind-spot risks under 50ms. *(CoNSTruct 2.0)*
-3. **[OrderShield AI](/projects/ordershield-ai)** — Automated B2B vendor onboarding audit and trust indexing. *(Fetch-A-Thon 3.0 Top 20)*
-4. **[The Product Guys](/projects/the-product-guys)** — Product thinking publication and teardown community for builders.
-5. **Autonomous Obstacle Avoiding Robot** — 2WD smart robot powered by Arduino Uno, ultrasonic pan servo, and dual DC motors.
+1. **[JARVIS AI](/projects/jarvis-ai)** — On-device personal assistant powered by Python, PySide6, Ollama, and Qwen 3 (8B).
+2. **[CONVERGE](/projects/converge)** — Smart City civic issue-management platform with 50m geospatial clustering and photographic verification. *(HackO'Ween)*
+3. **[Blindspot AI](/projects/blindspot-ai)** — Real-time computer vision system evaluating vehicle blind-spot risks under 50ms. *(CoNSTruct 2.0)*
+4. **[OrderShield AI](/projects/ordershield-ai)** — Automated B2B vendor onboarding audit and trust indexing. *(Fetch-A-Thon 3.0 Top 20)*
+5. **[The Product Guys](/projects/the-product-guys)** — Product thinking publication and teardown community for builders.
+6. **Autonomous Obstacle Avoiding Robot** — 2WD smart robot powered by Arduino Uno, ultrasonic pan servo, and dual DC motors.
 
 Which one would you like to explore in depth?`,
       followUps: [
+        'Tell me about JARVIS AI',
         'Explain CONVERGE in detail',
         'Tell me about OrderShield AI',
-        'Tell me about the obstacle avoiding robot',
       ],
     }
   }
@@ -346,3 +370,4 @@ export function streamGroundedResponse(userQuery, { onChunk, onComplete, signal 
 
   return () => clearInterval(interval)
 }
+

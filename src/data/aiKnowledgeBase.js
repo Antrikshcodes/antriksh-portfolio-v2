@@ -72,6 +72,32 @@ export const AI_KNOWLEDGE = {
       ],
     },
     {
+      id: 'jarvis-ai',
+      name: 'JARVIS AI',
+      badge: 'Personal AI Assistant & Desktop LLM',
+      category: 'Artificial Intelligence / Personal AI Assistant',
+      status: 'Active Desktop Application / Local LLM Pipeline',
+      summary:
+        'An intelligent personal AI assistant designed to simplify everyday digital interactions through conversational AI, automation, and smart assistance. Built with Python and PySide6, connected to on-device Ollama inference running Qwen 3 (8B).',
+      problem:
+        'Commercial cloud AI assistants suffer from internet latency, recurring subscription fees, and severe privacy risks by sending sensitive discussions and code to third-party corporate servers.',
+      solution:
+        'A native desktop assistant running local-first on consumer hardware with zero cloud telemetry. Utilizes PySide6 for high-performance rendering and connects directly to local Ollama inference daemons for real-time token streaming.',
+      contribution:
+        'Antriksh built the entire application: engineered the PySide6 desktop GUI with custom dark Qt stylesheets, developed the non-blocking AIWorker thread bus with signal/slot streaming, integrated Ollama REST streaming, and authored the Stark-inspired system prompts.',
+      techStack: ['Python', 'PySide6 (Qt)', 'Ollama', 'Qwen 3 (8B)', 'REST Streaming', 'Local LLM'],
+      screenshot: '/projects/jarvis.png',
+      liveUrl: null,
+      githubUrl: 'https://github.com/Antrikshcodes/jarvis-ai',
+      pageUrl: '/projects/jarvis-ai',
+      highlights: [
+        'On-device local LLM execution via Ollama (qwen3:8b) with zero cloud telemetry',
+        'Decoupled PySide6 worker thread architecture ensuring smooth 60 FPS UI',
+        'Real-time chunk streaming with immediate token-by-token visual feedback',
+        'Cybernetic dark theme inspired by Tony Stark JARVIS HUD aesthetics',
+      ],
+    },
+    {
       id: 'ordershield-ai',
       name: 'OrderShield AI',
       badge: 'Autonomous Supplier Trust & Onboarding',
@@ -226,3 +252,4 @@ Key Facts:
 - GitHub: https://github.com/Antrikshcodes
 - LinkedIn: https://www.linkedin.com/in/antriksh`,
 }
+
