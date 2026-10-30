@@ -1182,7 +1182,7 @@ button {
 }
 
 /* ========================================================
-   LEVEL TWO: EXPERIMENTS LAB (SECONDARY EDITORIAL GRID)
+   LEVEL TWO: EXPERIMENTS LAB & HARDWARE WORKBENCH
    ======================================================== */
 .experiments-lab-section {
   padding: var(--section-padding) 0;
@@ -1192,6 +1192,361 @@ button {
 
 .experiments-header-editorial {
   margin-bottom: 3.5rem;
+}
+
+/* --- Interactive 3D WebGL Lab Card (R3F Integration) --- */
+.three-playground-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+  transition: border-color var(--transition-medium);
+}
+
+.three-playground-card:hover {
+  border-color: var(--accent-sage);
+}
+
+.three-card-header {
+  padding: 1.1rem 1.6rem;
+  background: #161720;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.three-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.72rem;
+  color: var(--text-primary);
+  letter-spacing: 0.1em;
+}
+
+.three-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--soft-lime);
+  box-shadow: 0 0 8px rgba(209, 231, 160, 0.6);
+}
+
+.three-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.three-tool-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-size: 0.68rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.three-tool-btn:hover,
+.three-tool-btn.is-active {
+  background: var(--bg-surface);
+  border-color: var(--soft-lime);
+  color: var(--text-primary);
+}
+
+.three-canvas-viewport {
+  width: 100%;
+  height: 360px;
+  position: relative;
+  background: radial-gradient(circle at center, rgba(136, 128, 232, 0.07) 0%, transparent 70%),
+              #14151B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.three-drag-hint {
+  position: absolute;
+  bottom: 1rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: var(--text-tertiary);
+  pointer-events: none;
+  background: rgba(20, 21, 27, 0.75);
+  backdrop-filter: blur(8px);
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+}
+
+.three-card-footer {
+  padding: 0.85rem 1.6rem;
+  background: #161720;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.68rem;
+  color: var(--text-tertiary);
+}
+
+.footer-spec {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-tech {
+  color: var(--accent-sage);
+}
+
+/* --- Hardware & Robotics Workbench Spotlight --- */
+.hardware-spotlight-wrapper {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  padding: 2.2rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+.spotlight-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.spotlight-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.spotlight-icon {
+  color: var(--soft-lime);
+}
+
+.spotlight-title {
+  font-family: var(--font-heading);
+  font-size: 1.22rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.spotlight-sub {
+  font-size: 0.68rem;
+  color: var(--text-tertiary);
+  letter-spacing: 0.08em;
+}
+
+.spotlight-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.68rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(209, 231, 160, 0.1);
+  color: var(--soft-lime);
+  border: 1px solid rgba(209, 231, 160, 0.3);
+}
+
+.telemetry-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--soft-lime);
+  box-shadow: 0 0 8px rgba(209, 231, 160, 0.7);
+  animation: pulse-glow 1.8s infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.spotlight-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 2rem;
+}
+
+/* Radar Telemetry Box */
+.radar-telemetry-box {
+  background: #14151B;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.telemetry-box-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+}
+
+.radar-visualizer {
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.radar-sweep-screen {
+  width: 220px;
+  height: 110px;
+  border-top-left-radius: 110px;
+  border-top-right-radius: 110px;
+  border: 1.5px solid rgba(154, 168, 143, 0.4);
+  border-bottom: 1.5px solid rgba(154, 168, 143, 0.4);
+  position: relative;
+  background: radial-gradient(circle at bottom center, rgba(154, 168, 143, 0.15) 0%, transparent 75%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.radar-grid-ring {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 1px dashed rgba(52, 54, 65, 0.8);
+  border-bottom: none;
+  border-radius: 100px 100px 0 0;
+}
+.ring-1 { width: 70px; height: 35px; }
+.ring-2 { width: 140px; height: 70px; }
+.ring-3 { width: 210px; height: 105px; }
+
+.radar-beam {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  height: 105px;
+  background: linear-gradient(to top, var(--soft-lime), transparent);
+  transform-origin: bottom center;
+  transition: transform 0.12s linear;
+  box-shadow: 0 0 10px rgba(209, 231, 160, 0.6);
+}
+
+.radar-target-blip {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transform-origin: bottom center;
+  box-shadow: 0 0 10px rgba(209, 231, 160, 0.9);
+  transition: all 0.12s ease;
+}
+
+.radar-telemetry-readouts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.readout-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.readout-label {
+  font-size: 0.62rem;
+  color: var(--text-tertiary);
+  letter-spacing: 0.08em;
+}
+
+.readout-val {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Hardware Specs Box */
+.hardware-specs-box {
+  background: #14151B;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.specs-subheading {
+  font-size: 0.72rem;
+  color: var(--accent-sage);
+  letter-spacing: 0.12em;
+  margin-bottom: 1.25rem;
+}
+
+.specs-chips-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.spec-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.spec-component {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.spec-detail {
+  font-size: 0.74rem;
+  color: var(--text-secondary);
+}
+
+.hardware-disclaimer {
+  margin-top: 1.25rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.64rem;
+  color: var(--text-tertiary);
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 900px) {
+  .spotlight-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .experiments-editorial-grid {
@@ -1310,18 +1665,99 @@ button {
 }
 
 /* ========================================================
-   GITHUB REPOSITORIES — DEDICATED CODEBASE SECTION
+   OPEN SOURCE & EXPERIMENTS — MULTI-FACETED ECOSYSTEM
    ======================================================== */
-.github-section {
+.open-source-section {
   padding: var(--section-padding) 0;
   border-top: 1px solid var(--border-color);
   background-color: var(--bg-primary);
 }
 
-.github-header-editorial {
-  margin-bottom: 3.5rem;
+.open-source-header-editorial {
+  margin-bottom: 3rem;
 }
 
+/* Segmented Tabs Row */
+.opensource-tabs-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.os-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: 999px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.os-tab-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--accent-sage);
+}
+
+.os-tab-btn.is-active {
+  background: var(--text-primary);
+  color: var(--text-inverse);
+  border-color: var(--text-primary);
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+/* Tab Intro Banner */
+.os-tab-intro {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 0.85rem 1.4rem;
+  border-radius: 10px;
+  background: rgba(27, 29, 37, 0.6);
+  border: 1px solid var(--border-color);
+  flex-wrap: wrap;
+}
+
+.os-badge {
+  font-size: 0.66rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  letter-spacing: 0.1em;
+}
+
+.personal-badge {
+  background: rgba(209, 231, 160, 0.12);
+  color: var(--soft-lime);
+  border: 1px solid rgba(209, 231, 160, 0.35);
+}
+
+.inspiration-badge {
+  background: rgba(136, 128, 232, 0.12);
+  color: var(--electric-violet);
+  border: 1px solid rgba(136, 128, 232, 0.35);
+}
+
+.future-badge {
+  background: rgba(233, 154, 114, 0.12);
+  color: var(--warm-orange);
+  border: 1px solid rgba(233, 154, 114, 0.35);
+}
+
+.os-intro-text {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+/* Repositories Grid (Personal & Inspirations) */
 .github-repos-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1421,11 +1857,176 @@ button {
 .github-tags-mini {
   display: flex;
   gap: 0.4rem;
+  flex-wrap: wrap;
 }
 
 .github-tag-pill {
   font-size: 0.65rem;
   padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  color: var(--text-tertiary);
+}
+
+/* Inspiration Cards (Third-party Open Source) */
+.inspiration-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 1.85rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 240px;
+  transition: all var(--transition-medium);
+}
+
+.inspiration-card:hover {
+  background: var(--bg-surface);
+  border-color: var(--electric-violet);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4);
+}
+
+.inspiration-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.inspiration-creator {
+  font-size: 0.64rem;
+  color: var(--accent-sage);
+  letter-spacing: 0.12em;
+  margin-bottom: 0.25rem;
+}
+
+.inspiration-repo-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.inspiration-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.inspiration-link-btn:hover {
+  background: var(--text-primary);
+  color: var(--text-inverse);
+  border-color: var(--text-primary);
+}
+
+.inspiration-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+.inspiration-influence-box {
+  background: #14151B;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.influence-label {
+  font-size: 0.62rem;
+  color: var(--electric-violet);
+  letter-spacing: 0.1em;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.influence-text {
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.inspiration-footer {
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(52, 54, 65, 0.6);
+}
+
+/* Future Concept Cards */
+.future-experiments-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem;
+}
+
+.future-concept-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 1.85rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 200px;
+  transition: all var(--transition-medium);
+}
+
+.future-concept-card:hover {
+  background: var(--bg-surface);
+  border-color: var(--warm-orange);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.future-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.future-status-pill {
+  font-size: 0.65rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+}
+
+.future-concept-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.65rem;
+}
+
+.future-concept-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.future-concept-tags {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.future-tag {
+  font-size: 0.66rem;
+  padding: 0.25rem 0.6rem;
   border-radius: 4px;
   background: var(--bg-primary);
   border: 1px solid var(--border-color);
@@ -1483,13 +2084,15 @@ button {
 }
 
 @media (max-width: 1024px) {
-  .github-repos-grid {
+  .github-repos-grid,
+  .future-experiments-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 640px) {
-  .github-repos-grid {
+  .github-repos-grid,
+  .future-experiments-grid {
     grid-template-columns: 1fr;
   }
   .github-profile-bar {
@@ -1741,7 +2344,7 @@ button {
 }
 
 /* ========================================================
-   SKILLS SECTION — QUAD GRID
+   SKILLS SECTION — INTERACTIVE MECHANICAL KEYBOARD CONSOLE
    ======================================================== */
 .skills-editorial-section {
   padding: var(--section-padding) 0;
@@ -1750,7 +2353,325 @@ button {
 }
 
 .skills-header-editorial {
-  margin-bottom: 3.5rem;
+  margin-bottom: 3rem;
+}
+
+.skills-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.skills-mode-toggle {
+  display: flex;
+  gap: 0.4rem;
+  background: var(--bg-secondary);
+  padding: 4px;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+}
+
+.mode-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.mode-toggle-btn:hover {
+  color: var(--text-primary);
+}
+
+.mode-toggle-btn.is-active {
+  background: var(--text-primary);
+  color: var(--text-inverse);
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Keyboard Console Container --- */
+.keyboard-console-wrapper {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 2.2rem;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4);
+}
+
+.keyboard-console-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 2.5rem;
+  align-items: stretch;
+}
+
+/* Mechanical Keypad Deck */
+.mechanical-keypad-case {
+  background: #14151B;
+  border: 1.5px solid #2A2D3A;
+  border-radius: 14px;
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.keypad-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.35rem;
+  font-size: 0.68rem;
+  color: var(--text-tertiary);
+}
+
+.keypad-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--text-secondary);
+}
+
+.brand-led {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--soft-lime);
+  box-shadow: 0 0 8px rgba(209, 231, 160, 0.8);
+}
+
+.keypad-hint {
+  color: var(--accent-sage);
+  letter-spacing: 0.08em;
+}
+
+.keypad-keys-deck {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Realistic 3D Keycap Switch */
+.keycap-switch {
+  height: 80px;
+  background: linear-gradient(180deg, #262833 0%, #1A1C24 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 5px solid #101117;
+  border-radius: 9px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.1s ease, border-bottom 0.1s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  text-align: left;
+}
+
+.keycap-switch:hover {
+  border-color: var(--key-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5), 0 0 12px rgba(209, 231, 160, 0.15);
+}
+
+.keycap-switch.is-selected,
+.keycap-switch.is-pressed,
+.keycap-switch:active {
+  transform: translateY(4px);
+  border-bottom: 1px solid #101117;
+  background: linear-gradient(180deg, #2D303E 0%, #1F212B 100%);
+  border-color: var(--key-accent);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 14px var(--key-accent);
+}
+
+.keycap-legend {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--key-accent);
+}
+
+.keycap-label {
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: #F2F1EC;
+  letter-spacing: -0.01em;
+}
+
+.keycap-sub-name {
+  font-size: 0.58rem;
+  color: var(--text-tertiary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.keycap-led-glow {
+  position: absolute;
+  bottom: 5px;
+  right: 6px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--key-accent);
+  opacity: 0.8;
+  box-shadow: 0 0 6px var(--key-accent);
+}
+
+.keypad-footer-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.64rem;
+  color: var(--text-tertiary);
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(52, 54, 65, 0.5);
+}
+
+.status-live {
+  color: var(--soft-lime);
+}
+
+/* Skill Inspector Pane */
+.skill-inspector-pane {
+  background: #161720;
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 1.85rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.inspector-top-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.inspector-cat-pill {
+  font-size: 0.68rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid;
+  background: rgba(0, 0, 0, 0.25);
+  letter-spacing: 0.08em;
+}
+
+.inspector-key-badge {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  background: #14151B;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+}
+
+.inspector-skill-title {
+  font-family: var(--font-heading);
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.inspector-skill-focus {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 1.75rem;
+}
+
+.inspector-projects-box {
+  background: #14151B;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 1.15rem;
+  margin-bottom: 1.75rem;
+}
+
+.inspector-box-heading {
+  font-size: 0.64rem;
+  color: var(--accent-sage);
+  letter-spacing: 0.1em;
+  display: block;
+  margin-bottom: 0.65rem;
+}
+
+.inspector-projects-chips {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.inspector-proj-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.76rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  transition: all var(--transition-fast);
+}
+
+.inspector-proj-pill:hover {
+  border-color: var(--soft-lime);
+  color: var(--soft-lime);
+  transform: translateY(-1px);
+}
+
+.inspector-metrics-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.metric-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.metric-label {
+  font-size: 0.64rem;
+  color: var(--text-tertiary);
+  letter-spacing: 0.08em;
+}
+
+.metric-value {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+@media (max-width: 960px) {
+  .keyboard-console-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .keypad-keys-deck {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .skills-quad-grid {

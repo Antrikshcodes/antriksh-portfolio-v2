@@ -6,7 +6,7 @@ import TechStackMarquee from './components/TechStackMarquee'
 import About from './components/About'
 import Projects from './components/Projects'
 import ExperimentsLab from './components/ExperimentsLab'
-import GithubRepos from './components/GithubRepos'
+import OpenSourceSection from './components/OpenSourceSection'
 import Hackathons from './components/Hackathons'
 import TechStack from './components/TechStack'
 import Contact from './components/Contact'
@@ -34,16 +34,16 @@ export default function App() {
         {/* 2. Selected Work (Stacked Overlapping Scroll Animation) */}
         <Projects />
 
-        {/* 3. Experiments Lab (Robotics, Hardware, Prototypes) */}
+        {/* 3. Experiments Lab (Robotics, Hardware, 3D R3F Lab) */}
         <ExperimentsLab />
 
-        {/* 4. GitHub Repositories (Real codebases & public repos) */}
-        <GithubRepos />
+        {/* 4. Open Source & Experiments (My Codebases, Inspirations, Future Ideas) */}
+        <OpenSourceSection />
 
         {/* 5. Hackathons & Building Journey */}
         <Hackathons />
 
-        {/* 6. Skills & Technologies (Quad grid) */}
+        {/* 6. Skills & Technologies (Interactive Mechanical Keyboard Console) */}
         <TechStack />
 
         {/* 7. Contact Section */}
