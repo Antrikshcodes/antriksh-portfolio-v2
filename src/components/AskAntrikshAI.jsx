@@ -78,6 +78,16 @@ export default function AskAntrikshAI() {
     }
   }, [messages, isOpen])
 
+  useEffect(() => {
+    const handleGlobalKey = (e) => {
+      if (e.key === 'Escape' && isOpen) {
+        setIsOpen(false)
+      }
+    }
+    window.addEventListener('keydown', handleGlobalKey)
+    return () => window.removeEventListener('keydown', handleGlobalKey)
+  }, [isOpen])
+
   const findBestAnswer = (query) => {
     const normalized = query.toLowerCase()
 
@@ -233,3 +243,4 @@ export default function AskAntrikshAI() {
     </>
   )
 }
+

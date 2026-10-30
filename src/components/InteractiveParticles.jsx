@@ -203,6 +203,15 @@ export default function InteractiveParticles() {
     parent.addEventListener('touchmove', handleTouchMove, { passive: true })
     parent.addEventListener('touchend', handleMouseLeave, { passive: true })
 
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        cancelAnimationFrame(animationFrameId)
+      } else if (!prefersReducedMotion) {
+        animationFrameId = requestAnimationFrame(renderLoop)
+      }
+    }
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+
     const handleResize = () => {
       if (!parent) return
       width = canvas.width = parent.offsetWidth
@@ -221,6 +230,7 @@ export default function InteractiveParticles() {
 
     return () => {
       cancelAnimationFrame(animationFrameId)
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
       parent.removeEventListener('mousemove', handleMouseMove)
       parent.removeEventListener('mouseleave', handleMouseLeave)
       parent.removeEventListener('touchmove', handleTouchMove)

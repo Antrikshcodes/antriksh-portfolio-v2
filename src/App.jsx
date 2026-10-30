@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, lazy, Suspense } from 'react'
 import BootSequence from './components/BootSequence'
 import Navigation from './components/Navigation'
 import Hero from './components/Hero'
@@ -17,9 +17,32 @@ import CurrentlyExploring from './components/CurrentlyExploring'
 import Contact from './components/Contact'
 import AskAntrikshAI from './components/AskAntrikshAI'
 import KeyboardShortcutsModal from './components/KeyboardShortcutsModal'
-import LabPage from './pages/LabPage'
-import NotFoundPage from './pages/NotFoundPage'
 import { useScrollReveal } from './hooks/useScrollReveal'
+
+// Lazy-load dedicated page views for optimized initial bundle performance
+const LabPage = lazy(() => import('./pages/LabPage'))
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
+
+function RouteFallback() {
+  return (
+    <div
+      style={{
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: '#171614',
+        color: '#AAA397',
+        fontFamily: 'JetBrains Mono, monospace',
+        fontSize: '0.8rem',
+        letterSpacing: '0.08em',
+      }}
+    >
+      <span className="telemetry-live-dot" style={{ marginRight: '0.65rem' }} />
+      <span>INITIALIZING ROUTE // TELEMETRY LINK...</span>
+    </div>
+  )
+}
 
 export default function App() {
   const [bootFinished, setBootFinished] = useState(false)
@@ -54,20 +77,20 @@ export default function App() {
   // Render /lab
   if (currentRoute === '/lab') {
     return (
-      <>
+      <Suspense fallback={<RouteFallback />}>
         <LabPage onNavigateHome={() => navigateTo('/')} />
         <AskAntrikshAI />
-      </>
+      </Suspense>
     )
   }
 
   // Render 404 for any unexpected route
   if (currentRoute !== '/' && !currentRoute.startsWith('/#')) {
     return (
-      <>
+      <Suspense fallback={<RouteFallback />}>
         <NotFoundPage onNavigateHome={() => navigateTo('/')} />
         <AskAntrikshAI />
-      </>
+      </Suspense>
     )
   }
 
@@ -108,7 +131,7 @@ export default function App() {
         {/* 10. My Journey So Far (Chronological Building Timeline) */}
         <BuildingJourney />
 
-        {/* 11. Public Repositories (Live 52-Week GitHub Heatmap & Telemetry) */}
+        {/* 11. Public Repositories (Live GitHub Section & Telemetry) */}
         <GithubSection />
 
         {/* 12. Beyond The Code (Robotics, Product Thinking, Design & Hackathon Perspectives) */}

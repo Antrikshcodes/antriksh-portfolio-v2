@@ -911,6 +911,36 @@ button {
   }
 }
 
+@media (max-width: 380px) {
+  .scrapbook-collage-wrapper {
+    max-width: 290px;
+    height: 370px;
+  }
+  .card-main-podium {
+    width: 190px;
+    height: 270px;
+    top: 28px;
+  }
+  .card-fairy-lights {
+    width: 135px;
+    height: 185px;
+    top: 10px;
+    left: 0;
+  }
+  .card-plaid-shirt {
+    width: 135px;
+    height: 185px;
+    top: 12px;
+    right: 0;
+  }
+  .card-black-shirt {
+    width: 125px;
+    height: 165px;
+    bottom: 2px;
+    left: 6px;
+  }
+}
+
 /* ========================================================
    DUAL-DIRECTION TECHNOLOGY MARQUEE — DARK THEME
    ======================================================== */
