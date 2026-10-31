@@ -9,7 +9,7 @@ export const AI_KNOWLEDGE = {
     tagline: 'Your personal guide to everything Antriksh builds.',
     status: 'Active & Building (First-year B.Tech CS + AI)',
     university: 'Newton School of Technology, Rishihood University (Delhi NCR)',
-    degree: 'B.Tech in Computer Science and Artificial Intelligence (2025–2029)',
+    degree: 'B.Tech in Computer Science and Artificial Intelligence (2026–2030)',
     location: 'Delhi NCR, India',
     email: 'antriksh.codes@gmail.com',
     github: 'https://github.com/Antrikshcodes',
@@ -95,6 +95,32 @@ export const AI_KNOWLEDGE = {
         'Decoupled PySide6 worker thread architecture ensuring smooth 60 FPS UI',
         'Real-time chunk streaming with immediate token-by-token visual feedback',
         'Cybernetic dark theme inspired by Tony Stark JARVIS HUD aesthetics',
+      ],
+    },
+    {
+      id: 'closet-store',
+      name: 'Closet Store',
+      badge: 'Fashion Marketplace & E-Commerce',
+      category: 'Full-Stack / E-Commerce Marketplace',
+      status: 'Live Web Application / Production Deployment',
+      summary:
+        'A contemporary fashion e-commerce marketplace and curated apparel platform designed for discovering rare vintage, streetwear, and everyday essentials. Built on React 19, Vite, and Tailwind CSS v4.',
+      problem:
+        'Second-hand and vintage fashion platforms often suffer from dated, slow interfaces with poor filtering, lacking the modern editorial aesthetic and interactive cart responsiveness expected by younger shoppers.',
+      solution:
+        'A high-performance fashion marketplace prototype built with React 19, Vite, and Tailwind CSS v4, featuring fluid Framer Motion transitions, dynamic shopping bag counters, condition grading badges, and clean editorial typography.',
+      contribution:
+        'Antriksh built the frontend in React 19, implemented optimistic shopping bag state dispatch, styled the editorial layouts using Tailwind CSS v4, and integrated smooth Framer Motion micro-interactions.',
+      techStack: ['React 19', 'Tailwind CSS v4', 'Vite', 'Framer Motion', 'Lucide React'],
+      screenshot: '/projects/marketplace.png',
+      liveUrl: 'https://marketplacedemo.vercel.app/',
+      githubUrl: 'https://github.com/Antrikshcodes/closet-club',
+      pageUrl: '/projects/closet-store',
+      highlights: [
+        'Live shopping bag counter and state dispatch with zero layout shift',
+        'Curated vintage and streetwear drops with condition rating badges',
+        'Editorial hero aesthetics with Framer Motion enter animations',
+        'Built with cutting-edge React 19 and Tailwind CSS v4 foundation',
       ],
     },
     {

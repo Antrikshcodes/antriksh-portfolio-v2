@@ -96,6 +96,29 @@ Antriksh authored the entire application, which you can run locally via \`python
     }
   }
 
+  if (norm.includes('closet') || norm.includes('marketplace') || norm.includes('ecommerce') || norm.includes('store') || norm.includes('streetwear') || norm.includes('apparel')) {
+    const p = AI_KNOWLEDGE.projects.find((item) => item.id === 'closet-store')
+    return {
+      text: `### Closet Store — Contemporary Fashion Marketplace
+
+**Closet Store** (Closet Club, live at [marketplacedemo.vercel.app](https://marketplacedemo.vercel.app/)) is an e-commerce platform engineered by Antriksh for discovering curated vintage apparel, streetwear, and everyday essentials.
+
+**Key Technical Highlights:**
+- **Bleeding-Edge Foundation:** Built on **React 19**, **Vite**, and **Tailwind CSS v4** (\`@tailwindcss/vite\`).
+- **Dynamic Cart State:** Optimistic client-side shopping bag state dispatch with real-time bag counter updates and zero cumulative layout shift.
+- **Editorial Micro-Interactions:** Smooth page load animations, floating daily edit glass cards, and hover elevation effects powered by **Framer Motion**.
+- **Structured Apparel Metadata:** Product cards with verified condition badges (*Like New*, *Pre-loved*), price comparisons, and seller attribution.
+
+Antriksh engineered the entire frontend application and deployed it on Vercel.`,
+      projectCard: p,
+      followUps: [
+        'Visit the live Closet Store demo',
+        'What tech stack powers Closet Store?',
+        'Tell me about JARVIS AI',
+      ],
+    }
+  }
+
   if (norm.includes('ordershield') || norm.includes('fetch') || norm.includes('vendor') || norm.includes('gstin') || norm.includes('fraud')) {
     const p = AI_KNOWLEDGE.projects.find((item) => item.id === 'ordershield-ai')
     return {
@@ -149,20 +172,21 @@ Antriksh architected the **Next.js** web application, designed the editorial inf
   // 2. Projects overview
   if (hasAny(norm, ['projects', 'portfolio', 'built', 'showcase', 'creations', 'work', 'selected work'])) {
     return {
-      text: `Antriksh has built a range of projects spanning **Personal AI**, **Civic Tech**, **Computer Vision**, and **Robotics**:
+      text: `Antriksh has built a range of projects spanning **Personal AI**, **Civic Tech**, **E-Commerce**, **Computer Vision**, and **Robotics**:
 
 1. **[JARVIS AI](/projects/jarvis-ai)** — On-device personal assistant powered by Python, PySide6, Ollama, and Qwen 3 (8B).
-2. **[CONVERGE](/projects/converge)** — Smart City civic issue-management platform with 50m geospatial clustering and photographic verification. *(HackO'Ween)*
-3. **[Blindspot AI](/projects/blindspot-ai)** — Real-time computer vision system evaluating vehicle blind-spot risks under 50ms. *(CoNSTruct 2.0)*
-4. **[OrderShield AI](/projects/ordershield-ai)** — Automated B2B vendor onboarding audit and trust indexing. *(Fetch-A-Thon 3.0 Top 20)*
-5. **[The Product Guys](/projects/the-product-guys)** — Product thinking publication and teardown community for builders.
-6. **Autonomous Obstacle Avoiding Robot** — 2WD smart robot powered by Arduino Uno, ultrasonic pan servo, and dual DC motors.
+2. **[Closet Store](/projects/closet-store)** — Contemporary fashion marketplace built on React 19, Tailwind CSS v4, and Framer Motion.
+3. **[CONVERGE](/projects/converge)** — Smart City civic issue-management platform with 50m geospatial clustering and photographic verification. *(HackO'Ween)*
+4. **[Blindspot AI](/projects/blindspot-ai)** — Real-time computer vision system evaluating vehicle blind-spot risks under 50ms. *(CoNSTruct 2.0)*
+5. **[OrderShield AI](/projects/ordershield-ai)** — Automated B2B vendor onboarding audit and trust indexing. *(Fetch-A-Thon 3.0 Top 20)*
+6. **[The Product Guys](/projects/the-product-guys)** — Product thinking publication and teardown community for builders.
+7. **Autonomous Obstacle Avoiding Robot** — 2WD smart robot powered by Arduino Uno, ultrasonic pan servo, and dual DC motors.
 
 Which one would you like to explore in depth?`,
       followUps: [
+        'Tell me about Closet Store',
         'Tell me about JARVIS AI',
         'Explain CONVERGE in detail',
-        'Tell me about OrderShield AI',
       ],
     }
   }
@@ -240,7 +264,7 @@ Antriksh’s toolkit bridges full-stack software, machine intelligence, and embe
     return {
       text: `### Meet Antriksh Galhotra
 
-**Antriksh Galhotra** (preferred public name **Antriksh**) is a first-year Computer Science and Artificial Intelligence (B.Tech CS+AI) student at **Newton School of Technology, Rishihood University** in Delhi NCR, India (Class of 2029).
+**Antriksh Galhotra** (preferred public name **Antriksh**) is a first-year Computer Science and Artificial Intelligence (B.Tech CS+AI) student at **Newton School of Technology, Rishihood University** in Delhi NCR, India (Class of 2030).
 
 **Builder Philosophy:**
 He believes in learning by turning curious ideas into real products—whether that means coding a full-stack platform, fine-tuning a computer vision model, or soldering microcontrollers on a workbench.

@@ -99,7 +99,7 @@ export const MARQUEE_ROW_TWO = [
 export const FEATURED_PROJECTS = [
   {
     id: 'converge',
-    number: '01 / 05',
+    number: '01 / 06',
     title: 'CONVERGE',
     category: 'Smart Cities / Civic AI',
     shortDesc:
@@ -131,7 +131,7 @@ export const FEATURED_PROJECTS = [
   },
   {
     id: 'blindspot-ai',
-    number: '02 / 05',
+    number: '02 / 06',
     title: 'Blindspot AI',
     category: 'AI / Computer Vision',
     shortDesc:
@@ -163,7 +163,7 @@ export const FEATURED_PROJECTS = [
   },
   {
     id: 'jarvis-ai',
-    number: '03 / 05',
+    number: '03 / 06',
     title: 'JARVIS AI',
     category: 'Artificial Intelligence / Personal AI Assistant',
     shortDesc:
@@ -196,8 +196,41 @@ export const FEATURED_PROJECTS = [
     ],
   },
   {
+    id: 'closet-store',
+    number: '04 / 06',
+    title: 'Closet Store',
+    category: 'Full-Stack / E-Commerce Marketplace',
+    shortDesc:
+      'A contemporary fashion e-commerce marketplace platform for discovering curated vintage, streetwear, and everyday essentials with fluid Framer Motion micro-interactions and interactive cart management.',
+    description:
+      'Closet Store (Closet Club) is a contemporary fashion e-commerce marketplace and curated apparel platform designed for discovering rare vintage, streetwear, and everyday essentials. Built on React 19, Vite, and Tailwind CSS v4, it features real-time cart state management, responsive product filtering, and smooth Framer Motion micro-interactions.',
+    problemStatement:
+      'Second-hand and vintage fashion platforms frequently present cluttered, dated interfaces with sluggish filtering, lacking the modern editorial aesthetic and seamless shopping cart experience expected by younger generations.',
+    solution:
+      'Engineered a high-performance fashion marketplace prototype built on React 19, Vite, and Tailwind CSS v4, featuring fluid Framer Motion layout transitions, real-time cart state, condition grading badges, and clean editorial typography.',
+    contribution:
+      'Built the interactive React application with dynamic cart state dispatch, product grid layout, condition and category badge filters, and editorial hero components with Framer Motion animations.',
+    challenges:
+      'Adopting the bleeding-edge Tailwind CSS v4 engine and React 19 concurrent features while maintaining seamless 60 FPS page transitions and zero layout-shift across dynamic cart updates.',
+    learnings:
+      'Modern React 19 state patterns, Tailwind CSS v4 Vite plugin architecture, e-commerce UX paradigms, and accessible shopping cart micro-interactions.',
+    technologies: ['React 19', 'Tailwind CSS v4', 'Vite', 'Framer Motion', 'Lucide React', 'E-Commerce UX'],
+    screenshot: '/projects/marketplace.png',
+    liveUrl: 'https://marketplacedemo.vercel.app/',
+    githubUrl: 'https://github.com/Antrikshcodes/closet-club',
+    displayUrl: 'marketplacedemo.vercel.app',
+    accentColor: '#D4A373',
+    features: [
+      'Interactive shopping bag & cart counter state management',
+      'Curated vintage & streetwear product catalog with condition badges',
+      'Editorial hero section with Framer Motion enter animations',
+      'Responsive product grid with pricing and seller attribution',
+      'High-performance Tailwind CSS v4 and React 19 foundation',
+    ],
+  },
+  {
     id: 'ordershield-ai',
-    number: '04 / 05',
+    number: '05 / 06',
     title: 'OrderShield AI',
     category: 'AI / Product Development',
     shortDesc:
@@ -229,7 +262,7 @@ export const FEATURED_PROJECTS = [
   },
   {
     id: 'product-guys',
-    number: '05 / 05',
+    number: '06 / 06',
     title: 'The Product Guys',
     category: 'Product / Community',
     shortDesc:

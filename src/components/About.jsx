@@ -60,7 +60,7 @@ export default function About() {
               <span className="about-field-kicker">CAMPUS & DEGREE</span>
               <span className="about-field-value">Newton School of Technology</span>
               <span className="about-field-sub">
-                B.Tech in Computer Science & Artificial Intelligence · Rishihood University (2025–2029)
+                B.Tech in Computer Science & Artificial Intelligence · Rishihood University (2026–2030)
               </span>
             </div>
 

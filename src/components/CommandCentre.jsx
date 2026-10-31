@@ -31,7 +31,7 @@ const COMMANDS = {
     action: () => ({
       type: 'output',
       content: `ANTRIKSH // STUDENT DEVELOPER & CREATIVE TECHNOLOGIST
-Degree:   B.Tech in Computer Science & Artificial Intelligence (2025–2029)
+Degree:   B.Tech in Computer Science & Artificial Intelligence (2026–2030)
 Campus:   Newton School of Technology, Rishihood University
 Focus:    Software Engineering · AI & Computer Vision · Robotics · Creative Coding
 Bio:      "I turn curious ideas into digital experiences. I enjoy turning interesting

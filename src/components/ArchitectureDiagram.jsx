@@ -125,6 +125,47 @@ const ARCHITECTURES = {
       },
     ],
   },
+  'closet-store': {
+    title: 'Closet Store // E-Commerce State & Fluid Interaction Architecture',
+    protocol: 'React 19 Hooks · Tailwind CSS v4 · Framer Motion Engine',
+    nodes: [
+      {
+        id: 'catalog',
+        title: '01. Curated Catalog',
+        sub: 'Vintage & Streetwear',
+        detail: 'Loads editorial fashion items with condition ratings, pricing, and seller attribution.',
+        type: 'intake',
+      },
+      {
+        id: 'filtering',
+        title: '02. Dynamic Filter',
+        sub: 'Category & Fit',
+        detail: 'Instant client-side multi-parameter filtering by size, brand, aesthetic, and price range.',
+        type: 'process',
+      },
+      {
+        id: 'cart',
+        title: '03. Cart State Engine',
+        sub: 'React 19 Dispatch',
+        detail: 'Optimistic state management for shopping bag counters with zero layout shift.',
+        type: 'core',
+      },
+      {
+        id: 'motion',
+        title: '04. Framer Transitions',
+        sub: '60 FPS Micro-UX',
+        detail: 'Layout animations, hover card elevations, and fluid gesture interactions.',
+        type: 'dispatch',
+      },
+      {
+        id: 'edge',
+        title: '05. Vercel Edge',
+        sub: 'Global Delivery',
+        detail: 'Production distribution on Vercel CDN with instant sub-100ms asset hydration.',
+        type: 'output',
+      },
+    ],
+  },
   'ordershield-ai': {
     title: 'OrderShield AI // Automated Vendor Verification Pipeline',
     protocol: 'FastAPI Microservice · Document AI OCR',

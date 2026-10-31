@@ -54,7 +54,7 @@ export default function Projects() {
       <div className="container">
         {/* Section Header */}
         <div className="work-header-editorial">
-          <div className="section-meta-tag reveal">SELECTED WORK / 01—05</div>
+          <div className="section-meta-tag reveal">SELECTED WORK / 01—06</div>
           <h2 className="section-heading-large reveal reveal-delay-1">
             Things I've built. <span className="serif">Ideas I've explored.</span>
           </h2>

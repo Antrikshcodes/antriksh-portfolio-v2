@@ -222,10 +222,67 @@ export function JarvisVisual() {
   )
 }
 
+export function ClosetStoreVisual() {
+  return (
+    <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="400" height="300" fill="#181714" />
+      
+      {/* Background Subtle Fashion Grid */}
+      {[...Array(6)].map((_, i) => (
+        <line key={`ch${i}`} x1="30" y1={40 + i * 45} x2="370" y2={40 + i * 45} stroke="#d4a373" strokeWidth="0.5" opacity="0.1" />
+      ))}
+      {[...Array(8)].map((_, i) => (
+        <line key={`cv${i}`} x1={30 + i * 48} y1="40" x2={30 + i * 48} y2="265" stroke="#d4a373" strokeWidth="0.5" opacity="0.1" />
+      ))}
+
+      {/* Header Eyebrow */}
+      <rect x="35" y="25" width="130" height="18" rx="3" fill="#24211c" stroke="#d4a373" strokeWidth="0.8" opacity="0.9" />
+      <text x="45" y="37" fontFamily="monospace" fontSize="7.5" fill="#d4a373" letterSpacing="0.12em">CLOSET CLUB // EDIT</text>
+
+      {/* Shopping Cart Pill */}
+      <rect x="295" y="25" width="70" height="18" rx="9" fill="#d4a373" opacity="0.9" />
+      <text x="312" y="37" fontFamily="monospace" fontSize="8" fill="#181714" fontWeight="bold">BAG (02)</text>
+
+      {/* Product Cards Row */}
+      <g transform="translate(35, 58)">
+        {/* Card 1 */}
+        <rect width="155" height="185" rx="6" fill="#201e1b" stroke="#39352e" strokeWidth="1" />
+        <rect x="10" y="10" width="135" height="105" rx="4" fill="#2a2722" />
+        <circle cx="77" cy="62" r="24" fill="#d4a373" opacity="0.15" />
+        <path d="M77 48 L65 72 L89 72 Z" stroke="#d4a373" strokeWidth="1.5" fill="none" />
+        <rect x="10" y="125" width="60" height="10" rx="2" fill="#d4a373" opacity="0.25" />
+        <rect x="10" y="142" width="105" height="6" rx="1.5" fill="#eae4d9" opacity="0.7" />
+        <rect x="10" y="156" width="45" height="8" rx="2" fill="#d4a373" />
+        <text x="14" y="163" fontFamily="monospace" fontSize="6.5" fill="#181714" fontWeight="bold">₹1,899</text>
+        <rect x="95" y="156" width="50" height="18" rx="4" fill="#39352e" />
+        <text x="103" y="168" fontFamily="monospace" fontSize="6.5" fill="#eae4d9">+ ADD</text>
+      </g>
+
+      <g transform="translate(210, 58)">
+        {/* Card 2 */}
+        <rect width="155" height="185" rx="6" fill="#201e1b" stroke="#39352e" strokeWidth="1" />
+        <rect x="10" y="10" width="135" height="105" rx="4" fill="#2a2722" />
+        <circle cx="77" cy="62" r="24" fill="#d4a373" opacity="0.15" />
+        <circle cx="77" cy="62" r="16" stroke="#d4a373" strokeWidth="1.5" fill="none" />
+        <rect x="10" y="125" width="70" height="10" rx="2" fill="#d4a373" opacity="0.25" />
+        <rect x="10" y="142" width="95" height="6" rx="1.5" fill="#eae4d9" opacity="0.7" />
+        <rect x="10" y="156" width="45" height="8" rx="2" fill="#d4a373" />
+        <text x="14" y="163" fontFamily="monospace" fontSize="6.5" fill="#181714" fontWeight="bold">₹1,499</text>
+        <rect x="95" y="156" width="50" height="18" rx="4" fill="#39352e" />
+        <text x="103" y="168" fontFamily="monospace" fontSize="6.5" fill="#eae4d9">+ ADD</text>
+      </g>
+
+      {/* Footer Editorial Tag */}
+      <text x="35" y="262" fontFamily="monospace" fontSize="7" fill="#85836a" letterSpacing="0.1em">GOOD CLOTHES DESERVE A SECOND STORY · VINTAGE & STREETWEAR</text>
+    </svg>
+  )
+}
+
 const visuals = {
   converge: ConvergeVisual,
   'blindspot-ai': BlindspotVisual,
   'jarvis-ai': JarvisVisual,
+  'closet-store': ClosetStoreVisual,
   'ordershield-ai': OrderShieldVisual,
   'product-guys': ProductGuysVisual,
 }
