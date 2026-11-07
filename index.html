@@ -7,7 +7,6 @@
   <meta name="description" content="Antriksh — builder of intelligent software and physical things.">
   <title>Antriksh — Builder in Motion</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg">
-  <link rel="preload" as="image" href="./images/antriksh-brand.svg">
   <link rel="preload" as="image" href="./images/hero-front.png">
   <link rel="preload" as="image" href="./images/hero-rider.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,8 +43,7 @@
       backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
     }
     .nav > * { pointer-events:auto; }
-    .brand { display:flex; align-items:center; color:var(--ink); text-decoration:none; white-space:nowrap; }
-    .brand img { display:block; width:clamp(145px,15vw,190px); height:auto; }
+    .brand { color:var(--ink); text-decoration:none; font:500 12px "DM Mono",ui-monospace,monospace; letter-spacing:.16em; white-space:nowrap; }
     .nav-links { display:flex; align-items:center; justify-content:flex-end; gap:clamp(18px,3.1vw,48px); }
     .nav-links a { color:var(--ink); text-decoration:none; font:10px "DM Mono",ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; white-space:nowrap; transition:color .2s; }
     .nav-links a:hover,.nav-links a:focus-visible { color:var(--orange); }
@@ -269,7 +267,7 @@
     }
     @media (max-width: 720px) {
       .nav { min-height:52px; gap:8px; padding:12px; }
-      .brand img { width:clamp(132px,39vw,158px); }
+      .brand { font-size:10px; letter-spacing:.1em; }
       .nav-links { gap:clamp(7px,2vw,12px); }
       .nav-links a { font-size:clamp(7px,2.2vw,9px); letter-spacing:.055em; }
       .hero { cursor: auto; min-height: 540px; }
@@ -342,7 +340,7 @@
 </head>
 <body>
   <header class="nav">
-    <a class="brand" href="#hero" aria-label="Antriksh home"><img src="./images/antriksh-brand.svg" alt=""></a>
+    <a class="brand" href="#hero" aria-label="Antriksh home">ANTRIKSH</a>
     <nav class="nav-links" aria-label="Main navigation">
       <a href="#about">About</a>
       <a href="#work">Projects</a>
