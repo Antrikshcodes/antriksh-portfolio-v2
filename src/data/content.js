@@ -10,7 +10,7 @@ export const PERSONAL = {
   status: 'Open to hackathons & product collaborations',
   email: 'antriksh.codes@gmail.com',
   github: 'https://github.com/Antrikshcodes',
-  linkedin: 'https://www.linkedin.com/in/antriksh',
+  linkedin: 'https://www.linkedin.com/in/antriksh-codesss/',
 }
 
 export const SYSTEM_STATUS = {

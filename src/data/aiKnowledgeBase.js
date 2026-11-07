@@ -13,7 +13,7 @@ export const AI_KNOWLEDGE = {
     location: 'Delhi NCR, India',
     email: 'antriksh.codes@gmail.com',
     github: 'https://github.com/Antrikshcodes',
-    linkedin: 'https://www.linkedin.com/in/antriksh',
+    linkedin: 'https://www.linkedin.com/in/antriksh-codesss/',
     bio: 'Antriksh Galhotra is a Computer Science and Artificial Intelligence student at Newton School of Technology, Rishihood University. He explores software engineering, computer vision, robotics, and creative coding, learning by turning curious ideas into functional digital and physical products.',
     personality: 'Friendly, intelligent, slightly witty, professional, and confident while grounded in real projects.',
   },
@@ -276,6 +276,6 @@ Key Facts:
 - Robotics: Autonomous Obstacle Avoiding Robot (Arduino Uno + HC-SR04 ultrasonic + L298N), ESP32 sensor telemetry
 - Email: antriksh.codes@gmail.com
 - GitHub: https://github.com/Antrikshcodes
-- LinkedIn: https://www.linkedin.com/in/antriksh`,
+- LinkedIn: https://www.linkedin.com/in/antriksh-codesss/`,
 }
 

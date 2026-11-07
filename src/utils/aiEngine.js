@@ -292,7 +292,7 @@ Antriksh is always open to hackathon partnerships, internship opportunities, and
 
 - **Email:** [antriksh.codes@gmail.com](mailto:antriksh.codes@gmail.com)
 - **GitHub:** [@Antrikshcodes](https://github.com/Antrikshcodes) — Check out his public repositories and live commits.
-- **LinkedIn:** [linkedin.com/in/antriksh](https://www.linkedin.com/in/antriksh) — Connect professionally.
+- **LinkedIn:** [linkedin.com/in/antriksh-codesss](https://www.linkedin.com/in/antriksh-codesss/) — Connect professionally.
 - **Location:** Newton School of Technology, Rishihood University, Delhi NCR, India.
 
 Feel free to send a message or explore his repositories directly!`,
