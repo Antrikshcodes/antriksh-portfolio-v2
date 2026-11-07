@@ -1,5 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-  <rect width="32" height="32" rx="7" fill="#171614" stroke="#39352E" stroke-width="1.5"/>
-  <text x="14" y="21" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Manrope', sans-serif" font-weight="700" font-size="13" fill="#EAE4D9" letter-spacing="-0.5">AN</text>
-  <circle cx="25" cy="19.5" r="1.75" fill="#B8795E"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs><linearGradient id="silver" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#fff"/><stop offset=".48" stop-color="#bfc2c8"/><stop offset=".72" stop-color="#f4f5f7"/><stop offset="1" stop-color="#858992"/></linearGradient></defs>
+  <rect width="64" height="64" rx="15" fill="#101114"/>
+  <path d="M8 55 27 12c2-4.5 7-4.5 9 0l20 43H42L31 32 20 55H8Z" fill="url(#silver)"/>
+  <path d="M26 43h14l-7-13-7 13Z" fill="#101114"/>
+  <path d="M8 45c13-8 24-14 35-19 5-2 9-1 10 2 2 4-5 11-17 17" stroke="#101114" stroke-width="7" stroke-linecap="round"/>
+  <path d="M8 43c13-8 24-14 35-19 5-2 9-1 10 2 2 4-5 11-17 17" stroke="url(#silver)" stroke-width="3" stroke-linecap="round"/>
+  <path d="m54 8 1.5 5L61 14.5l-5.5 1.5L54 21l-1.5-5-5.5-1.5 5.5-1.5L54 8Z" fill="#fff"/>
 </svg>
