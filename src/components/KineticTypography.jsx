@@ -30,7 +30,7 @@ export default function KineticTypography({ onHoverChange }) {
   // Canvas particle bursting system
   const spawnParticles = useCallback((originX, originY) => {
     if (prefersReducedMotion) return
-    const colors = ['#C5B69D', '#B8795E', '#85836A', '#EAE4D9']
+    const colors = ['#E3FB51', '#F8FAFC', '#38BDF8', '#94A3B8']
     const newParticles = Array.from({ length: 18 }, () => ({
       x: originX + (Math.random() - 0.5) * 80,
       y: originY + (Math.random() - 0.5) * 30,

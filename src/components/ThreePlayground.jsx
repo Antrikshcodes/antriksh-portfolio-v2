@@ -35,7 +35,7 @@ function TechArtifact({ wireframe, color, autoRotate }) {
       <mesh scale={0.75}>
         <octahedronGeometry args={[1, 0]} />
         <meshStandardMaterial
-          color="#EAE4D9"
+          color="#F8FAFC"
           wireframe
           transparent
           opacity={0.4}
@@ -51,10 +51,10 @@ export default function ThreePlayground() {
   const [autoRotate, setAutoRotate] = useState(true)
 
   const colors = [
-    { name: 'Warm Beige', hex: '#C5B69D' },
-    { name: 'Terracotta', hex: '#B8795E' },
-    { name: 'Muted Olive', hex: '#85836A' },
-    { name: 'Dusty Blue', hex: '#788A91' },
+    { name: 'Electric Lime', hex: '#E3FB51' },
+    { name: 'Cloud White', hex: '#F8FAFC' },
+    { name: 'Cyan Frost', hex: '#38BDF8' },
+    { name: 'Slate Blue', hex: '#818CF8' },
   ]
 
   const activeColor = colors[colorIndex].hex

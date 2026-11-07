@@ -162,8 +162,8 @@ function ParticleExperiment() {
     canvas.addEventListener('mousemove', handleMouseMove)
     canvas.addEventListener('mouseleave', handleMouseLeave)
 
-    // Palette: Editorial dark warm palette
-    const colors = ['#C5B69D', '#B8795E', '#85836A', '#AAA397']
+    // Palette: Midnight Navy & Cloud White with Electric Lime
+    const colors = ['#E3FB51', '#38BDF8', '#F8FAFC', '#94A3B8']
 
     // Init particles
     const particles = []
@@ -224,8 +224,8 @@ function ParticleExperiment() {
             ctx.beginPath()
             ctx.moveTo(p.x, p.y)
             ctx.lineTo(p2.x, p2.y)
-            ctx.strokeStyle = '#C5B69D'
-            ctx.globalAlpha = alpha
+            ctx.strokeStyle = '#38BDF8'
+            ctx.globalAlpha = alpha * 0.5
             ctx.lineWidth = 0.8
             ctx.stroke()
           }
@@ -513,13 +513,13 @@ function ShaderExperiment() {
         // Influence by mouse
         n += smoothstep(0.4, 0.0, d) * 0.25;
 
-        // Palette: #171614, #28251F, #B8795E (terracotta), #85836A (muted olive), #C5B69D
-        vec3 darkBase = vec3(0.09, 0.086, 0.078); // #171614
-        vec3 terracotta = vec3(0.72, 0.47, 0.37); // #B8795E
-        vec3 olive = vec3(0.52, 0.51, 0.41);      // #85836A
+        // Palette: Midnight Navy (#080D1A), Soft Cyan (#38BDF8), Electric Lime (#E3FB51)
+        vec3 darkBase = vec3(0.031, 0.051, 0.102); // #080D1A
+        vec3 cyanSoft = vec3(0.22, 0.74, 0.97);     // #38BDF8
+        vec3 electricLime = vec3(0.89, 0.98, 0.32); // #E3FB51
 
-        vec3 color = mix(darkBase, olive, smoothstep(0.2, 0.7, n));
-        color = mix(color, terracotta, smoothstep(0.5, 0.9, n * uBlend));
+        vec3 color = mix(darkBase, cyanSoft, smoothstep(0.2, 0.7, n));
+        color = mix(color, electricLime, smoothstep(0.5, 0.9, n * uBlend));
 
         gl_FragColor = vec4(color, 1.0);
       }

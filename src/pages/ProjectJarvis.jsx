@@ -215,7 +215,7 @@ export default function ProjectJarvis({ onNavigateHome }) {
                 </h2>
                 <div style={{ background: '#0e1117', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '1.5rem', fontFamily: 'var(--font-mono)', fontSize: '0.84rem' }}>
                   <div style={{ color: 'var(--text-tertiary)', marginBottom: '0.75rem' }}># 1. Clone repository & install dependencies</div>
-                  <pre style={{ color: '#EAE4D9', margin: '0 0 1.25rem 0', whiteSpace: 'pre-wrap' }}>
+                  <pre style={{ color: '#F8FAFC', margin: '0 0 1.25rem 0', whiteSpace: 'pre-wrap' }}>
 {`git clone https://github.com/Antrikshcodes/jarvis-ai.git
 cd jarvis-ai
 pip install -r requirements.txt`}
@@ -227,7 +227,7 @@ pip install -r requirements.txt`}
                   </pre>
 
                   <div style={{ color: 'var(--text-tertiary)', marginBottom: '0.75rem' }}># 3. Launch JARVIS desktop client</div>
-                  <pre style={{ color: '#EAE4D9', margin: 0, whiteSpace: 'pre-wrap' }}>
+                  <pre style={{ color: '#F8FAFC', margin: 0, whiteSpace: 'pre-wrap' }}>
 {`python app.py`}
                   </pre>
                 </div>

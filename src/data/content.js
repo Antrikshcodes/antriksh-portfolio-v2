@@ -121,7 +121,7 @@ export const FEATURED_PROJECTS = [
     liveUrl: 'https://converge-web-ten.vercel.app',
     githubUrl: 'https://github.com/srtkio/converge_trojans',
     displayUrl: 'converge-web-ten.vercel.app',
-    accentColor: '#85836A',
+    accentColor: '#E3FB51',
     features: [
       'Duplicate clustering & root-cause incident mapping',
       'SLA deadline monitoring with escalation workflows',
@@ -153,7 +153,7 @@ export const FEATURED_PROJECTS = [
     liveUrl: null, // Concept / Prototype stage
     githubUrl: 'https://github.com/Antrikshcodes',
     displayUrl: 'github.com/Antrikshcodes',
-    accentColor: '#788A91',
+    accentColor: '#38BDF8',
     features: [
       'Peripheral proximity detection for vehicle blind spots',
       'Situational hazard evaluation scoring',
@@ -185,7 +185,7 @@ export const FEATURED_PROJECTS = [
     liveUrl: null, // Native desktop application (Local inference)
     githubUrl: 'https://github.com/Antrikshcodes/jarvis-ai',
     displayUrl: 'github.com/Antrikshcodes/jarvis-ai',
-    accentColor: '#38BDF8',
+    accentColor: '#E3FB51',
     isDesktopApp: true,
     features: [
       'Local on-device LLM inference via Ollama daemon integration',
@@ -219,7 +219,7 @@ export const FEATURED_PROJECTS = [
     liveUrl: 'https://marketplacedemo.vercel.app/',
     githubUrl: 'https://github.com/Antrikshcodes/closet-club',
     displayUrl: 'marketplacedemo.vercel.app',
-    accentColor: '#D4A373',
+    accentColor: '#F8FAFC',
     features: [
       'Interactive shopping bag & cart counter state management',
       'Curated vintage & streetwear product catalog with condition badges',
@@ -252,7 +252,7 @@ export const FEATURED_PROJECTS = [
     liveUrl: 'https://ordershield-tawny.vercel.app/',
     githubUrl: 'https://github.com/Antrikshcodes/ordershield',
     displayUrl: 'ordershield-tawny.vercel.app',
-    accentColor: '#B8795E',
+    accentColor: '#E3FB51',
     features: [
       'Automated GSTIN and business credential auditing',
       'Multi-factor supplier trust score index',
@@ -284,7 +284,7 @@ export const FEATURED_PROJECTS = [
     liveUrl: 'https://productguys.arthakram.in',
     githubUrl: null,
     displayUrl: 'productguys.arthakram.in',
-    accentColor: '#C5B69D',
+    accentColor: '#38BDF8',
     features: [
       'In-depth product breakdowns & UX critiques',
       'Frameworks for user validation before coding',
@@ -305,7 +305,7 @@ export const EXPERIMENTS_LAB = [
     description:
       'A robotics experiment exploring obstacle detection and autonomous movement using ultrasonic sensors, dual DC motors, and embedded Arduino firmware.',
     tech: ['Arduino', 'Ultrasonic Sensor', 'L298N Motor Driver', 'C++'],
-    accent: '#85836A',
+    accent: '#E3FB51',
     hardwareDetails: {
       chassis: '2WD Smart Robot Platform',
       controller: 'Arduino Uno R3',
@@ -323,7 +323,7 @@ export const EXPERIMENTS_LAB = [
     description:
       'A collection of hardware experiments involving microcontrollers, sensors, motors, displays, and software-hardware integration including ESP32 boards, servo motors, OLED displays, ultrasonic sensors, and motor drivers.',
     tech: ['ESP32', 'Arduino', 'Servo Motors', 'OLED Displays', 'Ultrasonic Sensors'],
-    accent: '#C5B69D',
+    accent: '#38BDF8',
     hardwareDetails: {
       controller: 'ESP32 NodeMCU-32S & Arduino Nano',
       display: '0.96" I2C SSD1306 128x64 OLED Display',
@@ -341,7 +341,7 @@ export const EXPERIMENTS_LAB = [
     description:
       'Precision angular positioning with micro servos coupled to dynamic OLED graphical readouts, graphing real-time sensor telemetry and bus states.',
     tech: ['ESP32', 'SSD1306 OLED', 'Micro Servos', 'I2C Protocol'],
-    accent: '#B8795E',
+    accent: '#E3FB51',
     hardwareDetails: {
       controller: 'ESP32 Dual-Core @ 240MHz',
       display: 'Monochrome OLED with custom bitmap rendering',
@@ -358,7 +358,7 @@ export const EXPERIMENTS_LAB = [
     description:
       'Procedural geometric wireframes and shaders in React Three Fiber, exploring viewport physics, camera controls, and metallic matcaps.',
     tech: ['Three.js', 'React Three Fiber', 'Drei', 'GLSL'],
-    accent: '#788A91',
+    accent: '#818CF8',
   },
   {
     id: 'ai-assistant-concept',
@@ -369,7 +369,7 @@ export const EXPERIMENTS_LAB = [
     description:
       'An exploratory concept for an AI-powered interface focused on contextual workspace actions, task execution, and clear visual feedback.',
     tech: ['Interface Design', 'Contextual Routing', 'Information Architecture'],
-    accent: '#85836A',
+    accent: '#F8FAFC',
   },
 ]
 
@@ -383,7 +383,7 @@ export const KEYBOARD_SKILLS = [
     category: 'Backend',
     focus: 'FastAPI, Computer Vision, Telemetry scripts, PyTorch',
     projects: ['CONVERGE', 'OrderShield AI', 'Blindspot AI'],
-    color: '#85836A',
+    color: '#38BDF8',
   },
   {
     key: 'J',
@@ -393,7 +393,7 @@ export const KEYBOARD_SKILLS = [
     category: 'Frontend',
     focus: 'Modern ES6+, Asynchronous APIs, Canvas graphics',
     projects: ['Portfolio v2', 'CONVERGE'],
-    color: '#C5B69D',
+    color: '#F8FAFC',
   },
   {
     key: 'R',
@@ -403,7 +403,7 @@ export const KEYBOARD_SKILLS = [
     category: 'Frontend',
     focus: 'Component architecture, Custom hooks, State orchestration',
     projects: ['CONVERGE', 'OrderShield AI', 'Portfolio v2'],
-    color: '#788A91',
+    color: '#818CF8',
   },
   {
     key: 'H',
@@ -413,7 +413,7 @@ export const KEYBOARD_SKILLS = [
     category: 'Frontend',
     focus: 'Semantic markup, Accessibility (a11y), Clean DOM structure',
     projects: ['All Web Projects'],
-    color: '#B8795E',
+    color: '#E3FB51',
   },
   {
     key: 'C',
@@ -423,7 +423,7 @@ export const KEYBOARD_SKILLS = [
     category: 'Frontend',
     focus: 'Custom properties, Responsive flex/grid, Keyframe choreography',
     projects: ['Portfolio v2', 'The Product Guys'],
-    color: '#85836A',
+    color: '#38BDF8',
   },
   {
     key: 'N',
@@ -433,7 +433,7 @@ export const KEYBOARD_SKILLS = [
     category: 'Frontend',
     focus: 'App Router, Server components, Edge runtime deployment',
     projects: ['CONVERGE', 'The Product Guys'],
-    color: '#C5B69D',
+    color: '#F8FAFC',
   },
   {
     key: 'A',
@@ -443,7 +443,7 @@ export const KEYBOARD_SKILLS = [
     category: 'AI',
     focus: 'Computer vision, document audit pipelines, agent workflows',
     projects: ['Blindspot AI', 'OrderShield AI'],
-    color: '#788A91',
+    color: '#E3FB51',
   },
   {
     key: 'F',
@@ -453,7 +453,7 @@ export const KEYBOARD_SKILLS = [
     category: 'Backend',
     focus: 'High-performance async Python endpoints, OpenAPI documentation',
     projects: ['CONVERGE', 'OrderShield AI'],
-    color: '#B8795E',
+    color: '#38BDF8',
   },
   {
     key: 'T',
@@ -463,7 +463,7 @@ export const KEYBOARD_SKILLS = [
     category: 'Creative Development',
     focus: 'Scene graphs, R3F shaders, Lighting and procedural geometry',
     projects: ['3D Playground', 'Portfolio v2'],
-    color: '#85836A',
+    color: '#818CF8',
   },
   {
     key: 'B',
@@ -473,7 +473,7 @@ export const KEYBOARD_SKILLS = [
     category: 'Robotics',
     focus: 'Arduino/ESP32 C++ firmware, PWM motor drivers, Ultrasonic telemetry',
     projects: ['Obstacle Avoiding Robot', 'Hardware Bench'],
-    color: '#C5B69D',
+    color: '#E3FB51',
   },
   {
     key: 'U',
@@ -483,7 +483,7 @@ export const KEYBOARD_SKILLS = [
     category: 'Creative Development',
     focus: 'Editorial visual hierarchy, Typography, User validation frameworks',
     projects: ['The Product Guys', 'Portfolio v2'],
-    color: '#788A91',
+    color: '#F8FAFC',
   },
 ]
 
@@ -508,7 +508,7 @@ export const BUILDING_JOURNEY = [
       'Developed an early interest in logic, creativity and building things with code.',
     ],
     badge: 'First Steps',
-    yearColor: '#85836A',
+    yearColor: '#94A3B8',
   },
   {
     year: '2024',
@@ -520,7 +520,7 @@ export const BUILDING_JOURNEY = [
       'Participated in IIT Roorkee E-Summit 2024.',
     ],
     badge: 'Foundation',
-    yearColor: '#788A91',
+    yearColor: '#38BDF8',
   },
   {
     year: '2025',
@@ -532,7 +532,7 @@ export const BUILDING_JOURNEY = [
       'Started experimenting with software development and technology.',
     ],
     badge: 'Projects',
-    yearColor: '#C5B69D',
+    yearColor: '#818CF8',
   },
   {
     year: '2026',
@@ -543,7 +543,7 @@ export const BUILDING_JOURNEY = [
       'Started my B.Tech journey in Computer Science and Artificial Intelligence at Rishihood University.',
     ],
     badge: 'University Milestone',
-    yearColor: '#B8795E',
+    yearColor: '#E3FB51',
   },
   {
     year: '2026',
@@ -558,7 +558,7 @@ export const BUILDING_JOURNEY = [
     project: 'OrderShield AI',
     badge: 'Top 20 Placement',
     isSpecial: true,
-    yearColor: '#B8795E',
+    yearColor: '#E3FB51',
   },
   {
     year: '2026',
@@ -571,7 +571,7 @@ export const BUILDING_JOURNEY = [
     ],
     project: 'CONVERGE',
     badge: 'Hackathon',
-    yearColor: '#B8795E',
+    yearColor: '#E3FB51',
   },
   {
     year: '2026',
@@ -582,7 +582,7 @@ export const BUILDING_JOURNEY = [
       'Participated in the product challenge.',
     ],
     badge: 'Product Challenge',
-    yearColor: '#B8795E',
+    yearColor: '#E3FB51',
   },
   {
     year: '2026',
@@ -595,7 +595,7 @@ export const BUILDING_JOURNEY = [
     ],
     project: 'Blindspot AI',
     badge: 'Replit x NST',
-    yearColor: '#B8795E',
+    yearColor: '#E3FB51',
   },
 ]
 
@@ -646,7 +646,7 @@ export const PERSONAL_REPOS = [
     description:
       'Urban issue-management platform with incident relationships, root-cause clustering, and verification workflows.',
     language: 'TypeScript',
-    languageColor: '#788A91',
+    languageColor: '#818CF8',
     url: 'https://github.com/srtkio/converge_trojans',
     tags: ['Next.js', 'FastAPI', 'CivicTech'],
   },
@@ -656,7 +656,7 @@ export const PERSONAL_REPOS = [
     description:
       'Supplier and vendor onboarding verification platform developed for Fetch-A-Thon 3.0.',
     language: 'Python',
-    languageColor: '#85836A',
+    languageColor: '#38BDF8',
     url: 'https://github.com/Antrikshcodes/ordershield',
     tags: ['FastAPI', 'Python', 'React'],
   },
@@ -666,7 +666,7 @@ export const PERSONAL_REPOS = [
     description:
       'Personal creative developer portfolio with kinetic typography, particle background, and physics stacked scroll.',
     language: 'JavaScript',
-    languageColor: '#C5B69D',
+    languageColor: '#F8FAFC',
     url: 'https://github.com/Antrikshcodes/antriksh-portfolio-v2',
     tags: ['React', 'Vite', 'Canvas'],
   },
@@ -676,7 +676,7 @@ export const PERSONAL_REPOS = [
     description:
       'Computer vision road-risk awareness prototype exploring driver blind-spot detection and alert latencies.',
     language: 'Python',
-    languageColor: '#85836A',
+    languageColor: '#38BDF8',
     url: 'https://github.com/Antrikshcodes',
     tags: ['Computer Vision', 'PyTorch'],
   },
@@ -686,7 +686,7 @@ export const PERSONAL_REPOS = [
     description:
       'Embedded C++ firmware for autonomous obstacle detection using ultrasonic sensors and dual motor drivers.',
     language: 'C++',
-    languageColor: '#B8795E',
+    languageColor: '#E3FB51',
     url: 'https://github.com/Antrikshcodes',
     tags: ['Arduino', 'Hardware', 'C++'],
   },

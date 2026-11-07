@@ -25,41 +25,41 @@ export default function AIOrb({ state = 'idle', size = 52, className = '' }) {
     // Palette mappings based on state
     const palettes = {
       idle: {
-        core: '#C5B69D', // warm beige
-        outer: '#85836A', // muted olive
-        accent: '#B8795E', // terracotta
+        core: '#F8FAFC', // cloud white
+        outer: '#38BDF8', // soft cyan slate
+        accent: '#E3FB51', // electric lime accent
         speed: 0.015,
         pulseScale: 0.06,
         particles: 8,
       },
       listening: {
-        core: '#B8795E', // terracotta active
-        outer: '#C5B69D',
-        accent: '#EAE4D9',
+        core: '#E3FB51', // electric lime active
+        outer: '#38BDF8',
+        accent: '#F8FAFC',
         speed: 0.045,
         pulseScale: 0.18,
         particles: 14,
       },
       thinking: {
-        core: '#85836A', // muted olive rapid spin
-        outer: '#788A91', // dusty blue
-        accent: '#C5B69D',
+        core: '#38BDF8', // soft cyan
+        outer: '#818CF8', // slate blue
+        accent: '#E3FB51',
         speed: 0.05,
         pulseScale: 0.1,
         particles: 16,
       },
       responding: {
-        core: '#C5B69D',
-        outer: '#B8795E',
-        accent: '#788A91',
+        core: '#E3FB51',
+        outer: '#38BDF8',
+        accent: '#F8FAFC',
         speed: 0.035,
         pulseScale: 0.14,
         particles: 12,
       },
       error: {
-        core: '#B8795E',
-        outer: '#39352E',
-        accent: '#B8795E',
+        core: '#EF4444',
+        outer: '#1E293B',
+        accent: '#EF4444',
         speed: 0.01,
         pulseScale: 0.04,
         particles: 6,
@@ -110,7 +110,7 @@ export default function AIOrb({ state = 'idle', size = 52, className = '' }) {
         center,
         radius
       )
-      coreGrad.addColorStop(0, '#EAE4D9')
+      coreGrad.addColorStop(0, '#F8FAFC')
       coreGrad.addColorStop(0.35, currentPalette.core)
       coreGrad.addColorStop(0.8, currentPalette.outer)
       coreGrad.addColorStop(1, `${currentPalette.outer}00`)

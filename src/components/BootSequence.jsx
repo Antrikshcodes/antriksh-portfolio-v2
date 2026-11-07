@@ -43,7 +43,7 @@ export default function BootSequence({ onComplete }) {
         position: 'fixed',
         inset: 0,
         zIndex: 99999,
-        backgroundColor: '#171614',
+        backgroundColor: '#080D1A',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -62,7 +62,7 @@ export default function BootSequence({ onComplete }) {
           fontSize: '1.35rem',
           fontWeight: 700,
           letterSpacing: '-0.02em',
-          color: '#EAE4D9',
+          color: '#F8FAFC',
           display: 'flex',
           alignItems: 'center',
           gap: '0.65rem',
@@ -73,7 +73,7 @@ export default function BootSequence({ onComplete }) {
             width: 8,
             height: 8,
             borderRadius: '50%',
-            backgroundColor: '#B8795E',
+            backgroundColor: '#E3FB51',
           }}
         />
         <span>ANTRIKSH</span>
@@ -82,7 +82,7 @@ export default function BootSequence({ onComplete }) {
         style={{
           fontFamily: "'JetBrains Mono', monospace",
           fontSize: '0.7rem',
-          color: '#AAA397',
+          color: '#94A3B8',
           marginTop: '0.65rem',
           letterSpacing: '0.14em',
           textTransform: 'uppercase',

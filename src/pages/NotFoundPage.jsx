@@ -25,7 +25,7 @@ export default function NotFoundPage({ onNavigateHome }) {
       <div className="notfound-container">
         {/* Top telemetry bar */}
         <div className="notfound-status-bar mono">
-          <span className="telemetry-live-dot" style={{ backgroundColor: '#B8795E' }} />
+          <span className="telemetry-live-dot" style={{ backgroundColor: '#E3FB51' }} />
           <span>STATUS: 404_PAGE_NOT_FOUND // SYSTEM UNMAPPED</span>
         </div>
 

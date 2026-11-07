@@ -164,7 +164,7 @@ Status: Authenticated in Digital Playground 2.0`,
      '._'-._         Focus: Software Engineering · AI · Robotics
         ` + '`""`' + `         Uptime: 24/7 Builder Mindset
                      Shell: zsh (Interactive CLI v2.4.0)
-                     Theme: Dark Editorial (#171614 / #B8795E)
+                     Theme: Midnight Navy / Electric Lime (#080D1A / #E3FB51)
                      Memory: 100% Curious`,
     }),
   },
@@ -180,7 +180,7 @@ Status: Authenticated in Digital Playground 2.0`,
      '._'-._         Focus: Software Engineering · AI · Robotics
         ` + '`""`' + `         Uptime: 24/7 Builder Mindset
                      Shell: zsh (Interactive CLI v2.4.0)
-                     Theme: Dark Editorial (#171614 / #B8795E)
+                     Theme: Midnight Navy / Electric Lime (#080D1A / #E3FB51)
                      Memory: 100% Curious`,
     }),
   },
@@ -215,11 +215,11 @@ Enjoy exploring the digital playground!`,
     desc: 'Inspect active editorial color palette',
     action: () => ({
       type: 'output',
-      content: `ACTIVE PALETTE // DARK EDITORIAL
-• Background:   #171614 (Primary) | #201E1B (Secondary) | #28251F (Card)
-• Text:         #EAE4D9 (Primary) | #AAA397 (Secondary)
-• Accents:      #85836A (Olive) | #B8795E (Terracotta) | #788A91 (Blue) | #C5B69D (Beige)
-• Philosophy:   Tactile, restrained, anti-generic AI glow.`,
+      content: `ACTIVE PALETTE // MIDNIGHT NAVY & ELECTRIC LIME
+• Background:   #080D1A (Midnight Navy) | #0F172A (Secondary) | #131F33 (Surface Card)
+• Text:         #F8FAFC (Cloud White) | #94A3B8 (Cloud Slate)
+• Accents:      #E3FB51 (Electric Lime - 10% Focus) | #38BDF8 (Cyan Frost) | #818CF8 (Slate Blue)
+• Philosophy:   90% Midnight Navy & Cloud White, 10% Electric Lime precision.`,
     }),
   },
 }

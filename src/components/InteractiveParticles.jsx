@@ -27,13 +27,13 @@ export default function InteractiveParticles() {
       active: false,
     }
 
-    // Warm, natural editorial palette (NO neon)
+    // Midnight Navy & Cloud White with 10% Electric Lime accent
     const colors = [
-      '#85836A', // Muted olive
-      '#B8795E', // Terracotta
-      '#788A91', // Dusty blue
-      '#C5B69D', // Warm beige
-      '#AAA397', // Secondary warm stone
+      '#94A3B8', // Cloud slate
+      '#F8FAFC', // Cloud white
+      '#38BDF8', // Soft cyan slate
+      '#64748B', // Muted navy slate
+      '#E3FB51', // Electric lime accent (~10%)
     ]
 
     const getParticleConfig = (w) => {
@@ -127,7 +127,7 @@ export default function InteractiveParticles() {
           if (dist < maxDist) {
             const alpha = (1 - dist / maxDist) * 0.12
             ctx.save()
-            ctx.strokeStyle = '#39352E' // warm bistre border tone
+            ctx.strokeStyle = '#1E293B' // slate navy border tone
             ctx.globalAlpha = alpha
             ctx.lineWidth = 0.7
             ctx.beginPath()
@@ -146,7 +146,7 @@ export default function InteractiveParticles() {
           if (mdist < config.mouseRadius) {
             const mAlpha = (1 - mdist / config.mouseRadius) * 0.18
             ctx.save()
-            ctx.strokeStyle = '#C5B69D' // warm beige delicate thread
+            ctx.strokeStyle = '#E3FB51' // electric lime delicate thread
             ctx.globalAlpha = mAlpha
             ctx.lineWidth = 0.75
             ctx.beginPath()

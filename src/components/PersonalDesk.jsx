@@ -20,7 +20,7 @@ const DESK_OBJECTS = [
     icon: Laptop,
     x: '48%',
     y: '42%',
-    accent: '#C5B69D',
+    accent: '#F8FAFC',
     title: 'The Digital Engine',
     details:
       'My primary workstation for software engineering, deep learning model prototyping, and interface craft. Setup: VS Code, Cursor, zsh with Starship prompt, Arc browser, and local Git repositories.',
@@ -33,7 +33,7 @@ const DESK_OBJECTS = [
     icon: Book,
     x: '24%',
     y: '56%',
-    accent: '#85836A',
+    accent: '#38BDF8',
     title: 'Analog Ideas & Architecture',
     details:
       'Before writing code for CONVERGE or OrderShield AI, every core database relation, spatial clustering radius, and user friction map was hand-sketched on graph paper.',
@@ -46,7 +46,7 @@ const DESK_OBJECTS = [
     icon: Cpu,
     x: '74%',
     y: '38%',
-    accent: '#B8795E',
+    accent: '#E3FB51',
     title: 'Robotics Control Board',
     details:
       'The brains of my autonomous obstacle-avoiding vehicle. Handles real-time interrupt sampling, HC-SR04 ping triggers, and PWM motor driver signals.',
@@ -59,7 +59,7 @@ const DESK_OBJECTS = [
     icon: Radio,
     x: '82%',
     y: '62%',
-    accent: '#788A91',
+    accent: '#818CF8',
     title: 'Wireless Sensor Hub',
     details:
       'Used for dual-core multi-threaded telemetry streaming. Connects sensor suites to browser dashboards over WebSockets and WebSerial protocols.',
@@ -72,7 +72,7 @@ const DESK_OBJECTS = [
     icon: Sliders,
     x: '64%',
     y: '68%',
-    accent: '#C5B69D',
+    accent: '#38BDF8',
     title: 'Ultrasonic & Actuator Bench',
     details:
       'TowerPro SG90 9g micro servos providing a 180° pan sweep for the HC-SR04 ultrasonic distance eyes, paired with L298N dual H-bridge motor drivers.',
@@ -85,7 +85,7 @@ const DESK_OBJECTS = [
     icon: Headphones,
     x: '28%',
     y: '26%',
-    accent: '#788A91',
+    accent: '#818CF8',
     title: 'Acoustic Focus State',
     details:
       'Electronic ambient, lo-fi beats, and game OSTs powering late-night hackathon sprint sessions and deep architecture focus blocks.',
@@ -98,7 +98,7 @@ const DESK_OBJECTS = [
     icon: Coffee,
     x: '66%',
     y: '22%',
-    accent: '#B8795E',
+    accent: '#E3FB51',
     title: 'Sprint Catalyst',
     details:
       'Black filter coffee and double espresso keeping momentum high during 24-48 hour hackathons like Fetch-A-Thon and HackO’Ween.',

@@ -8,10 +8,10 @@ export default function GithubSection() {
   const [isLoading, setIsLoading] = useState(false)
 
   const languages = [
-    { name: 'Python', pct: 42, color: '#85836A' },
-    { name: 'JavaScript / TS', pct: 36, color: '#C5B69D' },
-    { name: 'C++ (Hardware)', pct: 14, color: '#B8795E' },
-    { name: 'HTML / CSS', pct: 8, color: '#788A91' },
+    { name: 'Python', pct: 42, color: '#38BDF8' },
+    { name: 'JavaScript / TS', pct: 36, color: '#F8FAFC' },
+    { name: 'C++ (Hardware)', pct: 14, color: '#E3FB51' },
+    { name: 'HTML / CSS', pct: 8, color: '#818CF8' },
   ]
 
   // Fetch real public repositories & events from GitHub API
@@ -40,14 +40,14 @@ export default function GithubSection() {
                 language: r.language || 'Code',
                 languageColor:
                   r.language === 'Python'
-                    ? '#85836A'
+                    ? '#38BDF8'
                     : r.language === 'JavaScript'
-                    ? '#C5B69D'
+                    ? '#F8FAFC'
                     : r.language === 'TypeScript'
-                    ? '#788A91'
+                    ? '#818CF8'
                     : r.language === 'C++'
-                    ? '#B8795E'
-                    : '#AAA397',
+                    ? '#E3FB51'
+                    : '#94A3B8',
                 url: r.html_url,
                 stars: r.stargazers_count,
                 forks: r.forks_count,

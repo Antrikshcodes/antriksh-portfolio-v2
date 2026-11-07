@@ -148,8 +148,8 @@ export default function RoboticsSimulator() {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       const bot = robotRef.current
 
-      // 1. Arena Grid Lines (Dark Editorial Style)
-      ctx.strokeStyle = 'rgba(57, 53, 46, 0.45)'
+      // 1. Arena Grid Lines (Dark Slate Grid)
+      ctx.strokeStyle = 'rgba(30, 41, 59, 0.45)'
       ctx.lineWidth = 1
       for (let x = 0; x < canvas.width; x += 40) {
         ctx.beginPath()
@@ -165,7 +165,7 @@ export default function RoboticsSimulator() {
       }
 
       // 2. Arena Boundary Wall
-      ctx.strokeStyle = '#39352E'
+      ctx.strokeStyle = '#1E293B'
       ctx.lineWidth = 3
       ctx.strokeRect(4, 4, canvas.width - 8, canvas.height - 8)
 
@@ -178,22 +178,22 @@ export default function RoboticsSimulator() {
         ctx.fill()
 
         // Body
-        ctx.fillStyle = '#28251F'
+        ctx.fillStyle = '#131F33'
         ctx.beginPath()
         ctx.arc(obs.x, obs.y, obs.radius, 0, Math.PI * 2)
         ctx.fill()
-        ctx.strokeStyle = '#85836A'
+        ctx.strokeStyle = '#38BDF8'
         ctx.lineWidth = 1.5
         ctx.stroke()
 
         // Inner marker ring
-        ctx.strokeStyle = 'rgba(197, 182, 157, 0.4)'
+        ctx.strokeStyle = 'rgba(227, 251, 81, 0.4)'
         ctx.beginPath()
         ctx.arc(obs.x, obs.y, obs.radius * 0.45, 0, Math.PI * 2)
         ctx.stroke()
 
         // Label
-        ctx.fillStyle = '#AAA397'
+        ctx.fillStyle = '#94A3B8'
         ctx.font = '9px "JetBrains Mono", monospace'
         ctx.textAlign = 'center'
         ctx.fillText(obs.label, obs.x, obs.y + 3)
@@ -208,7 +208,7 @@ export default function RoboticsSimulator() {
       const hitY = sensorY + Math.sin(pingAngle) * hitDistance
 
       // Ultrasonic Field Arc (Cone of detection)
-      ctx.fillStyle = hitDistance < 38 ? 'rgba(184, 121, 94, 0.15)' : 'rgba(133, 131, 106, 0.08)'
+      ctx.fillStyle = hitDistance < 38 ? 'rgba(227, 251, 81, 0.2)' : 'rgba(56, 189, 248, 0.08)'
       ctx.beginPath()
       ctx.moveTo(sensorX, sensorY)
       ctx.arc(sensorX, sensorY, hitDistance, pingAngle - 0.22, pingAngle + 0.22)
@@ -216,7 +216,7 @@ export default function RoboticsSimulator() {
       ctx.fill()
 
       // Sensor Active Beam
-      ctx.strokeStyle = hitDistance < 38 ? '#B8795E' : '#C5B69D'
+      ctx.strokeStyle = hitDistance < 38 ? '#E3FB51' : '#38BDF8'
       ctx.lineWidth = 1.5
       ctx.beginPath()
       ctx.moveTo(sensorX, sensorY)
@@ -224,7 +224,7 @@ export default function RoboticsSimulator() {
       ctx.stroke()
 
       // Beam Impact Target Ring
-      ctx.fillStyle = hitDistance < 38 ? '#B8795E' : '#85836A'
+      ctx.fillStyle = hitDistance < 38 ? '#E3FB51' : '#38BDF8'
       ctx.beginPath()
       ctx.arc(hitX, hitY, hitDistance < 38 ? 4.5 : 3, 0, Math.PI * 2)
       ctx.fill()
@@ -239,8 +239,8 @@ export default function RoboticsSimulator() {
       ctx.fillRect(-16, -12, 34, 26)
 
       // Dual Drive Wheels (Left & Right DC motors via L298N)
-      ctx.fillStyle = '#171614'
-      ctx.strokeStyle = '#39352E'
+      ctx.fillStyle = '#080D1A'
+      ctx.strokeStyle = '#1E293B'
       ctx.lineWidth = 1
       ctx.fillRect(-14, -18, 14, 5) // Left wheel
       ctx.strokeRect(-14, -18, 14, 5)
@@ -248,8 +248,8 @@ export default function RoboticsSimulator() {
       ctx.strokeRect(-14, 13, 14, 5)
 
       // Acrylic Chassis Base Plate
-      ctx.fillStyle = '#201E1B'
-      ctx.strokeStyle = hitDistance < 38 ? '#B8795E' : '#C5B69D'
+      ctx.fillStyle = '#0F172A'
+      ctx.strokeStyle = hitDistance < 38 ? '#E3FB51' : '#F8FAFC'
       ctx.lineWidth = 1.5
       ctx.beginPath()
       ctx.roundRect(-18, -14, 36, 28, 4)
@@ -257,20 +257,20 @@ export default function RoboticsSimulator() {
       ctx.stroke()
 
       // Arduino Microcontroller Board Accent
-      ctx.fillStyle = '#85836A'
+      ctx.fillStyle = '#38BDF8'
       ctx.fillRect(-8, -8, 14, 16)
 
       // SG90 Micro Servo Mounting Bracket
-      ctx.fillStyle = '#28251F'
+      ctx.fillStyle = '#131F33'
       ctx.fillRect(8, -5, 8, 10)
 
       // HC-SR04 Dual Ultrasonic Eyes
-      ctx.fillStyle = '#EAE4D9'
+      ctx.fillStyle = '#F8FAFC'
       ctx.beginPath()
       ctx.arc(17, -4, 3, 0, Math.PI * 2)
       ctx.arc(17, 4, 3, 0, Math.PI * 2)
       ctx.fill()
-      ctx.strokeStyle = '#171614'
+      ctx.strokeStyle = '#080D1A'
       ctx.lineWidth = 1
       ctx.stroke()
 
