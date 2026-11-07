@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1240" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="82" y1="66" x2="818" y2="1165" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22231f"/><stop offset=".55" stop-color="#151714"/><stop offset="1" stop-color="#101114"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="0" cy="0" r="1" gradientTransform="matrix(1 0 0 1 462 435)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ff8a3d" stop-opacity=".36"/><stop offset="1" stop-color="#ff5a16" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="line" x1="138" y1="743" x2="769" y2="743" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffb063"/><stop offset=".48" stop-color="#ff5a16"/><stop offset="1" stop-color="#a9d8cc"/>
+    </linearGradient>
+    <linearGradient id="fossil" x1="310" y1="388" x2="588" y2="696" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffd49c"/><stop offset="1" stop-color="#d67c3e"/>
+    </linearGradient>
+    <filter id="blur" x="155" y="194" width="610" height="610" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="70"/>
+    </filter>
+  </defs>
+  <path fill="url(#bg)" d="M0 0h900v1240H0z"/>
+  <circle cx="460" cy="490" r="230" fill="#ff6a24" opacity=".52" filter="url(#blur)"/>
+  <path d="M0 0h900v1240H0z" fill="url(#sun)"/>
+  <g opacity=".14" stroke="#eee4d5">
+    <path d="M74 0v1240M826 0v1240M0 105h900M0 1135h900"/>
+    <path d="M110 0v1240M790 0v1240" stroke-dasharray="3 12"/>
+  </g>
+  <text x="74" y="102" fill="#ff9a59" font-family="monospace" font-size="18" letter-spacing="5">A DEEP-TIME FIELD GUIDE</text>
+  <text x="74" y="232" fill="#f7f3eb" font-family="Arial,sans-serif" font-size="88" font-weight="700" letter-spacing="-7">AFTER THE</text>
+  <text x="74" y="322" fill="#f7f3eb" font-family="Arial,sans-serif" font-size="88" font-weight="700" letter-spacing="-7">BEGINNING</text>
+  <text x="78" y="372" fill="#b9b7ad" font-family="monospace" font-size="15" letter-spacing="3">230 MILLION YEARS OF LIFE ON EARTH</text>
+  <g transform="translate(0 18)" stroke="url(#fossil)" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M438 431c-57-45-115-21-126 34-9 46 38 74 85 53 38-17 39-58 5-75-28-14-61 9-52 34 6 18 29 19 39 6" stroke-width="9" opacity=".92"/>
+    <path d="M475 455c40-26 83-19 109 12 23 28 19 71-14 91-26 16-59 4-64-22-4-20 15-38 34-31 13 5 16 19 9 27" stroke-width="7"/>
+    <path d="M434 524c-13 38-11 83 17 108 20 18 49 11 56-12 6-20-9-34-26-29-12 4-14 17-7 24M524 570c26 7 44 26 44 49 0 20-17 34-34 27-13-5-15-21-5-29" stroke-width="7"/>
+    <path d="M451 422c-4-26 0-46 15-65m24 59c9-31 26-50 50-58m-93 155c-36 2-59 19-73 43m117-9c38 13 58 34 66 62" stroke-width="5" opacity=".72"/>
+    <circle cx="449" cy="460" r="7" fill="#ffd49c" stroke="none"/><circle cx="511" cy="501" r="6" fill="#ffd49c" stroke="none"/><circle cx="466" cy="574" r="6" fill="#ffd49c" stroke="none"/>
+  </g>
+  <path d="M137 790h627" stroke="url(#line)" stroke-width="3"/>
+  <g fill="#151714" stroke="#ff9854" stroke-width="3">
+    <circle cx="160" cy="790" r="11"/><circle cx="335" cy="790" r="11"/><circle cx="510" cy="790" r="11"/><circle cx="685" cy="790" r="11"/>
+  </g>
+  <g fill="#d5d1c6" font-family="monospace" font-size="14" letter-spacing="1">
+    <text x="127" y="830">TRIASSIC</text><text x="309" y="830">JURASSIC</text><text x="478" y="830">CRETACEOUS</text><text x="667" y="830">TODAY</text>
+  </g>
+  <g fill="#f2eee5" font-family="Arial,sans-serif" font-size="22" font-weight="600" letter-spacing="1">
+    <text x="75" y="1003">LIFE KEEPS</text><text x="75" y="1034">FINDING A WAY.</text>
+  </g>
+  <text x="76" y="1168" fill="#9b9b92" font-family="monospace" font-size="14" letter-spacing="4">SCROLL THROUGH DEEP TIME  ↘</text>
+  <text x="825" y="1168" fill="#ff7838" font-family="monospace" font-size="15" text-anchor="end">09 / 12</text>
+</svg>

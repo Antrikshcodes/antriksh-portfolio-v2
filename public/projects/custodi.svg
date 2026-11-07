@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1400" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="70" y1="20" x2="1080" y2="1380" gradientUnits="userSpaceOnUse"><stop stop-color="#121a1d"/><stop offset="1" stop-color="#101114"/></linearGradient>
+    <linearGradient id="teal" x1="216" y1="293" x2="879" y2="881" gradientUnits="userSpaceOnUse"><stop stop-color="#a2f4df"/><stop offset="1" stop-color="#3cc8ac"/></linearGradient>
+    <linearGradient id="glass" x1="199" y1="495" x2="1001" y2="1042" gradientUnits="userSpaceOnUse"><stop stop-color="#202a2c"/><stop offset="1" stop-color="#171d20"/></linearGradient>
+    <filter id="glow" x="255" y="125" width="690" height="550" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feGaussianBlur stdDeviation="90"/></filter>
+  </defs>
+  <path fill="url(#bg)" d="M0 0h1200v1400H0z"/><circle cx="605" cy="385" r="240" fill="#37c5a8" opacity=".2" filter="url(#glow)"/>
+  <g opacity=".14" stroke="#d5e2e2"><path d="M76 0v1400M1124 0v1400M0 108h1200M0 1292h1200"/><path d="M115 0v1400M1085 0v1400" stroke-dasharray="4 14"/></g>
+  <g transform="translate(86 77)"><path d="M25 0 50 11v19c0 17-10 27-25 35C10 57 0 47 0 30V11L25 0Z" fill="url(#teal)"/><path d="m13 30 8 8 16-18" stroke="#10201e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><text x="68" y="31" fill="#eff7f4" font-family="Arial,sans-serif" font-size="28" font-weight="700">custodi</text><text x="69" y="52" fill="#94a8a5" font-family="monospace" font-size="10" letter-spacing="3">YOUR DIGITAL SAFETY CHECK</text><text x="1020" y="31" text-anchor="end" fill="#9eb3af" font-family="monospace" font-size="13" letter-spacing="2">PRIVATE BY DESIGN</text></g>
+  <text x="85" y="267" fill="#f2f5f3" font-family="Arial,sans-serif" font-size="80" font-weight="700" letter-spacing="-5">Pause before</text><text x="85" y="357" fill="url(#teal)" font-family="Arial,sans-serif" font-size="80" font-weight="700" letter-spacing="-5">you trust.</text>
+  <text x="91" y="410" fill="#aab6b5" font-family="Arial,sans-serif" font-size="21">A clear, private check for suspicious links and messages.</text>
+  <rect x="84" y="476" width="1032" height="577" rx="30" fill="url(#glass)" stroke="#58706d" stroke-opacity=".48"/>
+  <text x="126" y="538" fill="#aabbb8" font-family="monospace" font-size="14" letter-spacing="3">MESSAGE SAFETY CHECK</text><circle cx="1037" cy="532" r="6" fill="#57d2b2"/><text x="1018" y="538" text-anchor="end" fill="#77dfc2" font-family="monospace" font-size="11" letter-spacing="2">ON DEVICE</text>
+  <rect x="125" y="572" width="950" height="178" rx="18" fill="#151b1e" stroke="#38494a"/>
+  <text x="157" y="615" fill="#90a2a1" font-family="monospace" font-size="12" letter-spacing="2">PASTED MESSAGE</text>
+  <text x="158" y="663" fill="#e9eeee" font-family="Arial,sans-serif" font-size="21">“Congratulations! You are selected. Pay a small</text><text x="158" y="696" fill="#e9eeee" font-family="Arial,sans-serif" font-size="21">processing fee to secure your offer today.”</text>
+  <rect x="125" y="783" width="950" height="219" rx="20" fill="#1e2928" stroke="#4e8c7c" stroke-opacity=".75"/>
+  <circle cx="190" cy="850" r="31" fill="#4a2829"/><path d="M190 832v22m0 11v1" stroke="#ff9c83" stroke-width="5" stroke-linecap="round"/><text x="245" y="848" fill="#ffb6a6" font-family="monospace" font-size="13" letter-spacing="2">HIGH RISK · 3 SIGNALS FOUND</text>
+  <text x="157" y="900" fill="#f3f5f1" font-family="Arial,sans-serif" font-size="23" font-weight="700">This offer shows signs of a scam.</text>
+  <text x="158" y="940" fill="#aebbb7" font-family="Arial,sans-serif" font-size="16">Upfront payment request · Unverified sender · Urgency pressure</text>
+  <rect x="157" y="963" width="233" height="42" rx="21" fill="url(#teal)"/><text x="274" y="990" text-anchor="middle" fill="#10201e" font-family="monospace" font-size="12" font-weight="700" letter-spacing="1">SEE WHY IT'S RISKY</text>
+  <text x="84" y="1155" fill="#edf3f0" font-family="Arial,sans-serif" font-size="28" font-weight="600">Evidence first. Safer next steps.</text><text x="86" y="1200" fill="#9eaeaa" font-family="monospace" font-size="14" letter-spacing="3">CHECK · UNDERSTAND · PROTECT</text><text x="1115" y="1200" text-anchor="end" fill="#83e2c5" font-family="monospace" font-size="14" letter-spacing="2">08 / 12</text>
+</svg>

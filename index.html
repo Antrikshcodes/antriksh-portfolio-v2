@@ -1,353 +1,774 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- Primary Metadata -->
-    <title>Antriksh Galhotra | Developer Portfolio | AI, Software & Robotics</title>
-    <meta
-      name="title"
-      content="Antriksh Galhotra | Developer Portfolio | AI, Software & Robotics"
-    />
-    <meta
-      name="description"
-      content="Explore Antriksh Galhotra’s portfolio — a Computer Science and AI student at Newton School of Technology building projects in software development, artificial intelligence, robotics and product innovation."
-    />
-    <meta
-      name="keywords"
-      content="Antriksh, Antriksh Portfolio, Antrix Portfolio, Antriksh Developer, Antriksh Galhotra, Antriksh Newton School of Technology, Antriksh CSE AI, Antriksh Developer Portfolio, Antriksh Software Developer, Antriksh AI Developer, Antrix, Antrikshcodes, Newton School of Technology, Rishihood University"
-    />
-    <meta name="author" content="Antriksh Galhotra" />
-    <meta name="theme-color" content="#080D1A" />
-    <meta name="color-scheme" content="dark" />
-    <meta
-      name="robots"
-      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
-    />
-    <link rel="canonical" href="https://antriksh.dev" />
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101114">
+  <meta name="description" content="Antriksh — builder of intelligent software and physical things.">
+  <title>Antriksh — Builder in Motion</title>
+  <link rel="preload" as="image" href="./images/hero-front.png">
+  <link rel="preload" as="image" href="./images/hero-rider.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Kaushan+Script&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #101114;
+      --bg-soft: #17191e;
+      --ink: #f7f7f7;
+      --muted: #a4a7ae;
+      --ghost: #54575f;
+      --orange: #ff5a16;
+      --orange-hot: #ff7838;
+      --gutter: clamp(18px, 2.8vw, 42px);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { width: 100%; min-height: 100%; }
+    body {
+      overflow-x: hidden;
+      overflow-y: auto;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    .nav {
+      position:fixed; inset:0 0 auto; z-index:20; min-height:64px;
+      display:flex; align-items:center; justify-content:space-between; gap:28px;
+      padding:14px var(--gutter); pointer-events:none;
+      background:rgba(16,17,20,.92); border-bottom:1px solid rgba(255,255,255,.09);
+      backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+    }
+    .nav > * { pointer-events:auto; }
+    .brand { color:var(--ink); text-decoration:none; font:500 12px "DM Mono",ui-monospace,monospace; letter-spacing:.16em; white-space:nowrap; }
+    .nav-links { display:flex; align-items:center; justify-content:flex-end; gap:clamp(18px,3.1vw,48px); }
+    .nav-links a { color:var(--ink); text-decoration:none; font:10px "DM Mono",ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; white-space:nowrap; transition:color .2s; }
+    .nav-links a:hover,.nav-links a:focus-visible { color:var(--orange); }
+    .eyebrow, .hint, .tag, .micro-copy {
+      font-family: "DM Mono", ui-monospace, monospace;
+      text-transform: uppercase; letter-spacing: .11em;
+    }
+    .hero-project-transition { position:relative; }
+    .hero {
+      position: relative; width: 100%; height: 100vh; height: 100svh; min-height: 560px;
+      overflow: hidden; isolation: isolate; perspective: 1100px; cursor: none; touch-action: pan-y;
+      background:
+        radial-gradient(ellipse 40% 48% at 50% 59%, rgba(255, 91, 23, .25), transparent 73%),
+        radial-gradient(ellipse 80% 90% at 50% 100%, rgba(255,86,22,.11) 0%, transparent 68%),
+        linear-gradient(180deg, #101114 0%, #111216 58%, #101114 100%);
+    }
+    .hero::before {
+      content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .18;
+      background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: linear-gradient(to bottom, black, transparent 82%);
+    }
+    .hero::after {
+      content: ""; position: absolute; inset: auto 0 0; height: 26%; z-index: 4; pointer-events: none;
+      background: linear-gradient(0deg, rgba(16,17,20,.78), transparent);
+    }
+    .marquees {
+      position: absolute; left: 0; right: 0; top: 56%; z-index: 1; transform: translateY(-50%);
+      display: flex; flex-direction: column; gap: clamp(1px, .65vw, 12px);
+      overflow: hidden; pointer-events: none; user-select: none;
+    }
+    .row { display: flex; width: max-content; white-space: nowrap; will-change: transform; }
+    .row span {
+      padding-right: .27em; font-size: clamp(32px, 5.2vw, 78px); line-height: .95;
+      letter-spacing: -.075em; text-transform: uppercase; font-weight: 800;
+    }
+    .row.ghost span { color: var(--ghost); font-weight: 500; }
+    .row.solid span { color: var(--orange); }
+    .row.ghost { animation: move-left 42s linear infinite; }
+    .row.solid { animation: move-right 34s linear infinite; }
+    @keyframes move-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes move-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+    .name-lockup {
+      position: absolute; z-index: 1; top: 10%; left: 50%; width: 100%;
+      transform: translateX(-50%); text-align: center; pointer-events: none;
+      animation: name-arrive 1.1s cubic-bezier(.18,.7,.25,1) both;
+    }
+    .name-lockup h1 {
+      white-space: nowrap; font-family: "Kaushan Script", cursive;
+      font-size: clamp(75.6px, 15.3vw, 225px); line-height: .9;
+      letter-spacing: -.045em; font-weight: 400; text-transform: uppercase;
+      color: #f4eee8; mix-blend-mode: screen;
+    }
+    .name-lockup .outline { color: transparent; -webkit-text-stroke: 1px rgba(255,244,235,.75); }
+    @keyframes name-arrive { from { opacity: 0; transform: translate(-50%, 24px); letter-spacing: -.06em; } to { opacity: 1; transform: translate(-50%, 0); } }
+    .figure {
+      position: absolute; left: 50%; bottom: 0; z-index: 2; height: min(72svh, 102.1vw);
+      aspect-ratio: 3 / 4; transform: translateX(-50%); pointer-events: none;
+      filter: drop-shadow(0 22px 36px rgba(0,0,0,.35));
+    }
+    .figure::before { content:""; position:absolute; z-index:-1; left:-38%; right:-38%; top:4%; bottom:-4%; background:radial-gradient(ellipse at 50% 58%,rgba(255,91,23,.38) 0%,rgba(255,91,23,.2) 30%,rgba(255,91,23,0) 70%); filter:blur(34px); pointer-events:none; }
+    .figure img, .figure canvas {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: center bottom; display: block;
+    }
+    .figure img { opacity: 0; }
+    .figure canvas { opacity: 0; transition: opacity .8s ease; }
+    .figure canvas.ready { opacity: 1; }
+    .micro-copy {
+      position: absolute; z-index: 5; left: var(--gutter); bottom: var(--gutter);
+      font-size: 9px; line-height: 1.8; color: var(--muted); max-width: 185px;
+    }
+    .micro-copy strong { display: block; color: var(--ink); font: inherit; font-size: 10px; }
+    .tag {
+      position: absolute; right: var(--gutter); bottom: var(--gutter); z-index: 5;
+      font-size: 9px; color: var(--ink); border: 1px solid rgba(255,255,255,.18);
+      padding: 10px 12px; border-radius: 2px; background: rgba(16,17,20,.62); backdrop-filter: blur(8px);
+    }
+    .hint {
+      position: absolute; z-index: 6; left: 50%; bottom: calc(var(--gutter) + 2px); transform: translateX(-50%);
+      color: var(--muted); font-size: 9px; display: flex; align-items: center; gap: 9px; white-space: nowrap;
+    }
+    .hint i { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); }
+    .cursor {
+      position: fixed; left: 0; top: 0; z-index: 30; width: 12px; height: 12px; margin: -6px 0 0 -6px;
+      border-radius: 50%; background: var(--orange); pointer-events: none; opacity: 0;
+      transition: opacity .2s, transform .12s ease-out;
+    }
+    .cursor.on { opacity: 1; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    .tag { text-decoration: none; transition: border-color .2s, color .2s; }
+    .tag:hover { color: var(--orange-hot); border-color: var(--orange); }
+    #about,#work,#journey,#contact { scroll-margin-top:68px; }
+    .section { position: relative; padding: clamp(82px, 11vw, 156px) var(--gutter); overflow: hidden; }
+    .section--work { background: var(--bg-soft); }
+    .section--about { position:relative; z-index:2; isolation:isolate; padding:clamp(70px,8vw,108px) var(--gutter); overflow:hidden; background:radial-gradient(ellipse at 51% 48%,rgba(255,90,22,.075),transparent 48%),linear-gradient(145deg,#101114 0%,#101114 70%); }
+    .about-cabinet { position:relative; z-index:1; width:min(100%,1320px); margin:0 auto; padding:clamp(25px,4vw,52px) 0; border:0; background:transparent; }
+    .agent-wave-bg { position:absolute; z-index:0; inset:0; width:100%; height:100%; opacity:.78; pointer-events:none; mask-image:linear-gradient(to bottom,transparent 0%,#000 13%,#000 84%,transparent 100%); }
+    .section-inner { width: min(100%, 1320px); margin: 0 auto; }
+    .section-kicker { color: var(--orange); font: 10px "DM Mono", ui-monospace, monospace; letter-spacing: .14em; text-transform: uppercase; }
+    .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin: 22px 0 42px; }
+    .section-heading h2 { font-size: clamp(46px, 8vw, 108px); line-height: .9; letter-spacing: -.08em; font-weight: 500; }
+    .section-heading p { max-width: 280px; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .community-section { position:relative; z-index:2; padding:clamp(38px,5vw,68px) var(--gutter); background:#101114; }
+    .community-inner { width:min(100%,1320px); margin:0 auto; display:grid; grid-template-columns:minmax(220px,.72fr) minmax(0,1.8fr); align-items:center; gap:clamp(28px,4vw,58px); }
+    .community-heading h2 { margin:12px 0 10px; color:var(--ink); font-size:clamp(28px,3.4vw,44px); line-height:.96; letter-spacing:-.07em; font-weight:500; }
+    .community-heading h2 em { color:var(--orange); font-style:normal; }
+    .community-heading p { max-width:270px; color:var(--muted); font-size:11px; line-height:1.6; }
+    .community-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; perspective:1000px; }
+    .community-card { --tilt-x:0deg; --tilt-y:0deg; position:relative; display:flex; min-height:208px; flex-direction:column; justify-content:space-between; overflow:hidden; padding:20px; border:1px solid rgba(255,255,255,.11); border-radius:16px; background:linear-gradient(145deg,#1a1b1f 0%,#121316 72%); color:inherit; text-decoration:none; cursor:pointer; transform:perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)); transform-style:preserve-3d; transition:transform .34s cubic-bezier(.2,.75,.2,1),border-color .3s,background .3s,opacity .55s,filter .55s; }
+    .community-card::before { content:attr(data-number); position:absolute; right:12px; bottom:-34px; color:rgba(255,255,255,.035); font:600 clamp(100px,12vw,160px)/1 "DM Mono",ui-monospace,monospace; letter-spacing:-.12em; pointer-events:none; transition:color .3s,transform .45s; }
+    .community-card::after { content:""; position:absolute; width:155px; height:155px; right:-88px; top:-92px; border-radius:50%; background:rgba(255,90,22,.2); filter:blur(34px); opacity:.65; pointer-events:none; transition:opacity .3s,transform .45s; }
+    .community-card:hover { border-color:rgba(255,111,43,.58); background:linear-gradient(145deg,#202024 0%,#151619 72%); }
+    .community-card:hover::before { color:rgba(255,111,43,.09); transform:translate(-6px,-7px); }
+    .community-card:hover::after { opacity:1; transform:scale(1.25); }
+    .community-card-top { position:relative; z-index:1; display:flex; justify-content:space-between; align-items:center; }
+    .community-index { color:#96949a; font:9px "DM Mono",ui-monospace,monospace; letter-spacing:.13em; }
+    .community-card-mark { display:grid; width:30px; height:30px; place-items:center; border:1px solid rgba(255,255,255,.17); border-radius:50%; color:var(--orange); font-size:15px; transition:transform .3s,background .3s,border-color .3s; }
+    .community-card:hover .community-card-mark { transform:translate(2px,-2px); border-color:rgba(255,111,43,.55); background:rgba(255,111,43,.1); }
+    .community-card-copy { position:relative; z-index:1; transform:translateZ(18px); }
+    .community-type { display:inline-flex; margin-bottom:12px; padding:6px 8px; border:1px solid rgba(255,111,43,.25); border-radius:999px; color:#ff9a68; font:8px "DM Mono",ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; }
+    .community-card h3 { margin:0 0 8px; color:var(--ink); font-size:clamp(19px,2vw,26px); line-height:1; letter-spacing:-.055em; font-weight:600; }
+    .community-card p { max-width:250px; color:#aaa6aa; font-size:11px; line-height:1.55; }
+    .community-card.motion-pending { opacity:0; filter:blur(5px); transform:translateY(20px) scale(.98); transition-delay:var(--card-delay,0ms); }
+    .community-card.motion-visible { opacity:1; filter:blur(0); transform:perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) translateY(0); }
+    .community-card:hover { transform:perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) translateY(-5px); }
+    .community-card:focus-visible { outline:2px solid var(--orange); outline-offset:4px; }
+    .skills-ribbon { position:relative; z-index:2; overflow:hidden; padding:30px 0; background:#101114; border-top:1px solid rgba(255,255,255,.1); border-bottom:1px solid rgba(255,255,255,.1); }
+    .skills-ribbon::before,.skills-ribbon::after { content:""; position:absolute; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,rgba(255,111,43,.4),transparent); pointer-events:none; }
+    .skills-ribbon::before { top:0; } .skills-ribbon::after { bottom:0; }
+    .skills-track { display:flex; width:max-content; will-change:transform; }
+    .skills-line { display:flex; align-items:center; width:max-content; white-space:nowrap; animation:skills-left 42s linear infinite; }
+    .skills-line.reverse { animation-name:skills-right; animation-duration:48s; }
+    .skill-sequence { display:flex; align-items:center; flex:0 0 auto; }
+    .skills-line span { padding:0 24px; color:#fff; font:500 clamp(24px,3.2vw,42px) "DM Mono",ui-monospace,monospace; letter-spacing:.045em; text-transform:uppercase; }
+    .skill-sequence span:nth-of-type(odd) { color:var(--orange); }
+    .skills-line .skill-dot { padding:0 5px; color:#8a776c; }
+    @keyframes skills-left { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+    @keyframes skills-right { from { transform:translateX(-50%); } to { transform:translateX(0); } }
+    .journey-track { position:relative; height:500svh; background:#101114; }
+    .journey-scene { position:sticky; top:0; height:100vh; height:100svh; min-height:620px; overflow:hidden; isolation:isolate; color:#f5efe2; background:#101114; }
+    .journey-top { position:absolute; z-index:4; inset:var(--gutter) var(--gutter) auto; display:flex; align-items:flex-start; justify-content:space-between; gap:24px; }
+    .journey-top h2 { max-width:650px; margin-top:13px; font-size:clamp(34px,5vw,68px); line-height:.92; letter-spacing:-.075em; font-weight:500; }
+    .journey-top h2 em { color:var(--orange); font-style:normal; }
+    .journey-counter { padding-top:5px; color:#f5efe2; font:11px "DM Mono",ui-monospace,monospace; letter-spacing:.12em; white-space:nowrap; }
+    .journey-back-year { position:absolute; z-index:1; top:32%; left:50%; transform:translate(-50%,-50%); width:100%; text-align:center; color:rgba(245,239,226,.16); font:400 clamp(170px,34vw,500px)/.8 "Instrument Serif",Georgia,serif; letter-spacing:-.075em; pointer-events:none; }
+    .journey-current { position:absolute; z-index:3; left:50%; top:48%; transform:translate(-50%,-50%); width:min(620px,80vw); text-align:center; text-shadow:0 2px 28px rgba(0,0,0,.45); }
+    .journey-current .phase { color:var(--orange); font:10px "DM Mono",ui-monospace,monospace; letter-spacing:.18em; text-transform:uppercase; }
+    .journey-current h3 { margin:13px 0 9px; font-size:clamp(27px,4vw,48px); line-height:.98; letter-spacing:-.065em; font-weight:500; }
+    .journey-current p { max-width:460px; margin:0 auto; color:rgba(245,239,226,.78); font-size:13px; line-height:1.7; }
+    .journey-timeline { position:absolute; z-index:5; left:0; right:0; bottom:0; height:23%; min-height:174px; overflow:hidden; padding:0 var(--gutter) 22px; }
+    .journey-timeline::before { content:""; position:absolute; top:18px; left:0; right:0; height:1px; background:rgba(245,239,226,.32); }
+    .journey-timeline-row { position:relative; display:flex; width:max-content; height:100%; will-change:transform; }
+    .journey-milestone { position:relative; flex:0 0 clamp(245px,28vw,380px); padding:42px 38px 0 0; color:rgba(245,239,226,.48); transition:color .3s; }
+    .journey-milestone::before { content:""; position:absolute; top:13px; left:0; width:10px; height:10px; border:1px solid rgba(245,239,226,.5); border-radius:50%; background:#090a08; transition:background .3s,border-color .3s,transform .3s; }
+    .journey-milestone.is-active { color:#f5efe2; }
+    .journey-milestone.is-active::before { border-color:var(--orange); background:var(--orange); transform:scale(1.3); box-shadow:0 0 18px rgba(255,111,43,.62); }
+    .journey-milestone .year { display:block; color:var(--orange); font:10px "DM Mono",ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; }
+    .journey-milestone h3 { margin:9px 0 6px; max-width:330px; color:inherit; font-size:clamp(17px,1.7vw,22px); line-height:1.08; letter-spacing:-.04em; font-weight:500; }
+    .journey-milestone p { max-width:330px; color:rgba(245,239,226,.56); font-size:11px; line-height:1.5; }
+    .journey-milestone.is-active p { color:rgba(245,239,226,.78); }
+    .featured-work { position:relative; z-index:2; padding:clamp(64px,7vw,96px) var(--gutter); overflow:hidden; background:radial-gradient(ellipse at 76% 50%,rgba(255,90,22,.09),transparent 42%),#101114; }
+    .featured-inner { width:min(100%,1320px); min-height:clamp(650px,82svh,820px); margin:0 auto; display:grid; grid-template-columns:minmax(250px,.78fr) minmax(0,1.5fr); gap:clamp(32px,5vw,76px); align-items:center; }
+    .featured-head { display:flex; align-items:flex-start; flex-direction:column; gap:22px; }
+    .featured-head h2 { margin-top:14px; font-size:clamp(48px,6.4vw,86px); line-height:.9; letter-spacing:-.085em; font-weight:500; }
+    .featured-head p { max-width:340px; color:var(--muted); font-size:13px; line-height:1.8; }
+    .explore-button { display:inline-flex; min-height:48px; align-items:center; justify-content:space-between; gap:30px; padding:0 17px; background:var(--orange); color:#101114; text-decoration:none; font:600 10px "DM Mono",ui-monospace,monospace; letter-spacing:.07em; text-transform:uppercase; transition:background .2s,transform .2s; }
+    .explore-button:hover { background:var(--orange-hot); transform:translateY(-2px); }
+    .explore-button span { font-size:17px; }
+    .project-mosaic { position:relative; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; height:clamp(540px,76svh,760px); overflow:hidden; mask-image:linear-gradient(to bottom,transparent 0%,#000 10%,#000 90%,transparent 100%); }
+    .mosaic-column { min-width:0; overflow:hidden; }
+    .mosaic-track { display:flex; flex-direction:column; animation:mosaic-down 14.6s linear infinite; will-change:transform; }
+    .mosaic-track.reverse { animation-name:mosaic-up; }
+    .mosaic-track:hover { animation-play-state:paused; }
+    .mosaic-set { display:flex; flex-direction:column; gap:12px; padding-bottom:12px; }
+    .project-tile { position:relative; display:block; flex:0 0 auto; width:100%; aspect-ratio:.84/1; overflow:hidden; color:var(--ink); text-decoration:none; background:#17191e; border:1px solid rgba(255,255,255,.11); }
+    .project-tile img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.78; transition:transform .55s,opacity .3s; }
+    .project-tile--converge img { object-fit:contain; object-position:center; background:#101114; opacity:1; }
+    .project-tile:hover img { transform:scale(1.06); opacity:1; }
+    .project-tile::after { content:""; position:absolute; inset:35% 0 0; background:linear-gradient(transparent,rgba(0,0,0,.8)); pointer-events:none; }
+    .mosaic-color::after { display:none; }
+    .tile-meta { position:absolute; z-index:1; inset:auto 12px 12px; display:flex; justify-content:space-between; align-items:end; gap:8px; }
+    .tile-meta strong { font-size:clamp(12px,1.2vw,17px); font-weight:600; letter-spacing:-.04em; }
+    .tile-meta span { color:#ffc09f; font:8px "DM Mono",monospace; letter-spacing:.08em; text-transform:uppercase; }
+    .mosaic-color { display:flex; flex-direction:column; justify-content:space-between; padding:14px; background:linear-gradient(145deg,#ff6b28,#b63710); color:#191a1f; }
+    .mosaic-color.dark { background:linear-gradient(145deg,#202228,#101114); color:var(--ink); }
+    .mosaic-color .tile-index { font:9px "DM Mono",monospace; letter-spacing:.1em; }
+    .mosaic-color strong { max-width:100%; font-size:clamp(18px,2.2vw,30px); line-height:.9; letter-spacing:-.07em; text-transform:uppercase; }
+    @keyframes mosaic-down { from { transform:translateY(-50%); } to { transform:translateY(0); } }
+    @keyframes mosaic-up { from { transform:translateY(0); } to { transform:translateY(-50%); } }
+    .about-grid { display: grid; grid-template-columns: 1fr; gap: clamp(34px, 5vw, 64px); align-items: start; }
+    .about-copy h2 { margin: 22px 0 0; max-width: 1180px; font-size: clamp(34px, 4.5vw, 64px); line-height: 1.12; letter-spacing: -.065em; font-weight: 500; }
+    .about-copy h2 em { color: var(--orange); font-style: normal; }
+    .contact-bar { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-top: clamp(60px, 9vw, 120px); padding-top: 24px; border-top: 1px solid rgba(255,255,255,.16); }
+    .contact-bar p { color: var(--muted); font-size: 12px; }
+    .contact-bar a { color: var(--ink); text-decoration: none; }
+    .contact-bar a:hover { color: var(--orange); }
+    .contact-links { display: flex; gap: 22px; font: 10px "DM Mono", ui-monospace, monospace; text-transform: uppercase; letter-spacing: .08em; }
+    .contact-section { position:relative; z-index:2; padding:clamp(76px,10vw,132px) var(--gutter) clamp(30px,4vw,48px); background:radial-gradient(ellipse at 80% 0%,rgba(255,90,22,.17),transparent 38%),#101114; }
+    .contact-panel { width:min(100%,1320px); margin:0 auto; padding:clamp(28px,5vw,64px); border:1px solid rgba(255,255,255,.14); background:linear-gradient(120deg,rgba(255,255,255,.045),rgba(255,255,255,.008)); }
+    .contact-panel h2 { max-width:1100px; margin:20px 0 34px; font-size:clamp(56px,10vw,136px); line-height:.88; letter-spacing:-.09em; font-weight:500; }
+    .contact-panel h2 em { color:var(--orange); font-style:normal; }
+    .contact-bottom { display:grid; grid-template-columns:minmax(280px,.9fr) minmax(390px,1.1fr); align-items:center; gap:clamp(28px,5vw,72px); padding-top:27px; border-top:1px solid rgba(255,255,255,.15); }
+    .contact-email-block { min-width:0; }
+    .contact-label { display:block; margin-bottom:12px; color:var(--muted); font:10px "DM Mono",ui-monospace,monospace; letter-spacing:.15em; text-transform:uppercase; }
+    .contact-email { display:inline-flex; align-items:center; gap:12px; color:var(--ink); text-decoration:none; font-size:clamp(17px,2vw,26px); font-weight:500; letter-spacing:-.035em; overflow-wrap:anywhere; }
+    .contact-email span { color:var(--orange); font-size:.9em; transition:transform .2s; }
+    .contact-email:hover { color:var(--orange); }
+    .contact-email:hover span { transform:translate(3px,-3px); }
+    .contact-links { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; font:inherit; text-transform:none; letter-spacing:normal; }
+    .contact-link { display:flex; min-height:84px; align-items:center; justify-content:space-between; gap:12px; padding:16px 18px; border:1px solid rgba(255,255,255,.16); background:rgba(255,255,255,.025); color:var(--ink); text-decoration:none; transition:background .22s,border-color .22s,transform .22s; }
+    .contact-link:hover { background:rgba(255,90,22,.09); border-color:rgba(255,90,22,.65); transform:translateY(-3px); }
+    .contact-link-copy { display:flex; flex-direction:column; gap:6px; }
+    .contact-link-copy strong { font-size:16px; font-weight:600; }
+    .contact-link-copy small { color:var(--muted); font:9px "DM Mono",ui-monospace,monospace; letter-spacing:.06em; text-transform:uppercase; }
+    .contact-link-arrow { color:var(--orange); font-size:20px; }
+    .contact-copyright { width:min(100%,1320px); margin:20px auto 0; color:#777b83; font:9px "DM Mono",ui-monospace,monospace; letter-spacing:.1em; text-transform:uppercase; }
+    @media (max-width: 900px) {
+      .contact-bottom { grid-template-columns:1fr; }
+      .contact-links { max-width:620px; }
+    }
+    @media (max-width: 720px) {
+      .nav { min-height:52px; gap:8px; padding:12px; }
+      .brand { font-size:10px; letter-spacing:.1em; }
+      .nav-links { gap:clamp(7px,2vw,12px); }
+      .nav-links a { font-size:clamp(7px,2.2vw,9px); letter-spacing:.055em; }
+      .hero { cursor: auto; min-height: 540px; }
+      .marquees { top: 59%; gap: 3px; }
+      .row span { font-size: clamp(26px, 8vw, 54px); }
+      .name-lockup { top: 15%; }
+      .name-lockup h1 { font-size: clamp(54px, 15.75vw, 115.2px); }
+      .figure { height: auto; width: min(122.2vw, 49.4svh); aspect-ratio: 3 / 4; bottom: 0; }
+      .micro-copy { bottom: 17px; font-size: 8px; max-width: 115px; }
+      .micro-copy strong { font-size: 9px; }
+      .tag { display: none; }
+      .hint { bottom: 17px; padding: 9px 12px; border: 1px solid rgba(255,255,255,.12); background: rgba(16,17,20,.82); }
+      .section { padding: 76px var(--gutter) 84px; }
+      .section-heading { align-items: start; flex-direction: column; margin-bottom: 28px; }
+      .section-heading p { max-width: 340px; }
+      .community-section { padding:42px var(--gutter); }
+      .community-inner { grid-template-columns:1fr; gap:22px; }
+      .community-heading h2 { font-size:34px; }
+      .community-grid { grid-template-columns:1fr; gap:9px; }
+      .community-card { min-height:158px; padding:16px; border-radius:13px; }
+      .community-index { font-size:8px; letter-spacing:.1em; }
+      .community-card h3 { font-size:22px; }
+      .community-card p { font-size:10px; }
+      .skills-ribbon { padding:22px 0; }
+      .skills-line span { padding:0 13px; font-size:clamp(20px,5vw,26px); }
+      .journey-track { height:560svh; }
+      .journey-scene { min-height:560px; }
+      .journey-top { top:20px; }
+      .journey-top h2 { max-width:285px; font-size:clamp(32px,8vw,44px); }
+      .journey-counter { font-size:9px; }
+      .journey-back-year { top:33%; font-size:52vw; }
+      .journey-current { top:45%; width:calc(100% - 36px); }
+      .journey-current h3 { font-size:clamp(26px,7vw,36px); }
+      .journey-current p { font-size:12px; }
+      .journey-timeline { height:25%; min-height:190px; padding:0 18px 18px; }
+      .journey-milestone { flex-basis:78vw; padding:40px 26px 0 0; }
+      .journey-milestone h3 { max-width:75vw; font-size:19px; }
+      .journey-milestone p { max-width:75vw; font-size:12px; }
+      .featured-work { padding:74px var(--gutter) 82px; }
+      .featured-inner { min-height:0; display:flex; flex-direction:column; align-items:stretch; gap:34px; }
+      .featured-head { align-items:start; flex-direction:column; gap:16px; }
+      .featured-head h2 { font-size:48px; }
+      .featured-head p { max-width:340px; }
+      .project-mosaic { width:100%; height:min(440px,62svh); min-height:330px; grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px; }
+      .mosaic-column:nth-child(3) { display:none; }
+      .mosaic-set { gap:9px; padding-bottom:9px; }
+      .project-tile { aspect-ratio:.9/1; }
+      .tile-meta { inset:auto 9px 10px; flex-direction:column; align-items:flex-start; gap:4px; }
+      .tile-meta strong { font-size:14px; }
+      .mosaic-color { padding:12px; }
+      .mosaic-color strong { font-size:21px; }
+      .explore-button { width:max-content; }
+      .about-grid { grid-template-columns: 1fr; gap: 34px; }
+      .about-copy h2 { margin-top:18px; font-size:clamp(30px,8vw,42px); line-height:1.15; }
+        .contact-bar { align-items: start; flex-direction: column; }
+      .contact-links { flex-wrap: wrap; }
+      .contact-panel h2 { margin-bottom:28px; font-size:clamp(52px,14vw,82px); }
+      .contact-bottom { grid-template-columns:1fr; align-items:start; gap:26px; }
+      .contact-email { font-size:clamp(17px,4.7vw,22px); }
+      .contact-links { width:100%; grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .contact-link { min-height:76px; padding:13px; }
+      .contact-link-copy strong { font-size:14px; }
+    }
+    @media (hover: none), (pointer: coarse) { .cursor { display: none; } }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .mosaic-track { animation:none !important; transform:translateY(0) !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="#hero" aria-label="Antriksh home">ANTRIKSH</a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#work">Projects</a>
+      <a href="#journey">Time Journey</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-    <!-- Preload Critical LCP Hero Portrait -->
-    <link
-      rel="preload"
-      as="image"
-      href="/images/podium-white-shirt.jpg"
-      type="image/jpeg"
-    />
+  <div class="hero-project-transition">
+  <main class="hero" id="hero" aria-label="Antriksh — software, AI and robotics">
+    <div class="marquees" aria-hidden="true">
+      <div class="row ghost"><span>SOFTWARE · AI · ROBOTICS · PRODUCT THINKING ·&nbsp;</span><span>SOFTWARE · AI · ROBOTICS · PRODUCT THINKING ·&nbsp;</span></div>
+      <div class="row solid"><span>I LEARN BY BUILDING WHAT I WISH EXISTED ·&nbsp;</span><span>I LEARN BY BUILDING WHAT I WISH EXISTED ·&nbsp;</span></div>
+    </div>
+    <div class="name-lockup" aria-hidden="true"><h1>ANTRIK<span class="outline">SH</span></h1></div>
+    <div class="figure" id="figure"><img id="front" alt="Antriksh in a black shirt" src="./images/hero-front.png"><canvas id="reveal" aria-hidden="true"></canvas></div>
+    <p class="micro-copy"><strong>SOFTWARE × REAL WORLD</strong>Building useful things at the edge of AI, code &amp; robotics.</p>
+    <p class="hint"><i aria-hidden="true"></i><span id="hintText">Move to suit up</span></p>
+    <a class="tag" href="#work">SCROLL TO WORK <span aria-hidden="true">↓</span></a>
+  </main>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <section class="section section--about" id="about" aria-labelledby="about-title">
+    <canvas class="agent-wave-bg" id="agent-wave" aria-hidden="true"></canvas>
+    <div class="section-inner about-cabinet">
+      <div class="about-grid">
+        <div class="about-copy">
+          <p class="section-kicker">01 / About</p>
+          <h2 id="about-title">Hi, I’m Antriksh. I’m a student at <em>Newton School of Technology</em>, exploring <em>AI, software, and robotics</em>. I like turning curious ideas into things people can actually use.</h2>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="community-section" aria-labelledby="community-title">
+    <div class="community-inner">
+      <div class="community-heading">
+        <span class="section-kicker">02 / Communities</span>
+        <h2 id="community-title">Building <em>together.</em></h2>
+        <p>Good ideas grow through the people and communities around them.</p>
+      </div>
+      <div class="community-grid">
+        <a class="community-card" data-number="01" href="https://www.linkedin.com/company/arthakram/" target="_blank" rel="noreferrer" aria-label="Visit Arthakram on LinkedIn"><div class="community-card-top"><span class="community-index">01 / COMMUNITY</span><span class="community-card-mark" aria-hidden="true">↗</span></div><div class="community-card-copy"><span class="community-type">Product &amp; builders</span><h3>Arthakram</h3><p>Product thinking, fresh ideas, and a community of builders.</p></div></a>
+        <a class="community-card" data-number="02" href="https://www.linkedin.com/company/newtonbotics/" target="_blank" rel="noreferrer" aria-label="Visit Newtonbotics on LinkedIn"><div class="community-card-top"><span class="community-index">02 / COMMUNITY</span><span class="community-card-mark" aria-hidden="true">↗</span></div><div class="community-card-copy"><span class="community-type">Robotics &amp; making</span><h3>Newton Botics</h3><p>Hands-on robotics, experiments, and learning by building.</p></div></a>
+        <a class="community-card" data-number="03" href="https://in.linkedin.com/in/society-of-cyber-security" target="_blank" rel="noreferrer" aria-label="Visit Society of Cyber Security at Rishihood on LinkedIn"><div class="community-card-top"><span class="community-index">03 / COMMUNITY</span><span class="community-card-mark" aria-hidden="true">↗</span></div><div class="community-card-copy"><span class="community-type">Computer science</span><h3>SoCS</h3><p>Exploring computer science with a curious community.</p></div></a>
+      </div>
+    </div>
+  </section>
+  <section class="skills-ribbon" aria-label="Technologies and tools">
+    <div class="skills-track" aria-hidden="true"><div class="skills-line"><div class="skill-sequence"><span>Arduino</span><b class="skill-dot">✳</b><span>Blender</span><b class="skill-dot">✳</b><span>C++</span><b class="skill-dot">✳</b><span>HTML</span><b class="skill-dot">✳</b><span>CSS</span><b class="skill-dot">✳</b><span>JavaScript</span><b class="skill-dot">✳</b><span>TypeScript</span><b class="skill-dot">✳</b><span>Node.js</span><b class="skill-dot">✳</b><span>Next.js</span><b class="skill-dot">✳</b><span>React</span><b class="skill-dot">✳</b><span>MongoDB</span><b class="skill-dot">✳</b></div><div class="skill-sequence"><span>Arduino</span><b class="skill-dot">✳</b><span>Blender</span><b class="skill-dot">✳</b><span>C++</span><b class="skill-dot">✳</b><span>HTML</span><b class="skill-dot">✳</b><span>CSS</span><b class="skill-dot">✳</b><span>JavaScript</span><b class="skill-dot">✳</b><span>TypeScript</span><b class="skill-dot">✳</b><span>Node.js</span><b class="skill-dot">✳</b><span>Next.js</span><b class="skill-dot">✳</b><span>React</span><b class="skill-dot">✳</b><span>MongoDB</span><b class="skill-dot">✳</b></div></div></div>
+    <div class="skills-track" aria-hidden="true"><div class="skills-line reverse"><div class="skill-sequence"><span>Scratch</span><b class="skill-dot">✳</b><span>Java</span><b class="skill-dot">✳</b><span>Python</span><b class="skill-dot">✳</b><span>MySQL</span><b class="skill-dot">✳</b><span>FastAPI</span><b class="skill-dot">✳</b><span>Tailwind CSS</span><b class="skill-dot">✳</b><span>Robotics</span><b class="skill-dot">✳</b><span>Vite</span><b class="skill-dot">✳</b><span>UI/UX</span><b class="skill-dot">✳</b><span>Framer Motion</span><b class="skill-dot">✳</b><span>AI/ML</span><b class="skill-dot">✳</b></div><div class="skill-sequence"><span>Scratch</span><b class="skill-dot">✳</b><span>Java</span><b class="skill-dot">✳</b><span>Python</span><b class="skill-dot">✳</b><span>MySQL</span><b class="skill-dot">✳</b><span>FastAPI</span><b class="skill-dot">✳</b><span>Tailwind CSS</span><b class="skill-dot">✳</b><span>Robotics</span><b class="skill-dot">✳</b><span>Vite</span><b class="skill-dot">✳</b><span>UI/UX</span><b class="skill-dot">✳</b><span>Framer Motion</span><b class="skill-dot">✳</b><span>AI/ML</span><b class="skill-dot">✳</b></div></div></div>
+  </section>
+  <section class="featured-work" id="work" aria-labelledby="featured-title">
+    <div class="featured-inner">
+      <div class="featured-head">
+        <div><span class="section-kicker">03 / Selected work</span><h2 id="featured-title">Things I’ve<br>Built</h2></div>
+        <p>Ideas made tangible across AI, software, and the real world.</p>
+        <a class="explore-button" href="./projects.html">View all projects <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="project-mosaic" aria-label="Featured projects">
+        <div class="mosaic-column"><div class="mosaic-track">
+          <div class="mosaic-set">
+            <a class="project-tile" href="./projects.html?project=6" aria-label="View Grantly project"><img src="./projects/grantly.svg" alt="Grantly scholarship matching platform"><span class="tile-meta"><strong>Grantly</strong><span>07 / Student tools</span></span></a>
+            <a class="project-tile" href="./projects.html?project=4" aria-label="View Closet Store project"><img src="./projects/marketplace.png" alt="Closet Store fashion marketplace"><span class="tile-meta"><strong>Closet Store</strong><span>05 / E-commerce</span></span></a>
+            <a class="project-tile" href="./projects.html?project=7" aria-label="View CUSTODI project"><img src="./projects/custodi.svg" alt="CUSTODI message safety analysis"><span class="tile-meta"><strong>CUSTODI</strong><span>08 / Cybersecurity</span></span></a>
+          </div>
+          <div class="mosaic-set" aria-hidden="true">
+            <a class="project-tile" href="./projects.html?project=6" tabindex="-1" aria-label="View Grantly project"><img src="./projects/grantly.svg" alt=""><span class="tile-meta"><strong>Grantly</strong><span>07 / Student tools</span></span></a>
+            <a class="project-tile" href="./projects.html?project=4" tabindex="-1" aria-label="View Closet Store project"><img src="./projects/marketplace.png" alt="Closet Store fashion marketplace"><span class="tile-meta"><strong>Closet Store</strong><span>05 / E-commerce</span></span></a>
+            <a class="project-tile" href="./projects.html?project=7" tabindex="-1" aria-label="View CUSTODI project"><img src="./projects/custodi.svg" alt=""><span class="tile-meta"><strong>CUSTODI</strong><span>08 / Cybersecurity</span></span></a>
+          </div>
+        </div></div>
+        <div class="mosaic-column"><div class="mosaic-track reverse">
+          <div class="mosaic-set">
+            <a class="project-tile" href="./projects.html?project=1" aria-label="View Blindspot AI project"><img src="./projects/blindspot.png" alt="Blindspot AI product validation platform"><span class="tile-meta"><strong>Blindspot AI</strong><span>02 / Product validation</span></span></a>
+            <a class="project-tile" href="./projects.html?project=3" aria-label="View OrderShield AI project"><img src="./projects/ordershield.png" alt="OrderShield AI supplier audit platform"><span class="tile-meta"><strong>OrderShield AI</strong><span>04 / AI systems</span></span></a>
+            <a class="project-tile project-tile--converge" href="./projects.html?project=0" aria-label="View CONVERGE project"><img src="./projects/converge-latest.jpg" alt="CONVERGE civic platform"><span class="tile-meta"><strong>CONVERGE</strong><span>01 / Civic AI</span></span></a>
+          </div>
+          <div class="mosaic-set" aria-hidden="true">
+            <a class="project-tile" href="./projects.html?project=1" tabindex="-1"><img src="./projects/blindspot.png" alt=""><span class="tile-meta"><strong>Blindspot AI</strong><span>02 / Product validation</span></span></a>
+            <a class="project-tile" href="./projects.html?project=3" tabindex="-1" aria-label="View OrderShield AI project"><img src="./projects/ordershield.png" alt="OrderShield AI supplier audit platform"><span class="tile-meta"><strong>OrderShield AI</strong><span>04 / AI systems</span></span></a>
+            <a class="project-tile project-tile--converge" href="./projects.html?project=0" tabindex="-1"><img src="./projects/converge-latest.jpg" alt=""><span class="tile-meta"><strong>CONVERGE</strong><span>01 / Civic AI</span></span></a>
+          </div>
+        </div></div>
+        <div class="mosaic-column"><div class="mosaic-track">
+          <div class="mosaic-set">
+            <a class="project-tile" href="./projects.html?project=10" aria-label="View Obstacle Avoiding Robot project"><img src="./projects/obstacle-avoiding-robot.svg" alt="Autonomous obstacle avoiding robot"><span class="tile-meta"><strong>Obstacle Avoiding Robot</strong><span>11 / Robotics</span></span></a>
+            <a class="project-tile" href="./projects.html?project=11" aria-label="View Sesame Robot project"><img src="./projects/sesame-robot.svg" alt="Sesame quadruped robot with expressive OLED face"><span class="tile-meta"><strong>Sesame Robot</strong><span>12 / Open robotics</span></span></a>
+            <a class="project-tile" href="./projects.html?project=9" aria-label="View Digital Resume project"><img src="./projects/digital-resume.svg" alt="Antriksh digital resume website"><span class="tile-meta"><strong>Digital Resume</strong><span>10 / Web &amp; identity</span></span></a>
+          </div>
+          <div class="mosaic-set" aria-hidden="true">
+            <a class="project-tile" href="./projects.html?project=10" tabindex="-1" aria-label="View Obstacle Avoiding Robot project"><img src="./projects/obstacle-avoiding-robot.svg" alt=""><span class="tile-meta"><strong>Obstacle Avoiding Robot</strong><span>11 / Robotics</span></span></a>
+            <a class="project-tile" href="./projects.html?project=11" tabindex="-1" aria-label="View Sesame Robot project"><img src="./projects/sesame-robot.svg" alt=""><span class="tile-meta"><strong>Sesame Robot</strong><span>12 / Open robotics</span></span></a>
+            <a class="project-tile" href="./projects.html?project=9" tabindex="-1" aria-label="View Digital Resume project"><img src="./projects/digital-resume.svg" alt=""><span class="tile-meta"><strong>Digital Resume</strong><span>10 / Web &amp; identity</span></span></a>
+          </div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+  </div>
+  <section class="journey-track" id="journey" aria-label="Antriksh’s building journey">
+    <div class="journey-scene" id="journey-scene">
+      <div class="journey-top">
+        <div><p class="section-kicker">04 / My journey</p><h2>A path that keeps <em>growing.</em></h2></div>
+        <span class="journey-counter" id="journey-counter">01 / 08</span>
+      </div>
+      <div class="journey-back-year" id="journey-back-year" aria-hidden="true">2023</div>
+      <div class="journey-current" aria-live="polite">
+        <span class="phase" id="journey-phase">2023 · First steps</span>
+        <h3 id="journey-current-title">Started with Scratch</h3>
+        <p id="journey-current-description">Found the joy of logic, creativity, and making ideas work through code.</p>
+      </div>
+      <div class="journey-timeline" aria-label="Scroll through journey milestones">
+        <div class="journey-timeline-row" id="journey-timeline-row">
+          <article class="journey-milestone is-active"><span class="year">2023 · First steps</span><h3>Started with Scratch</h3><p>Found the joy of logic, creativity, and making ideas work through code.</p></article>
+          <article class="journey-milestone"><span class="year">2024 · Exploring</span><h3>Programming &amp; IIT Roorkee E-Summit</h3><p>Started learning programming and took part in the IIT Roorkee E-Summit.</p></article>
+          <article class="journey-milestone"><span class="year">2025 · Building</span><h3>First personal projects</h3><p>Moved from learning concepts to turning ideas into working projects.</p></article>
+          <article class="journey-milestone"><span class="year">2026 · University</span><h3>Newton School of Technology</h3><p>Began a B.Tech in Computer Science and Artificial Intelligence at Rishihood University.</p></article>
+          <article class="journey-milestone"><span class="year">2026 · Fetch-A-Thon 3.0</span><h3>OrderShield AI · Top 20</h3><p>Built a supplier verification concept and placed in the national Top 20.</p></article>
+          <article class="journey-milestone"><span class="year">2026 · HackO’Ween</span><h3>CONVERGE</h3><p>Built a civic issue-management platform at ALTA School of Technology.</p></article>
+          <article class="journey-milestone"><span class="year">2026 · Product challenge</span><h3>IIM Product Challenge</h3><p>Joined a collegiate product challenge and explored product thinking beyond code.</p></article>
+          <article class="journey-milestone"><span class="year">2026 · CoNSTruct 2.0</span><h3>Blindspot AI</h3><p>Built a product-validation platform with Team Null Theory for Replit × NST.</p></article>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="contact-section" id="contact" aria-labelledby="contact-title">
+    <div class="contact-panel">
+      <p class="section-kicker">05 / Contact</p>
+      <h2 id="contact-title">Let’s <em>connect.</em></h2>
+      <div class="contact-bottom">
+        <div class="contact-email-block">
+          <span class="contact-label">Drop me a line</span>
+          <a class="contact-email" href="mailto:antriksh.codes@gmail.com">antriksh.codes@gmail.com <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="contact-links" aria-label="Connect with Antriksh">
+          <a class="contact-link" href="https://github.com/Antrikshcodes" target="_blank" rel="noreferrer"><span class="contact-link-copy"><strong>GitHub</strong><small>See what I’m building</small></span><span class="contact-link-arrow" aria-hidden="true">↗</span></a>
+          <a class="contact-link" href="https://www.linkedin.com/in/antriksh-codesss/" target="_blank" rel="noreferrer"><span class="contact-link-copy"><strong>LinkedIn</strong><small>Let’s connect professionally</small></span><span class="contact-link-arrow" aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </div>
+    <p class="contact-copyright">© 2026 ANTRIKSH GALHOTRA · BUILT WITH CURIOSITY</p>
+  </section>
 
-    <!-- Open Graph / Facebook / LinkedIn -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://antriksh.dev" />
-    <meta property="og:site_name" content="Antriksh Galhotra — Developer Portfolio" />
-    <meta
-      property="og:title"
-      content="Antriksh Galhotra | Developer Portfolio | AI, Software & Robotics"
-    />
-    <meta
-      property="og:description"
-      content="Explore Antriksh Galhotra’s portfolio — a Computer Science and AI student at Newton School of Technology building projects in software development, artificial intelligence, robotics and product innovation."
-    />
-    <meta property="og:image" content="https://antriksh.dev/images/podium-white-shirt.jpg" />
-    <meta property="og:image:alt" content="Antriksh Galhotra — Student Developer, Builder & Creative Technologist" />
-    <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:locale" content="en_US" />
+  <script>
+    (() => {
+      const useLocalProjectAssetFallback = img => {
+        if (location.protocol !== 'file:') return;
+        const src = img.getAttribute('src') || '';
+        if (!src.startsWith('./projects/')) return;
+        const useFallback = () => {
+          if (img.dataset.localFallback) return;
+          img.dataset.localFallback = '1';
+          img.src = src.replace('./projects/', './public/projects/');
+        };
+        img.addEventListener('error', useFallback, { once:true });
+        if (img.complete && !img.naturalWidth) useFallback();
+      };
+      document.querySelectorAll('.project-tile img, #thumb').forEach(useLocalProjectAssetFallback);
+      const hero = document.getElementById('hero');
+      const figure = document.getElementById('figure');
+      const front = document.getElementById('front');
+      const canvas = document.getElementById('reveal');
+      const cursor = document.getElementById('cursor');
+      const hintText = document.getElementById('hintText');
+      const ctx = canvas.getContext('2d');
+      const mask = document.createElement('canvas');
+      const buf = document.createElement('canvas');
+      const mctx = mask.getContext('2d');
+      const bctx = buf.getContext('2d');
+      const touchMQ = matchMedia('(hover: none), (pointer: coarse)');
+      const LIFE = 1100;
+      const stamps = [];
+      let coarse = false, W = 1, H = 1, dpr = 1;
+      let frontReady = false, backReady = false, last = null, lastMove = 0, autoT = 0, autoLast = null;
+      const back = new Image();
+      back.src = './images/hero-rider.png';
+      back.addEventListener('load', () => { backReady = true; });
+      if (back.complete && back.naturalWidth) backReady = true;
 
-    <!-- Twitter / X -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://antriksh.dev" />
-    <meta
-      name="twitter:title"
-      content="Antriksh Galhotra | Developer Portfolio | AI, Software & Robotics"
-    />
-    <meta
-      name="twitter:description"
-      content="Explore Antriksh Galhotra’s portfolio — a Computer Science and AI student at Newton School of Technology building projects in software development, artificial intelligence, robotics and product innovation."
-    />
-    <meta name="twitter:image" content="https://antriksh.dev/images/podium-white-shirt.jpg" />
-    <meta name="twitter:image:alt" content="Antriksh Galhotra — Developer Portfolio" />
-
-    <!-- Google Site Verification Placeholder for User -->
-    <!-- <meta name="google-site-verification" content="YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_TOKEN" /> -->
-
-    <!-- Performance & Font Preconnects -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Comprehensive Structured Data (JSON-LD) with @graph -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "Person",
-            "@id": "https://antriksh.dev/#person",
-            "name": "Antriksh Galhotra",
-            "givenName": "Antriksh",
-            "familyName": "Galhotra",
-            "alternateName": [
-              "Antriksh",
-              "Antrix",
-              "Antrix Portfolio",
-              "Antrikshcodes",
-              "Antriksh Developer",
-              "Antriksh Galhotra Portfolio"
-            ],
-            "url": "https://antriksh.dev",
-            "email": "mailto:antriksh.codes@gmail.com",
-            "image": "https://antriksh.dev/images/podium-white-shirt.jpg",
-            "description": "Antriksh Galhotra is a Computer Science and AI student at Newton School of Technology, Rishihood University. Developer, builder, and creative technologist developing software, computer vision, and embedded robotics.",
-            "jobTitle": "Student Developer & Creative Technologist",
-            "gender": "https://schema.org/Male",
-            "alumniOf": {
-              "@type": "CollegeOrUniversity",
-              "name": "Newton School of Technology, Rishihood University",
-              "url": "https://www.rishihood.edu.in"
-            },
-            "sameAs": [
-              "https://github.com/Antrikshcodes",
-              "https://www.linkedin.com/in/antriksh-codesss/"
-            ],
-            "knowsAbout": [
-              "Artificial Intelligence",
-              "Computer Vision",
-              "Full-Stack Software Development",
-              "Autonomous Robotics",
-              "FastAPI",
-              "Python",
-              "React",
-              "Next.js",
-              "Microcontrollers",
-              "ESP32",
-              "Arduino"
-            ]
-          },
-          {
-            "@type": "WebSite",
-            "@id": "https://antriksh.dev/#website",
-            "url": "https://antriksh.dev",
-            "name": "Antriksh Galhotra | Developer Portfolio",
-            "alternateName": [
-              "Antriksh Portfolio",
-              "Antrix Portfolio",
-              "Antriksh Galhotra Official Website"
-            ],
-            "description": "Official personal developer portfolio of Antriksh Galhotra (Antrix) — Computer Science & AI student at Newton School of Technology.",
-            "publisher": {
-              "@id": "https://antriksh.dev/#person"
-            },
-            "inLanguage": "en-US"
-          },
-          {
-            "@type": "ProfilePage",
-            "@id": "https://antriksh.dev/#profilepage",
-            "url": "https://antriksh.dev",
-            "name": "Antriksh Galhotra | Developer Portfolio | AI, Software & Robotics",
-            "isPartOf": {
-              "@id": "https://antriksh.dev/#website"
-            },
-            "about": {
-              "@id": "https://antriksh.dev/#person"
-            },
-            "description": "Explore Antriksh Galhotra’s portfolio — a Computer Science and AI student at Newton School of Technology building projects in software development, artificial intelligence, robotics and product innovation.",
-            "inLanguage": "en-US"
-          },
-          {
-            "@type": "SoftwareSourceCode",
-            "@id": "https://antriksh.dev/projects/converge#software",
-            "name": "CONVERGE",
-            "description": "Urban issue-management platform with geospatial duplicate clustering and photographic resolution validation.",
-            "programmingLanguage": ["TypeScript", "Python"],
-            "runtimePlatform": "Next.js & FastAPI",
-            "codeRepository": "https://github.com/srtkio/converge_trojans",
-            "author": {
-              "@id": "https://antriksh.dev/#person"
-            }
-          },
-          {
-            "@type": "SoftwareSourceCode",
-            "@id": "https://antriksh.dev/projects/blindspot-ai#software",
-            "name": "Blindspot AI",
-            "description": "Computer vision road-risk awareness system tracking vehicle bounding boxes and hazard proximity alerts.",
-            "programmingLanguage": ["Python", "PyTorch", "OpenCV"],
-            "codeRepository": "https://github.com/Antrikshcodes",
-            "author": {
-              "@id": "https://antriksh.dev/#person"
-            }
-          },
-          {
-            "@type": "SoftwareSourceCode",
-            "@id": "https://antriksh.dev/projects/jarvis-ai#software",
-            "name": "JARVIS AI",
-            "description": "Intelligent personal AI assistant built with Python and PySide6 running on-device Ollama local inference with Qwen 3 (8B).",
-            "programmingLanguage": ["Python", "PySide6", "Qt", "Ollama"],
-            "codeRepository": "https://github.com/Antrikshcodes/jarvis-ai",
-            "author": {
-              "@id": "https://antriksh.dev/#person"
-            }
-          },
-          {
-            "@type": "SoftwareSourceCode",
-            "@id": "https://antriksh.dev/projects/closet-store#software",
-            "name": "Closet Store",
-            "description": "Contemporary fashion e-commerce marketplace platform for curated streetwear and vintage essentials built with React 19, Tailwind CSS v4, and Framer Motion.",
-            "programmingLanguage": ["React", "JavaScript", "Tailwind CSS"],
-            "codeRepository": "https://github.com/Antrikshcodes/closet-club",
-            "url": "https://marketplacedemo.vercel.app/",
-            "author": {
-              "@id": "https://antriksh.dev/#person"
-            }
-          },
-          {
-            "@type": "SoftwareSourceCode",
-            "@id": "https://antriksh.dev/projects/ordershield-ai#software",
-            "name": "OrderShield AI",
-            "description": "Supplier and vendor onboarding verification platform with automated GSTIN auditing and trust index scoring.",
-            "programmingLanguage": ["Python", "FastAPI", "React"],
-            "codeRepository": "https://github.com/Antrikshcodes/ordershield",
-            "author": {
-              "@id": "https://antriksh.dev/#person"
-            }
-          },
-          {
-            "@type": "CreativeWork",
-            "@id": "https://antriksh.dev/projects/the-product-guys#work",
-            "name": "The Product Guys",
-            "description": "Digital publication and community platform breaking down product design decisions, user research, and validation frameworks.",
-            "url": "https://productguys.arthakram.in",
-            "author": {
-              "@id": "https://antriksh.dev/#person"
-            }
-          }
-        ]
+      function syncTouch() {
+        coarse = touchMQ.matches;
+        hintText.textContent = coarse ? 'Drag to suit up' : 'Move to suit up';
       }
-    </script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+      syncTouch();
+      touchMQ.addEventListener?.('change', syncTouch);
 
-    <!-- Comprehensive semantic fallback content for search engine web crawlers and non-JavaScript user agents -->
-    <noscript>
-      <main style="max-width:900px;margin:0 auto;padding:48px 24px;font-family:system-ui,-apple-system,sans-serif;color:#F8FAFC;background:#080D1A;line-height:1.6;">
-        <header>
-          <p style="color:#E3FB51;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;">
-            Student Developer · Builder · Creative Technologist
-          </p>
-          <h1 style="font-size:2.4rem;margin:0.25rem 0 1rem;color:#F8FAFC;">
-            Antriksh Galhotra | Developer Portfolio
-          </h1>
-          <p style="font-size:1.15rem;color:#94A3B8;">
-            Welcome to the official developer portfolio of <strong>Antriksh Galhotra</strong> (also searched as <strong>Antrix</strong> or <strong>Antriksh</strong>).
-            I am a Computer Science and Artificial Intelligence (CSE AI) student at
-            <strong>Newton School of Technology, Rishihood University</strong>.
-          </p>
-        </header>
+      function resize() {
+        const r = figure.getBoundingClientRect();
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        W = Math.max(1, r.width); H = Math.max(1, r.height);
+        [canvas, mask, buf].forEach(c => { c.width = Math.round(W * dpr); c.height = Math.round(H * dpr); });
+      }
+      function drawCover(c, img) {
+        const iw = img?.naturalWidth || img?.width;
+        const ih = img?.naturalHeight || img?.height;
+        if (!iw || !ih) return;
+        // Use the same centered head-to-chest crop for both portraits so the
+        // reveal aligns exactly and never shows the lower body.
+        const sx = iw * .258, sy = 0, sw = iw * .484, sh = ih * .484;
+        const scale = Math.max(canvas.width / sw, canvas.height / sh);
+        const dw = sw * scale;
+        const dh = sh * scale;
+        const dx = (canvas.width - dw) / 2;
+        const dy = canvas.height - dh;
+        c.drawImage(img, sx, sy, sw, sh, dx, dy, dw, dh);
+      }
+      function addStamp(x, y, now) {
+        const base = Math.max(W, 260) * (coarse ? .15 : .12);
+        const n = 3 + Math.floor(Math.random() * 3);
+        const lobes = Array.from({ length: n }, () => {
+          const a = Math.random() * Math.PI * 2;
+          const off = Math.random() * base * .45;
+          return { dx: Math.cos(a) * off, dy: Math.sin(a) * off, r: base * (.45 + Math.random() * .55) };
+        });
+        stamps.push({ x, y, t: now, lobes });
+      }
+      function pointerTo(clientX, clientY, now) {
+        const r = figure.getBoundingClientRect();
+        const x = clientX - r.left, y = clientY - r.top;
+        if (x < -80 || x > r.width + 80 || y < -80 || y > r.height + 80) { last = null; return; }
+        if (last) {
+          const dist = Math.hypot(x - last.x, y - last.y);
+          const step = Math.max(W, 260) * .04;
+          const count = Math.min(40, Math.floor(dist / step));
+          for (let i = 1; i <= count; i++) {
+            const t = i / (count + 1);
+            addStamp(last.x + (x - last.x) * t, last.y + (y - last.y) * t, now);
+          }
+        }
+        addStamp(x, y, now);
+        last = { x, y }; lastMove = now;
+      }
+      hero.addEventListener('pointermove', e => {
+        const now = performance.now();
+        pointerTo(e.clientX, e.clientY, now);
+        cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+        cursor.classList.add('on');
+      });
+      hero.addEventListener('pointerdown', e => pointerTo(e.clientX, e.clientY, performance.now()));
+      hero.addEventListener('pointerleave', () => { last = null; cursor.classList.remove('on'); });
+      front.addEventListener('load', () => { frontReady = true; canvas.classList.add('ready'); });
+      if (front.complete && front.naturalWidth) { frontReady = true; canvas.classList.add('ready'); }
+      window.addEventListener('resize', resize, { passive: true });
+      window.addEventListener('load', resize, { once: true });
+      resize();
 
-        <section style="margin:2.5rem 0;border-top:1px solid #1E293B;padding-top:1.5rem;">
-          <h2 style="color:#F8FAFC;font-size:1.6rem;">About Antriksh Galhotra</h2>
-          <p>
-            I develop software applications, autonomous robotics prototypes, computer vision pipelines, and human-centered digital experiences.
-            Pursuing a B.Tech in CS & AI (2026–2030) at Newton School of Technology, Delhi NCR.
-          </p>
-          <p>
-            Key competencies: Python, FastAPI, React, Next.js, PyTorch, OpenCV, Three.js, C++ for Arduino/ESP32 hardware, and UI/UX engineering.
-          </p>
-        </section>
-
-        <section style="margin:2.5rem 0;border-top:1px solid #1E293B;padding-top:1.5rem;">
-          <h2 style="color:#F8FAFC;font-size:1.6rem;">Featured Projects & Deep Dives</h2>
-          <article style="margin-bottom:1.5rem;">
-            <h3 style="margin-bottom:0.25rem;">
-              <a href="/projects/converge" style="color:#E3FB51;text-decoration:none;">1. CONVERGE — Smart City Civic AI Platform</a>
-            </h3>
-            <p style="color:#94A3B8;margin:0.25rem 0;">
-              Urban issue-management platform engineered for ALTA School of Technology’s HackO’Ween hackathon. Features spatial duplicate clustering algorithms, SLA deadline tracking, and photographic resolution validation.
-            </p>
-            <p style="font-size:0.9rem;color:#38BDF8;">Tech: Next.js, FastAPI, Incident Mapping, AI Workflows</p>
-          </article>
-
-          <article style="margin-bottom:1.5rem;">
-            <h3 style="margin-bottom:0.25rem;">
-              <a href="/projects/blindspot-ai" style="color:#E3FB51;text-decoration:none;">2. Blindspot AI — Computer Vision Road Safety</a>
-            </h3>
-            <p style="color:#94A3B8;margin:0.25rem 0;">
-              A hackathon prototype built during CoNSTruct 2.0 (Replit x Newton School of Technology). Uses real-time video inference, bounding-box tracking, and peripheral distance telemetry to eliminate vehicular blind spot hazards.
-            </p>
-            <p style="font-size:0.9rem;color:#38BDF8;">Tech: Python, PyTorch, OpenCV, FastAPI</p>
-          </article>
-
-          <article style="margin-bottom:1.5rem;">
-            <h3 style="margin-bottom:0.25rem;">
-              <a href="/projects/jarvis-ai" style="color:#E3FB51;text-decoration:none;">3. JARVIS AI — Personal AI Assistant & Desktop LLM</a>
-            </h3>
-            <p style="color:#94A3B8;margin:0.25rem 0;">
-              An intelligent on-device personal assistant built with Python and PySide6. Powered by local Ollama inference running Qwen 3 (8B) with an asynchronous worker-thread architecture, real-time chunk streaming, and zero cloud telemetry.
-            </p>
-            <p style="font-size:0.9rem;color:#38BDF8;">Tech: Python, PySide6 (Qt), Ollama, Qwen 3 (8B), REST Streaming</p>
-          </article>
-
-          <article style="margin-bottom:1.5rem;">
-            <h3 style="margin-bottom:0.25rem;">
-              <a href="/projects/closet-store" style="color:#E3FB51;text-decoration:none;">4. Closet Store — E-Commerce Fashion Marketplace</a>
-            </h3>
-            <p style="color:#94A3B8;margin:0.25rem 0;">
-              A contemporary apparel marketplace platform built with React 19, Vite, and Tailwind CSS v4. Features fluid Framer Motion micro-interactions, condition grading badges, and optimistic shopping bag state dispatch.
-            </p>
-            <p style="font-size:0.9rem;color:#38BDF8;">Tech: React 19, Tailwind CSS v4, Vite, Framer Motion</p>
-          </article>
-
-          <article style="margin-bottom:1.5rem;">
-            <h3 style="margin-bottom:0.25rem;">
-              <a href="/projects/ordershield-ai" style="color:#E3FB51;text-decoration:none;">5. OrderShield AI — Vendor Verification System</a>
-            </h3>
-            <p style="color:#94A3B8;margin:0.25rem 0;">
-              Supplier verification platform engineered for Fetch-A-Thon 3.0, earning Top 20 honors. Automates GSTIN business credential auditing and synthesizes a multi-factor Supplier Trust Index.
-            </p>
-            <p style="font-size:0.9rem;color:#38BDF8;">Tech: Python, FastAPI, Fetch.ai, React</p>
-          </article>
-
-          <article style="margin-bottom:1.5rem;">
-            <h3 style="margin-bottom:0.25rem;">
-              <a href="/projects/the-product-guys" style="color:#E3FB51;text-decoration:none;">6. The Product Guys — Product Thinking Platform</a>
-            </h3>
-            <p style="color:#94A3B8;margin:0.25rem 0;">
-              Digital publication and collegiate community helping engineering students validate product demand, reduce UX friction, and test assumptions before coding.
-            </p>
-            <p style="font-size:0.9rem;color:#38BDF8;">Tech: Next.js, Vercel, Product Strategy, Information Architecture</p>
-          </article>
-        </section>
-
-        <section style="margin:2.5rem 0;border-top:1px solid #1E293B;padding-top:1.5rem;">
-          <h2 style="color:#F8FAFC;font-size:1.6rem;">ANTRIKSH AI — Personal Assistant</h2>
-          <p>
-            Experience <a href="/ai" style="color:#E3FB51;">ANTRIKSH AI (/ai)</a>, your personal conversational guide to explore Antriksh’s software platforms, robotics experiments, hackathon achievements, and background.
-          </p>
-        </section>
-
-        <section style="margin:2.5rem 0;border-top:1px solid #1E293B;padding-top:1.5rem;">
-          <h2 style="color:#F8FAFC;font-size:1.6rem;">Interactive Experiments Lab</h2>
-          <p>
-            Visit <a href="/lab" style="color:#E3FB51;">Antriksh’s Interactive Experiments Lab (/lab)</a> to test real-time HTML5 2D canvas particle networks, kinetic typography physics, GLSL liquid noise fragment shaders, 3D WebGL meshes, and ultrasonic robotics obstacle simulators.
-          </p>
-        </section>
-
-        <footer style="margin-top:3rem;border-top:1px solid #1E293B;padding-top:1.5rem;font-size:0.9rem;color:#94A3B8;">
-          <p>
-            Official Links:
-            <a href="https://github.com/Antrikshcodes" style="color:#E3FB51;margin-right:1rem;">GitHub (@Antrikshcodes)</a>
-            <a href="https://www.linkedin.com/in/antriksh-codesss/" style="color:#E3FB51;margin-right:1rem;">LinkedIn</a>
-            <a href="mailto:antriksh.codes@gmail.com" style="color:#E3FB51;">antriksh.codes@gmail.com</a>
-          </p>
-          <p>© 2026 Antriksh Galhotra. Newton School of Technology, Rishihood University.</p>
-        </footer>
-      </main>
-    </noscript>
+      function render(now) {
+        if (coarse && now - lastMove > 2500) {
+          autoT += .016;
+          const x = W * (.5 + Math.sin(autoT * 1.3) * .28);
+          const y = H * (.32 + Math.sin(autoT * .9 + 1) * .22);
+          if (!autoLast || Math.hypot(x - autoLast.x, y - autoLast.y) > W * .02) {
+            addStamp(x, y, now); autoLast = { x, y };
+          }
+        }
+        for (let i = stamps.length - 1; i >= 0; i--) if (now - stamps[i].t > LIFE) stamps.splice(i, 1);
+        mctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        // Keep the mask transparent except for the brush lobes: this erases only
+        // the painted trail and clips the rider layer to precisely that trail.
+        mctx.clearRect(0, 0, W, H);
+        for (const s of stamps) {
+          const k = Math.max(0, 1 - (now - s.t) / LIFE);
+          const scale = k < .75 ? k / .75 : 1;
+          mctx.fillStyle = '#fff';
+          for (const l of s.lobes) {
+            mctx.beginPath(); mctx.arc(s.x + l.dx * scale, s.y + l.dy * scale, l.r * Math.pow(scale, .8), 0, Math.PI * 2); mctx.fill();
+          }
+        }
+        ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalCompositeOperation = 'source-over'; ctx.clearRect(0, 0, canvas.width, canvas.height);
+        if (frontReady) drawCover(ctx, front);
+        if (stamps.length) {
+          ctx.globalCompositeOperation = 'destination-out'; ctx.drawImage(mask, 0, 0);
+          ctx.globalCompositeOperation = 'source-over';
+          if (backReady) {
+            bctx.setTransform(1, 0, 0, 1, 0, 0); bctx.globalCompositeOperation = 'source-over'; bctx.clearRect(0, 0, buf.width, buf.height);
+            bctx.drawImage(mask, 0, 0); bctx.globalCompositeOperation = 'source-in'; drawCover(bctx, back);
+            ctx.drawImage(buf, 0, 0);
+          }
+        }
+        requestAnimationFrame(render);
+      }
+      requestAnimationFrame(render);
+      const communityCards = [...document.querySelectorAll('.community-card')];
+      const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+      if (communityCards.length && !reduceMotion.matches && 'IntersectionObserver' in window) {
+        communityCards.forEach((card, i) => {
+          card.style.setProperty('--card-delay', `${i * 110}ms`);
+          card.classList.add('motion-pending');
+        });
+        const cardObserver = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const card = entry.target;
+            card.classList.add('motion-visible');
+            cardObserver.unobserve(card);
+            window.setTimeout(() => {
+              card.classList.remove('motion-pending');
+              card.style.removeProperty('--card-delay');
+            }, 700);
+          });
+        }, { threshold:.18 });
+        communityCards.forEach(card => cardObserver.observe(card));
+        if (matchMedia('(hover:hover) and (pointer:fine)').matches) {
+          communityCards.forEach(card => {
+            card.addEventListener('pointermove', event => {
+              const rect = card.getBoundingClientRect();
+              const x = (event.clientX - rect.left) / rect.width - .5;
+              const y = (event.clientY - rect.top) / rect.height - .5;
+              card.style.setProperty('--tilt-y', `${(x * 7).toFixed(2)}deg`);
+              card.style.setProperty('--tilt-x', `${(-y * 6).toFixed(2)}deg`);
+            });
+            card.addEventListener('pointerleave', () => {
+              card.style.setProperty('--tilt-x', '0deg');
+              card.style.setProperty('--tilt-y', '0deg');
+            });
+          });
+        }
+      }
+    const journeyTrack = document.getElementById('journey');
+    const journeyScene = document.getElementById('journey-scene');
+    if (journeyTrack && journeyScene) {
+      const journeyRow = document.getElementById('journey-timeline-row');
+      const milestones = [...journeyRow.querySelectorAll('.journey-milestone')];
+      const currentTitle = document.getElementById('journey-current-title');
+      const currentDescription = document.getElementById('journey-current-description');
+      const currentPhase = document.getElementById('journey-phase');
+      const backYear = document.getElementById('journey-back-year');
+      const journeyCounter = document.getElementById('journey-counter');
+      let journeyFrame=0,activeJourney=-1;
+      const clampJourney=(n,a,b)=>Math.max(a,Math.min(b,n));
+      function updateJourney(){
+        journeyFrame=0;
+        const rect=journeyTrack.getBoundingClientRect();
+        const progress=clampJourney(-rect.top/Math.max(1,rect.height-innerHeight),0,1);
+        const index=Math.min(milestones.length-1,Math.floor(progress*milestones.length));
+        const maxShift=Math.max(0,journeyRow.scrollWidth-journeyScene.clientWidth+36);
+        journeyRow.style.transform=`translate3d(${-maxShift*progress}px,0,0)`;
+        if(index!==activeJourney){
+          activeJourney=index;
+          const item=milestones[index];
+          milestones.forEach((milestone,i)=>milestone.classList.toggle('is-active',i===index));
+          const year=item.querySelector('.year').textContent;
+          currentPhase.textContent=year;
+          backYear.textContent=year.slice(0,4);
+          currentTitle.textContent=item.querySelector('h3').textContent;
+          currentDescription.textContent=item.querySelector('p').textContent;
+          journeyCounter.textContent=`${String(index+1).padStart(2,'0')} / ${String(milestones.length).padStart(2,'0')}`;
+        }
+      }
+      function requestJourneyUpdate(){if(!journeyFrame)journeyFrame=requestAnimationFrame(updateJourney);}
+      window.addEventListener('scroll',requestJourneyUpdate,{passive:true});
+      window.addEventListener('resize',requestJourneyUpdate,{passive:true});
+      requestJourneyUpdate();
+    }
+    const waveCanvas = document.getElementById('agent-wave');
+    const waveStage = document.getElementById('about');
+    if (waveCanvas && waveStage) {
+      const waveCtx = waveCanvas.getContext('2d');
+      const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+      const rows = 7, cols = 27;
+      let waveW = 1, waveH = 1, waveDpr = 1, waveRAF = 0, waveVisible = false, wavePointer = null;
+      function sizeWave() {
+        const r = waveStage.getBoundingClientRect();
+        waveDpr = Math.min(devicePixelRatio || 1, 2);
+        waveW = Math.max(1, r.width); waveH = Math.max(1, r.height);
+        waveCanvas.width = Math.round(waveW * waveDpr);
+        waveCanvas.height = Math.round(waveH * waveDpr);
+        waveCtx.setTransform(waveDpr, 0, 0, waveDpr, 0, 0);
+        drawWave(0);
+      }
+      function drawWave(time) {
+        waveCtx.clearRect(0, 0, waveW, waveH);
+        const nodes = [];
+        for (let row = 0; row < rows; row++) {
+          nodes[row] = [];
+          for (let col = 0; col < cols; col++) {
+            const x = 14 + col * (waveW - 28) / (cols - 1);
+            const center = waveH * .51 + (row - (rows - 1) / 2) * waveH * .085;
+            let y = center + Math.sin(col * .39 - time * .00115 + row * .55) * waveH * .115 + Math.sin(col * .21 + time * .0008 + row) * waveH * .035;
+            if (wavePointer) {
+              const dist = Math.hypot(x - wavePointer.x, y - wavePointer.y);
+              y += Math.sin(dist * .055 - time * .004) * Math.exp(-dist / 150) * 20;
+            }
+            nodes[row][col] = { x, y };
+          }
+        }
+        waveCtx.lineWidth = .75;
+        for (let row = 0; row < rows; row++) for (let col = 0; col < cols; col++) {
+          const p = nodes[row][col];
+          waveCtx.strokeStyle = `rgba(255,112,43,${.11 + .08 * Math.sin(time * .0015 + col * .3 + row)})`;
+          waveCtx.beginPath(); waveCtx.moveTo(p.x, p.y);
+          if (col < cols - 1) waveCtx.lineTo(nodes[row][col + 1].x, nodes[row][col + 1].y);
+          if (row < rows - 1) waveCtx.lineTo(nodes[row + 1][col].x, nodes[row + 1][col].y);
+          waveCtx.stroke();
+        }
+        for (let row = 0; row < rows; row++) for (let col = 0; col < cols; col++) {
+          const p = nodes[row][col];
+          const pulse = Math.max(0, Math.sin(time * .002 - col * .55 + row * .72));
+          const radius = 1 + pulse * 1.25;
+          if (pulse > .72) {
+            waveCtx.beginPath(); waveCtx.arc(p.x, p.y, radius * 4, 0, Math.PI * 2);
+            waveCtx.fillStyle = `rgba(255,92,26,${pulse * .12})`; waveCtx.fill();
+          }
+          waveCtx.beginPath(); waveCtx.arc(p.x, p.y, radius, 0, Math.PI * 2);
+          waveCtx.fillStyle = pulse > .8 ? '#ffd0a8' : 'rgba(255,128,68,.74)'; waveCtx.fill();
+        }
+        const glow = waveCtx.createRadialGradient(waveW * .53, waveH * .52, 2, waveW * .53, waveH * .52, waveW * .46);
+        glow.addColorStop(0, 'rgba(255,90,22,.065)'); glow.addColorStop(1, 'rgba(255,90,22,0)');
+        waveCtx.fillStyle = glow; waveCtx.fillRect(0, 0, waveW, waveH);
+      }
+      function animateWave(time) {
+        if (!waveVisible || reduceMotion.matches || document.hidden) { waveRAF = 0; return; }
+        drawWave(time); waveRAF = requestAnimationFrame(animateWave);
+      }
+      function startWave() { if (waveVisible && !reduceMotion.matches && !document.hidden && !waveRAF) waveRAF = requestAnimationFrame(animateWave); }
+      function stopWave() { if (waveRAF) cancelAnimationFrame(waveRAF); waveRAF = 0; }
+      waveStage.addEventListener('pointermove', e => {
+        const r = waveStage.getBoundingClientRect(); wavePointer = { x: e.clientX - r.left, y: e.clientY - r.top };
+      });
+      waveStage.addEventListener('pointerleave', () => { wavePointer = null; });
+      new ResizeObserver(sizeWave).observe(waveStage);
+      new IntersectionObserver(entries => {
+        waveVisible = entries[0].isIntersecting;
+        if (waveVisible) startWave(); else stopWave();
+      }, { threshold: .15 }).observe(waveStage);
+      reduceMotion.addEventListener?.('change', () => { if (reduceMotion.matches) { stopWave(); drawWave(0); } else startWave(); });
+      document.addEventListener('visibilitychange', () => { if (document.hidden) stopWave(); else startWave(); });
+      sizeWave();
+    }
+    })();
+  </script>
   </body>
 </html>

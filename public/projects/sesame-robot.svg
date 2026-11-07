@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1400" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="80" y1="0" x2="1080" y2="1400" gradientUnits="userSpaceOnUse"><stop stop-color="#17151b"/><stop offset="1" stop-color="#101114"/></linearGradient>
+    <linearGradient id="shell" x1="336" y1="511" x2="833" y2="870" gradientUnits="userSpaceOnUse"><stop stop-color="#f6d2a4"/><stop offset="1" stop-color="#d88b55"/></linearGradient>
+    <linearGradient id="cyan" x1="400" y1="280" x2="846" y2="738" gradientUnits="userSpaceOnUse"><stop stop-color="#a4f4f1"/><stop offset="1" stop-color="#49b4d5"/></linearGradient>
+    <filter id="glow" x="238" y="147" width="724" height="598" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feGaussianBlur stdDeviation="90"/></filter>
+  </defs>
+  <path fill="url(#bg)" d="M0 0h1200v1400H0z"/><circle cx="604" cy="445" r="240" fill="#42c6d0" opacity=".19" filter="url(#glow)"/>
+  <g opacity=".15" stroke="#dedbe4"><path d="M74 0v1400M1126 0v1400M0 110h1200M0 1290h1200"/><path d="M112 0v1400M1088 0v1400" stroke-dasharray="4 14"/></g>
+  <g transform="translate(84 77)"><rect width="48" height="48" rx="14" fill="url(#cyan)"/><path d="M13 17h22v17H13zM18 34l-3 5m16-5 3 5" stroke="#132023" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><text x="64" y="31" fill="#f3eff5" font-family="Arial,sans-serif" font-size="22" font-weight="700" letter-spacing="1">SESAME / OPEN ROBOTICS</text><text x="1030" y="31" text-anchor="end" fill="#a4e9e7" font-family="monospace" font-size="13" letter-spacing="3">ESP32 QUADRUPED</text></g>
+  <text x="84" y="267" fill="#f4f1f3" font-family="Arial,sans-serif" font-size="80" font-weight="700" letter-spacing="-5">A little robot</text><text x="84" y="355" fill="url(#cyan)" font-family="Arial,sans-serif" font-size="80" font-weight="700" letter-spacing="-5">with big steps.</text>
+  <text x="91" y="412" fill="#b6adb8" font-family="Arial,sans-serif" font-size="21">Open hardware, expressive motion, and a face that speaks.</text>
+  <rect x="84" y="476" width="1032" height="575" rx="30" fill="#191a20" stroke="#605567" stroke-opacity=".55"/>
+  <path d="M142 944h916" stroke="#a1a1a8" stroke-opacity=".22" stroke-width="2"/><path d="M212 928h778" stroke="#a4e9e7" stroke-opacity=".18" stroke-width="2" stroke-dasharray="8 14"/>
+  <ellipse cx="603" cy="964" rx="289" ry="36" fill="#47c4ce" opacity=".1"/>
+  <!-- expressive OLED head -->
+  <path d="m394 580 41-96h307l58 96-32 120H423l-29-120Z" fill="url(#shell)" stroke="#f4c89e" stroke-width="3"/>
+  <rect x="448" y="536" width="302" height="119" rx="25" fill="#101a20" stroke="#e6ded5" stroke-opacity=".65" stroke-width="3"/>
+  <path d="M495 582q28-34 57 0m90 0q28-34 57 0" stroke="url(#cyan)" stroke-width="11" stroke-linecap="round"/><path d="M546 620q50 32 102 0" stroke="#ffb980" stroke-width="6" stroke-linecap="round"/>
+  <path d="M544 700v44m111-44v44" stroke="#35343b" stroke-width="22" stroke-linecap="round"/><circle cx="544" cy="747" r="18" fill="#54bad5"/><circle cx="655" cy="747" r="18" fill="#54bad5"/>
+  <!-- body -->
+  <path d="m404 735 112-47h177l105 52-19 146-84 53H486l-80-55-2-149Z" fill="url(#shell)" stroke="#f1bd8a" stroke-width="4"/>
+  <path d="m506 717 91 35 95-34 52 51-23 96-57 42H497l-52-42-19-96 80-52Z" fill="#343039" stroke="#f0c79e" stroke-width="3"/>
+  <path d="M557 769h92v65h-92z" rx="10" fill="#131b21" stroke="url(#cyan)" stroke-width="3"/><path d="M575 789h56m-56 16h38" stroke="#78e4e1" stroke-width="5" stroke-linecap="round"/>
+  <!-- articulated legs and feet -->
+  <path d="m449 857-60 48-26 91m91-122 44 41-12 77m224-137 57 46 31 95m-87-123-47 41 13 82" stroke="#e7b889" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="389" cy="905" r="20" fill="#353039" stroke="#a4e9e7" stroke-width="5"/><circle cx="498" cy="916" r="20" fill="#353039" stroke="#a4e9e7" stroke-width="5"/><circle cx="802" cy="905" r="20" fill="#353039" stroke="#a4e9e7" stroke-width="5"/><circle cx="719" cy="916" r="20" fill="#353039" stroke="#a4e9e7" stroke-width="5"/>
+  <path d="m338 990 49-2 13 19-4 14h-74l-2-13 18-18Zm147 0 45-1 12 18-3 14h-72l-3-13 21-18Zm193 0 48-2 19 19-1 14h-74l-4-13 12-18Zm144 0 48-1 19 18-4 14h-73l-4-13 14-18Z" fill="#25252d" stroke="#85868e" stroke-width="3"/>
+  <path d="M325 542h-63v-80m612 74h63v-80" stroke="#9be6e2" stroke-opacity=".75" stroke-width="2" stroke-dasharray="6 8"/><text x="235" y="440" fill="#9ee8e4" font-family="monospace" font-size="12" letter-spacing="2">OLED EXPRESSION</text><text x="965" y="440" text-anchor="end" fill="#9ee8e4" font-family="monospace" font-size="12" letter-spacing="2">PRINTABLE FRAME</text>
+  <text x="84" y="1152" fill="#f3eff4" font-family="Arial,sans-serif" font-size="28" font-weight="600">Built to move. Made to be remixed.</text><text x="86" y="1199" fill="#b2aab5" font-family="monospace" font-size="14" letter-spacing="3">ESP32 · SERVO MOTION · 3D PRINTED PARTS</text><text x="1116" y="1199" text-anchor="end" fill="#a4e9e7" font-family="monospace" font-size="14" letter-spacing="2">12 / 12</text>
+</svg>

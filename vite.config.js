@@ -1,5 +1,9 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { fileURLToPath } from 'node:url'
+import { dirname, resolve } from 'node:path'
+
+const rootDir = dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
   plugins: [react()],
@@ -12,6 +16,10 @@ export default defineConfig({
     minify: 'esbuild',
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
+      input: {
+        main: resolve(rootDir, 'index.html'),
+        projects: resolve(rootDir, 'projects.html')
+      },
       output: {
         manualChunks: {
           three: ['three'],

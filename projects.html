@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101114">
+  <meta name="description" content="Explore Antriksh's projects in an interactive 3D portfolio.">
+  <title>Projects — Antriksh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #101114;
+      --bg-soft: #17191e;
+      --ink: #f7f7f7;
+      --muted: #a4a7ae;
+      --ghost: #54575f;
+      --orange: #ff5a16;
+      --orange-hot: #ff7838;
+      --gutter: clamp(18px, 2.8vw, 42px);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { width: 100%; min-height: 100%; }
+    body {
+      overflow-x: hidden;
+      overflow-y: auto;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    .nav {
+      position:fixed; inset:0 0 auto; z-index:20; min-height:64px;
+      display:flex; align-items:center; justify-content:space-between; gap:28px;
+      padding:14px var(--gutter); pointer-events:none;
+      background:rgba(16,17,20,.92); border-bottom:1px solid rgba(255,255,255,.09);
+      backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+    }
+    .nav > * { pointer-events:auto; }
+    .brand { color:var(--ink); text-decoration:none; font:500 12px "DM Mono",ui-monospace,monospace; letter-spacing:.16em; white-space:nowrap; }
+    .nav-links { display:flex; align-items:center; justify-content:flex-end; gap:clamp(18px,3.1vw,48px); }
+    .nav-links a { color:var(--ink); text-decoration:none; font:10px "DM Mono",ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; white-space:nowrap; transition:color .2s; }
+    .nav-links a:hover,.nav-links a:focus-visible { color:var(--orange); }
+    .eyebrow, .hint, .tag, .micro-copy {
+      font-family: "DM Mono", ui-monospace, monospace;
+      text-transform: uppercase; letter-spacing: .11em;
+    }
+    .hero-project-transition { position:relative; }
+    .hero {
+      position: sticky; top: 0; z-index: 1; width: 100%; height: 100vh; height: 100svh; min-height: 560px;
+      overflow: hidden; isolation: isolate; perspective: 1100px; cursor: none; touch-action: pan-y;
+      background:
+        radial-gradient(ellipse 40% 48% at 50% 59%, rgba(255, 91, 23, .25), transparent 73%),
+        radial-gradient(ellipse 80% 90% at 50% 100%, rgba(255,86,22,.11) 0%, transparent 68%),
+        linear-gradient(180deg, #101114 0%, #111216 58%, #101114 100%);
+    }
+    .hero::before {
+      content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .18;
+      background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: linear-gradient(to bottom, black, transparent 82%);
+    }
+    .hero::after {
+      content: ""; position: absolute; inset: auto 0 0; height: 26%; z-index: 4; pointer-events: none;
+      background: linear-gradient(0deg, rgba(16,17,20,.78), transparent);
+    }
+    .marquees {
+      position: absolute; left: 0; right: 0; top: 56%; z-index: 1; transform: translateY(-50%);
+      display: flex; flex-direction: column; gap: clamp(1px, .65vw, 12px);
+      overflow: hidden; pointer-events: none; user-select: none;
+    }
+    .row { display: flex; width: max-content; white-space: nowrap; will-change: transform; }
+    .row span {
+      padding-right: .27em; font-size: clamp(32px, 5.2vw, 78px); line-height: .95;
+      letter-spacing: -.075em; text-transform: uppercase; font-weight: 800;
+    }
+    .row.ghost span { color: var(--ghost); font-weight: 500; }
+    .row.solid span { color: var(--orange); }
+    .row.ghost { animation: move-left 42s linear infinite; }
+    .row.solid { animation: move-right 34s linear infinite; }
+    @keyframes move-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes move-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+    .name-lockup {
+      position: absolute; z-index: 1; top: 6%; left: 50%; width: 100%;
+      transform: translateX(-50%); text-align: center; pointer-events: none;
+      animation: name-arrive 1.1s cubic-bezier(.18,.7,.25,1) both;
+    }
+    .name-lockup h1 {
+      white-space: nowrap; font-family: "Kaushan Script", cursive;
+      font-size: clamp(75.6px, 15.3vw, 225px); line-height: .9;
+      letter-spacing: -.045em; font-weight: 400; text-transform: uppercase;
+      color: #f4eee8; mix-blend-mode: screen;
+    }
+    .name-lockup .outline { color: transparent; -webkit-text-stroke: 1px rgba(255,244,235,.75); }
+    @keyframes name-arrive { from { opacity: 0; transform: translate(-50%, 24px); letter-spacing: -.06em; } to { opacity: 1; transform: translate(-50%, 0); } }
+    .figure {
+      position: absolute; left: 50%; bottom: -1%; z-index: 3; width: min(98vw, 84svh);
+      aspect-ratio: 1.08 / 1; transform-style: preserve-3d;
+      transform: translate3d(calc(-50% + var(--tilt-x, 0px)), var(--tilt-y, 0px), 0) rotateX(var(--rotate-x, 0deg)) rotateY(var(--rotate-y, 0deg));
+      transition: transform .42s cubic-bezier(.2,.8,.2,1); pointer-events: none;
+      filter: drop-shadow(0 22px 36px rgba(0,0,0,.25));
+    }
+    .figure::before {
+      content: ""; position: absolute; z-index: -1; left: 10%; right: 10%; top: 18%; bottom: -2%;
+      transform: translateZ(-45px) rotate(-7deg); border: 1px solid rgba(255,90,22,.5);
+      clip-path: polygon(20% 0, 100% 13%, 81% 100%, 0 74%); opacity: .48;
+    }
+    .figure::after {
+      content: ""; position: absolute; z-index: -1; left: 20%; right: 19%; top: 25%; bottom: 2%;
+      transform: translateZ(-80px) rotate(8deg); background: linear-gradient(140deg, rgba(255,90,22,.1), transparent 65%);
+      clip-path: polygon(12% 0, 100% 16%, 86% 100%, 0 81%);
+    }
+    .figure img, .figure canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+    .figure img { object-fit: cover; object-position: center top; opacity: 0; }
+    .figure canvas { opacity: 0; transition: opacity .65s ease; }
+    .figure canvas.ready { opacity: 1; }
+    .micro-copy {
+      position: absolute; z-index: 5; left: var(--gutter); bottom: var(--gutter);
+      font-size: 9px; line-height: 1.8; color: var(--muted); max-width: 185px;
+    }
+    .micro-copy strong { display: block; color: var(--ink); font: inherit; font-size: 10px; }
+    .tag {
+      position: absolute; right: var(--gutter); bottom: var(--gutter); z-index: 5;
+      font-size: 9px; color: var(--ink); border: 1px solid rgba(255,255,255,.18);
+      padding: 10px 12px; border-radius: 2px; background: rgba(16,17,20,.62); backdrop-filter: blur(8px);
+    }
+    .hint {
+      position: absolute; z-index: 6; left: 50%; bottom: calc(var(--gutter) + 2px); transform: translateX(-50%);
+      color: var(--muted); font-size: 9px; display: flex; align-items: center; gap: 9px; white-space: nowrap;
+    }
+    .hint i { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); }
+    .cursor {
+      position: fixed; left: 0; top: 0; z-index: 30; width: 12px; height: 12px; margin: -6px 0 0 -6px;
+      border-radius: 50%; background: var(--orange); pointer-events: none; opacity: 0;
+      transition: opacity .2s, transform .12s ease-out;
+    }
+    .cursor.on { opacity: 1; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    .tag { text-decoration: none; transition: border-color .2s, color .2s; }
+    .tag:hover { color: var(--orange-hot); border-color: var(--orange); }
+    .section { position: relative; padding: clamp(82px, 11vw, 156px) var(--gutter); overflow: hidden; }
+    .section--work { background: var(--bg-soft); }
+    .section--about { background: var(--bg); }
+    .section-inner { width: min(100%, 1320px); margin: 0 auto; }
+    .section-kicker { color: var(--orange); font: 10px "DM Mono", ui-monospace, monospace; letter-spacing: .14em; text-transform: uppercase; }
+    .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin: 22px 0 42px; }
+    .section-heading h2 { font-size: clamp(46px, 8vw, 108px); line-height: .9; letter-spacing: -.08em; font-weight: 500; }
+    .section-heading p { max-width: 280px; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .project-stage { position: relative; z-index: 2; height: 100vh; height: 100svh; min-height: 660px; overflow: hidden; background: #101114; isolation: isolate; }
+    #gl { position: absolute; inset: 0; z-index: 0; display: block; width: 100%; height: 100%; touch-action: none; }
+    #gl { display:none; }
+    .dom-card-track { position:absolute; inset:0; z-index:1; overflow:hidden; perspective:1200px; pointer-events:none; }
+    .dom-project-card { position:absolute; left:50%; top:54%; width:clamp(150px, 18vw, 260px); aspect-ratio:.73; overflow:hidden; border:1px solid rgba(255,255,255,.22); background:#242126; box-shadow:0 28px 70px rgba(0,0,0,.42); transform:translate(-50%,-50%) translateX(var(--card-x,0px)) rotateY(var(--card-y,0deg)) translateZ(var(--card-z,0px)); transform-style:preserve-3d; transition:filter .25s,border-color .25s; pointer-events:auto; cursor:pointer; }
+    .dom-project-card:hover { border-color:rgba(255,90,22,.82); filter:brightness(1.08); }
+    .dom-project-card img { display:block; width:100%; height:100%; object-fit:cover; }
+    .dom-project-card::after { content:""; position:absolute; inset:45% 0 0; background:linear-gradient(transparent,rgba(12,12,14,.88)); pointer-events:none; }
+    .dom-project-card span { position:absolute; z-index:1; left:14px; right:10px; bottom:14px; color:white; font:10px "DM Mono",ui-monospace,monospace; letter-spacing:.1em; text-transform:uppercase; }
+    .stage-grain { position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: .13; background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px); background-size: 72px 72px; mask-image: linear-gradient(transparent,black 18%,black 86%,transparent); }
+    .stage-heading { position: absolute; left: var(--gutter); top: clamp(86px, 13vh, 150px); z-index: 2; pointer-events: none; }
+    .stage-heading .section-kicker { display: block; margin-bottom: 12px; }
+    .stage-heading h2 { font-size: clamp(42px, 6.3vw, 82px); line-height: .88; letter-spacing: -.075em; font-weight: 500; }
+    .stage-heading p { margin-top: 15px; max-width: 240px; color: var(--muted); font-size: 11px; line-height: 1.65; }
+    .stack-instruction { position:absolute; left:var(--gutter); bottom:var(--gutter); z-index:3; color:var(--muted); font:9px "DM Mono",ui-monospace,monospace; letter-spacing:.1em; text-transform:uppercase; }
+    .stack-instruction b { color:var(--orange); font-weight:400; }
+    .project-chrome { position:absolute; inset:0; z-index:4; pointer-events:none; transition:opacity .5s; }
+    .project-chrome > * { pointer-events:auto; }
+    body.project-open .project-chrome, body.project-open .stage-heading, body.project-open .stack-instruction { opacity:0; pointer-events:none; }
+    body.project-open > .nav { opacity:0; pointer-events:none; }
+    #chips { position:absolute; right:var(--gutter); top:50%; transform:translateY(-50%); display:flex; flex-direction:column; align-items:flex-end; gap:6px; }
+    .filter-chip, .mode-button, .index-toggle {
+      border:1px solid rgba(255,255,255,.13); background:rgba(20,22,27,.82); color:var(--muted);
+      backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); cursor:pointer;
+      font:9px "DM Mono",ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase;
+      transition:color .2s,border-color .2s,background .2s;
+    }
+    .filter-chip { min-height:32px; padding:0 12px; border-radius:3px; }
+    .filter-chip sup { margin-left:7px; color:#75655b; font-size:7px; }
+    .filter-chip.active, .filter-chip:hover, .mode-button.active, .index-toggle:hover { color:var(--ink); border-color:rgba(255,90,22,.65); }
+    .filter-chip.active { background:rgba(255,90,22,.15); }
+    .stage-controls { position:absolute; right:var(--gutter); bottom:var(--gutter); display:flex; gap:6px; }
+    .mode-button,.index-toggle { height:32px; padding:0 12px; border-radius:3px; }
+    .mode-button.active { background:var(--ink); color:var(--bg); }
+    #thumb { position:absolute; right:var(--gutter); top:calc(var(--gutter) + 46px); width:62px; aspect-ratio:1; object-fit:cover; filter:saturate(.72) contrast(1.08); border:1px solid rgba(255,255,255,.18); opacity:.8; transition:opacity .25s; }
+    #label { position:fixed; z-index:31; pointer-events:none; opacity:0; color:var(--ink); font:500 11px "DM Mono",ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; transition:opacity .2s; text-shadow:0 1px 8px rgba(0,0,0,.6); }
+    body.hov #gl { cursor:pointer; }
+    body.drag #gl { cursor:grabbing; }
+    #project-index { position:absolute; z-index:5; left:var(--gutter); top:clamp(320px,40vh,420px); width:min(420px,38vw); max-height:calc(100% - 390px); overflow:auto; display:none; padding-right:12px; }
+    #project-index.visible { display:block; }
+    .index-row { display:grid; grid-template-columns:28px 1fr auto auto; gap:10px; align-items:baseline; padding:10px 4px; border-top:1px solid rgba(255,255,255,.13); color:var(--muted); cursor:pointer; font:9px "DM Mono",ui-monospace,monospace; transition:padding .2s,color .2s; }
+    .index-row:hover { padding-left:12px; color:var(--ink); }
+    .index-row strong { color:var(--ink); font:500 11px "Manrope",sans-serif; }
+    .index-row .index-no { color:var(--orange); }
+    .index-row .index-year { color:#777b83; }
+    #project-page { position:absolute; inset:0; z-index:8; overflow-y:auto; overscroll-behavior:contain; background:#101114; opacity:0; visibility:hidden; pointer-events:none; transition:opacity .45s; }
+    #project-page.visible { opacity:1; visibility:visible; pointer-events:auto; }
+    .page-nav { position:sticky; top:0; z-index:2; display:flex; align-items:center; justify-content:space-between; padding:16px var(--gutter); background:rgba(16,17,20,.88); backdrop-filter:blur(14px); border-bottom:1px solid rgba(255,255,255,.1); }
+    #home { color:var(--ink); text-decoration:none; font:10px "DM Mono",ui-monospace,monospace; letter-spacing:.1em; text-transform:uppercase; cursor:pointer; }
+    #home span { color:var(--orange); }
+    .page-count { color:var(--muted); font:9px "DM Mono",ui-monospace,monospace; }
+    .page-head { min-height:300px; padding:clamp(62px,10vh,120px) var(--gutter) 48px; display:grid; grid-template-columns:minmax(140px,.7fr) minmax(250px,1.3fr); gap:32px; align-items:center; }
+    .page-head h2 { color:var(--orange); font-size:12px; font-weight:500; letter-spacing:.08em; text-transform:uppercase; }
+    .page-head p { max-width:520px; color:var(--ink); font-size:clamp(18px,2.2vw,30px); line-height:1.35; letter-spacing:-.035em; }
+    .page-meta { grid-column:2; margin-top:-15px; color:var(--muted); font:9px "DM Mono",ui-monospace,monospace; line-height:1.9; text-transform:uppercase; letter-spacing:.09em; }
+    .page-hero-image { display:block; width:100%; max-height:68vh; object-fit:contain; background:#17191e; border-block:1px solid rgba(255,255,255,.08); }
+    .page-details { display:grid; grid-template-columns:1fr 1fr; gap:40px; padding:64px var(--gutter); }
+    .page-details h3 { margin-bottom:14px; color:var(--orange); font:10px "DM Mono",ui-monospace,monospace; text-transform:uppercase; letter-spacing:.12em; }
+    .page-details p { max-width:520px; color:var(--muted); font-size:13px; line-height:1.8; }
+    .page-links { display:flex; gap:18px; flex-wrap:wrap; margin-top:22px; }
+    .page-links a { color:var(--ink); font:9px "DM Mono",ui-monospace,monospace; text-transform:uppercase; letter-spacing:.08em; text-decoration:none; border-bottom:1px solid rgba(255,255,255,.25); padding-bottom:5px; }
+    .page-links a:hover { color:var(--orange); border-color:var(--orange); }
+    .page-next { display:flex; justify-content:space-between; align-items:center; gap:18px; padding:24px var(--gutter) 60px; border-top:1px solid rgba(255,255,255,.14); color:var(--muted); font:9px "DM Mono",ui-monospace,monospace; text-transform:uppercase; letter-spacing:.1em; cursor:pointer; }
+    .page-next strong { color:var(--ink); font:500 20px "Manrope",sans-serif; letter-spacing:-.04em; }
+    .page-next:hover strong { color:var(--orange); }
+    .about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(42px, 9vw, 140px); align-items: start; }
+    .about-copy h2 { margin: 20px 0 26px; max-width: 700px; font-size: clamp(44px, 7vw, 92px); line-height: .95; letter-spacing: -.08em; font-weight: 500; }
+    .about-copy h2 em { color: var(--orange); font-style: normal; }
+    .about-copy p { max-width: 530px; color: var(--muted); font-size: 14px; line-height: 1.9; }
+    .about-side { padding-top: 44px; }
+    .about-side .label { display: block; margin: 0 0 18px; color: var(--muted); font: 10px "DM Mono", ui-monospace, monospace; letter-spacing: .13em; text-transform: uppercase; }
+    .skill-list { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; }
+    .skill-list li { padding: 10px 12px; border: 1px solid rgba(255,255,255,.14); color: var(--ink); font: 10px "DM Mono", ui-monospace, monospace; }
+    .contact-bar { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-top: clamp(60px, 9vw, 120px); padding-top: 24px; border-top: 1px solid rgba(255,255,255,.16); }
+    .contact-bar p { color: var(--muted); font-size: 12px; }
+    .contact-bar a { color: var(--ink); text-decoration: none; }
+    .contact-bar a:hover { color: var(--orange); }
+    .contact-links { display: flex; gap: 22px; font: 10px "DM Mono", ui-monospace, monospace; text-transform: uppercase; letter-spacing: .08em; }
+    .footer-note { margin-top: 52px; color: #777b83; font: 9px "DM Mono", ui-monospace, monospace; letter-spacing: .1em; text-transform: uppercase; }
+    @media (max-width: 720px) {
+      .nav { min-height:52px; gap:8px; padding:12px; }
+      .brand { font-size:10px; letter-spacing:.1em; }
+      .nav-links { gap:clamp(7px,2vw,12px); }
+      .nav-links a { font-size:clamp(7px,2.2vw,9px); letter-spacing:.055em; }
+      .hero { cursor: auto; min-height: 540px; }
+      .marquees { top: 59%; gap: 3px; }
+      .row span { font-size: clamp(26px, 8vw, 54px); }
+      .name-lockup { top: 15%; }
+      .name-lockup h1 { font-size: clamp(54px, 15.75vw, 115.2px); }
+      .figure { width: min(128vw, 76svh); bottom: 3%; }
+      .micro-copy { bottom: 17px; font-size: 8px; max-width: 115px; }
+      .micro-copy strong { font-size: 9px; }
+      .tag { display: none; }
+      .hint { bottom: 17px; padding: 9px 12px; border: 1px solid rgba(255,255,255,.12); background: rgba(16,17,20,.82); }
+      .section { padding: 76px var(--gutter) 84px; }
+      .section-heading { align-items: start; flex-direction: column; margin-bottom: 28px; }
+      .section-heading p { max-width: 340px; }
+      .project-stage { min-height:680px; }
+      #gl { touch-action:pan-y; }
+      .stage-heading { top:100px; }
+      .stage-heading h2 { font-size:48px; }
+      .stage-heading p { max-width:180px; }
+      #chips { top:auto; bottom:70px; left:var(--gutter); right:var(--gutter); transform:none; flex-direction:row; align-items:center; overflow-x:auto; padding-bottom:4px; }
+      .filter-chip { flex:0 0 auto; padding:0 10px; }
+      #thumb { top:82px; width:46px; }
+      .stage-controls { bottom:var(--gutter); }
+      .stack-instruction { bottom:65px; }
+      #project-index { left:var(--gutter); top:320px; width:80vw; max-height:calc(100% - 390px); }
+      .page-head { min-height:260px; padding:58px var(--gutter) 36px; grid-template-columns:1fr; gap:18px; }
+      .page-head p { font-size:21px; }
+      .page-meta { grid-column:1; margin-top:0; }
+      .page-hero-image { max-height:48vh; }
+      .page-details { grid-template-columns:1fr; gap:28px; padding:42px var(--gutter); }
+      .page-next strong { font-size:16px; }
+      .about-grid { grid-template-columns: 1fr; gap: 18px; }
+      .about-side { padding-top: 6px; }
+      .contact-bar { align-items: start; flex-direction: column; }
+      .contact-links { flex-wrap: wrap; }
+    }
+    @media (hover: none), (pointer: coarse) { .cursor { display: none; } }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+    body { overflow:hidden; }
+    .project-stage { height:100vh; height:100svh; min-height:100svh; }
+    #gl { touch-action:none; }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="./index.html#hero" aria-label="Antriksh home">ANTRIKSH</a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="./index.html#about">About</a>
+      <a href="#work">Projects</a>
+      <a href="./index.html#journey">Time Journey</a>
+      <a href="./index.html#contact">Contact</a>
+    </nav>
+  </header>
+  <section class="project-stage" id="work" aria-label="Selected projects">
+    <canvas id="gl" aria-label="Interactive 3D project stack"></canvas>
+    <div class="stage-grain" aria-hidden="true"></div>
+    <div class="stage-heading"><span class="section-kicker">01 / Selected work</span><h2>Things I’ve<br>Built</h2><p>Scroll, drag, or explore the index. Select a project to open its story.</p></div>
+    <p class="stack-instruction"><b>↕</b> Scroll or drag to explore <span aria-hidden="true">·</span> Click a card to open</p>
+    <div class="project-chrome">
+      <img id="thumb" src="./projects/jarvis.png" alt="Selected project preview">
+      <div id="chips" aria-label="Filter projects"></div>
+      <div id="project-index" aria-label="Project index"></div>
+      <div class="stage-controls">
+        <button class="mode-button active" id="overview-mode" type="button">Overview</button>
+        <button class="mode-button" id="index-mode" type="button">Index</button>
+      </div>
+    </div>
+    <div id="label" aria-hidden="true"></div>
+    <article id="project-page" aria-live="polite">
+      <div class="page-nav"><a href="#work" id="home">ANTRIKSH <span>/ PROJECTS</span></a><span class="page-count" id="page-count"></span></div>
+      <header class="page-head"><h2 id="page-title"></h2><p id="page-desc"></p><div class="page-meta" id="page-meta"></div></header>
+      <img class="page-hero-image" id="page-image" alt="Project preview">
+      <div class="page-details"><div><h3>About the project</h3><p id="page-about"></p><div class="page-links" id="page-links"></div></div><div><h3>Built with</h3><p id="page-stack"></p></div></div>
+      <div class="page-next" id="next-project" role="button" tabindex="0"><span>Next project</span><strong id="next-title"></strong><span aria-hidden="true">↗</span></div>
+    </article>
+  </section>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script>
+    (() => {
+      const escapeSvg = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[char]));
+      const projectImageSrc = src => location.protocol === 'file:' && typeof src === 'string' && src.startsWith('./projects/')
+        ? src.replace('./projects/', './public/projects/')
+        : src;
+      const projectPoster = (name, category, number) => {
+        const titleSize = Math.min(62, 760 / Math.max(1, name.length * .57));
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1100"><defs><linearGradient id="bg" x2=".9" y2="1"><stop stop-color="#202126"/><stop offset="1" stop-color="#101114"/></linearGradient><radialGradient id="glow"><stop stop-color="#ff5a16" stop-opacity=".38"/><stop offset="1" stop-color="#ff5a16" stop-opacity="0"/></radialGradient></defs><rect width="900" height="1100" fill="url(#bg)"/><circle cx="710" cy="300" r="330" fill="url(#glow)"/><path d="M54 170H846M54 930H846" stroke="#ffffff" stroke-opacity=".13"/><circle cx="700" cy="470" r="208" fill="none" stroke="#ff7838" stroke-opacity=".18"/><circle cx="700" cy="470" r="142" fill="none" stroke="#ff7838" stroke-opacity=".28"/><path d="M550 470h300M700 320v300" stroke="#ff7838" stroke-opacity=".3"/><text x="56" y="115" fill="#ff9a68" font-family="monospace" font-size="22" letter-spacing="5">${escapeSvg(category.toUpperCase())}</text><text x="56" y="850" fill="#f7f7f7" font-family="Arial,sans-serif" font-weight="700" font-size="${titleSize}">${escapeSvg(name)}</text><text x="56" y="990" fill="#92949b" font-family="monospace" font-size="20" letter-spacing="5">ANTRIKSH / PROJECT ${escapeSvg(number)}</text><text x="786" y="105" fill="#ff7838" font-family="monospace" font-size="22">${escapeSvg(number)}</text></svg>`;
+        return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      };
+      const projectData = [
+        { name:'CONVERGE', category:'Civic tech', image:'./projects/converge-latest.jpg', fit:'cover', year:'2026', description:'A civic issue platform that groups nearby reports, tracks response deadlines, and verifies field work with photo evidence.', about:'Built for HackO’Ween with a team at Newton School of Technology. The product brings incident reporting and operator workflows into one map-led system. Antriksh worked on the FastAPI routing layer, spatial clustering, and the operator dashboard.', stack:'Next.js · FastAPI · Python · Geospatial clustering', repo:'https://github.com/srtkio/converge_trojans', live:'https://converge-web-ten.vercel.app' },
+        { name:'Blindspot AI', category:'AI product research', image:'./projects/blindspot.png', year:'2026', description:'A product-validation platform that turns early ideas into ranked assumptions, interview questions, and relevant research resources.', about:'Blindspot AI helps student founders challenge product assumptions before building. Its backend stores versioned analyses, maps interview questions to assumptions, accepts evidence notes, and discovers relevant technical resources. The repository describes a backend prototype, not a finished public service.', stack:'Node.js · TypeScript · Express · PostgreSQL · Drizzle · Zod', repo:'https://github.com/Antrikshcodes/blindspot-ai' },
+        { name:'JARVIS AI', category:'AI', image:'./projects/jarvis.png', year:'2026', description:'A local-first desktop assistant built around on-device models, streaming responses, and a responsive native interface.', about:'A Python and PySide6 desktop assistant connected to local Ollama inference. Its worker-thread design keeps model streaming separate from the interface so the application remains responsive.', stack:'Python · PySide6 · Ollama · Qwen 3', repo:'https://github.com/Antrikshcodes/jarvis-ai' },
+        { name:'OrderShield AI', category:'AI', image:'./projects/ordershield.png', year:'2026', description:'A vendor onboarding and document-audit prototype that surfaces discrepancies and organizes supplier trust signals.', about:'Built for Fetch-A-Thon 3.0, where the team placed in the national Top 20. The workflow combines document checks, company information, and a structured review dashboard.', stack:'Python · FastAPI · Document AI · Fetch.ai · React', repo:'https://github.com/Antrikshcodes/ordershield', live:'https://ordershield-tawny.vercel.app/' },
+        { name:'Closet Store', category:'E-commerce', image:'./projects/marketplace.png', year:'2026', description:'An editorial fashion marketplace concept for discovering curated vintage, streetwear, and everyday pieces.', about:'A frontend-focused marketplace prototype with product condition labels, responsive shopping-bag feedback, and a restrained editorial visual system.', stack:'React · Vite · Tailwind CSS · Framer Motion', repo:'https://github.com/Antrikshcodes/closet-club', live:'https://marketplacedemo.vercel.app/' },
+        { name:'The Product Guys', category:'Product', image:'./projects/product-guys.png', year:'2026', description:'A product-thinking publication and community for builders learning to validate ideas before they write code.', about:'A co-founded digital publication focused on product teardowns, UX friction, and practical validation frameworks. Antriksh shaped the information architecture and built the site.', stack:'Next.js · Product strategy · Information architecture', live:'https://productguys.arthakram.in' },
+        { name:'Grantly', category:'Student tools', image:'./projects/grantly.svg', year:'2026', description:'A scholarship discovery and application tracker that helps students find opportunities and keep deadlines in view.', about:'A responsive scholarship platform with search and filters, eligibility details, saved opportunities, application tracking, and student-profile based matching. Student data and saved items persist locally in the browser.', stack:'Next.js · React · TypeScript · Tailwind CSS · Framer Motion', repo:'https://github.com/Antrikshcodes/Grantly' },
+        { name:'CUSTODI', category:'Cybersecurity', image:'./projects/custodi.svg', year:'2026', description:'A privacy-first safety checker for suspicious job messages, recruiter links, and placement offers.', about:'CUSTODI analyzes messages and web addresses on the device, shows the exact evidence behind each risk score, and suggests a safer next step. The project includes an installable web app, Chrome extension, dashboard, and test lab.', stack:'TypeScript · React · Vite · PWA · Chrome Extension · Rule-based security', repo:'https://github.com/Antrikshcodes/Custodi' },
+        { name:'After the Beginning', category:'Creative web', image:'./projects/after-the-beginning.svg', year:'2026', description:'An illustrated, scroll-driven journey through 230 million years of life on Earth.', about:'A single-page visual story that uses illustration, typography, and scrolling to guide visitors through a deep-time narrative. Built to run directly in the browser without a framework or build step.', stack:'HTML · CSS · JavaScript · Scroll storytelling', repo:'https://github.com/Antrikshcodes/after-the-beginning' },
+        { name:'Digital Resume', category:'Web & identity', image:'./projects/digital-resume.svg', year:'2026', description:'An interactive digital resume designed to make experience, projects, and skills easy to explore.', about:'A recruiter-focused personal site with an editorial visual system, a 3D hero, scroll-driven content, and a downloadable ATS-friendly resume.', stack:'React · TypeScript · Three.js · GSAP · ScrollTrigger', repo:'https://github.com/Antrikshcodes/resume-website' },
+        { name:'Obstacle Avoiding Robot', category:'Robotics', image:'./projects/obstacle-avoiding-robot.svg', year:'2026', description:'An autonomous rover that scans for obstacles and chooses a clear direction without remote control.', about:'The ESP32 robot uses an ultrasonic sensor on a servo turret to compare left and right paths, then drives two motors through an L298N controller. Its firmware includes filtered distance readings and recovery behavior for tight corners.', stack:'ESP32 · Arduino/C++ · HC-SR04 · SG90 servo · L298N', repo:'https://github.com/Antrikshcodes/obstacle-avoiding-robot' },
+        { name:'Sesame Robot', category:'Open-source robotics', image:'./projects/sesame-robot.svg', year:'2026', description:'An ESP32 quadruped robotics platform with printable parts, expressive movement, and an OLED face.', about:'A documented exploration of the open-source Sesame robot platform, including firmware, printable hardware, and motion sequences. The repository credits the original Sesame project to Dorian Todd.', stack:'ESP32 · Arduino/C++ · Servo motors · OLED · 3D printing', repo:'https://github.com/Antrikshcodes/sesame-robot' }
+      ];
+      const categories = ['All', ...new Set(projectData.map(p => p.category))];
+      const stage = document.querySelector('.project-stage');
+      const canvas = document.getElementById('gl');
+      const label = document.getElementById('label');
+      const thumb = document.getElementById('thumb');
+      thumb.src = projectImageSrc(thumb.getAttribute('src'));
+      const page = document.getElementById('project-page');
+      const pageTitle = document.getElementById('page-title');
+      const pageDesc = document.getElementById('page-desc');
+      const pageAbout = document.getElementById('page-about');
+      const pageStack = document.getElementById('page-stack');
+      const pageMeta = document.getElementById('page-meta');
+      const pageImage = document.getElementById('page-image');
+      const pageLinks = document.getElementById('page-links');
+      const pageCount = document.getElementById('page-count');
+      const nextTitle = document.getElementById('next-title');
+      const nextButton = document.getElementById('next-project');
+      const indexBox = document.getElementById('project-index');
+      const chipsBox = document.getElementById('chips');
+      const overviewButton = document.getElementById('overview-mode');
+      const indexButton = document.getElementById('index-mode');
+      const homeButton = document.getElementById('home');
+      // Use regular DOM images for project faces so they render reliably even when WebGL
+      // canvas textures are unavailable or blocked by the browser.
+      const domTrack = document.createElement('div');
+      domTrack.className = 'dom-card-track';
+      domTrack.setAttribute('aria-label', 'Interactive project cards');
+      stage.insertBefore(domTrack, stage.querySelector('.stage-grain'));
+      const domCards = [];
+      let domScroll = 0, domStart = 0, domOrigin = 0, domDragging = false, domOpened = false;
+      function renderDomCards() {
+        const cardStep = Math.min(230, Math.max(145, innerWidth * .17));
+        const center = domScroll / 25;
+        domCards.forEach(card => {
+          const total = projectData.length;
+          const relative = ((card.index - center + total * 1.5) % total + total) % total;
+          const signed = relative > total / 2 ? relative - total : relative;
+          const x = signed * cardStep;
+          const visible = Math.abs(x) < innerWidth * .78;
+          card.node.style.display = visible ? '' : 'none';
+          card.node.style.setProperty('--card-x', `${x}px`);
+          card.node.style.setProperty('--card-y', `${signed * -5.5}deg`);
+          card.node.style.setProperty('--card-z', `${-Math.abs(signed) * 34}px`);
+          card.node.style.zIndex = String(100 - Math.round(Math.abs(signed) * 5));
+          card.node.style.opacity = card.on ? String(Math.max(.12, 1 - Math.abs(signed) * .14)) : '0';
+        });
+      }
+      function openDomProject(index) {
+        if (domOpened) return;
+        domOpened = true; document.body.classList.add('project-open');
+        fillPage(index); page.scrollTop=0; page.classList.add('visible');
+        if (window.gsap) gsap.fromTo(page,{opacity:0},{opacity:1,duration:.45,ease:'power1.inOut'});
+      }
+      function closeDomProject() {
+        if (!domOpened) return;
+        const done=()=>{page.classList.remove('visible');page.style.opacity='';document.body.classList.remove('project-open');domOpened=false;};
+        if (window.gsap) gsap.to(page,{opacity:0,duration:.22,onComplete:done}); else done();
+      }
+      projectData.forEach((project,index)=>{
+        const node=document.createElement('button'); node.type='button'; node.className='dom-project-card';
+        const image=document.createElement('img'); image.src=projectImageSrc(project.image); image.alt=`${project.name} project preview`; image.loading=index>3?'lazy':'eager';
+        const title=document.createElement('span'); title.textContent=project.name;
+        node.append(image,title); node.addEventListener('click',()=>openDomProject(index));
+        node.addEventListener('pointerenter',()=>{updateThumb(index);label.textContent=project.name;});
+        domTrack.appendChild(node); domCards.push({node,index,on:true});
+      });
+      categories.forEach(category=>{
+        const count=category==='All'?projectData.length:projectData.filter(p=>p.category===category).length;
+        const button=document.createElement('button');button.type='button';button.className='filter-chip'+(category==='All'?' active':'');button.innerHTML=`${category}<sup>${String(count).padStart(2,'0')}</sup>`;
+        button.addEventListener('click',()=>{chipsBox.querySelectorAll('.filter-chip').forEach(b=>b.classList.toggle('active',b===button));domCards.forEach(c=>{c.on=category==='All'||projectData[c.index].category===category;c.node.style.display=c.on?'':'none';});renderDomCards();});chipsBox.appendChild(button);
+      });
+      projectData.forEach((project,index)=>{const row=document.createElement('div');row.className='index-row';row.tabIndex=0;row.setAttribute('role','button');row.innerHTML=`<span class="index-no">${String(index+1).padStart(2,'0')}</span><strong>${project.name}</strong><span>${project.category}</span><span class="index-year">${project.year}</span>`;row.addEventListener('pointerenter',()=>{updateThumb(index);domScroll=index*25;renderDomCards();});row.addEventListener('click',()=>openDomProject(index));row.addEventListener('keydown',e=>{if(e.key==='Enter')openDomProject(index);});indexBox.appendChild(row);});
+      homeButton.addEventListener('click',e=>{e.preventDefault();closeDomProject();});
+      nextButton.addEventListener('click',()=>{const index=Number(nextButton.dataset.index||0);fillPage(index);page.scrollTop=0;});
+      nextButton.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')nextButton.click();});
+      indexButton.addEventListener('click',()=>{const show=!indexBox.classList.contains('visible');indexBox.classList.toggle('visible',show);indexButton.classList.toggle('active',show);overviewButton.classList.toggle('active',!show);});
+      overviewButton.addEventListener('click',()=>{indexBox.classList.remove('visible');indexButton.classList.remove('active');overviewButton.classList.add('active');});
+      stage.addEventListener('wheel',e=>{if(!domOpened){domScroll+=(e.deltaY+e.deltaX)/20;renderDomCards();}},{passive:true});
+      domTrack.addEventListener('pointerdown',e=>{domStart=e.clientX;domOrigin=domScroll;domDragging=false;domTrack.setPointerCapture?.(e.pointerId);});
+      domTrack.addEventListener('pointermove',e=>{if(e.buttons){if(Math.abs(e.clientX-domStart)>5)domDragging=true;if(domDragging){domScroll=domOrigin-(e.clientX-domStart);renderDomCards();}}});
+      window.addEventListener('keydown',e=>{if(e.key==='Escape')closeDomProject();if(!domOpened&&(e.key==='ArrowRight'||e.key==='ArrowDown')){domScroll+=12;renderDomCards();}if(!domOpened&&(e.key==='ArrowLeft'||e.key==='ArrowUp')){domScroll-=12;renderDomCards();}});
+      window.addEventListener('resize',renderDomCards,{passive:true});
+      renderDomCards(); updateThumb(0);
+      const requestedProject=new URLSearchParams(location.search).get('project');
+      if(requestedProject!==null&&Number.isInteger(Number(requestedProject))&&Number(requestedProject)>=0&&Number(requestedProject)<projectData.length)openDomProject(Number(requestedProject));
+      return;
+
+      const REPEAT = 3, GAP = .375, CARD_W = 1.38, CARD_H = 1.9;
+      const scene = new THREE.Scene();
+      const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:false });
+      renderer.setClearColor(0x17120f, 1);
+      renderer.outputEncoding = THREE.sRGBEncoding;
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      const camera = new THREE.PerspectiveCamera(5, 1, .1, 1000);
+      const world = new THREE.Group(); scene.add(world);
+      const raycaster = new THREE.Raycaster();
+      const pointer = new THREE.Vector2(-1, -1);
+      const cards = [];
+      const textures = [];
+      const mouse = { x:-1, y:-1, down:false, startX:0, startY:0, originX:0, originY:0, dragX:0, dragY:0, dragging:false };
+      const scroll = { current:0, previous:0 };
+      const intro = { x:-20 };
+      let activeFilter = 'All', hovered = null, opened = null, ready = false, M = 0;
+      let aspect = 1;
+      const wrap = (min, max, value) => ((value - min) % (max - min) + (max - min)) % (max - min) + min;
+      const placeCamera = () => { aspect = innerWidth / innerHeight; camera.position.set(0, 100 / 7.5, aspect < 1 ? 55 : 35); camera.lookAt(0,0,0); };
+
+      function coverDraw(ctx, image, size, fit='cover') {
+        const scale = fit === 'contain'
+          ? Math.min(size / image.naturalWidth, size / image.naturalHeight)
+          : Math.max(size / image.naturalWidth, size / image.naturalHeight);
+        const w = image.naturalWidth * scale, h = image.naturalHeight * scale;
+        if (fit === 'contain') { ctx.fillStyle = '#101114'; ctx.fillRect(0, 0, size, size); }
+        ctx.drawImage(image, (size - w) / 2, (size - h) / 2, w, h);
+      }
+      function makeTextures(project, index) {
+        return new Promise(resolve => {
+          const image = new Image();
+          image.onload = () => {
+            const sharp = document.createElement('canvas'); sharp.width = sharp.height = 512;
+            coverDraw(sharp.getContext('2d'), image, 512, project.fit);
+            const blur = document.createElement('canvas'); blur.width = blur.height = 32;
+            blur.getContext('2d').drawImage(sharp, 0, 0, 32, 32);
+            const sharpTex = new THREE.CanvasTexture(sharp), blurTex = new THREE.CanvasTexture(blur);
+            [sharpTex, blurTex].forEach(tex => { tex.encoding = THREE.sRGBEncoding; tex.minFilter = THREE.LinearFilter; tex.magFilter = THREE.LinearFilter; tex.generateMipmaps = false; tex.needsUpdate = true; });
+            resolve({ sharp:sharpTex, blur:blurTex });
+          };
+          image.onerror = () => {
+            const fallback = document.createElement('canvas'); fallback.width = fallback.height = 512;
+            const c = fallback.getContext('2d'); c.fillStyle = ['#cf4d1c','#635348','#b7a38f','#332b26','#a6522b','#75644f'][index]; c.fillRect(0,0,512,512);
+            c.fillStyle = '#f4eee8'; c.font = '500 42px sans-serif'; c.fillText(project.name, 28, 260);
+            const sharpTex = new THREE.CanvasTexture(fallback); sharpTex.minFilter = THREE.LinearFilter; sharpTex.magFilter = THREE.LinearFilter; sharpTex.generateMipmaps = false;
+            resolve({ sharp:sharpTex, blur:sharpTex });
+          };
+          image.src = projectImageSrc(project.image);
+        });
+      }
+      function createMaterial(tex) {
+        return new THREE.MeshBasicMaterial({
+          map:tex.sharp, color:0xffffff, transparent:false, opacity:1,
+          depthWrite:true, side:THREE.DoubleSide, toneMapped:false
+        });
+      }
+      async function buildCards() {
+        const allTextures = await Promise.all(projectData.map(makeTextures));
+        textures.push(...allTextures);
+        const cardMaterials = [];
+        for (let repeat=0; repeat<REPEAT; repeat++) {
+          projectData.forEach((project, projectIndex) => {
+            const geometry = new THREE.PlaneGeometry(CARD_W, CARD_H);
+            const material = createMaterial(allTextures[projectIndex]);
+            cardMaterials.push(material);
+            const mesh = new THREE.Mesh(geometry, material);
+            const inner = new THREE.Group(); inner.add(mesh);
+            const hit = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({transparent:true,opacity:0,depthWrite:false,side:THREE.DoubleSide}));
+            hit.scale.x = 1.5; hit.userData.projectIndex = projectIndex;
+            const holder = new THREE.Group(); holder.add(inner, hit); world.add(holder);
+            cards.push({ project, projectIndex, repeat, mesh, hit, inner, holder, order:0, visK:0, on:true });
+          });
+        }
+        makeControls(); makeIndex();
+        ready = true;
+        gsap.fromTo(cardMaterials, { opacity:0 }, { opacity:1, duration:1.1, ease:'power2.out', stagger:.035 });
+        gsap.to(intro, { x:0, duration:2, ease:'expo.out' });
+        gsap.fromTo(world.scale, {x:.825,y:.825,z:.825}, {x:1,y:1,z:1,duration:1,ease:'expo.out',delay:.25});
+        updateThumb(2);
+        const requestedProject = new URLSearchParams(location.search).get('project');
+        const requestedIndex = requestedProject === null ? -1 : Number(requestedProject);
+        if (Number.isInteger(requestedIndex) && requestedIndex >= 0 && requestedIndex < projectData.length) {
+          gsap.delayedCall(1.3, () => openProject(requestedIndex));
+        }
+      }
+      function makeControls() {
+        categories.forEach(category => {
+          const count = category === 'All' ? projectData.length : projectData.filter(p=>p.category===category).length;
+          const button = document.createElement('button'); button.type='button'; button.className='filter-chip'+(category==='All'?' active':'');
+          button.innerHTML = `${category}<sup>${String(count).padStart(2,'0')}</sup>`;
+          button.addEventListener('click', () => {
+            activeFilter=category;
+            chipsBox.querySelectorAll('.filter-chip').forEach(b=>b.classList.toggle('active',b===button));
+            cards.forEach(card=>{ card.on=category==='All'||card.project.category===category; });
+            cards.filter(c=>c.on).forEach((c,k)=>{ c.order=k; });
+          });
+          chipsBox.appendChild(button);
+        });
+      }
+      function makeIndex() {
+        projectData.forEach((project,index)=>{
+          const row=document.createElement('div'); row.className='index-row'; row.tabIndex=0; row.setAttribute('role','button');
+          row.innerHTML=`<span class="index-no">${String(index+1).padStart(2,'0')}</span><strong>${project.name}</strong><span>${project.category}</span><span class="index-year">${project.year}</span>`;
+          row.addEventListener('pointerenter',()=>{ updateThumb(index); scroll.current=index*25; });
+          row.addEventListener('click',()=>openProject(index));
+          row.addEventListener('keydown',e=>{if(e.key==='Enter')openProject(index);});
+          indexBox.appendChild(row);
+        });
+      }
+      function updateThumb(index) { thumb.src=projectImageSrc(projectData[index].image); thumb.alt=`${projectData[index].name} project preview`; }
+      function fillPage(index) {
+        const p=projectData[index], next=projectData[(index+1)%projectData.length];
+        pageTitle.textContent=p.name; pageDesc.textContent=p.description; pageAbout.textContent=p.about; pageStack.textContent=p.stack;
+        pageMeta.textContent=`${p.category}  /  ${p.year}  /  Antriksh Galhotra`;
+        pageImage.src=projectImageSrc(p.image); pageImage.alt=`${p.name} project preview`;
+        pageCount.textContent=`${String(index+1).padStart(2,'0')} / ${String(projectData.length).padStart(2,'0')}`;
+        nextTitle.textContent=next.name; nextButton.dataset.index=(index+1)%projectData.length;
+        pageLinks.replaceChildren();
+        [['Project link',p.live],['Source code',p.repo]].forEach(([label,url])=>{if(!url)return;const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noreferrer';a.textContent=label+' ↗';pageLinks.appendChild(a);});
+      }
+      function openProject(index) {
+        if (!ready || opened) return;
+        const card=cards.find(c=>c.projectIndex===index && c.on) || cards.find(c=>c.projectIndex===index);
+        if (!card) return;
+        card.filterWasOn=card.on; card.on=true; card.visK=1;
+        opened=card; hovered=null; document.body.classList.remove('hov'); document.body.classList.add('project-open');
+        label.style.opacity=0; cards.forEach(c=>{c.holder.visible=c===card;});
+        card.inner.position.set(0,0,0);
+        gsap.to(card.holder.position,{x:0,z:0,duration:.83,ease:'expo.out'});
+        gsap.to(card.holder.rotation,{y:0,duration:1.25,ease:'expo.inOut'});
+        gsap.to(camera.position,{x:0,y:0,z:innerWidth<640?35:30,duration:1.25,ease:'expo.inOut',onUpdate:()=>camera.lookAt(0,0,0),onComplete:()=>{
+          fillPage(index); page.scrollTop=0; page.classList.add('visible');
+          gsap.fromTo(page,{opacity:0},{opacity:1,duration:.5,ease:'power1.inOut'});
+          card.holder.visible=false;
+        }});
+      }
+      function closeProject() {
+        if(!opened)return;
+        const card=opened;
+        gsap.killTweensOf([camera.position,card.holder.position,card.holder.rotation,page]);
+        gsap.to(page,{opacity:0,duration:.25,ease:'power1.inOut',onComplete:()=>{
+          page.classList.remove('visible'); page.style.opacity=''; document.body.classList.remove('project-open');
+          opened=null; cards.forEach(c=>{c.holder.visible=true;});
+          if(card.filterWasOn===false)card.on=false; delete card.filterWasOn;
+          card.holder.position.set(0,0,0); card.holder.rotation.set(0,-Math.PI/6,0);
+          placeCamera(); intro.x=-20; gsap.to(intro,{x:0,duration:1.5,ease:'expo.out'});
+        }});
+      }
+      function nextProject() {
+        const index=Number(nextButton.dataset.index||0);
+        gsap.to(page,{opacity:0,duration:.25,ease:'power1.inOut',onComplete:()=>{
+          fillPage(index); page.scrollTop=0; gsap.to(page,{opacity:1,duration:.5,ease:'power1.inOut'});
+        }});
+      }
+      function resize() {
+        const r=stage.getBoundingClientRect();
+        renderer.setSize(Math.max(1,r.width),Math.max(1,r.height),false);
+        camera.aspect=Math.max(1,r.width)/Math.max(1,r.height); camera.updateProjectionMatrix();
+        if(!opened)placeCamera();
+      }
+      function layout() {
+        M += ((mouse.dragX-mouse.dragY)-M)*.1;
+        scroll.previous += (scroll.current-scroll.previous)*.15;
+        const visible=cards.filter(c=>c.on), N=Math.max(visible.length,1), len=Math.max(N,24), F=len*GAP/2, step=len/N;
+        visible.forEach((c,k)=>c.order=k*step);
+        const J=scroll.previous/25-M/100+intro.x;
+        cards.forEach(c=>{
+          c.visK += ((c.on?1:0)-c.visK)*.12;
+          if(opened)return;
+          const x=wrap(-F,F,(c.order-J)*GAP);
+          c.holder.position.set(x,x*.19,-x*aspect*1.5);
+          c.holder.rotation.set(0,-Math.PI/6,0);
+          c.holder.visible=c.visK>.02 && Math.abs(x)<7.2;
+          c.hit.visible=c.holder.visible && c.on;
+        });
+      }
+      function pick() {
+        if(!ready||opened||mouse.dragging||mouse.x<0||mouse.y<0)return setHover(null);
+        raycaster.setFromCamera(pointer,camera);
+        const hits=raycaster.intersectObjects(cards.filter(c=>c.holder.visible&&c.on).map(c=>c.hit),false);
+        setHover(hits.length?cards.find(c=>c.hit===hits[0].object):null);
+      }
+      function setHover(card) {
+        if(hovered===card)return;
+        if(hovered)gsap.to(hovered.inner.position,{x:0,y:0,duration:.5,ease:'expo.out'});
+        hovered=card;
+        if(card){gsap.to(card.inner.position,{x:.45,y:-.08,duration:.5,ease:'expo.out'});document.body.classList.add('hov');label.textContent=card.project.name;updateThumb(card.projectIndex);}
+        else document.body.classList.remove('hov');
+      }
+      function frame() {
+        requestAnimationFrame(frame);
+        if(!renderer.getContext().isContextLost()) { layout(); pick(); renderer.render(scene,camera); }
+      }
+      canvas.addEventListener('pointermove',e=>{
+        const r=canvas.getBoundingClientRect(); mouse.x=e.clientX; mouse.y=e.clientY;
+        pointer.x=((e.clientX-r.left)/r.width)*2-1; pointer.y=-((e.clientY-r.top)/r.height)*2+1;
+        label.style.transform=`translate(${e.clientX+14}px,${e.clientY+12}px)`;
+        if(mouse.down){
+          if(!mouse.dragging && Math.hypot(e.clientX-mouse.startX,e.clientY-mouse.startY)>3){mouse.dragging=true;document.body.classList.add('drag');gsap.to(world.scale,{x:.825,y:.825,z:.825,duration:.75,ease:'expo.out'});}
+          if(mouse.dragging){mouse.dragX=mouse.originX+(e.clientX-mouse.startX);mouse.dragY=mouse.originY+(e.clientY-mouse.startY);}
+        }
+        label.style.opacity=hovered&&!mouse.dragging?1:0;
+      });
+      canvas.addEventListener('pointerdown',e=>{if(opened)return;mouse.down=true;mouse.startX=e.clientX;mouse.startY=e.clientY;mouse.originX=mouse.dragX;mouse.originY=mouse.dragY;canvas.setPointerCapture?.(e.pointerId);});
+      canvas.addEventListener('pointerup',e=>{
+        if(!mouse.down)return; mouse.down=false;
+        if(mouse.dragging){mouse.dragging=false;document.body.classList.remove('drag');gsap.to(world.scale,{x:1,y:1,z:1,duration:.75,ease:'expo.out'});}
+        else if(hovered)openProject(hovered.projectIndex);
+      });
+      canvas.addEventListener('pointercancel',()=>{mouse.down=false;mouse.dragging=false;document.body.classList.remove('drag');gsap.to(world.scale,{x:1,y:1,z:1,duration:.4,ease:'expo.out'});});
+      canvas.addEventListener('pointerleave',()=>{mouse.x=mouse.y=-1;pointer.set(-1,-1);setHover(null);label.style.opacity=0;});
+      stage.addEventListener('wheel',e=>{if(ready&&!opened)scroll.current+=(e.deltaY+e.deltaX)/20;},{passive:true});
+      document.addEventListener('keydown',e=>{
+        if(e.key==='Escape'){closeProject();return;}
+        if(opened)return;
+        if(e.key==='ArrowRight'||e.key==='ArrowDown')scroll.current+=12;
+        if(e.key==='ArrowLeft'||e.key==='ArrowUp')scroll.current-=12;
+      });
+      homeButton.addEventListener('click',e=>{e.preventDefault();closeProject();});
+      nextButton.addEventListener('click',nextProject);
+      nextButton.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')nextProject();});
+      indexButton.addEventListener('click',()=>{const show=!indexBox.classList.contains('visible');indexBox.classList.toggle('visible',show);indexButton.classList.toggle('active',show);overviewButton.classList.toggle('active',!show);});
+      overviewButton.addEventListener('click',()=>{indexBox.classList.remove('visible');indexButton.classList.remove('active');overviewButton.classList.add('active');});
+      window.addEventListener('resize',resize,{passive:true});
+      resize(); frame(); buildCards();
+    })();
+  </script>
+</body>
+</html>

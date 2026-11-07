@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1400" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="83" y1="0" x2="1100" y2="1400" gradientUnits="userSpaceOnUse"><stop stop-color="#151313"/><stop offset="1" stop-color="#101114"/></linearGradient>
+    <linearGradient id="orange" x1="194" y1="269" x2="915" y2="941" gradientUnits="userSpaceOnUse"><stop stop-color="#ffc18a"/><stop offset="1" stop-color="#ff5a16"/></linearGradient>
+    <linearGradient id="card" x1="145" y1="442" x2="1058" y2="1050" gradientUnits="userSpaceOnUse"><stop stop-color="#272321"/><stop offset="1" stop-color="#191718"/></linearGradient>
+    <filter id="glow" x="270" y="100" width="650" height="520" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feGaussianBlur stdDeviation="95"/></filter>
+  </defs>
+  <path fill="url(#bg)" d="M0 0h1200v1400H0z"/><circle cx="613" cy="354" r="231" fill="#ff6724" opacity=".24" filter="url(#glow)"/>
+  <g opacity=".14" stroke="#f1e6df"><path d="M72 0v1400M1128 0v1400M0 112h1200M0 1288h1200"/><path d="M111 0v1400M1089 0v1400" stroke-dasharray="4 14"/></g>
+  <g transform="translate(84 77)"><rect width="47" height="47" rx="14" fill="url(#orange)"/><text x="23.5" y="32" text-anchor="middle" fill="#201611" font-family="Arial,sans-serif" font-size="25" font-weight="700">A.</text><text x="64" y="31" fill="#f4eee9" font-family="Arial,sans-serif" font-size="22" font-weight="700" letter-spacing="1">ANTRIKSH / BUILDER</text><text x="1030" y="31" text-anchor="end" fill="#ff9b68" font-family="monospace" font-size="13" letter-spacing="3">DIGITAL RESUME · 2026</text></g>
+  <text x="84" y="265" fill="#f5f1ed" font-family="Arial,sans-serif" font-size="83" font-weight="700" letter-spacing="-5">A story built</text><text x="84" y="355" fill="url(#orange)" font-family="Arial,sans-serif" font-size="83" font-weight="700" letter-spacing="-5">to move forward.</text>
+  <text x="91" y="411" fill="#b7adaa" font-family="Arial,sans-serif" font-size="21">One place for the work, the skills, and the journey.</text>
+  <rect x="84" y="475" width="1032" height="572" rx="30" fill="url(#card)" stroke="#6e5446" stroke-opacity=".52"/>
+  <text x="127" y="538" fill="#ff9a65" font-family="monospace" font-size="13" letter-spacing="3">ANTRIKSH GALHOTRA</text><text x="1074" y="538" text-anchor="end" fill="#b2a9a4" font-family="monospace" font-size="12" letter-spacing="2">PORTFOLIO / 2026</text>
+  <text x="128" y="648" fill="#f5f0eb" font-family="Arial,sans-serif" font-size="54" font-weight="700" letter-spacing="-3">Builder of curious</text><text x="128" y="709" fill="#f5f0eb" font-family="Arial,sans-serif" font-size="54" font-weight="700" letter-spacing="-3">things that matter.</text>
+  <text x="132" y="766" fill="#b8aeaa" font-family="Arial,sans-serif" font-size="18">Student · Developer · Product thinker</text>
+  <rect x="130" y="813" width="219" height="55" rx="27" fill="url(#orange)"/><text x="239" y="847" text-anchor="middle" fill="#211611" font-family="monospace" font-size="13" font-weight="700" letter-spacing="1">EXPLORE MY WORK ↗</text>
+  <g transform="translate(811 616)"><circle cx="114" cy="117" r="138" fill="#ff6a25" opacity=".1"/><path d="M113 4 222 67v126l-109 63L4 193V67L113 4Z" stroke="#ff9560" stroke-opacity=".58" stroke-width="2"/><path d="m113 35 82 47v95l-82 47-82-47V82l82-47Z" stroke="#ff9560" stroke-opacity=".32"/><path d="M79 143c21-50 47-71 72-66 19 4 32 24 35 54m-98 41c24 1 44-10 59-32 11-16 23-23 39-22" stroke="url(#orange)" stroke-width="8" stroke-linecap="round"/><circle cx="184" cy="131" r="9" fill="#ffb278"/></g>
+  <path d="M128 931h944" stroke="#52443d"/><text x="130" y="982" fill="#e5dcd7" font-family="monospace" font-size="13" letter-spacing="2">SELECTED WORK</text><text x="402" y="982" fill="#b6aaa4" font-family="monospace" font-size="13">AI · SOFTWARE · ROBOTICS · PRODUCT</text>
+  <text x="84" y="1153" fill="#f1ece7" font-family="Arial,sans-serif" font-size="28" font-weight="600">Build with curiosity. Ship with purpose.</text><text x="86" y="1200" fill="#aa9e98" font-family="monospace" font-size="14" letter-spacing="3">PROJECTS · ABOUT · JOURNEY · CONTACT</text><text x="1116" y="1200" text-anchor="end" fill="#ff9a65" font-family="monospace" font-size="14" letter-spacing="2">10 / 12</text>
+</svg>
