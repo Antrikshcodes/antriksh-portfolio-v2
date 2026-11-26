@@ -229,11 +229,70 @@ export default function Projects() {
                       </div>
 
                       <div className="browser-mockup-screen">
-                        <img
-                          src={project.screenshot}
-                          alt={`${project.title} interface preview`}
-                          loading="lazy"
-                        />
+                        {project.screenshot ? (
+                          <img
+                            src={project.screenshot}
+                            alt={`${project.title} interface preview`}
+                            loading="lazy"
+                          />
+                        ) : (
+                          <div
+                            aria-label="SWARM warehouse fleet coordination preview"
+                            style={{
+                              minHeight: '310px',
+                              height: '100%',
+                              padding: '1.5rem',
+                              display: 'flex',
+                              flexDirection: 'column',
+                              justifyContent: 'space-between',
+                              background: 'linear-gradient(145deg, #101a2c, #080d1a 72%)',
+                              color: '#e7edf5',
+                              fontFamily: 'JetBrains Mono, monospace',
+                            }}
+                          >
+                            <div style={{ display: 'flex', justifyContent: 'space-between', color: '#9caec3', fontSize: '0.68rem', letterSpacing: '0.12em' }}>
+                              <span>SWARM / FLEET COORDINATION</span>
+                              <span style={{ color: '#8dd8ff' }}>DETERMINISTIC SIM</span>
+                            </div>
+                            <div
+                              style={{
+                                height: '190px',
+                                border: '1px solid rgba(141, 216, 255, 0.22)',
+                                borderRadius: '10px',
+                                display: 'grid',
+                                gridTemplateColumns: 'repeat(9, 1fr)',
+                                gridTemplateRows: 'repeat(5, 1fr)',
+                                gap: '5px',
+                                padding: '12px',
+                                backgroundImage: 'linear-gradient(rgba(141,216,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(141,216,255,.08) 1px, transparent 1px)',
+                                backgroundSize: '28px 28px',
+                              }}
+                            >
+                              {Array.from({ length: 45 }, (_, index) => (
+                                <span
+                                  key={index}
+                                  style={{
+                                    borderRadius: '4px',
+                                    background: [11, 12, 20, 21, 29, 30, 37, 38].includes(index)
+                                      ? 'rgba(141, 216, 255, 0.48)'
+                                      : 'transparent',
+                                    border: [6, 24, 40].includes(index)
+                                      ? '1px solid #e3fb51'
+                                      : '1px solid transparent',
+                                    boxShadow: [6, 24, 40].includes(index)
+                                      ? '0 0 14px rgba(227, 251, 81, 0.38)'
+                                      : 'none',
+                                  }}
+                                />
+                              ))}
+                            </div>
+                            <div style={{ display: 'flex', gap: '1.25rem', color: '#a9b8ca', fontSize: '0.68rem', letterSpacing: '0.08em' }}>
+                              <span>SPACE-TIME ROUTING</span>
+                              <span>DEADLOCK RECOVERY</span>
+                              <span>LIVE REROUTING</span>
+                            </div>
+                          </div>
+                        )}
                         {/* Explore Project hover indicator */}
                         <div className="project-hover-pill">
                           <Sparkles size={12} />
