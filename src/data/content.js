@@ -98,8 +98,40 @@ export const MARQUEE_ROW_TWO = [
 // Level One: Featured Projects (Stacked Scroll Showcase)
 export const FEATURED_PROJECTS = [
   {
+    id: 'swarm-robotics-simulator',
+    number: '01 / 07',
+    title: 'SWARM',
+    category: 'Robotics / Multi-Agent Coordination',
+    shortDesc:
+      'A deterministic warehouse simulation that coordinates autonomous mobile robots across shared aisles, missions, and operational disruptions.',
+    description:
+      'SWARM is a browser-based warehouse robot coordination and simulation platform. It assigns prioritized pickup and drop-off missions, plans robot movement across space and time, prevents cell conflicts and reverse-edge swaps, and recovers from deadlocks, robot failures, and dynamic aisle closures.',
+    problemStatement:
+      'Multiple warehouse robots sharing narrow aisles can block one another, enter circular waits, or leave cargo stranded when a carrier fails or an aisle closes.',
+    solution:
+      'A deterministic discrete-tick simulation coordinates routes with space-time reservations and supports deadlock resolution, package handover, and live rerouting around aisle closures.',
+    contribution:
+      'Built the simulation platform and its coordination workflows, including space-time route reservations, deadlock detection and recovery, robot-failure custody handover, and dynamic aisle rerouting.',
+    challenges:
+      'Coordinating safe movement and recovery while keeping the simulation deterministic across route conflicts, failures, and changing warehouse conditions.',
+    learnings:
+      'Space-time path planning, graph-based deadlock detection, deterministic simulation design, and recovery workflows for multi-robot systems.',
+    technologies: ['Next.js', 'React', 'TypeScript', 'Zustand', 'Three.js', 'Vitest'],
+    screenshot: null,
+    liveUrl: null,
+    githubUrl: 'https://github.com/Antrikshcodes/swarm-robotics-simulator',
+    displayUrl: 'github.com/Antrikshcodes/swarm-robotics-simulator',
+    accentColor: '#38BDF8',
+    features: [
+      'Deterministic warehouse simulation with prioritized missions',
+      'Space-time reservations for cells and directed edges',
+      'Deadlock detection and recovery with safe holding bays',
+      'Robot failure handover and live rerouting around closed aisles',
+    ],
+  },
+  {
     id: 'converge',
-    number: '01 / 06',
+    number: '02 / 07',
     title: 'CONVERGE',
     category: 'Smart Cities / Civic AI',
     shortDesc:
@@ -131,7 +163,7 @@ export const FEATURED_PROJECTS = [
   },
   {
     id: 'blindspot-ai',
-    number: '02 / 06',
+    number: '03 / 07',
     title: 'Blindspot AI',
     category: 'AI / Computer Vision',
     shortDesc:
@@ -163,7 +195,7 @@ export const FEATURED_PROJECTS = [
   },
   {
     id: 'jarvis-ai',
-    number: '03 / 06',
+    number: '04 / 07',
     title: 'JARVIS AI',
     category: 'Artificial Intelligence / Personal AI Assistant',
     shortDesc:
@@ -197,7 +229,7 @@ export const FEATURED_PROJECTS = [
   },
   {
     id: 'closet-store',
-    number: '04 / 06',
+    number: '05 / 07',
     title: 'Closet Store',
     category: 'Full-Stack / E-Commerce Marketplace',
     shortDesc:
@@ -230,7 +262,7 @@ export const FEATURED_PROJECTS = [
   },
   {
     id: 'ordershield-ai',
-    number: '05 / 06',
+    number: '06 / 07',
     title: 'OrderShield AI',
     category: 'AI / Product Development',
     shortDesc:
@@ -262,7 +294,7 @@ export const FEATURED_PROJECTS = [
   },
   {
     id: 'product-guys',
-    number: '06 / 06',
+    number: '07 / 07',
     title: 'The Product Guys',
     category: 'Product / Community',
     shortDesc:
